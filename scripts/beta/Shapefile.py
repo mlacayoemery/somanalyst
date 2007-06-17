@@ -1,5 +1,25 @@
 import struct, dbftool
 
+class Shapefile:
+    def __init__(self,type,fieldnames,fieldspecs,fieldrecords):
+        self.spatial=SHP(type)
+        self.table=DBF(fieldnames,fieldspecs,fieldrecords)
+
+    def addRecord(self,shape,record):
+        self.spatial.addRecord(shape)
+        self.table.addRecord(record)
+
+    def write(self,stem):
+        ofile=open(stem+".shp",'wb')
+        ofile.write(str(self.spatial))
+        ofile.close()
+        ofile=open(stem+".shx",'wb')
+        ofile.write(self.spatial.index())
+        ofile.close()
+        ofile=open(stem+".dbf",'wb')
+        ofile.write(str(self.table))
+        ofile.close()
+
 class SHP:
     def __init__(self,Type):
         self.iterator=0
@@ -212,29 +232,69 @@ class PolygonRecord(PolyLineRecord):
       
 
 ############
-      
+class DBF:
+    def __init__(self,fieldnames,fieldspecs,records):
+        self.fieldnames=fieldnames
+        self.fieldspecs=fieldspecs
+        self.records=records
+
+    def addRecord(self, record):
+        self.records.append(record)
+
+    def __str__(self):
+        ver=3
+        yr=34
+        mon=7
+        day=11
+        numrec = len(self.records)
+        numfields = len(self.fieldspecs)
+        lenheader = numfields * 32 + 33
+        lenrecord = sum(field[1] for field in self.fieldspecs) + 1
+
+        record = struct.pack('<BBBBLHH20x', ver, yr, mon, day, numrec, lenheader, lenrecord)
+
+        # field specs
+        for i in range(len(self.fieldnames)):
+            name=self.fieldnames[i-1].ljust(11, '\x00')
+            typ=self.fieldspecs[i-1][0]
+            size=self.fieldspecs[i-1][1]
+            deci=self.fieldspecs[i-1][2]
+
+            record+=struct.pack('<11sc4xBB14x', name, typ, size, deci)
+        record+='\r'
+
+        for r in self.records:
+            #deletion flag
+            record+=' '
+            for i,value in enumerate(r):
+                typ=self.fieldspecs[i][0]
+                size=self.fieldspecs[i][1]
+                deci=self.fieldspecs[i][2]
+                if typ == 'N':
+                    value = str(value).rjust(size, ' ')
+                elif typ == 'D':
+                    value = value.strftime('%Y%m%d')
+                elif typ == 'L':
+                    value = str(value)[0].upper()
+                else:
+                    value = str(value)[:size].ljust(size, ' ')
+                record+=value
+        # End of file
+        record+='\x1A'
+        return record
+
+#######      
 if __name__ == "__main__":
-    print
-    print "Shapefile class."
-    print
-    print "Constructing point SHP."
-    temp=SHP(3)
+    temp=Shapefile(5,["temp"],[('C',10,0)],[])
     for i in range(10):
         for j in range(10):
-            temp.addRecord(PolyLineRecord([[j,i],[j,i+1],[j+1,i+1],[j+1,i],[j,i]],[0]))
+            temp.addRecord(PolygonRecord([[j,i],[j,i+1],[j+1,i+1],[j+1,i],[j,i]],[0]),["Hello"])
+    temp.write("E:/mlacayo/SOManalyst/final")
     ##    for i in range(10):
 ##        for j in range(10):
 ##            temp.addRecord(PointRecord(i,j))
     
-    ofile=open("E:/mlacayo/SOManalyst/temp.shp",'wb')
-    ofile.write(str(temp))
-    ofile.close()
-    ofile=open("E:/mlacayo/SOManalyst/temp.shx",'wb')
-    ofile.write(temp.index())
-    ofile.close()
-    ofile=open("E:/mlacayo/SOManalyst/temp.dbf",'wb')
-    dbftool.dbfwriter(ofile, ['temp'], [('C',10,0)], [['Hello']]*100)
-    ofile.close()
+
     
     
     

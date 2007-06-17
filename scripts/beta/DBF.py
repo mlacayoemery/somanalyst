@@ -1,70 +1,54 @@
 import struct
 
-class DBF:
+class dbf:
     def __init__(self):
-        self.fieldnames=[]
-        self.fieldspecs=[]
-        self.records=[]        
-
-    def addRow(self,row):
-        self.records.append(row)
-
-    def addCol(self,column):
-        self.fieldnames.append(column)
-        for record in self.records:
-            record.append("")
+        self.fieldnames=['temp']
+        self.fieldspecs=[('C',10,0)]
+        self.records=[['Hello']]
 
     def __str__(self):
-        return "header: "+str(self.header)
+        ver=3
+        yr=34
+        mon=7
+        day=11
+        numrec = len(self.records)
+        numfields = len(self.fieldspecs)
+        lenheader = numfields * 32 + 33
+        lenrecord = sum(field[1] for field in self.fieldspecs) + 1
 
-    def read(self,file):
-        numrec, lenheader = struct.unpack('<xxxxLH22x', f.read(32))    
-        numfields = (lenheader - 33) // 32
+        record = struct.pack('<BBBBLHH20x', ver, yr, mon, day, numrec, lenheader, lenrecord)
 
-        fields = []
-        for fieldno in xrange(numfields):
-            name, typ, size, deci = struct.unpack('<11sc4xBB14x', f.read(32))
-            name = name.replace('\0', '')       # eliminate NULs from string   
-            fields.append((name, typ, size, deci))
-        yield [field[0] for field in fields]
-        yield [tuple(field[1:]) for field in fields]
+        # field specs
+        for i in range(len(self.fieldnames)):
+            name=self.fieldnames[i-1].ljust(11, '\x00')
+            typ=self.fieldspecs[i-1][0]
+            size=self.fieldspecs[i-1][1]
+            deci=self.fieldspecs[i-1][2]
 
-        terminator = f.read(1)
-        assert terminator == '\r'
+            record+=struct.pack('<11sc4xBB14x', name, typ, size, deci)
+        record+='\r'
 
-        fields.insert(0, ('DeletionFlag', 'C', 1, 0))
-        fmt = ''.join(['%ds' % fieldinfo[2] for fieldinfo in fields])
-        fmtsiz = struct.calcsize(fmt)
-        for i in xrange(numrec):
-            record = struct.unpack(fmt, f.read(fmtsiz))
-            if record[0] != ' ':
-                continue                        # deleted record
-            result = []
-            for (name, typ, size, deci), value in itertools.izip(fields, record):
-                if name == 'DeletionFlag':
-                    continue
-                if typ == "N":
-                    value = value.replace('\0', '').lstrip()
-                    if value == '':
-                        value = 0
-                    elif deci:
-                        value = decimal.Decimal(value)
-                    else:
-                        value = int(value)
+        for r in self.records:
+            #deletion flag
+            record+=' '
+            for i,value in enumerate(r):
+                typ=self.fieldspecs[i][0]
+                size=self.fieldspecs[i][1]
+                deci=self.fieldspecs[i][2]
+                if typ == 'N':
+                    value = str(value).rjust(size, ' ')
                 elif typ == 'D':
-                    y, m, d = int(value[:4]), int(value[4:6]), int(value[6:8])
-                    value = datetime.date(y, m, d)
+                    value = value.strftime('%Y%m%d')
                 elif typ == 'L':
-                    value = (value in 'YyTt' and 'T') or (value in 'NnFf' and 'F') or '?'
-                result.append(value)
-            yield result
-        
+                    value = str(value)[0].upper()
+                else:
+                    value = str(value)[:size].ljust(size, ' ')
+                record+=value
+        # End of file
+        record+='\x1A'
+        return record
 
-if __name__ == "__main__":
-    test = DBF()
-    test.addCol("1")
-    test.addCol("2")
-    print "DBF Testing"
-    print test
-
-        
+ofile=open("E:/mlacayo/SOManalyst/dbf.dbf",'wb')
+a=dbf()
+ofile.write(str(a))
+ofile.close()
