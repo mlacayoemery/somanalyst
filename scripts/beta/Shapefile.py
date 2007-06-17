@@ -2,6 +2,7 @@ import struct, dbftool
 
 class SHP:
     def __init__(self,Type):
+        self.iterator=0
         self.FileCode=9994
         self.Unused=[0,0,0,0,0]
         self.Length=50
@@ -43,13 +44,28 @@ class SHP:
 
         record+=str(self.BoxXY)
         record+=str(self.BoxZM)
+        
 
-#        record+="\xFF\xFF"
+        
         for id,r in enumerate(self.Records):
             record+=struct.pack('>i', id)
             record+=struct.pack('>i', len(r))
+            #record+="\xFF\xFF"
             record+=str(r)
+            
         return record
+
+    #define the iterator function    
+    def __iter__(self):
+        return self
+    
+    def next(self):
+        if self.iterator > (len(records)-1):
+            self.iterator=0
+            raise StopIteration
+        else:
+            self.iterator+=1
+            return self.Records[self.iterator]
 
     def index(self):
         record=struct.pack('>i', self.FileCode)
@@ -117,20 +133,7 @@ class BoxRecord:
 ##        self.X=float(X)
 ##        self.Y=float(Y)
 ##
-##    #define the iterator function    
-##    def __iter__(self):
-##        return self
-##    
-##    def next(self):
-##        if self.index == 2:
-##            self.index=0
-##            raise StopIteration
-##        elif self.index == 1:
-##            self.index+=1
-##            return self.Y
-##        elif self.index == 0:
-##            self.index+=1
-##            return self.X
+
     
 #point stored as individual coordinates with shape type
 class PointRecord:
@@ -160,24 +163,8 @@ class PointRecord:
     def __len__(self):
         return 10
         
-##class MultiPointRecord:
-##    def __init__(self,points):
-##        self.Type=int(8)
-##        self.Box=BoxRecord(minmaxXY(points))
-##        self.NumPoints=len(points)
-##        self.Points=[]
-##        for x,y in points:
-##            self.Points.append(PointRecord(x,y))
-##
-##    def __str__(self):
-##        record=struct.pack('<i',self.Type)
-##        record+=str(self.Box)
-##        record+=struct.pack('<i',self.NumPoints)
-##        for p in self.Points:
-##            record += str(p)
-##        return record
-
 #parts contains a list of indicie
+#parts begins at 0
 class PolyLineRecord:
     def __init__(self,points,parts):
         self.Type=int(3)
@@ -231,9 +218,10 @@ if __name__ == "__main__":
     print "Shapefile class."
     print
     print "Constructing point SHP."
-    temp=SHP(5)
-    l=PolygonRecord([[0,0],[0,1],[1,1],[1,0],[0,0]],[1])
-    temp.addRecord(l)
+    temp=SHP(3)
+    for i in range(10):
+        for j in range(10):
+            temp.addRecord(PolyLineRecord([[j,i],[j,i+1],[j+1,i+1],[j+1,i],[j,i]],[0]))
     ##    for i in range(10):
 ##        for j in range(10):
 ##            temp.addRecord(PointRecord(i,j))
@@ -245,7 +233,7 @@ if __name__ == "__main__":
     ofile.write(temp.index())
     ofile.close()
     ofile=open("E:/mlacayo/SOManalyst/temp.dbf",'wb')
-    dbftool.dbfwriter(ofile, ['temp'], [('C',10,0)], [['Hello']])
+    dbftool.dbfwriter(ofile, ['temp'], [('C',10,0)], [['Hello']]*100)
     ofile.close()
     
     
