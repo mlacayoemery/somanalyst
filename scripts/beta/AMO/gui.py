@@ -133,7 +133,7 @@ if __name__=="__main__":
                         #delete selected stems                        
                         if stemFilter!=None:
                             stemFilter=[ s.split(' ')[1] for s in stemFilter]
-                            easygui.msgbox("you selected "+str(stemFilter))
+                            #easygui.msgbox("you selected "+str(stemFilter))
 
                             #delete from documents
                             #for each collection
