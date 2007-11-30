@@ -60,9 +60,17 @@ class Lstem:
         #stores index value by stems
         self.stems={}
         #stores stems by index value
-        self.indexStems=[]
+        self.indexStems={}
         self.stemCount=0
-        self.stemFrequency=[]
+        self.stemFrequency={}
+        
+    def deleteStem(self,stem):
+        #remove stem from dictioanry
+        stemIndex=self.stems.pop(stem)
+        #remove stem index
+        self.indexStems.pop(stemIndex)
+        #remove stem frequency
+        self.stemFrequency.pop(stem)
   
     def charStrip(self,l):
         clean=""
@@ -87,9 +95,10 @@ class Lstem:
                 #if it is a new stem then enumerate it
                 if not self.stems.has_key(s):
                     self.stems[s]=self.stemCount
-                    self.indexStems.append(s)
-                    self.stemFrequency.append(0)
-                self.stemFrequency[self.stems[s]]+=1    
+                    self.indexStems[self.stemCount]=s
+                    self.stemCount+=1
+                    self.stemFrequency[s]=0
+                self.stemFrequency[s]+=1    
                 #if the local vector does not have the stem
                 if not v.has_key(self.stems[s]):
                     v[self.stems[s]]=1
@@ -100,5 +109,11 @@ class Lstem:
 if __name__ == "__main__":
     l=Lstem()
     v=l.Stem("participate. introduction participate")
+    print
+    for k in l.stems.keys():
+        print k
+    l.deleteStem('particip')
+    for k in l.stems.keys():
+        print k
     for k in v.keys():
         print l.indexStems[k], v[k]

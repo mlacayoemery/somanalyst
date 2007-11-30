@@ -1,5 +1,10 @@
 import easygui, sys, amo, pickle
 
+def padNum(num,pad):
+    return ("0"*(pad-len(str(num))))+str(num)
+        
+    
+
 if __name__=="__main__":
     app=amo.AMO()
 
@@ -57,7 +62,9 @@ if __name__=="__main__":
                         collection=easygui.choicebox("Collections",title,collections)
                         if collection!=None:
                             #select the stem field to save
-                            stemField='DC'
+                            documentFieldKey=app.collection.collections[collection]["stems"].keys()[0]
+                            fields=list(app.collection.collections[collection]["stems"][documentFieldKey].keys())
+                            stemField=easygui.choicebox("Field",title,fields)
                 
                             #select the ouput file for the vectors
                             easygui.msgbox("Choose an output file for the vectors.")
@@ -108,17 +115,46 @@ if __name__=="__main__":
 
                 #filter stems
                 elif collectionChoice==collectionChoices[4]:
-                    if len(app.collection.porter.stemCount)==0:
+                    if len(app.collection.porter.stemFrequency)==0:
                         easygui.msgbox("There are no stems.")
                     else:
-                        stems=map(app.collection.porter.stems.__getitem__,app.collection.porter.indexStems)
-                        stems=zip(stems,app.collection.porter.stemFrequency)
-                        stems=map(str,stems)
-                        easygui.choicebox("Stems",title,collections)
+                        #get the stem indicies in frequency order
+                        #assert len(app.collection.porter.stemFrequency)==len(app.collection.porter.indexStems)
+                        stems=[]
+                        pad=len(str(app.collection.porter.stemCount))
+                        for i in app.collection.porter.stemFrequency.keys():
+                            stems.append(padNum(app.collection.porter.stemFrequency[i],pad)+" "+
+                                         app.collection.porter.indexStems[app.collection.porter.stems[i]])
+
+                                
+                        #select stems                        
+                        stemFilter=easygui.multchoicebox("Select the stems to remove.",title,stems)
+
+                        #delete selected stems                        
+                        if stemFilter!=None:
+                            stemFilter=[ s.split(' ')[1] for s in stemFilter]
+                            easygui.msgbox("you selected "+str(stemFilter))
+
+                            #delete from documents
+                            #for each collection
+                            for c in app.collection.collections.keys():
+                                #for each document
+                                for d in app.collection.collections[c]['stems'].keys():
+                                    #for each field
+                                    for f in app.collection.collections[c]['stems'][d].keys():
+                                        #for each stem filter
+                                        for s in stemFilter:
+                                            if app.collection.collections[c]['stems'][d][f].has_key(app.collection.porter.stems[s]):
+                                                app.collection.collections[c]['stems'][d][f].pop(app.collection.porter.stems[s])
+
+                            #delete from porter
+                            for s in stemFilter:
+                                app.collection.porter.deleteStem(s)
+
 
                 #filter documents                
                 elif collectionChoice==collectionChoices[5]:
-                    pass
+                    easygui.msgbox("Sorry. The Document Filter is currenly under development.")
         #Project Manager Menu
         elif choice == mainChoices[1]:
             easygui.msgbox("Sorry. The Project Manager is currenly under development.")
@@ -137,7 +173,8 @@ if __name__=="__main__":
                 #store stemming data
                 pickle.dump(app.collection.porter.stems,ofile)
                 pickle.dump(app.collection.porter.indexStems,ofile)
-                pickle.dump(app.collection.porter.stemCount,ofile)                          
+                pickle.dump(app.collection.porter.stemCount,ofile)
+                pickle.dump(app.collection.porter.stemFrequency,ofile)                          
                 ofile.close()
 
         #Load State
@@ -150,5 +187,6 @@ if __name__=="__main__":
                 #store stemming data
                 app.collection.porter.stems=pickle.load(ifile)
                 app.collection.porter.indexStems=pickle.load(ifile)
-                app.collection.porter.stemCount=pickle.load(ifile)  
+                app.collection.porter.stemCount=pickle.load(ifile)
+                app.collection.porter.stemFrequency=pickle.load(ifile)  
                 ifile.close()
