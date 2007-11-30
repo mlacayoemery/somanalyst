@@ -2,7 +2,8 @@ import easygui, sys, amo, pickle
 
 def padNum(num,pad):
     return ("0"*(pad-len(str(num))))+str(num)
-        
+      
+
     
 
 if __name__=="__main__":
@@ -12,7 +13,7 @@ if __name__=="__main__":
     title ="Abstract Map Open 1.0"
     mainChoices = ["Collection Manager", "Project Manager", "Viewer", "Save State", "Load State","Exit"]
     collectionChoices = ["List Collections","Insert Collection",\
-               "Stem Collection","Save Stemmed Collection","Filter Stems","Filter Collection","Return to Main Menu"]
+               "Stem Collection","Export Stemmed Collection","Filter Stems","Filter Collection","Return to Main Menu"]
 
     while not (choice == "Exit"):
         choice = easygui.buttonbox("Main Menu", title, mainChoices)
@@ -26,7 +27,6 @@ if __name__=="__main__":
                 #display collections
                 if collectionChoice ==collectionChoices[0]:
                     collections=app.Collections()
-                    collections.sort()
                     if len(collections)==0:
                         easygui.msgbox("There are no collections")
                     else:
@@ -36,34 +36,28 @@ if __name__=="__main__":
                 elif collectionChoice ==collectionChoices[1]:
                     iName=easygui.fileopenbox(argInitialFile="d:/users/gregg/file1.txt")
                     if iName!=None:
-                        iFile=open(iName)
-                        cID,dictionary=app.collection.AMOparse(iFile)
-                        iFile.close()
-                        app.collection.Insert(cID,dictionary)
+                        app.InsertCollection(iName)
 
                 #stem a collection
                 elif collectionChoice==collectionChoices[2]:
                     collections=app.Collections()
-                    collections.sort()
                     if len(collections)==0:
                         easygui.msgbox("There are no collections")
                     else:
                         collection=easygui.choicebox("Collections",title,collections)
                         if collection!=None:
-                            app.collection.Stem(collection)
+                            app.StemCollection(collection)
 
-                #save a stemmed collection
+                #save/export a stemmed collection
                 elif collectionChoice==collectionChoices[3]:
                     collections=app.StemmedCollections()
-                    collections.sort()
                     if len(collections)==0:
                         easygui.msgbox("There are no stemmed collections.")
                     else:
                         collection=easygui.choicebox("Collections",title,collections)
                         if collection!=None:
                             #select the stem field to save
-                            documentFieldKey=app.collection.collections[collection]["stems"].keys()[0]
-                            fields=list(app.collection.collections[collection]["stems"][documentFieldKey].keys())
+                            fields=app.StemFields(collection)
                             stemField=easygui.choicebox("Field",title,fields)
                 
                             #select the ouput file for the vectors
@@ -79,39 +73,8 @@ if __name__=="__main__":
                             if oStems==None:
                                 break
 
-
-                            #construct the collection dictionary            
-                            stems=set([])
-                            for d in app.collection.collections[collection]['stems'].keys():
-                                map(stems.add,app.collection.collections[collection]['stems'][d][stemField].keys())
-                            stems=list(stems)
-                            stems.sort()
-                                
-                            #write the dictionary
-                            ofile=open(oStems,'w')
-                            for s in stems:
-                                ofile.write(app.collection.porter.indexStems[s])
-                                ofile.write(' ')
-                            ofile.close()
-
-                            #write the data                
-                            ofile=open(oDat,'w')
-                            ofile.write(str(len(stems)))
-                            ofile.write('\n')
-
-                            #for each document in the collection
-                            documents=app.collection.collections[collection]['stems'].keys()
-                            documents.sort()
-                            for d in documents:
-                                #check for each stem in collection
-                                for s in stems:
-                                    if app.collection.collections[collection]['stems'][d][stemField].has_key(s):
-                                        ofile.write(str(app.collection.collections[collection]['stems'][d][stemField][s]))
-                                        ofile.write(' ')
-                                    else:
-                                        ofile.write('0 ')
-                                ofile.write('\n')
-                            ofile.close()
+                            #write the stems and data
+                            app.ExportStemmedCollection(oStems,ODat,collectionName,stemField)
 
                 #filter stems
                 elif collectionChoice==collectionChoices[4]:
@@ -121,12 +84,10 @@ if __name__=="__main__":
                         #get the stem indicies in frequency order
                         #assert len(app.collection.porter.stemFrequency)==len(app.collection.porter.indexStems)
                         stems=[]
-                        pad=len(str(app.collection.porter.stemCount))
-                        for i in app.collection.porter.stemFrequency.keys():
-                            stems.append(padNum(app.collection.porter.stemFrequency[i],pad)+" "+
-                                         app.collection.porter.indexStems[app.collection.porter.stems[i]])
+                        pad=len(str(app.StemCount()))
+                        for k in app.StemKeys():
+                            stems.append(padNum(app.StemFrequency(k),pad)+" "+k)
 
-                                
                         #select stems                        
                         stemFilter=easygui.multchoicebox("Select the stems to remove.",title,stems)
 
@@ -155,6 +116,7 @@ if __name__=="__main__":
                 #filter documents                
                 elif collectionChoice==collectionChoices[5]:
                     easygui.msgbox("Sorry. The Document Filter is currenly under development.")
+                    
         #Project Manager Menu
         elif choice == mainChoices[1]:
             easygui.msgbox("Sorry. The Project Manager is currenly under development.")
@@ -167,26 +129,10 @@ if __name__=="__main__":
         elif choice == mainChoices[3]:
             oState=easygui.filesavebox(argInitialFile="d:/users/gregg/amo.dat")
             if oState!=None:
-                ofile=open(oState,'w')
-                #store collection database
-                pickle.dump(app.collection.collections,ofile)
-                #store stemming data
-                pickle.dump(app.collection.porter.stems,ofile)
-                pickle.dump(app.collection.porter.indexStems,ofile)
-                pickle.dump(app.collection.porter.stemCount,ofile)
-                pickle.dump(app.collection.porter.stemFrequency,ofile)                          
-                ofile.close()
+                app.Save(oState)
 
         #Load State
         elif choice == mainChoices[4]:
             iState=easygui.fileopenbox(argInitialFile="d:/users/gregg/amo.dat")
             if iState !=None:
-                ifile=open(iState)
-                #store collection database
-                app.collection.collections=pickle.load(ifile)
-                #store stemming data
-                app.collection.porter.stems=pickle.load(ifile)
-                app.collection.porter.indexStems=pickle.load(ifile)
-                app.collection.porter.stemCount=pickle.load(ifile)
-                app.collection.porter.stemFrequency=pickle.load(ifile)  
-                ifile.close()
+                app.Load(iState)

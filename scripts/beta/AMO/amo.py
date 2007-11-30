@@ -1,6 +1,6 @@
 
 #Martin Lacayo-Emery
-import cols
+import cols, pickle
 
 class AMO:
     def __init__(self):
@@ -121,16 +121,99 @@ class AMO:
                 
                 
     def Collections(self):
-        return self.collection.Collections()
+        collectionNames = self.collection.Collections()
+        collectionNames.sort()
+        return collectionNames
 
     def StemmedCollections(self):
-        return self.collection.StemmedCollections()
+        collectionNames= self.collection.StemmedCollections()
+        collectionNames.sort()
+        return collectionNames
 
     def ProjectManager(self):
         print "Project Manager"
 
     def Viewer(self):
         print "Viewer"
+
+    def Save(self,fileName):
+        ofile=open(fileName,'w')
+        #store collection database
+        pickle.dump(self.collection.collections,ofile)
+        #store stemming data
+        pickle.dump(self.collection.porter.stems,ofile)
+        pickle.dump(self.collection.porter.indexStems,ofile)
+        pickle.dump(self.collection.porter.stemCount,ofile)
+        pickle.dump(self.collection.porter.stemFrequency,ofile)                          
+        ofile.close()
+
+    def Load(self,fileName):
+        ifile=open(fileName)
+        #store collection database
+        self.collection.collections=pickle.load(ifile)
+        #store stemming data
+        self.collection.porter.stems=pickle.load(ifile)
+        self.collection.porter.indexStems=pickle.load(ifile)
+        self.collection.porter.stemCount=pickle.load(ifile)
+        self.collection.porter.stemFrequency=pickle.load(ifile)  
+        ifile.close()
+
+    def InsertCollection(self,fileName):
+        iFile=open(iName)
+        cID,dictionary=self.collection.AMOparse(iFile)
+        iFile.close()
+        self.collection.Insert(cID,dictionary)
+
+    def StemCollection(self,collectionName):
+        self.collection.Stem(collection)
+
+    def StemFields(self,collectionName):
+        documentFieldKey=self.collection.collections[collectionName]["stems"].keys()[0]
+        return list(self.collection.collections[collectionName]["stems"][documentFieldKey].keys())
+
+    def ExportStemmedCollection(self,oStems,oDat,collectionName,stemField):
+       stems=set([])
+        for d in self.collection.collections[collection]['stems'].keys():
+            map(stems.add,self.collection.collections[collection]['stems'][d][stemField].keys())
+        stems=list(stems)
+        stems.sort()
+        
+        ofile=open(oStems,'w')
+        for s in stems:
+            ofile.write(self.collection.porter.indexStems[s])
+            ofile.write(' ')
+        ofile.close()        
+
+        #write the data                
+        ofile=open(oDat,'w')
+        ofile.write(str(len(stems)))
+        ofile.write('\n')
+
+        #for each document in the collection
+        documents=self.collection.collections[collection]['stems'].keys()
+        documents.sort()
+        for d in documents:
+            #check for each stem in collection
+            for s in stems:
+                if self.collection.collections[collection]['stems'][d][stemField].has_key(s):
+                    ofile.write(str(self.collection.collections[collection]['stems'][d][stemField][s]))
+                    ofile.write(' ')
+                else:
+                    ofile.write('0 ')
+            ofile.write('\n')
+        ofile.close()
+
+    def StemCount(self):
+        return self.collection.porter.stemCount
+
+    def StemFrequency(self,i):
+        return collection.porter.stemFrequency[i]
+
+    def StemKeys(self(:
+        return self.collection.porter.stemFrequency.keys()                      
+
+    def DeleteStems
+        
     
     
 if __name__=="__main__":
