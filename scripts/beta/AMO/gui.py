@@ -54,8 +54,8 @@ if __name__=="__main__":
                     if len(collections)==0:
                         easygui.msgbox("There are no stemmed collections.")
                     else:
-                        collection=easygui.choicebox("Collections",title,collections)
-                        if collection!=None:
+                        collectionName=easygui.choicebox("Collections",title,collections)
+                        if collectionName!=None:
                             #select the stem field to save
                             fields=app.StemFields(collection)
                             stemField=easygui.choicebox("Field",title,fields)
@@ -74,7 +74,7 @@ if __name__=="__main__":
                                 break
 
                             #write the stems and data
-                            app.ExportStemmedCollection(oStems,ODat,collectionName,stemField)
+                            app.ExportStemmedCollection(oStems,oDat,collectionName,stemField)
 
                 #filter stems
                 elif collectionChoice==collectionChoices[4]:
@@ -110,7 +110,7 @@ if __name__=="__main__":
 
                             #delete from porter
                             for s in stemFilter:
-                                app.collection.porter.deleteStem(s)
+                                app.DeleteStem(s)
 
 
                 #filter documents                

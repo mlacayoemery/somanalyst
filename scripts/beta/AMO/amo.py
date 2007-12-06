@@ -159,22 +159,22 @@ class AMO:
         ifile.close()
 
     def InsertCollection(self,fileName):
-        iFile=open(iName)
+        iFile=open(fileName)
         cID,dictionary=self.collection.AMOparse(iFile)
         iFile.close()
         self.collection.Insert(cID,dictionary)
 
     def StemCollection(self,collectionName):
-        self.collection.Stem(collection)
+        self.collection.Stem(collectionName)
 
     def StemFields(self,collectionName):
         documentFieldKey=self.collection.collections[collectionName]["stems"].keys()[0]
         return list(self.collection.collections[collectionName]["stems"][documentFieldKey].keys())
 
     def ExportStemmedCollection(self,oStems,oDat,collectionName,stemField):
-       stems=set([])
-        for d in self.collection.collections[collection]['stems'].keys():
-            map(stems.add,self.collection.collections[collection]['stems'][d][stemField].keys())
+        stems=set([])
+        for d in self.collection.collections[collectionName]['stems'].keys():
+            map(stems.add,self.collection.collections[collectionName]['stems'][d][stemField].keys())
         stems=list(stems)
         stems.sort()
         
@@ -190,13 +190,13 @@ class AMO:
         ofile.write('\n')
 
         #for each document in the collection
-        documents=self.collection.collections[collection]['stems'].keys()
+        documents=self.collection.collections[collectionName]['stems'].keys()
         documents.sort()
         for d in documents:
             #check for each stem in collection
             for s in stems:
-                if self.collection.collections[collection]['stems'][d][stemField].has_key(s):
-                    ofile.write(str(self.collection.collections[collection]['stems'][d][stemField][s]))
+                if self.collection.collections[collectionName]['stems'][d][stemField].has_key(s):
+                    ofile.write(str(self.collection.collections[collectionName]['stems'][d][stemField][s]))
                     ofile.write(' ')
                 else:
                     ofile.write('0 ')
@@ -207,12 +207,13 @@ class AMO:
         return self.collection.porter.stemCount
 
     def StemFrequency(self,i):
-        return collection.porter.stemFrequency[i]
+        return self.collection.porter.stemFrequency[i]
 
-    def StemKeys(self(:
+    def StemKeys(self):
         return self.collection.porter.stemFrequency.keys()                      
 
-    def DeleteStems
+    def DeleteStem(self,stemName):
+        self.collection.porter.deleteStem(stemName)
         
     
     
