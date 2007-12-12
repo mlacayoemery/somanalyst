@@ -6,7 +6,7 @@ import sys, os
 def visual(cin,din,dout,noskip="#",buffer="#"):
     #get local path for visual
     local = sys.argv[0]
-    visual = "\""+local[:local.rfind("\\")]+"\\SOM_PAK\\visual.exe"+"\""
+    visual = "\""+"\\".join(local.split("\\")[:-2])+"\\SOM_PAK\\visual.exe"+"\""
 
     #add parametes to the system call
     visual+=" -cin "+cin
@@ -18,6 +18,7 @@ def visual(cin,din,dout,noskip="#",buffer="#"):
     if buffer != '#':
         visual+=" -buffer "+buffer
     #execute command
+    print visual
     return os.system(visual)        
 
 if __name__=="__main__":
@@ -30,6 +31,6 @@ if __name__=="__main__":
     #do not skip masked vectors
     noskip = sys.argv[4]
     #buffer reading of data
-    buffer = sys.argv[4]
+    buffer = sys.argv[5]
 
     visual(cin,din,dout,noskip,buffer)
