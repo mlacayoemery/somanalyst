@@ -26,7 +26,7 @@ somMetaPostfix="_sommeta"
 somCodPostfix="_somcod"
 somInputPostfix="_sominput"
 somDocIDsPostfix="_somdocids"
-somTermPostfix"_somterm"
+somTermPostfix="_somterm"
 
 
 
@@ -110,17 +110,17 @@ class AMmanager:
     #creates the author table for a collection
     def createAuthorTable(self, shortName):
          tablename = shortname + authorPostfix
-         self.cursor.execute("CREATE TABLE " + tablename +\
-                             "(docid VARCHAR2(50) NOT NULL, \
-                             uniqueid NUMBER NOT NULL, \
-                             name VARCHAR2(100), \
-                             address VARCHAR2(500), \
-                             email VARCHAR2(100), \
-                             primary key(docid, uniqueid), \
-                             foreign key(docid) references "+\
-                            shortname + documentPostfix+"(docid) ON DELETE CASCADE,\
-                            foreign key(uniqueid) references "\+
-                            shortname + uniqueauthorPostfix +"(uniqueid))")
+         #for some reason it wouldn't let me use line continuations
+         stmt="CREATE TABLE " + tablename
+         stmt+="(docid VARCHAR2(50) NOT NULL, uniqueid NUMBER NOT NULL, "
+         stmt+="name VARCHAR2(100), address VARCHAR2(500), "
+         stmt+="email VARCHAR2(100), primary key(docid, uniqueid), "
+         stmt+="foreign key(docid) references "
+         stmt+=shortname + documentPostfix
+         stmt+="(docid) ON DELETE CASCADE, foreign key(uniqueid) references "
+         stmt+=shortname + uniqueauthorPostfix +"(uniqueid))"
+         
+         self.cursor.execute(stmt)
 
     #creates all the tables for a project
     def createProjectTables(self,ID):
@@ -144,8 +144,8 @@ class AMmanager:
         self.cursor.execute("DROP TABLE " + ID + " CASCADE CONSTRAINTS")
         self.commit()
 
-    def deleteTableEntry(self,tableName,fieldID,ID)
-        self.cursor.execute("DELETE FROM TABLE " + tableName + " WHERE "+fieldID+" = " +  "\'" + ID + "\'"
+    def deleteTableEntry(self,tableName,fieldID,ID):
+        self.cursor.execute("DELETE FROM TABLE " + tableName + " WHERE "+fieldID+" = " +  "\'" + ID + "\'")
         self.commit()
 
     def createSomMetaTable(self,ID):
@@ -209,7 +209,8 @@ class AMmanager:
         self.commit()
 
 if __name__ == "__main__":
-    am=AMmanager()
-    am.open()
-    am.createIndexTable("IndexTableTest")
-    am.close()
+    pass
+##    am=AMmanager()
+##    am.open()
+##    am.createIndexTable("IndexTableTest")
+##    am.close()
