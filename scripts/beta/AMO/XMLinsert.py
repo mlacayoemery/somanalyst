@@ -64,6 +64,203 @@ class AMmanager:
 
      
     #table creation
+    def createCollectionTable(self):
+        stmt="""create table collection(
+            collid varchar2(40) not null,
+            shortname varchar2(20) not null,
+            collyear number not null,
+            collnum number not null,
+            fullname varchar2(200),
+            collplace varchar2(200),
+            primary key(collid)
+        );"""
+        self.cursor.execute(stmt)
+        self.commit()
+        
+    def createProjectTable(self):
+        stmt="""create table project(
+            projid varchar2(20) not null,
+            projname varchar2(100),
+            creatime date,
+            status varchar2(20),
+            primary key(projid)
+        );"""
+        self.cursor.execute(stmt)
+        self.commit()
+
+    def createCollectionProjectTable(self):
+        stmt="""create table coll_proj(
+            collid varchar2(40) not null,
+            projid varchar2(20) not null,
+            primary key(collid, projid),
+            foreign key(collid) references collection(collid),
+            foreign key(projid) references project(projid) on delete cascade
+        );"""
+        self.cursor.execute(stmt)
+        self.commit()
+
+    def dropCollectionTable(self):
+        self.cursor.execute("drop table collection cascade constraints;")
+        self.commit()
+
+    def dropProjectTable(self):
+        self.cursor.execute("drop table project cascade constraints;")
+        self.commit()
+
+    def dropCollectionProjectTable(self):
+        self.cursor.execute("drop table coll_proj cascade constraints;")
+        self.commit()
+
+    def recreateCollectionTables(self):
+        self.dropCollectionTable()
+        self.dropProjectTable()
+        self.dropCollectionProjectTable()
+        self.createCollectionTable()
+        self.createProjectTable()
+        self.createCollectionProjectTable()
+
+    def dropCollectionDocumentTable(self):
+        self.cursor.execute("drop table coll_document cascade constraints;")
+        self.commit()
+
+    def dropCollectionAuthorTable(self):        
+        self.cursor.execute("drop table coll_author cascade constraints;")
+        self.commit()
+
+    def dropCollectionUniqueAuthorTable(self):        
+        self.cursor.execute("drop table coll_uniqueauthor cascade constraints;")
+        self.commit()
+
+    def createCollectionDocumentTable(self):
+        stmt="""create table coll_document(
+            docid varchar2(12) not null,
+            collid varchar2(20) not null,
+            title varchar2(300),
+            stmtitle varchar2(300),
+            absttext clob,
+            stmabsttext clob,
+            fulltext clob,
+            stmfulltext clob,
+            keywords varchar2(200),
+            stmkeywords varchar2(200),
+            primary key(docid),
+            foreign key(collid) references collection(collid) on delete cascade
+        );"""
+        self.cursor.execute(stmt)
+        self.commit()
+
+    def createCollectionUniqueAuthorTable(self):
+        stmt="""create table coll_uniqueauthor(
+            uniqueid number not null,
+            fname varchar2(50),
+            lname varchar2(50),
+            primary key(uniqueid)
+        );"""
+        self.cursor.execute(stmt)
+        self.commit()
+
+    def createCollectionAuthorTable(self):
+        stmt="""create table coll_author(
+            docid varchar2(12) not null,
+            uniqueid number not null,
+            name varchar2(100),
+            address varchar2(500),
+            email varchar2(100),
+            primary key(docid, uniqueid),
+            foreign key(docid) references coll_document(docid) on delete cascade,
+            foreign key(uniqueid) references coll_uniqueauthor(uniqueid)
+        );"""        
+        self.cursor.execute(stmt)
+        self.commit()
+
+    def recreateDocumentTables(self):
+        self.dropCollectionDocumentTable()
+        self.dropCollectionAuthorTable()
+        self.dropCollectionUniqueAuthorTable()
+        self.createCollectionDocumentTable()
+        self.createCollectionUniqueAuthorTable()
+        self.createCollectionAuthorTable()
+
+    def dropProjectSOMMetaTable(self):
+        self.cursor.execute("drop table proj_sommeta cascade constraints;")
+        self.commit()
+
+    def dropProjectSOMCODTable(self):        
+        self.cursor.execute("drop table proj_somcod cascade constraints;")
+        self.commit()
+
+    def dropProjectSOMTermTable(self):      
+        self.cursor.execute("drop table proj_somterm cascade constraints;")
+        self.commit()
+
+    def dropProjectSOMDocumentIDTable(self):
+        self.cursor.execute("drop table proj_somdocids cascade constraints;")
+        self.commit()
+
+    def dropProjectSOMInputTable(self):        
+        self.cursor.execute("drop table proj_sominput cascade constraints;")
+        self.commit()
+
+    def createProjectSOMMetaTable(self):
+        stmt="""create table proj_sommeta(
+                somid varchar2(15) not null,
+                dimen number,
+                topo varchar2(10),
+                nrow number,
+                ncol number,
+            tform varchar2(10),
+            creatime date;
+                primary key(somid)
+        );"""        
+        self.cursor.execute(stmt)
+        self.commit()
+
+    def createProjectSOMCODTable(self):   
+        stmt="""create table proj_somcod(
+            somid varchar2(15) not null,
+            nind number not null,
+            rowdata clob,
+            primary key(somid, nind),
+            foreign key(somid) references proj_sommeta(somid)
+        );"""        
+        self.cursor.execute(stmt)
+        self.commit()
+
+    def createProjectSOMTermTable(self):      
+        stmt="""create table proj_sominput(
+            somid varchar2(25) not null,
+            dind number not null,
+            docid varchar2(12) not null,
+            rowdata clob,
+            primary key(somid, dind),
+            foreign key(somid) references proj_sommeta(somid)
+        );"""        
+        self.cursor.execute(stmt)
+        self.commit()
+    def createProjectSOMDocumentIDTable(self):
+        stmt="""create table proj_somdocids(
+            somid varchar2(15) not null,
+            docids clob,
+            primary key(somid),
+            foreign key(somid) references proj_sommeta(somid)
+        );"""        
+        self.cursor.execute(stmt)
+        self.commit()
+        
+    def createProjectSOMInputTable(self):    
+        stmt="""create table proj_somterm(
+            somid varchar2(15) not null,
+            termdata clob,
+            primary key(somid),
+            foreign key(somid) references proj_sommeta(somid)
+        );"""        
+        self.cursor.execute(stmt)
+        self.commit()
+
+    def recreateProjectTables():
+        pass
+        
+        
     #creates all the tables for a document
     def createDocumentTables(shortName, ID):
         self.createDocumentTable(shortName, ID)
@@ -185,8 +382,18 @@ class AMmanager:
     
     def insertCollection(self,shortName="Example",year=2007,number=1,fullName="NULL",place="NULL"):
         ID=str(shortName)+"-"+str(year)+"-"+str(number)
-        self.cursor.execute("INSERT INTO "+collectionTable+" values "+\
-                            str((ID,shortName,year,number,fullName,place)))
+        stmt="INSERT INTO "+collectionTable+" values (\'"+ID+"\', "
+        stmt+="\'"+str(shortName)+"\', "+str(year)+", "+str(number)+", "
+        if fullName==None:
+            stmt+="NULL, "
+        else:
+            stmt+="\'"+str(fullName)+"\', "
+        if place==None:
+            stmt+="NULL)"
+        else:
+            stmt+="\'"+str(place)+"\')"
+        print stmt
+        self.cursor.execute(stmt)
         self.commit()
 
     def deleteCollection(self,ID="Example-2007-1"):
@@ -199,6 +406,10 @@ class AMmanager:
     def deleteDocument(self):
         self.commit()
 
+    def listCollections(self):
+        self.cursor.execute("SELECT collid FROM collection")
+        return self.cursor.fetchall()
+
     #order dependent insertion
     def insertProject(self,ID,name="NULL",time="NULL",status="NULL"):
         self.cursor.execute("INSERT INTO "+projectTable+" values "+str((ID,name,time,status)))
@@ -209,8 +420,8 @@ class AMmanager:
         self.commit()
 
 if __name__ == "__main__":
-    pass
-##    am=AMmanager()
-##    am.open()
-##    am.createIndexTable("IndexTableTest")
-##    am.close()
+    am=AMmanager()
+    am.open()
+    for n in am.listCollections():
+        print n[0]
+    #am.close()

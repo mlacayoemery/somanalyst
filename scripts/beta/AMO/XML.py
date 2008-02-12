@@ -43,6 +43,9 @@ class Misc:
         self.webpage=webpage
         self.contact=contact
 
+    def __str__(self):
+        return "\n".join(map(str,[self.description,self.webpage,self.contact]))
+
     def getXMLValue(self,nodes):
         try:
             value = getXMLValue(nodes).strip(string.whitespace)
@@ -96,9 +99,13 @@ class Keywords:
             if nodes[0].nodeType==TEXT_NODE:
                 nodes.pop(0)
             else:
-                value = nodes.pop(0).childNodes[0].nodeValue.strip(string.whitespace)
-                if len(value):
-                    words.append(value)
+                try:
+                    value = nodes.pop(0).childNodes[0].nodeValue.strip(string.whitespace)
+                    if len(value):
+                        words.append(value)
+                except:
+                    #empty keyword tag
+                    pass
 
         if len(words):
             self.keywords=words
@@ -211,19 +218,30 @@ class Collection:
         
         #skip text node and create a list of all authors
         docs=[]
-        for i in range(len(nodes)):
-            if nodes[0].nodeType==TEXT_NODE:
-                nodes.pop(0)
-            else:
-                doc=Document()
-                doc.XMLnode(nodes.pop(0))
-                docs.append(doc)
+        try:
+            for i in range(len(nodes)):
+                if nodes[0].nodeType==TEXT_NODE:
+                    nodes.pop(0)
+                else:
+                    doc=Document()
+                    doc.XMLnode(nodes.pop(0))
+                    docs.append(doc)
+        except:
+            pass
         if len(docs):
             self.documents=docs
         else:
             self.documents=None         
-        
-doc = xml.dom.minidom.parse('D:/data/COSIT/COSIT01.xml')
 
-c=Collection()
-c.XMLnode(doc.childNodes[0].childNodes[1])
+def parse(file):
+    c=Collection()
+    doc=xml.dom.minidom.parse(file)
+    c.XMLnode(doc.childNodes[0].childNodes[1])
+    return c
+
+
+
+
+
+##d=Document()
+##d.XMLnode(doc.childNodes[0].childNodes[1].childNodes[19])
