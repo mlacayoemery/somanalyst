@@ -62,8 +62,37 @@ class AMmanager:
     def commit(self):
         self.cursor.execute("COMMIT")
 
+    #table recreation (ie drop then add)
+    def recreateCollectionTables(self):
+        self.dropCollectionTable()
+        self.dropProjectTable()
+        self.dropCollectionProjectTable()
+        self.createCollectionTable()
+        self.createProjectTable()
+        self.createCollectionProjectTable()
+
+    def recreateDocumentTables(self):
+        self.dropCollectionDocumentTable()
+        self.dropCollectionAuthorTable()
+        self.dropCollectionUniqueAuthorTable()
+        self.createCollectionDocumentTable()
+        self.createCollectionUniqueAuthorTable()
+        self.createCollectionAuthorTable()
+
+    def recreateProjectTables(self):
+        self.dropProjectSOMMetaTable()
+        self.dropProjectSOMCODTable()
+        self.dropProjectSOMTermTable()
+        self.dropProjectSOMDocumentTable()
+        self.dropProjectSOMInputTable()
+        self.createProjectSOMMetaTable()
+        self.createProjectSOMCODTable()
+        self.createProjectSOMTermTable()
+        self.createProjectSOMDocumentTable()
+        self.createProjectSOMInputTable()
      
     #table creation
+    #base tables
     def createCollectionTable(self):
         stmt="""create table collection(
             collid varchar2(40) not null,
@@ -88,6 +117,7 @@ class AMmanager:
         self.cursor.execute(stmt)
         self.commit()
 
+    #paired tables
     def createCollectionProjectTable(self):
         stmt="""create table coll_proj(
             collid varchar2(40) not null,
@@ -97,38 +127,6 @@ class AMmanager:
             foreign key(projid) references project(projid) on delete cascade
         );"""
         self.cursor.execute(stmt)
-        self.commit()
-
-    def dropCollectionTable(self):
-        self.cursor.execute("drop table collection cascade constraints;")
-        self.commit()
-
-    def dropProjectTable(self):
-        self.cursor.execute("drop table project cascade constraints;")
-        self.commit()
-
-    def dropCollectionProjectTable(self):
-        self.cursor.execute("drop table coll_proj cascade constraints;")
-        self.commit()
-
-    def recreateCollectionTables(self):
-        self.dropCollectionTable()
-        self.dropProjectTable()
-        self.dropCollectionProjectTable()
-        self.createCollectionTable()
-        self.createProjectTable()
-        self.createCollectionProjectTable()
-
-    def dropCollectionDocumentTable(self):
-        self.cursor.execute("drop table coll_document cascade constraints;")
-        self.commit()
-
-    def dropCollectionAuthorTable(self):        
-        self.cursor.execute("drop table coll_author cascade constraints;")
-        self.commit()
-
-    def dropCollectionUniqueAuthorTable(self):        
-        self.cursor.execute("drop table coll_uniqueauthor cascade constraints;")
         self.commit()
 
     def createCollectionDocumentTable(self):
@@ -171,34 +169,6 @@ class AMmanager:
             foreign key(uniqueid) references coll_uniqueauthor(uniqueid)
         );"""        
         self.cursor.execute(stmt)
-        self.commit()
-
-    def recreateDocumentTables(self):
-        self.dropCollectionDocumentTable()
-        self.dropCollectionAuthorTable()
-        self.dropCollectionUniqueAuthorTable()
-        self.createCollectionDocumentTable()
-        self.createCollectionUniqueAuthorTable()
-        self.createCollectionAuthorTable()
-
-    def dropProjectSOMMetaTable(self):
-        self.cursor.execute("drop table proj_sommeta cascade constraints;")
-        self.commit()
-
-    def dropProjectSOMCODTable(self):        
-        self.cursor.execute("drop table proj_somcod cascade constraints;")
-        self.commit()
-
-    def dropProjectSOMTermTable(self):      
-        self.cursor.execute("drop table proj_somterm cascade constraints;")
-        self.commit()
-
-    def dropProjectSOMDocumentIDTable(self):
-        self.cursor.execute("drop table proj_somdocids cascade constraints;")
-        self.commit()
-
-    def dropProjectSOMInputTable(self):        
-        self.cursor.execute("drop table proj_sominput cascade constraints;")
         self.commit()
 
     def createProjectSOMMetaTable(self):
@@ -257,19 +227,92 @@ class AMmanager:
         self.cursor.execute(stmt)
         self.commit()
 
-    def recreateProjectTables():
-        pass
-        
+    #table dropping
+    #base tables
+    def dropCollectionTable(self):
+        self.cursor.execute("drop table collection cascade constraints;")
+        self.commit()
+
+    def dropProjectTable(self):
+        self.cursor.execute("drop table project cascade constraints;")
+        self.commit()
+
+    #paired tables
+    def dropCollectionProjectTable(self):
+        self.cursor.execute("drop table coll_proj cascade constraints;")
+        self.commit()
+
+    def dropCollectionDocumentTable(self):
+        self.cursor.execute("drop table coll_document cascade constraints;")
+        self.commit()
+
+    def dropCollectionAuthorTable(self):        
+        self.cursor.execute("drop table coll_author cascade constraints;")
+        self.commit()
+
+    def dropCollectionUniqueAuthorTable(self):        
+        self.cursor.execute("drop table coll_uniqueauthor cascade constraints;")
+        self.commit()
+
+    def dropProjectSOMMetaTable(self):
+        self.cursor.execute("drop table proj_sommeta cascade constraints;")
+        self.commit()
+
+    def dropProjectSOMCODTable(self):        
+        self.cursor.execute("drop table proj_somcod cascade constraints;")
+        self.commit()
+
+    def dropProjectSOMTermTable(self):      
+        self.cursor.execute("drop table proj_somterm cascade constraints;")
+        self.commit()
+
+    def dropProjectSOMDocumentIDTable(self):
+        self.cursor.execute("drop table proj_somdocids cascade constraints;")
+        self.commit()
+
+    def dropProjectSOMInputTable(self):        
+        self.cursor.execute("drop table proj_sominput cascade constraints;")
+        self.commit()
+
+
+   
         
     #creates all the tables for a document
-    def createDocumentTables(shortName, ID):
-        self.createDocumentTable(shortName, ID)
-        self.createUniqueAuthorTable(shortName)
-        self.createAuthorTable(shortName)
+    def createDocumentTables(self, shortName, ID):
+        self.__createDocumentTable(shortName, ID)
+        self.__createUniqueAuthorTable(shortName)
+        self.__createAuthorTable(shortName)
 
+    def dropDocumentTables(self, shortName):
+        self.__dropDocumentTable(shortName)
+        self.__dropUniqueAuthorTable(shortName)
+        self.__dropAuthorTable(shortName)
+
+    def __dropDocumentTable(self,shortName):
+        try:
+            self.cursor.execute("drop table "+str(shortName + documentPostfix)+" cascade constraints")
+            self.commit()
+        except cx_Oracle.DatabaseError:
+            pass
+
+    def __dropUniqueAuthorTable(self,shortName):
+        try:
+            self.cursor.execute("drop table "+str(shortName + uniqueAuthorPostfix)+" cascade constraints")
+            self.commit()
+        except cx_Oracle.DatabaseError:
+            pass
+
+    def __dropAuthorTable(self, shortName):
+        try:
+            self.cursor.execute("drop table "+str(shortName + authorPostfix)+" cascade constraints")
+            self.commit()
+        except cx_Oracle.DatabaseError:
+            pass
+        
     #creates the index table for a collection    
     def createIndexTable(self, shortName):
         tableName=shortName+indexPostfix
+        print tableName
         self.cursor.execute("CREATE TABLE "+tableName+" ( docidsAfterFilt CLOB,\
                             keywordsAfterFilt CLOB, \
                             FilteredIndex CLOB, \
@@ -277,9 +320,9 @@ class AMmanager:
         self.commit()
 
     #creates the doucment table for a collection
-    def createDocumentTable(self, shortName, ID):
+    def __createDocumentTable(self, shortName, ID):
         tableName = shortName + documentPostfix
-        self.cursor.execute("CREATE TABLE "+tableName+" \
+        self.cursor.execute("CREATE TABLE "+str(tableName)+" \
                             (docid VARCHAR2(50) NOT NULL, \
                             collid VARCHAR2(40) NOT NULL, \
                             title VARCHAR2(300), \
@@ -296,26 +339,26 @@ class AMmanager:
         self.commit()
 
     #creates the unique author table for a collection
-    def createUniqueAuthorTable(self, shortName):
+    def __createUniqueAuthorTable(self, shortName):
         tableName = shortName + uniqueAuthorPostfix
-        self.cursor.execute("CREATE TABLE " + tablename +\
+        self.cursor.execute("CREATE TABLE " + tableName +\
                             "(uniqueid NUMBER NOT NULL,\
                             fname VARCHAR2(50), lname VARCHAR2(50), \
                             primary key(uniqueid))")
         self.commit()
 
     #creates the author table for a collection
-    def createAuthorTable(self, shortName):
-         tablename = shortname + authorPostfix
+    def __createAuthorTable(self, shortName):
+         tablename = shortName + authorPostfix
          #for some reason it wouldn't let me use line continuations
          stmt="CREATE TABLE " + tablename
          stmt+="(docid VARCHAR2(50) NOT NULL, uniqueid NUMBER NOT NULL, "
          stmt+="name VARCHAR2(100), address VARCHAR2(500), "
          stmt+="email VARCHAR2(100), primary key(docid, uniqueid), "
          stmt+="foreign key(docid) references "
-         stmt+=shortname + documentPostfix
+         stmt+=shortName + documentPostfix
          stmt+="(docid) ON DELETE CASCADE, foreign key(uniqueid) references "
-         stmt+=shortname + uniqueauthorPostfix +"(uniqueid))"
+         stmt+=shortName + uniqueAuthorPostfix +"(uniqueid))"
          
          self.cursor.execute(stmt)
 
@@ -392,7 +435,6 @@ class AMmanager:
             stmt+="NULL)"
         else:
             stmt+="\'"+str(place)+"\')"
-        print stmt
         self.cursor.execute(stmt)
         self.commit()
 
@@ -400,7 +442,11 @@ class AMmanager:
         self.cursor.execute("DELETE FROM "+collectionTable+" WHERE "+collectionID+" = \'"+ID+"\'")
         self.commit()
         
-    def insertDocument(self):
+    def insertDocument(self,table,documentID,collectionID,title=None,stemTitle=None,abstract=None,stmAbstract=None,text=None,stemText=None,keywords=None,stemKeywords=None):      
+        stmt="INSERT INTO "+table+" values "
+        stmt+=self.formatValueString([documentID,collectionID,title,stemTitle,abstract,stmAbstract,text,stemText,keywords,stemKeywords])
+        #print stmt
+        self.cursor.execute(stmt)
         self.commit()
 
     def deleteDocument(self):
@@ -418,6 +464,32 @@ class AMmanager:
     def deleteProject(self,ID="Example"):
         self.cursor.execute("DELETE FROM "+projectTable+" WHERE "+projectID+" = \'"+ID+"\'")
         self.commit()
+
+    #returns a list where any None values are replaced with "NULL"
+    def formatValueString(self,values):
+        stmt="("
+        if values[0]==None:
+            stmt+="NULL"
+        else:
+            if type(values[0])==str:
+                stmt+="\'"+values[0]+"\'"
+            else:
+                stmt+=values[0]
+            
+        for v in values[1:]:
+            if v==None:
+                stmt+=",NULL"
+            else:
+                stmt+=","
+                if type(v)==str:
+                    stmt+="\'"+v+"\'"
+                else:
+                    stmt+=v
+
+        stmt+=")"
+        return stmt
+        
+        
 
 if __name__ == "__main__":
     am=AMmanager()

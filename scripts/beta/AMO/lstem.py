@@ -106,14 +106,22 @@ class Lstem:
                     v[self.stems[s]]+=1
         return v
 
+    def stemList(self,stemKeys):
+        words=[]
+        for k in stemKeys:
+            words.append(self.indexStems[k])
+        return words
+
 if __name__ == "__main__":
     l=Lstem()
     v=l.Stem("participate. introduction participate")
     print
     for k in l.stems.keys():
         print k
-    l.deleteStem('particip')
+    print
+    #l.deleteStem('particip')
     for k in l.stems.keys():
         print k
+    print
     for k in v.keys():
         print l.indexStems[k], v[k]
