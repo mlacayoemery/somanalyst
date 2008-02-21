@@ -37,8 +37,25 @@ class Manager:
                 stmAbstract=self.stemmer.stemList(self.stemmer.Stem(str(d.text.abstract)).keys())
                 stmAbstract.sort()
                 stmAbstract=' '.join(stmAbstract)[:4000]            
+
+            #full text
+            text=str(d.text.fulltext).replace("\'","\'\'").replace("\"","\'\'\'\'")[:4000]
+            stmtext=None
+            if d.text.fulltext:
+                stmText=self.stemmer.stemList(self.stemmer.Stem(str(d.text.fulltext)).keys())
+                stmText.sort()
+                stmText=' '.join(stmText)[:4000]       
+
+##            #keywords comma delimited
+##            keywords=', '.join(d.keywords.keywords)
+##            stmKeywords=None
+##            if d.keywords.keywords:
+##                stmKeywords=[]
+##                for k in d.keywords.keywords:
+##                    stmKeywords.append(' '.join(self.stemmer.stemList(self.stemmer.Stem(str(k)).keys())))
+##                stmKeywords=', '.join(stmKeywords)
             
-            self.dbase.insertDocument("ISIWOS_document",str(docID),"ISIWoS-2007-1",title,stmTitle,abstract,stmAbstract)
+            self.dbase.insertDocument("ISIWOS_document",str(docID),"ISIWoS-2007-1",title,stmTitle,abstract,stmAbstract,text,stmText)
 
     def close(self):
         self.dbase.close()
@@ -46,3 +63,16 @@ class Manager:
 if __name__=="__main__":
     m=Manager()
     m.insertCollection()
+
+
+
+##connection = cx_Oracle.Connection("user/pw@tns")
+##cursor = connection.cursor()
+##cursor.setinputsizes(value = cx_Oracle.CLOB)
+##cursor.execute("insert into xmltable values (:value)",
+##value = "A very long XML string")
+##>>> m.dbase.cursor.execute("select absttext from ISIWOS_document where docid=\'845\'")
+##[<cx_Oracle.CLOB with value None>]
+##>>> f=m.dbase.cursor.fetchmany()
+##>>> q=f[0][0].read()
+##>>> len(q)
