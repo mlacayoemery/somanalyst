@@ -112,6 +112,13 @@ class Lstem:
             words.append(self.indexStems[k])
         return words
 
+    def amStemList(self,stemDict):
+        words=[]
+        for k in stemDict.keys():
+            for i in range(stemDict[k]):
+                words.append(self.indexStems[k])
+        return words
+
 if __name__ == "__main__":
     l=Lstem()
     v=l.Stem("participate. introduction participate")

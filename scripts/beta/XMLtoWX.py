@@ -3,6 +3,8 @@ import wx
 
 TEXT_NODE = xml.dom.minidom.DocumentType.TEXT_NODE
 
+
+
 #gets value from a leaf node list
 #skips text node leafs
 def getXMLValue(nodes):
@@ -15,22 +17,66 @@ def getXMLValue(nodes):
     else:
         return node[0].nodeValue
 
+class Dispatcher:
+    "Dispatches functions calls allowing events to be bound to "
+    def __init__(self):
+        self.dispatch={}
+        self.dispatch["MessageDialog"]=MessageDialog
+
+    def wrap(self,id,function,*parameters):
+        "Returns a constructor sequence for a function"
+        return (id, function, parameters)
+
+    def unwrap(self,function,parameters):
+        "Constructs a function from a constructor sequence"
+        return self.dispatch[function](parameters)
+        
+
+class MessageDialog:
+    def __init__(self, (otherself, title="Title", message="Message Dialog Text", style=wx.OK | wx.ICON_INFORMATION)):
+        self.otherself=otherself
+        self.message=message
+        self.title=title
+        self.style=style
+
+    def __call__(self,event):
+        dlg = wx.MessageDialog(self.otherself,
+                               self.message,
+                               self.title,
+                               self.style)
+        dlg.ShowModal()
+        dlg.Destroy()
+
 
 class MyFrame(wx.Frame):
-    def __init__(self,title="My Frame", dimensions=(300,300)):
+    def __init__(self,title="My Frame", dimensions=(300,300), menuBar=None, events=None):
         wx.Frame.__init__(self, None, -1, title, size=dimensions)
         panel = wx.Panel(self,-1)
-        panel.Bind(wx.EVT_MOTION, self.OnMove)
-        wx.StaticText(panel,-1, "Pos:", pos=(10,12))
-        self.posCtrl = wx.TextCtrl (panel, -1, "", pos=(40,10))
+        self.SetMenuBar(menuBar)
+        
+        for id,function,parameters in events:
+            wx.EVT_MENU(self, id, dispatch.unwrap(function,[self]+parameters))
+##        panel.Bind(wx.EVT_MOTION, self.OnMove)
+##        wx.StaticText(panel,-1, "Pos:", pos=(10,12))
+##        self.posCtrl = wx.TextCtrl (panel, -1, "", pos=(40,10))
+
+    def Dispatcher(self,function):
+        try:
+            return self.dispatch[function]
+        except KeyError:
+            return None
+
+    def TimeToQuit(self, event):
+        self.Close(True)
 
     def OnMove(self, event):
         pos = event.GetPosition()
         self.posCtrl.SetValue("%s, %s" % (pos.x, pos.y))
         
 if __name__ == "__main__":
+    dispatch=Dispatcher()
     #parse document, get root node
-    doc = xml.dom.minidom.parse("c:/save/Martin/SOMgui.xml")
+    doc = xml.dom.minidom.parse("D:/users/martin/somanalyst/scripts/beta/SOMgui.xml")
     rootNode = doc.childNodes
     if rootNode[0].nodeType==TEXT_NODE:
         rootNode.pop(0)
@@ -41,15 +87,48 @@ if __name__ == "__main__":
     if windowNodes[0].nodeType==TEXT_NODE:
         windowNodes.pop(0)
     windowNodes=windowNodes.pop(0).childNodes
-    
+
+    #get title    
     app = wx.PySimpleApp()
     XMLtitle=getXMLValue(windowNodes)
 
+    #get size
     if windowNodes[0].nodeType==TEXT_NODE:
         windowNodes.pop(0)
     dimNode=windowNodes.pop(0).childNodes
     XMLdimensions=(int(getXMLValue(dimNode)),int(getXMLValue(dimNode)))
-    frame = MyFrame(title=XMLtitle,dimensions=XMLdimensions)
+
+    #get menu bar
+    id=0
+    if windowNodes[0].nodeType==TEXT_NODE:
+        windowNodes.pop(0)
+    menuBarNode=windowNodes.pop(0).childNodes
+    menuBar = wx.MenuBar()
+    events=[]
+    for i in range(len(menuBarNode)):
+        node=menuBarNode.pop(0)
+        if node.nodeType!=TEXT_NODE:
+            menuNode=node.childNodes
+            menu=wx.Menu()
+            name=getXMLValue(menuNode)
+            for j in range(len(menuNode)):
+                itemNode=menuNode.pop(0)
+                if itemNode.localName=="ITEM":
+                    menu.Append(id, getXMLValue(itemNode.childNodes))
+                    if itemNode.childNodes[0].nodeType=TEXT_NODE:
+                        itemNode.childNodes.pop(0)
+                    eventNode=itemNode.childNodes.pop(0).childNodes
+                    if eventNode[0].localName=="MESSAGEDIALOG":
+                        title=getXMLValue(eventNode[0].childNodes)
+                        text=getXMLValue(eventNode[0].childNodes)
+                        events.append(dispatch.wrap(id, "MessageDialog",[title,text]))
+                    id+=1
+                elif itemNode.localName=="SEPARATOR":
+                    menu.AppendSeparator()
+            menuBar.Append(menu, name)
+
+    ##set parameters and activate GUI
+    frame = MyFrame(title=XMLtitle,dimensions=XMLdimensions,menuBar=menuBar,events=events)
     frame.Show(True)
     app.MainLoop()
 

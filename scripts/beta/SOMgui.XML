@@ -7,36 +7,54 @@
         </SIZE>
         <MENUBAR>
             <MENU>
-            <NAME>File</NAME>
-            <ITEM>
-                <NAME>Open</NAME>
-                <EVENT></EVENT>
-            </ITEM>
-            <ITEM>
-                <NAME>Save</NAME>
-                <EVENT></EVENT>
-            </ITEM>
-            <ITEM>
-                <NAME>Close</NAME>
-                <EVENT></EVENT>
-            </ITEM>
-            <SEPARATOR></SEPARATOR>
-            <ITEM>
-                <NAME>Exit</NAME>
-                <EVENT>TimeToQuit</EVENT>
-            </ITEM>
+                <NAME>File</NAME>
+                <ITEM>
+                    <NAME>Open</NAME>
+                    <EVENT></EVENT>
+                </ITEM>
+                <ITEM>
+                    <NAME>Save</NAME>
+                    <EVENT></EVENT>
+                </ITEM>
+                <ITEM>
+                    <NAME>Close</NAME>
+                    <EVENT></EVENT>
+                </ITEM>
+                <SEPARATOR></SEPARATOR>
+                <ITEM>
+                    <NAME>Exit</NAME>
+                    <EVENT>TimeToQuit</EVENT>
+                </ITEM>
             </MENU>
             <MENU>
-            <NAME>Help</NAME>
-            <ITEM>
-                <NAME>Help Contents</NAME>
-                <EVENT>OnHelp</EVENT>
-            </ITEM>
-            <SEPARATOR></SEPARATOR>
-            <ITEM>
-                <NAME>About</NAME>
-                <EVENT>OnAbout</EVENT>
-            </ITEM>
+                <NAME>Tools</NAME>
+                <ITEM>
+                    <NAME>Options</NAME>
+                    <EVENT></EVENT>
+                </ITEM>
+            </MENU>
+            <MENU>
+                <NAME>Help</NAME>
+                <ITEM>
+                    <NAME>Help Contents</NAME>
+                    <EVENT>OnHelp</EVENT>
+                </ITEM>
+                <SEPARATOR></SEPARATOR>
+                <ITEM>
+                    <NAME>About</NAME>
+                    <EVENT>
+                        <MESSAGEDIALOG>
+                        <TITLE>About SOM Analyst</TITLE>
+                        <TEXT>
+                        created by:
+                            Martin Lacayo-Emery
+                            Geography Department
+                            San Diego State University
+                            lacayo@rohan.sdsu.edu
+                        </TEXT>
+                        </MESSAGEDIALOG>
+                    </EVENT>
+                </ITEM>
             </MENU>
         </MENUBAR>
     </WINDOW>
