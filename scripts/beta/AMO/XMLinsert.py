@@ -442,11 +442,16 @@ class AMmanager:
         self.cursor.execute("DELETE FROM "+collectionTable+" WHERE "+collectionID+" = \'"+ID+"\'")
         self.commit()
         
-    def insertDocument(self,table,documentID,collectionID,title=None,stemTitle=None,abstract=None,stmAbstract=None,text=None,stemText=None,keywords=None,stemKeywords=None):      
-        stmt="INSERT INTO "+table+" values "
-        stmt+=self.formatValueString([documentID,collectionID,title,stemTitle,abstract,stmAbstract,text,stemText,keywords,stemKeywords])
-        #print stmt
-        self.cursor.execute(stmt)
+    def insertDocument(self,table,documentID,collectionID,title=None,stemTitle=None,abstract=None,stemAbstract=None,text=None,stemText=None,keywords=None,stemKeywords=None):      
+        stmt="INSERT INTO "+table+" values(:v1,:v2,:v3,:v4,:v5,:v6,:v7,:v8,:v9,:v10)"
+
+        self.cursor.execute(stmt,
+                            v1=documentID,
+                            v2=collectionID,
+                            v3=title,v4=stemTitle,
+                            v5=abstract,v6=stemAbstract,
+                            v7=text,v8=stemText,
+                            v9=keywords,v10=stemKeywords)
         self.commit()
 
     def deleteDocument(self):

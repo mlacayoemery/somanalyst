@@ -6,6 +6,8 @@ TEXT_NODE = xml.dom.minidom.DocumentType.TEXT_NODE
 #skips text node leafs
 def getXMLValue(nodes):
     #ignore preceeding whitespace and get value
+    if not nodes:
+        return None
     if nodes[0].nodeType==TEXT_NODE:
         nodes.pop(0)
     node=nodes.pop(0).childNodes
@@ -72,11 +74,14 @@ class Author:
         self.email=email
 
     def getXMLValue(self,nodes):
-        value = getXMLValue(nodes).strip(string.whitespace)
-        if len(value):
-            return value
-        else:
-            return None
+        value = getXMLValue(nodes)
+        #if not None, strip it and change to none if blank
+        if value:
+            #strip out the whitespace
+            value=value.strip(string.whitespace)
+            if not len(value):
+                value=None
+        return value
 
     def XMLnode(self,authorNode):
         nodes=authorNode.childNodes
@@ -216,7 +221,7 @@ class Collection:
         self.other=Misc()
         self.other.XMLnode(nodes.pop(0))
         
-        #skip text node and create a list of all authors
+        #skip text node and create documents
         docs=[]
         try:
             for i in range(len(nodes)):
@@ -227,7 +232,7 @@ class Collection:
                     doc.XMLnode(nodes.pop(0))
                     docs.append(doc)
         except:
-            pass
+            print "Document parsing error"
         if len(docs):
             self.documents=docs
         else:
@@ -236,11 +241,14 @@ class Collection:
 def parse(file):
     c=Collection()
     doc=xml.dom.minidom.parse(file)
-    c.XMLnode(doc.childNodes[0].childNodes[1])
+    c.XMLnode(doc.childNodes[0].childNodes[0])
     return c
 
 
-
+if __name__=="__main__":
+    c=Collection()
+    doc=xml.dom.minidom.parse("Z:/ISIfromEndNote/AMsewer.xml")
+    c.XMLnode(doc.childNodes[0].childNodes[0])
 
 
 ##d=Document()

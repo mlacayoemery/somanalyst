@@ -31,20 +31,20 @@ class Manager:
                 stmTitle=' '.join(stmTitle)[:300]
 
             #stem abstract and get stem list, string longer than 4000 only possible with variable binding
-            abstract=str(d.text.abstract).replace("\'","\'\'").replace("\"","\'\'\'\'")[:4000]
+            abstract=str(d.text.abstract).replace("\'","\'\'").replace("\"","\'\'\'\'")[:2147483647]
             stmAbstract=None
             if d.text.abstract:
                 stmAbstract=self.stemmer.amStemList(self.stemmer.Stem(str(d.text.abstract)))
                 stmAbstract.sort()
-                stmAbstract=' '.join(stmAbstract)[:4000]            
+                stmAbstract=' '.join(stmAbstract)[:2147483647]            
 
             #full text
-            text=str(d.text.fulltext).replace("\'","\'\'").replace("\"","\'\'\'\'")[:4000]
-            stmtext=None
+            text=str(d.text.fulltext).replace("\'","\'\'").replace("\"","\'\'\'\'")[:2147483647]
+            stmText=None
             if d.text.fulltext:
                 stmText=self.stemmer.stemList(self.stemmer.Stem(str(d.text.fulltext)).keys())
                 stmText.sort()
-                stmText=' '.join(stmText)[:4000]       
+                stmText=' '.join(stmText)[:2147483647]       
 
 ##            #keywords comma delimited
 ##            keywords=', '.join(d.keywords.keywords)
@@ -55,15 +55,15 @@ class Manager:
 ##                    stmKeywords.append(' '.join(self.stemmer.stemList(self.stemmer.Stem(str(k)).keys())))
 ##                stmKeywords=', '.join(stmKeywords)
             
-            self.dbase.insertDocument(str(self.collection.shortname)+"_document",str(docID),COLLID,title,stmTitle,abstract,stmAbstract,text,stmText)
+            self.dbase.insertDocument(str(self.collection.shortname)+"_document",str(docID+1),COLLID,title,stmTitle,abstract,stmAbstract,text,stmText)
 
     def close(self):
         self.dbase.close()
 
 if __name__=="__main__":
     m=Manager()
-    m.insertCollection(fileName="d:/data/08-02-23/cositUnique03032007.xml")
-    m.insertCollection(fileName="d:/data/08-02-23/cositUnique10142007.xml")    
+    fName="Z:/ISIfromEndNote/AMsewer.xml"
+    m.insertCollection(fileName=fName)
     m.close()
 
 
