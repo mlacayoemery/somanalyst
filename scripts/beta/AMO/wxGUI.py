@@ -68,7 +68,7 @@ class MyFrame(wx.Frame):
         self.button = wx.Button(panel, -1, "Rename", pos=(202, 311))
 
         self.button = wx.Button(panel, -1, "Delete", pos=(202, 334))
-        wx.CheckBox(panel, -1, "Include Completed)", (102, 268), (150, 18))
+        wx.CheckBox(panel, -1, "include completed)", (102, 268), (150, 17))
 
         wx.StaticText(panel, -1, "Base Index",(0, 387))    
 
