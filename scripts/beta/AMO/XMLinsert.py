@@ -444,7 +444,6 @@ class AMmanager:
         
     def insertDocument(self,table,documentID,collectionID,title=None,stemTitle=None,abstract=None,stemAbstract=None,text=None,stemText=None,keywords=None,stemKeywords=None):      
         stmt="INSERT INTO "+table+" values(:v1,:v2,:v3,:v4,:v5,:v6,:v7,:v8,:v9,:v10)"
-
         self.cursor.execute(stmt,
                             v1=documentID,
                             v2=collectionID,

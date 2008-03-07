@@ -1,5 +1,26 @@
 import XML, XMLinsert, lstem
 
+def LongStem(manager,value,length):
+    base=value
+    stmBase=None
+    #non empty string
+    if base:
+        #convert quotes to SQL formatting, unneccesary for varialbe binding
+        base=str(base)#.replace("\'","\'\'").replace("\"","\'\'\'\'")
+        #if not empty
+        if base:
+            stmBase=manager.stemmer.stemList(manager.stemmer.Stem(base).keys())
+            stmBase.sort()
+            stmBase=' '.join(stmBase)
+            return base[:length],stmBase[:length]
+        else:
+            base=None
+    #empty string or None
+    else:
+        base=None
+    return base,stmBase
+    
+
 class Manager:
     def __init__(self,user="scott",password="tiger",database="abstract"):
         self.dbase=XMLinsert.AMmanager(user,password,database)
@@ -22,29 +43,15 @@ class Manager:
 
         #insert collections
         for docID,d in enumerate(self.collection.documents):
-            #stem the title and get the stem list
-            title=str(d.title).replace("\'","\'\'").replace("\"","\'\'\'\'")[:300]
-            stmTitle=None
-            if d.title:
-                stmTitle=self.stemmer.stemList(self.stemmer.Stem(str(d.title)).keys())
-                stmTitle.sort()
-                stmTitle=' '.join(stmTitle)[:300]
-
-            #stem abstract and get stem list, string longer than 4000 only possible with variable binding
-            abstract=str(d.text.abstract).replace("\'","\'\'").replace("\"","\'\'\'\'")[:2147483647]
-            stmAbstract=None
-            if d.text.abstract:
-                stmAbstract=self.stemmer.amStemList(self.stemmer.Stem(str(d.text.abstract)))
-                stmAbstract.sort()
-                stmAbstract=' '.join(stmAbstract)[:2147483647]            
-
-            #full text
-            text=str(d.text.fulltext).replace("\'","\'\'").replace("\"","\'\'\'\'")[:2147483647]
-            stmText=None
-            if d.text.fulltext:
-                stmText=self.stemmer.stemList(self.stemmer.Stem(str(d.text.fulltext)).keys())
-                stmText.sort()
-                stmText=' '.join(stmText)[:2147483647]       
+            #get value and construct stemed value
+            title,stmTitle=LongStem(self,d.title,300)
+            abstract,stmAbstract=LongStem(self,d.text.abstract,2147483647)
+            text,stmText=LongStem(self,d.text.fulltext,2147483647)
+            if d.keywords.keywords:
+                keywords,stmKeywords=LongStem(self,' '.join(d.keywords.keywords),2147483647)
+            else:
+                keywords=None
+                stmKeywords=None
 
 ##            #keywords comma delimited
 ##            keywords=', '.join(d.keywords.keywords)
@@ -55,14 +62,14 @@ class Manager:
 ##                    stmKeywords.append(' '.join(self.stemmer.stemList(self.stemmer.Stem(str(k)).keys())))
 ##                stmKeywords=', '.join(stmKeywords)
             
-            self.dbase.insertDocument(str(self.collection.shortname)+"_document",str(docID+1),COLLID,title,stmTitle,abstract,stmAbstract,text,stmText)
+            self.dbase.insertDocument(str(self.collection.shortname)+"_document",str(docID+1),COLLID,title,stmTitle,abstract,stmAbstract,text,stmText,keywords,stmKeywords)
 
     def close(self):
         self.dbase.close()
 
 if __name__=="__main__":
     m=Manager()
-    fName="Z:/ISIfromEndNote/AMsewer.xml"
+    fName="Z:/SewerInclAbstracts_03052008/AMsewer.xml"
     m.insertCollection(fileName=fName)
     m.close()
 
