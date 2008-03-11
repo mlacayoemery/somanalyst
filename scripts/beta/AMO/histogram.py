@@ -1,91 +1,92 @@
 import wx
+import math
+
+def histogram(data,classes):
+    minimum=float(min(data))
+    maximum=float(max(data))
+    delta=(maximum-minimum)/(classes-1)
+    counts=[0]*classes
+    for d in data:
+        counts[int(math.floor((d-minimum)/delta))]+=1
+    for i in range(len(counts)):
+        counts[i]=int(long(counts[i])*10/len(data))
+    return counts
+    
+
 class DrawPanel(wx.Panel):
 
     """Draw a line to a panel."""
 
     def __init__(self, *args, **kwargs):
         wx.Panel.__init__(self, *args, **kwargs)
-        self.slider = wx.Slider(self, 100, 25, 1, 100, pos=(10, 10),
-        size=(250, -1),
-        style=wx.SL_HORIZONTAL | wx.SL_AUTOTICKS )
-        self.slider.SetTickFreq(10, 1)
-        self.slider.SetValue(0)
+
+        self.data=[1,2,2,3,3,3,4,4,5]
+        self.classes=5
+        self.histogram=histogram(self.data,self.classes)
+        self.width=100
+        self.classwidth=int(float(self.width)/self.classes)
+        
+        self.minslider = wx.Slider(self, 100, 25, 0, self.classes, pos=(0, 100),
+        size=(self.width+20, 20),
+        style=wx.SL_HORIZONTAL | wx.SL_AUTOTICKS | wx.SL_TOP)
+        self.minslider.SetTickFreq(1, self.classes)
+        self.minslider.SetValue(0)
+        self.minOldValue=0
+        
+        self.maxslider = wx.Slider(self, 100, 25, 0, self.classes, pos=(0, 120),
+        size=(self.width+20, 20),
+        style=wx.SL_HORIZONTAL | wx.SL_AUTOTICKS | wx.SL_TOP)
+        self.maxslider.SetTickFreq(1, self.classes)
+        self.maxslider.SetValue(5)
+        self.maxOldValue=5
 
         self.Bind(wx.EVT_PAINT, self.OnPaint)
         self.Bind(wx.EVT_SLIDER, self.OnSlide)
 
     def OnPaint(self, event=None):
         self.dc = wx.PaintDC(self)        
-        self.dc.SetBackground(wx.Brush("White"))
+        self.dc.SetBackground(wx.Brush("Grey"))
         self.dc.Clear()
         #fill
-        self.dc.SetBrush(wx.Brush("BLACK"))
+        self.dc.SetBrush(wx.Brush("Black"))
         #line
-        self.dc.SetPen(wx.Pen("BLACK", 4))
-        self.dc.DrawRectangle(0, 0, 50, 50)
-
-    def OnSlide(self, event=None):
-        self.dc.Clear()
-        self.dc.DrawRectangle(0, 0, 50, 10)
+        self.dc.SetPen(wx.TRANSPARENT_PEN)
+        for col,value in enumerate(self.histogram):
+            self.dc.DrawRectangle(10+(self.classwidth*col), 100, self.classwidth, value*-10)
         
 
-app = wx.PySimpleApp(False)
-frame = wx.Frame(None, title="Draw on Panel")
-DrawPanel(frame)
-frame.Show(True)
-app.MainLoop()
+    def OnSlide(self, event=None):
+        if self.minOldValue>self.minslider.GetValue():
+            #uncolor
+            self.dc.SetBrush(wx.Brush("Black"))
+            for col in range(self.minslider.GetValue(),self.minOldValue):
+                self.dc.DrawRectangle(10+(self.classwidth*col), 100,
+                                      self.classwidth/2, self.histogram[col]*-10)                
+        elif self.minOldValue<self.minslider.GetValue():
+            #color
+            self.dc.SetBrush(wx.Brush("Blue"))
+            for col in range(self.minOldValue,self.minslider.GetValue()):
+                self.dc.DrawRectangle(10+(self.classwidth*col), 100,
+                                      self.classwidth/2, self.histogram[col]*-10)
 
-
-##import pylab
-##
-##fName="D:/users/ryan/dat.txt"
-##iFile=open(fName)
-##lines=iFile.readlines()
-##iFile.close()
-##
-##termDocumentMatrix=[map(int,l.strip().split(" ")) for l in lines[1:]]
-###demonstrates the breadth of vocabulary in a document
-##sumDocument=map(sum,termDocumentMatrix)
-##
-##documentTermMatrix=[[i] for i in termDocumentMatrix[0]]
-##for i in termDocumentMatrix[1:]:
-##    for id,j in enumerate(i):
-##        documentTermMatrix[id].append(j)
-###demontrates word usage/frequency
-##sumTerm=map(sum,documentTermMatrix)
-##
-###determin bins
-##b=list(set(sumTerm))
-##b.sort()
-##b=map(b.__getitem__,range(0,len(b),len(b)/20))
-##
-##
-### Make a histogram out of the data in x and prepare a bar plot.
-##vals, bins, patchs = pylab.hist(sumTerm, b)
-##
-### Show the plot.
-##pylab.show()
-
-
-##def bin(
-##delta=(max(sumTerm)-min(sumTerm)-.1)/10.0
-##hist=[0]*10
-##for n in sumTerm:
-##    i=int(math.floor(n/delta))
-##    hist[i]+=1
-
-##def squared(i):
-##    return i**2
-##
-##N=float(len(sumTerm))
-##mean=sum(sumTerm)/float(N)
-
-###std dev, sqrt of difference squared
-##stdDev=0
-##for i in sumTerm:
-##    stdDev+=((i-mean)**2)/N
-##stdDev=stdDev**0.5
-##
-##min=mean-stdDev
-##max=mean+stdDev
-###%68 of data with 1 std dev
+        if self.maxOldValue>self.maxslider.GetValue():
+            #color
+            self.dc.SetBrush(wx.Brush("Blue"))
+            for col in range(self.maxslider.GetValue(),self.maxOldValue):
+                self.dc.DrawRectangle(20+(self.classwidth*col), 100,
+                                      self.classwidth/2, self.histogram[col]*-10)                
+        elif self.maxOldValue<self.maxslider.GetValue():
+            #uncolor
+            self.dc.SetBrush(wx.Brush("Black"))
+            for col in range(self.maxOldValue,self.maxslider.GetValue()):
+                self.dc.DrawRectangle(20+(self.classwidth*col), 100,
+                                      self.classwidth/2, self.histogram[col]*-10)      
+        self.maxOldValue=self.maxslider.GetValue()        
+        self.minOldValue=self.minslider.GetValue()
+        
+if __name__=="__main__":
+    app = wx.PySimpleApp(False)
+    frame = wx.Frame(None, title="Draw on Panel")
+    DrawPanel(frame)
+    frame.Show(True)
+    app.MainLoop()

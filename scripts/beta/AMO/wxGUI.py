@@ -56,9 +56,9 @@ class MyFrame(wx.Frame):
 
         self.button = wx.Button(panel, -1, "Delete", pos=(435, 64))
 
-        wx.StaticText(panel, -1, "Projects in Progress (",(0, 270))        
+        wx.StaticText(panel, -1, "Projects Index (",(0, 270))        
 
-        sampleList2 = ['project1','project2','project3']
+        sampleList2 = ['<select a project>','project1','project2','project3']
         listBox = wx.ListBox(panel, -1, (0, 285), (200, 100), sampleList2, 
                 wx.LB_SINGLE)
         listBox.SetSelection(0)
@@ -68,10 +68,25 @@ class MyFrame(wx.Frame):
         self.button = wx.Button(panel, -1, "Rename", pos=(202, 311))
 
         self.button = wx.Button(panel, -1, "Delete", pos=(202, 334))
-        wx.CheckBox(panel, -1, "include completed)", (102, 268), (150, 17))
+        wx.CheckBox(panel, -1, "include completed)", (78, 269), (150, 16))
 
-        wx.StaticText(panel, -1, "Base Index",(0, 387))    
+        wx.StaticText(panel, -1, "Base Collection",(0, 387))    
+               
+        wx.CheckBox(panel, -1, "Title", (0, 422), (70, 16))
+        wx.CheckBox(panel, -1, "Abstract", (0, 437), (70, 16))
+        wx.CheckBox(panel, -1, "Full text", (0, 452), (70, 16))
+        wx.CheckBox(panel, -1, "Keywords", (0, 467), (70, 16))
 
+        wx.Choice(panel, -1, (0, 400), choices=sampleList)
+        self.button = wx.Button(panel, -1, "Insert", pos=(202, 400))
+        self.button = wx.Button(panel, -1, "Export", pos=(202, 423))
+
+        wx.StaticText(panel, -1, "Collection to Index",(90, 387))    
+        wx.Choice(panel, -1, (90, 400), choices=sampleList)       
+        wx.CheckBox(panel, -1, "Title", (90, 422), (70, 16))
+        wx.CheckBox(panel, -1, "Abstract", (90, 437), (70, 16))
+        wx.CheckBox(panel, -1, "Full text", (90, 452), (70, 16))
+        wx.CheckBox(panel, -1, "Keywords", (90, 467), (70, 16))
 
     def OnClick(self, event):
         self.button.SetLabel("Clicked")        
