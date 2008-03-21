@@ -48,7 +48,7 @@ class Manager:
             abstract,stmAbstract=LongStem(self,d.text.abstract,2147483647)
             text,stmText=LongStem(self,d.text.fulltext,2147483647)
             if d.keywords.keywords:
-                keywords,stmKeywords=LongStem(self,' '.join(d.keywords.keywords),2147483647)
+                keywords,stmKeywords=LongStem(self,' '.join(d.keywords.keywords),200)
             else:
                 keywords=None
                 stmKeywords=None
@@ -61,7 +61,7 @@ class Manager:
 ##                for k in d.keywords.keywords:
 ##                    stmKeywords.append(' '.join(self.stemmer.stemList(self.stemmer.Stem(str(k)).keys())))
 ##                stmKeywords=', '.join(stmKeywords)
-            
+            #print "Keywords: ", stmKeywords
             self.dbase.insertDocument(str(self.collection.shortname)+"_document",str(docID+1),COLLID,title,stmTitle,abstract,stmAbstract,text,stmText,keywords,stmKeywords)
 
     def close(self):
@@ -69,7 +69,7 @@ class Manager:
 
 if __name__=="__main__":
     m=Manager()
-    fName="Z:/SewerInclAbstracts_03052008/AMsewer.xml"
+    fName="Z:/XML/AMsewer.xml"
     m.insertCollection(fileName=fName)
     m.close()
 
