@@ -6,92 +6,152 @@ class MyFrame(wx.Frame):
         # begin wxGlade: MyFrame.__init__
         kwds["style"] = wx.DEFAULT_FRAME_STYLE
         wx.Frame.__init__(self, *args, **kwds)
-        self.rawTitle = wx.StaticText(self, -1, "Raw Data")
-        self.preTitle = wx.StaticText(self, -1, "Preprocessed Data")
-        self.proTitle = wx.StaticText(self, -1, "Projected Data")
-        self.rawList = wx.ListBox(self, -1, choices=[], style=wx.LB_EXTENDED)
+
+        #raw data elements
+        ##variables        
         self.rawListPaths = {}
+        
+        ##labels
+        self.rawTitle = wx.StaticText(self, -1, "Raw Data")
+
+        ##buttons
         self.rawAdd = wx.Button(self, wx.NewId(), "Add")
         self.rawRen = wx.Button(self, wx.NewId(), "Rename")
         self.rawDel = wx.Button(self, wx.NewId(), "Delete")
         self.toPre = wx.Button(self, wx.NewId(), "->")
         self.fromPre = wx.Button(self, wx.NewId(), "<-")
         self.rawExport = wx.Button(self, wx.NewId(), "Export")
-        self.mergeType = wx.RadioBox(self, -1, "", choices=["Vertical", "Horizontal"], majorDimension=1, style=wx.RA_SPECIFY_ROWS)
         self.rawMerge = wx.Button(self, wx.NewId(), "Merge")
         self.subStartLabel = wx.StaticText(self, -1, "Start")
-        self.subStart = wx.TextCtrl(self, -1, "0")
         self.subStopLabel = wx.StaticText(self, -1, "Stop")
-        self.subStop = wx.TextCtrl(self, -1, "")
         self.subStepLabel = wx.StaticText(self, -1, "Step")
+        self.rawSubset = wx.Button(self, wx.NewId(), "Subset")        
+        
+        ##boxes        
+        self.mergeType = wx.RadioBox(self, -1, "", choices=["Vertical", "Horizontal"], majorDimension=1, style=wx.RA_SPECIFY_ROWS)
+        self.rawList = wx.ListBox(self, -1, choices=[], style=wx.LB_EXTENDED)
+        self.subStart = wx.TextCtrl(self, -1, "0")
+        self.subStop = wx.TextCtrl(self, -1, "")
         self.subStep = wx.TextCtrl(self, -1, "1")
-        self.rawSubset = wx.Button(self, wx.NewId(), "Subset")
-        self.preList = wx.ListBox(self, -1, choices=[])
+        
+        #preprocessed data elements     
+        ##varaibles
+        self.preListPaths = {}
+        
+        ##labels
+        self.preTitle = wx.StaticText(self, -1, "Preprocessed Data")
+        self.initTypeLabel = wx.StaticText(self, -1, "type")
+        self.xDimLabel = wx.StaticText(self, -1, "x dim")
+        self.yDimLabel = wx.StaticText(self, -1, "y dim")
+       
+        ##buttons
         self.preAdd = wx.Button(self, wx.NewId(), "Add")
         self.preRen = wx.Button(self, wx.NewId(), "Rename")
         self.preDel = wx.Button(self, wx.NewId(), "Delete")
         self.preExport = wx.Button(self, wx.NewId(), "Export")
-        self.projMeasure = wx.RadioBox(self, -1, "", choices=["Cosine", "Euclidean"], majorDimension=1, style=wx.RA_SPECIFY_ROWS)
-        self.project = wx.Button(self, wx.NewId(), "Project")
-        self.initTypeLabel = wx.StaticText(self, -1, "type")
-        self.initType = wx.ComboBox(self, -1, choices=["Linear", "Random"], style=wx.CB_DROPDOWN)
-        self.xDimLabel = wx.StaticText(self, -1, "x dim")
-        self.xDim = wx.TextCtrl(self, -1, "")
-        self.yDimLabel = wx.StaticText(self, -1, "y dim")
-        self.yDim = wx.TextCtrl(self, -1, "")
         self.initSOM = wx.Button(self, wx.NewId(), "Initial SOM")
-        self.proList = wx.ListBox(self, -1, choices=[])
+        self.project = wx.Button(self, wx.NewId(), "Project")
+        
+        ##boxes
+        self.preList = wx.ListBox(self, -1, choices=[],style=wx.LB_EXTENDED)
+        self.projMeasure = wx.RadioBox(self, -1, "", choices=["Cosine", "Euclidean"], majorDimension=1, style=wx.RA_SPECIFY_ROWS)        
+        self.initType = wx.ComboBox(self, -1, choices=["Linear", "Random"], style=wx.CB_DROPDOWN)
+        self.xDim = wx.TextCtrl(self, -1, "")
+        self.yDim = wx.TextCtrl(self, -1, "")
+        
+        #projected data elements
+        ##varaibles
+        self.proListPaths = {}
+        
+        ##labels
+        self.proTitle = wx.StaticText(self, -1, "Projected Data")
+        self.trajStartLabel = wx.StaticText(self, -1, "Start")
+        self.trajStopLabel = wx.StaticText(self, -1, "Stop")
+        self.trajStepLabel = wx.StaticText(self, -1, "Step")
+        self.trajOffsetLabel = wx.StaticText(self, -1, "Offset")
+        self.trajRepeatLabel = wx.StaticText(self, -1, "Repeat")
+        
+        ##buttons
         self.proAdd = wx.Button(self, wx.NewId(), "Add")
         self.proRen = wx.Button(self, wx.NewId(), "Rename")
         self.proDel = wx.Button(self, wx.NewId(), "Delete")
         self.proShape = wx.Button(self, wx.NewId(), "Shapefile")
         self.proExport = wx.Button(self, wx.NewId(), "Export")
-        self.trajStartLabel = wx.StaticText(self, -1, "Start")
-        self.trajStart = wx.TextCtrl(self, -1, "0")
-        self.trajStopLabel = wx.StaticText(self, -1, "Stop")
-        self.trajStop = wx.TextCtrl(self, -1, "")
-        self.trajStepLabel = wx.StaticText(self, -1, "Step")
-        self.trajStep = wx.TextCtrl(self, -1, "1")
-        self.trajOffsetLabel = wx.StaticText(self, -1, "Offset")
-        self.trajOffset = wx.TextCtrl(self, -1, "0")
-        self.trajRepeatLabel = wx.StaticText(self, -1, "Repeat")
-        self.trajRepeat = wx.TextCtrl(self, -1, "1")
         self.trajectory = wx.Button(self, wx.NewId(), "Trajectory")
+        
+        ##boxes
+        self.proList = wx.ListBox(self, -1, choices=[], style=wx.LB_EXTENDED)
+        self.trajStart = wx.TextCtrl(self, -1, "0")
+        self.trajStop = wx.TextCtrl(self, -1, "")
+        self.trajStep = wx.TextCtrl(self, -1, "1")
+        self.trajOffset = wx.TextCtrl(self, -1, "0")
+        self.trajRepeat = wx.TextCtrl(self, -1, "1")
+        
+        #intial som elements
+        ##varaibles
+        self.initListPaths={}
+        
+        ##labels
         self.initTitle = wx.StaticText(self, -1, "Initial SOM")
-        self.trainTitle = wx.StaticText(self, -1, "Trained SOM")
-        self.shapeTitle = wx.StaticText(self, -1, "Shapefiles")
-        self.initList = wx.ListBox(self, -1, choices=[])
+        self.trainLenLabel = wx.StaticText(self, -1, "rlen")
+        self.trainAlphaLabel = wx.StaticText(self, -1, "alpha")
+        self.trainRadiusLabel = wx.StaticText(self, -1, "radius")
+        
+        ##buttons
         self.initAdd = wx.Button(self, wx.NewId(), "Add")
         self.initRen = wx.Button(self, wx.NewId(), "Rename")
         self.initDel = wx.Button(self, wx.NewId(), "Delete")
         self.toTrain = wx.Button(self, wx.NewId(), "->")
         self.fromTrain = wx.Button(self, wx.NewId(), "<-")
         self.initExport = wx.Button(self, wx.NewId(), "Export")
-        self.trainLenLabel = wx.StaticText(self, -1, "rlen")
+        self.train = wx.Button(self, wx.NewId(), "Train")
+        
+        ##boxes
+        self.initList = wx.ListBox(self, -1, choices=[], style=wx.LB_EXTENDED)
         self.trainLen = wx.TextCtrl(self, -1, "")
-        self.trainAlphaLabel = wx.StaticText(self, -1, "alpha")
         self.trainAlpha = wx.TextCtrl(self, -1, "0.04")
-        self.trainRadiusLabel = wx.StaticText(self, -1, "radius")
         self.trainRadius = wx.TextCtrl(self, -1, "")
         self.trainMeasure = wx.RadioBox(self, -1, "", choices=["Cosine", "Euclidean"], majorDimension=1, style=wx.RA_SPECIFY_COLS)
-        self.train = wx.Button(self, wx.NewId(), "Train")
-        self.trainList = wx.ListBox(self, -1, choices=[])
+          
+        #trained som elements
+        ##varaibles
+        self.trainListPaths={}
+        
+        ##labels
+        self.trainTitle = wx.StaticText(self, -1, "Trained SOM")
+        self.clusteringLabel = wx.StaticText(self, -1, "Clustering")
+        self.kClustersLabel = wx.StaticText(self, -1, "clusters")
+        
+        ##buttons
         self.trainAdd = wx.Button(self, wx.NewId(), "Add")
         self.trainRen = wx.Button(self, wx.NewId(), "Rename")
         self.trainDel = wx.Button(self, wx.NewId(), "Delete")
         self.trainShape = wx.Button(self, wx.NewId(), "Shapefile")
         self.trainExport = wx.Button(self, wx.NewId(), "Export")
-        self.clusteringLabel = wx.StaticText(self, -1, "Clustering")
         self.dominance = wx.Button(self, wx.NewId(), "Dominance")
-        self.kClustersLabel = wx.StaticText(self, -1, "clusters")
+        self.Kmeans = wx.Button(self, wx.NewId(), "K-means")
+        
+        ##boxes
+        self.trainList = wx.ListBox(self, -1, choices=[], style=wx.LB_EXTENDED)
         self.kClusters = wx.TextCtrl(self, -1, "")
         self.kLenLabel = wx.StaticText(self, -1, "rlen")
         self.kLength = wx.TextCtrl(self, -1, "")
-        self.Kmeans = wx.Button(self, wx.NewId(), "K-means")
-        self.shapeList = wx.ListBox(self, -1, choices=[])
+        
+        #shapefile elements
+        ##variables
+
+        ##labels
+        self.shapeTitle = wx.StaticText(self, -1, "Shapefiles")
+
+        ##buttons
         self.shapeRen = wx.Button(self, wx.NewId(), "Rename")
         self.shapeDel = wx.Button(self, wx.NewId(), "Delete")
         self.shapeExport = wx.Button(self, wx.NewId(), "Export")
+
+        ##boxes
+        self.shapeList = wx.ListBox(self, -1, choices=[])
+
+        #system elements
         self.systemLabel = wx.StaticText(self, -1, "SOM Analyst System")
         self.load = wx.Button(self, wx.NewId(), "Load")
         self.save = wx.Button(self, wx.NewId(), "Save")
@@ -103,7 +163,7 @@ class MyFrame(wx.Frame):
         wx.EVT_BUTTON(self,self.rawAdd.GetId(),self.OnRawAdd)
         wx.EVT_BUTTON(self,self.rawRen.GetId(),self.OnRawRen)
         wx.EVT_BUTTON(self,self.rawDel.GetId(),self.OnRawDel)
-        wx.EVT_BUTTON(self,self.toPre.GetId(),self.ToPre)
+        wx.EVT_BUTTON(self,self.toPre.GetId(),self.OnToPre)
         wx.EVT_BUTTON(self,self.fromPre.GetId(),self.OnDevelopment)
         wx.EVT_BUTTON(self,self.rawExport.GetId(),self.OnDevelopment)
         wx.EVT_BUTTON(self,self.rawMerge.GetId(),self.OnDevelopment)
@@ -111,32 +171,33 @@ class MyFrame(wx.Frame):
 
         #preprocessed data events
         wx.EVT_BUTTON(self,self.preAdd.GetId(),self.OnPreAdd)
-        wx.EVT_BUTTON(self,self.preRen.GetId(),self.OnDevelopment)
-        wx.EVT_BUTTON(self,self.preDel.GetId(),self.OnDevelopment)
+        wx.EVT_BUTTON(self,self.preRen.GetId(),self.OnPreRen)
+        wx.EVT_BUTTON(self,self.preDel.GetId(),self.OnPreDel)
+        wx.EVT_BUTTON(self,self.fromPre.GetId(),self.OnToRaw)        
         wx.EVT_BUTTON(self,self.project.GetId(),self.OnDevelopment)
         wx.EVT_BUTTON(self,self.initSOM.GetId(),self.OnDevelopment)
 
         #projected data events
         wx.EVT_BUTTON(self,self.proAdd.GetId(),self.OnProAdd)
-        wx.EVT_BUTTON(self,self.proRen.GetId(),self.OnDevelopment)
-        wx.EVT_BUTTON(self,self.proDel.GetId(),self.OnDevelopment)
+        wx.EVT_BUTTON(self,self.proRen.GetId(),self.OnProRen)
+        wx.EVT_BUTTON(self,self.proDel.GetId(),self.OnProDel)
         wx.EVT_BUTTON(self,self.proShape.GetId(),self.OnDevelopment)
         wx.EVT_BUTTON(self,self.proExport.GetId(),self.OnDevelopment)
         wx.EVT_BUTTON(self,self.trajectory.GetId(),self.OnDevelopment)
         
         #initial SOM events
         wx.EVT_BUTTON(self,self.initAdd.GetId(),self.OnInitAdd)
-        wx.EVT_BUTTON(self,self.initRen.GetId(),self.OnDevelopment)
-        wx.EVT_BUTTON(self,self.initDel.GetId(),self.OnDevelopment)
-        wx.EVT_BUTTON(self,self.toTrain.GetId(),self.OnDevelopment)
-        wx.EVT_BUTTON(self,self.fromTrain.GetId(),self.OnDevelopment)
+        wx.EVT_BUTTON(self,self.initRen.GetId(),self.OnInitRen)
+        wx.EVT_BUTTON(self,self.initDel.GetId(),self.OnInitDel)
+        wx.EVT_BUTTON(self,self.toTrain.GetId(),self.OnToTrain)
+        wx.EVT_BUTTON(self,self.fromTrain.GetId(),self.OnToInit)
         wx.EVT_BUTTON(self,self.initExport.GetId(),self.OnDevelopment)
         wx.EVT_BUTTON(self,self.train.GetId(),self.OnDevelopment)
 
         #trained SOM events
         wx.EVT_BUTTON(self,self.trainAdd.GetId(),self.OnTrainAdd)
-        wx.EVT_BUTTON(self,self.trainRen.GetId(),self.OnDevelopment)
-        wx.EVT_BUTTON(self,self.trainDel.GetId(),self.OnDevelopment)
+        wx.EVT_BUTTON(self,self.trainRen.GetId(),self.OnTrainRen)
+        wx.EVT_BUTTON(self,self.trainDel.GetId(),self.OnTrainDel)
         wx.EVT_BUTTON(self,self.trainShape.GetId(),self.OnDevelopment)
         wx.EVT_BUTTON(self,self.trainExport.GetId(),self.OnDevelopment)
         wx.EVT_BUTTON(self,self.dominance.GetId(),self.OnDevelopment)
@@ -313,6 +374,7 @@ class MyFrame(wx.Frame):
         self.Layout()
         # end wxGlade
 
+    #events
     def OnAbout(self, event):
         wx.MessageBox("Copyright 2008 Martin Lacayo\n\nThanks to my thesis committee:\nAndr\xe9 Skupin, Serge Rey, Carl Eckberg\n\n"+
                       "For futher information visit:\nhttp://somanalyst.hopto.org","About SOM Analyst",
@@ -321,66 +383,126 @@ class MyFrame(wx.Frame):
     def OnHelp(self, event):
         wx.MessageBox("visit http://somanalyst.hopto.org for help using SOM Analyst","SOM Analyst Help",
                       wx.OK | wx.ICON_INFORMATION, self)
-
-    #events
+    
     def OnDevelopment(self, event):
         wx.MessageBox("This function is under development.","Under development",
                       wx.OK | wx.ICON_INFORMATION, self)    
         
-
     #event helper functions
-    def OnAdd(self,wildcard):
+    #multiple add file dialog
+    def OnAdd(self,listbox,paths,wildcard):
         dialog = wx.FileDialog(None, "Choose a file", os.getcwd(),"", wildcard, wx.MULTIPLE)
+        temp=[]
         if dialog.ShowModal() == wx.ID_OK:
             temp= dialog.GetPaths()
         dialog.Destroy()
-        return temp
-
-    #raw data events
-    #add to Raw list box entries and update paths list
-    def OnRawAdd(self,event):
-        paths=self.OnAdd("Text File (*.txt)|*.txt|All files (*.*)|*.*")
-        for p in paths:
+        for p in temp:
             name=p[p.rfind("\\")+1:]
-            self.rawListPaths[name]=p
-            self.rawList.Insert(name,0)
+            if not paths.has_key(name):
+                paths[name]=p
+                listbox.Insert(name,0)
 
-    #delete Raw list box entries and update paths list
-    def OnRawDel(self,event):
-        loc=list(self.rawList.GetSelections())
+    #multiple delete function
+    def OnDel(self,listbox,paths):
+        loc=list(listbox.GetSelections())
         loc.reverse()
         for l in loc:
-            self.rawListPaths.pop(self.rawList.GetString(l))
-            self.rawList.Delete(l)
+            paths.pop(listbox.GetString(l))
+            listbox.Delete(l)
 
-    #rename Raw list box entries and update paths list
-    def OnRawRen(self,event):
+    #multiple rename function
+    def OnRen(self,listbox,paths):
         dialog=wx.TextEntryDialog(None, "Name","Rename Dialog","")
-        loc=self.rawList.GetSelections()
+        loc=listbox.GetSelections()
         for l in loc:
-            dialog.SetValue(self.rawList.GetString(l))
+            dialog.SetValue(listbox.GetString(l))
             if dialog.ShowModal() == wx.ID_OK:
                 name=dialog.GetValue()
-                self.rawListPaths[name]=self.rawListPaths.pop(self.rawList.GetString(l))
-                self.rawList.Delete(l)
-                self.rawList.Insert(name,l)
+                if not paths.has_key(name):
+                    paths[name]=paths.pop(listbox.GetString(l))
+                    listbox.Delete(l)
+                    listbox.Insert(name,l)
         dialog.Destroy()
-        print self.rawListPaths
 
-    def ToPre(self,event):
-        self.preList.I
+    #transfers files between lists
+    def OnTo(self,listboxorigin,pathsorigin,listboxdestination,pathsdestination):
+        loc=list(listboxorigin.GetSelections())
+        loc.reverse()
+        for l in loc:
+            name=listboxorigin.GetString(l)
+            if not pathsdestination.has_key(name):
+                pathsdestination[name]=pathsorigin[name]
+                listboxdestination.Insert(name,0)   
+            
+    def OnExport(self):
+        pass
+        
+    #RAW DATA EVENTS
+    def OnRawAdd(self,event):
+        self.OnAdd(self.rawList,self.rawListPaths,"Text File (*.txt)|*.txt|All files (*.*)|*.*")
 
+    def OnRawDel(self,event):
+        self.OnDel(self.rawList,self.rawListPaths)
+
+    def OnRawRen(self,event):
+        self.OnRen(self.rawList,self.rawListPaths)
+
+    def OnToPre(self,event):
+        self.OnTo(self.rawList,self.rawListPaths,self.preList,self.preListPaths)              
+
+    #PREPROCESSED DATA EVENTS
     def OnPreAdd(self,event):
-        self.preList.Insert(str(self.OnAdd("Text File (*.txt)|*.txt|All files (*.*)|*.*")),0)
+        self.OnAdd(self.preList,self.preListPaths,"Text File (*.txt)|*.txt|All files (*.*)|*.*")
 
+    def OnPreDel(self,event):
+        self.OnDel(self.preList,self.preListPaths)
+
+    def OnPreRen(self,event):
+        self.OnRen(self.preList,self.preListPaths)
+
+    def OnToRaw(self,event):
+        self.OnTo(self.preList,self.preListPaths,self.rawList,self.rawListPaths)  
+
+
+    #PROJECTED DATA EVENTS
     def OnProAdd(self,event):
-        self.proList.Insert(str(self.OnAdd("Bmu File (*.bmu)|*.txt|All files (*.*)|*.*")),0)
+        self.OnAdd(self.proList,self.proListPaths,"Text File (*.txt)|*.txt|All files (*.*)|*.*")
 
+    def OnProDel(self,event):
+        self.OnDel(self.proList,self.proListPaths)
+
+    def OnProRen(self,event):
+        self.OnRen(self.proList,self.proListPaths)
+
+    #INTIAL SOM EVENTS
     def OnInitAdd(self,event):
-        self.initList.Insert(str(self.OnAdd("Codebook (*.cod)|*.cod|All files (*.*)|*.*")),0)
+        self.OnAdd(self.initList,self.initListPaths,"Text File (*.txt)|*.txt|All files (*.*)|*.*")
 
+    def OnInitDel(self,event):
+        self.OnDel(self.initList,self.initListPaths)
+
+    def OnInitRen(self,event):
+        self.OnRen(self.initList,self.initListPaths)
+
+    def OnToTrain(self,event):
+        self.OnTo(self.initList,self.initListPaths,self.trainList,self.trainListPaths)              
+
+    #TRAINED SOM EVENTS
     def OnTrainAdd(self,event):
-        self.trainList.Insert(str(self.OnAdd("Codebook (*.cod)|*.cod|All files (*.*)|*.*")),0)
+        self.OnAdd(self.trainList,self.trainListPaths,"Text File (*.txt)|*.txt|All files (*.*)|*.*")
+
+    def OnTrainDel(self,event):
+        self.OnDel(self.trainList,self.trainListPaths)
+
+    def OnTrainRen(self,event):
+        self.OnRen(self.trainList,self.trainListPaths)
+
+    def OnToInit(self,event):
+        self.OnTo(self.trainList,self.trainListPaths,self.initList,self.initListPaths) 
+
+    #SHAPEFILE EVENTS
+
+    #SOM ANALYST SYSTEM EVENTS        
 
 
 
