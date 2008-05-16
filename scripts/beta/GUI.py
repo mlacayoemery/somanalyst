@@ -1,4 +1,4 @@
-import wx, os
+import wx, os, shutil
 
 
 class MyFrame(wx.Frame):
@@ -165,7 +165,7 @@ class MyFrame(wx.Frame):
         wx.EVT_BUTTON(self,self.rawDel.GetId(),self.OnRawDel)
         wx.EVT_BUTTON(self,self.toPre.GetId(),self.OnToPre)
         wx.EVT_BUTTON(self,self.fromPre.GetId(),self.OnDevelopment)
-        wx.EVT_BUTTON(self,self.rawExport.GetId(),self.OnDevelopment)
+        wx.EVT_BUTTON(self,self.rawExport.GetId(),self.OnRawExport)
         wx.EVT_BUTTON(self,self.rawMerge.GetId(),self.OnDevelopment)
         wx.EVT_BUTTON(self,self.rawSubset.GetId(),self.OnDevelopment)
 
@@ -434,9 +434,17 @@ class MyFrame(wx.Frame):
                 pathsdestination[name]=pathsorigin[name]
                 listboxdestination.Insert(name,0)   
             
-    def OnExport(self):
-        pass
+    def OnExport(self,listbox,paths,wcd="Text File (*.txt)|*.txt|All files (*.*)|*.*"):      
+        dir = os.getcwd()
+        dialog = wx.FileDialog(self, message='Save file as...', defaultDir=dir, defaultFile='',wildcard=wcd, style=wx.SAVE | wx.OVERWRITE_PROMPT)
+        loc=listbox.GetSelections()
+        for l in loc:
+            dialog.SetFilename(listbox.GetString(l))
+            if dialog.ShowModal() == wx.ID_OK:
+                shutil.copy(paths[listbox.GetString(l)],dialog.GetDirectory()+"\\"+dialog.GetFilename())
+        dialog.Destroy()
         
+      
     #RAW DATA EVENTS
     def OnRawAdd(self,event):
         self.OnAdd(self.rawList,self.rawListPaths,"Text File (*.txt)|*.txt|All files (*.*)|*.*")
@@ -448,7 +456,10 @@ class MyFrame(wx.Frame):
         self.OnRen(self.rawList,self.rawListPaths)
 
     def OnToPre(self,event):
-        self.OnTo(self.rawList,self.rawListPaths,self.preList,self.preListPaths)              
+        self.OnTo(self.rawList,self.rawListPaths,self.preList,self.preListPaths)
+
+    def OnRawExport(self,event):
+        self.OnExport(self.rawList,self.rawListPaths)
 
     #PREPROCESSED DATA EVENTS
     def OnPreAdd(self,event):
