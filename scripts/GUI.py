@@ -1,4 +1,4 @@
-import wx, os, shutil
+import wx, os, shutil, pickle
 import mapinit, visual, vsom
 import ATRtoSHP, CODtoSHP
 
@@ -209,8 +209,8 @@ class MyFrame(wx.Frame):
         wx.EVT_BUTTON(self,self.shapeRen.GetId(),self.OnDevelopment)
         wx.EVT_BUTTON(self,self.shapeDel.GetId(),self.OnDevelopment)
         wx.EVT_BUTTON(self,self.shapeExport.GetId(),self.OnDevelopment)
-        wx.EVT_BUTTON(self,self.load.GetId(),self.OnDevelopment)
-        wx.EVT_BUTTON(self,self.save.GetId(),self.OnDevelopment)
+        wx.EVT_BUTTON(self,self.load.GetId(),self.OnLoad)
+        wx.EVT_BUTTON(self,self.save.GetId(),self.OnSave)
         wx.EVT_BUTTON(self,self.help.GetId(),self.OnHelp)
         wx.EVT_BUTTON(self,self.about.GetId(),self.OnAbout)
 
@@ -609,9 +609,59 @@ class MyFrame(wx.Frame):
 
     #SHAPEFILE EVENTS
 
-    #SOM ANALYST SYSTEM EVENTS        
+    #SOM ANALYST SYSTEM EVENTS
+    def OnSave(self,event):
+        wcd="Text File (*.p)|*.p|All files (*.*)|*.*"
+        dialog = wx.FileDialog(self, message='Save file as...', wildcard=wcd, style=wx.SAVE | wx.OVERWRITE_PROMPT)
+        if dialog.ShowModal() == wx.ID_OK:
+            path=open(dialog.GetDirectory()+"\\"+dialog.GetFilename(),'w')
+            
+            pickle.dump(list(self.rawList.GetStrings()), path)
+            pickle.dump(list(self.preList.GetStrings()), path)
+            pickle.dump(list(self.proList.GetStrings()), path)
+            pickle.dump(list(self.initList.GetStrings()), path)
+            pickle.dump(list(self.trainList.GetStrings()), path)
+            pickle.dump(list(self.shapeList.GetStrings()), path)
+            pickle.dump(self.rawListPaths, path)
+            pickle.dump(self.preListPaths, path)
+            pickle.dump(self.proListPaths, path)
+            pickle.dump(self.initListPaths, path)
+            pickle.dump(self.trainListPaths, path)
+            pickle.dump(self.shapeListPaths, path)
+
+            path.close()            
+
+        dialog.Destroy()             
+
+    def EmptyLoad(self,listbox,strings):
+        for i in range(listbox.GetCount()):
+            listbox.Delete(0)
+        for id,s in enumerate(strings):
+            listbox.Insert(s,id)       
+
+    def OnLoad(self,event):
+        wcd="Text File (*.p)|*.p|All files (*.*)|*.*"
+        dialog = wx.FileDialog(self, message='Select files', wildcard=wcd)
+        temp=[]
+        if dialog.ShowModal() == wx.ID_OK:
+            path=open(dialog.GetPath(),'r')
 
 
+            self.EmptyLoad(self.rawList,pickle.load(path))
+            self.EmptyLoad(self.preList,pickle.load(path))
+            self.EmptyLoad(self.proList,pickle.load(path))
+            self.EmptyLoad(self.initList,pickle.load(path))
+            self.EmptyLoad(self.trainList,pickle.load(path))
+            self.EmptyLoad(self.shapeList,pickle.load(path))
+            self.rawListPaths = pickle.load(path)
+            self.preListPaths = pickle.load(path)
+            self.proListPaths = pickle.load(path)
+            self.initListPaths = pickle.load(path)
+            self.trainListPaths = pickle.load(path)
+            self.shapeListPaths = pickle.load(path)
+
+            path.close()            
+        dialog.Destroy()
 
 # end of class MyFrame
 
