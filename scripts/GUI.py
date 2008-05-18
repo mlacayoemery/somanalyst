@@ -32,7 +32,7 @@ class MyFrame(wx.Frame):
         ##boxes        
         self.mergeType = wx.RadioBox(self, -1, "", choices=["Vertical", "Horizontal"], majorDimension=1, style=wx.RA_SPECIFY_ROWS)
         self.rawList = wx.ListBox(self, -1, choices=[], style=wx.LB_EXTENDED)
-        self.subStart = wx.TextCtrl(self, -1, "0")
+        self.subStart = wx.TextCtrl(self, -1, "1")
         self.subStop = wx.TextCtrl(self, -1, "")
         self.subStep = wx.TextCtrl(self, -1, "1")
         
@@ -168,8 +168,8 @@ class MyFrame(wx.Frame):
         wx.EVT_BUTTON(self,self.toPre.GetId(),self.OnToPre)
         wx.EVT_BUTTON(self,self.fromPre.GetId(),self.OnDevelopment)
         wx.EVT_BUTTON(self,self.rawExport.GetId(),self.OnRawExport)
-        wx.EVT_BUTTON(self,self.rawMerge.GetId(),self.OnDevelopment)
-        wx.EVT_BUTTON(self,self.rawSubset.GetId(),self.OnDevelopment)
+        wx.EVT_BUTTON(self,self.rawMerge.GetId(),self.OnMerge)
+        wx.EVT_BUTTON(self,self.rawSubset.GetId(),self.OnSubset)
 
         #preprocessed data events
         wx.EVT_BUTTON(self,self.preAdd.GetId(),self.OnPreAdd)
@@ -449,7 +449,7 @@ class MyFrame(wx.Frame):
       
     #RAW DATA EVENTS
     def OnRawAdd(self,event):
-        self.OnAdd(self.rawList,self.rawListPaths,"Data File (*.dat)|*.txt|All files (*.*)|*.*")
+        self.OnAdd(self.rawList,self.rawListPaths,"Data File (*.dat)|*.dat|All files (*.*)|*.*")
 
     def OnRawDel(self,event):
         self.OnDel(self.rawList,self.rawListPaths)
@@ -462,6 +462,80 @@ class MyFrame(wx.Frame):
 
     def OnRawExport(self,event):
         self.OnExport(self.rawList,self.rawListPaths)
+
+    def OnMerge(self,event):
+        wcd="Data File (*.dat)|*.dat|All files (*.*)|*.*"
+        dialog = wx.FileDialog(self, message='Save file as...', wildcard=wcd, style=wx.SAVE | wx.OVERWRITE_PROMPT)
+        loc=self.rawList.GetSelections()
+        paths=[]
+        name=[]
+        for l in loc:
+            name.append(self.rawList.GetString(l).replace(".","_"))
+            paths.append(self.rawListPaths[self.rawList.GetString(l)])
+        print name
+        dialog.SetFilename("-".join(name)+".dat")
+        if dialog.ShowModal() == wx.ID_OK:
+            path=dialog.GetDirectory()+"\\"+dialog.GetFilename()
+            name=dialog.GetFilename()
+            oFile=open(path,'w')
+            if self.mergeType.GetSelection()==0:
+                iFile=open(paths[0],'r')
+                oFile.write(iFile.readline())
+                iFile.close()
+                for p in paths:
+                    iFile=open(p,'r')
+                    iFile.readline()
+                    lines=iFile.readlines()
+                    for l in lines:
+                        oFile.write(l)
+                    oFile.write("\n")
+                oFile.close()                       
+            else:
+                iFile=open(paths[0],'r')
+                iFile.close()
+                dims=0
+                iLines=[]
+                for p in paths:
+                    temp=open(p,'r')
+                    dims+=int(temp.readline())
+                    iLines.append(temp.readlines())
+                    temp.close()
+                oFile.write(str(dims))
+                for i in range(len(iLines[0])):
+                    line=[]
+                    for l in iLines:
+                        line.append(l[i].strip())
+                    oFile.write("\n"+" ".join(line))
+                oFile.close()    
+            if not self.rawListPaths.has_key(name):
+                self.rawListPaths[name]=path
+                self.rawList.Insert(name,0)
+        dialog.Destroy()
+
+
+    def OnSubset(self,event):
+        wcd="Data File (*.dat)|*.dat|All files (*.*)|*.*"
+        dialog = wx.FileDialog(self, message='Save file as...', wildcard=wcd, style=wx.SAVE | wx.OVERWRITE_PROMPT)
+        loc=self.rawList.GetSelections()
+        for l in loc:
+            dialog.SetFilename(self.rawList.GetString(l).replace(".","_")+"_sub.dat")
+            if dialog.ShowModal() == wx.ID_OK:
+                iFile=open(self.rawListPaths[self.rawList.GetString(l)],'r')
+                oFile=open(dialog.GetDirectory()+"\\"+dialog.GetFilename(),'w')
+                lines=iFile.readlines()
+                iFile.close()
+                oFile.write(lines[0])
+                start=int(self.subStart.GetValue())
+                step=int(self.subStep.GetValue())
+                stop=self.subStop.GetValue()
+                if stop=="":
+                    lines=lines[start::step]
+                else:
+                    lines=lines[start:int(stop):step]
+                for l in lines:
+                    oFile.write(l)
+                oFile.close()
+        dialog.Destroy()        
 
     #PREPROCESSED DATA EVENTS
     def OnPreAdd(self,event):
