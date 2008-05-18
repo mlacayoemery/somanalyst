@@ -449,7 +449,7 @@ class MyFrame(wx.Frame):
       
     #RAW DATA EVENTS
     def OnRawAdd(self,event):
-        self.OnAdd(self.rawList,self.rawListPaths,"Text File (*.txt)|*.txt|All files (*.*)|*.*")
+        self.OnAdd(self.rawList,self.rawListPaths,"Data File (*.dat)|*.txt|All files (*.*)|*.*")
 
     def OnRawDel(self,event):
         self.OnDel(self.rawList,self.rawListPaths)
@@ -465,7 +465,7 @@ class MyFrame(wx.Frame):
 
     #PREPROCESSED DATA EVENTS
     def OnPreAdd(self,event):
-        self.OnAdd(self.preList,self.preListPaths,"Text File (*.dat)|*.dat|All files (*.*)|*.*")
+        self.OnAdd(self.preList,self.preListPaths,"Data File (*.dat)|*.dat|All files (*.*)|*.*")
 
     def OnPreDel(self,event):
         self.OnDel(self.preList,self.preListPaths)
@@ -477,7 +477,7 @@ class MyFrame(wx.Frame):
         self.OnTo(self.preList,self.preListPaths,self.rawList,self.rawListPaths)
 
     def OnInitSOM(self,event):
-        wcd="Text File (*.cod)|*.cod|All files (*.*)|*.*"
+        wcd="Codebook File (*.cod)|*.cod|All files (*.*)|*.*"
         dialog = wx.FileDialog(self, message='Save file as...', wildcard=wcd, style=wx.SAVE | wx.OVERWRITE_PROMPT)
         loc=self.preList.GetSelections()
         for l in loc:
@@ -494,7 +494,7 @@ class MyFrame(wx.Frame):
         dialog.Destroy()
 
     def OnProject(self,event):
-        wcd="Text File (*.bmu)|*.bmu|All files (*.*)|*.*"
+        wcd="Projection File (*.bmu)|*.bmu|All files (*.*)|*.*"
         dialog = wx.FileDialog(self, message='Save file as...', wildcard=wcd, style=wx.SAVE | wx.OVERWRITE_PROMPT)
         soms=self.trainList.GetSelections()
         data=self.preList.GetSelections()
@@ -516,7 +516,7 @@ class MyFrame(wx.Frame):
 
     #PROJECTED DATA EVENTS
     def OnProAdd(self,event):
-        self.OnAdd(self.proList,self.proListPaths,"Text File (*.bmu)|*.bmu|All files (*.*)|*.*")
+        self.OnAdd(self.proList,self.proListPaths,"Projection File (*.bmu)|*.bmu|All files (*.*)|*.*")
 
     def OnProDel(self,event):
         self.OnDel(self.proList,self.proListPaths)
@@ -525,7 +525,7 @@ class MyFrame(wx.Frame):
         self.OnRen(self.proList,self.proListPaths)
 
     def OnProShape(self,event):
-        wcd="Text File (*.shp)|*.shp|All files (*.*)|*.*"
+        wcd="Shapefile (*.shp)|*.shp|All files (*.*)|*.*"
         dialog = wx.FileDialog(self, message='Save file as...', wildcard=wcd, style=wx.SAVE | wx.OVERWRITE_PROMPT)
         loc=self.proList.GetSelections()
         for l in loc:
@@ -542,7 +542,7 @@ class MyFrame(wx.Frame):
 
     #INTIAL SOM EVENTS
     def OnInitAdd(self,event):
-        self.OnAdd(self.initList,self.initListPaths,"Text File (*.cod)|*.cod|All files (*.*)|*.*")
+        self.OnAdd(self.initList,self.initListPaths,"Codebook File (*.cod)|*.cod|All files (*.*)|*.*")
 
     def OnInitDel(self,event):
         self.OnDel(self.initList,self.initListPaths)
@@ -554,7 +554,7 @@ class MyFrame(wx.Frame):
         self.OnTo(self.initList,self.initListPaths,self.trainList,self.trainListPaths)
 
     def OnTrain(self,event):
-        wcd="Text File (*.cod)|*.cod|All files (*.*)|*.*"
+        wcd="Codebook File (*.cod)|*.cod|All files (*.*)|*.*"
         dialog = wx.FileDialog(self, message='Save file as...', wildcard=wcd, style=wx.SAVE | wx.OVERWRITE_PROMPT)
         soms=self.initList.GetSelections()
         data=self.preList.GetSelections()
@@ -579,7 +579,7 @@ class MyFrame(wx.Frame):
 
     #TRAINED SOM EVENTS
     def OnTrainAdd(self,event):
-        self.OnAdd(self.trainList,self.trainListPaths,"Text File (*.cod)|*.cod|All files (*.*)|*.*")
+        self.OnAdd(self.trainList,self.trainListPaths,"Codebook File (*.cod)|*.cod|All files (*.*)|*.*")
 
     def OnTrainDel(self,event):
         self.OnDel(self.trainList,self.trainListPaths)
@@ -591,7 +591,7 @@ class MyFrame(wx.Frame):
         self.OnTo(self.trainList,self.trainListPaths,self.initList,self.initListPaths)
 
     def OnTrainShape(self,event):
-        wcd="Text File (*.shp)|*.shp|All files (*.*)|*.*"
+        wcd="Shapefile (*.shp)|*.shp|All files (*.*)|*.*"
         dialog = wx.FileDialog(self, message='Save file as...', wildcard=wcd, style=wx.SAVE | wx.OVERWRITE_PROMPT)
         loc=self.trainList.GetSelections()
         for l in loc:
@@ -611,7 +611,7 @@ class MyFrame(wx.Frame):
 
     #SOM ANALYST SYSTEM EVENTS
     def OnSave(self,event):
-        wcd="Text File (*.p)|*.p|All files (*.*)|*.*"
+        wcd="Pickle File (*.p)|*.p|All files (*.*)|*.*"
         dialog = wx.FileDialog(self, message='Save file as...', wildcard=wcd, style=wx.SAVE | wx.OVERWRITE_PROMPT)
         if dialog.ShowModal() == wx.ID_OK:
             path=open(dialog.GetDirectory()+"\\"+dialog.GetFilename(),'w')
@@ -640,7 +640,7 @@ class MyFrame(wx.Frame):
             listbox.Insert(s,id)       
 
     def OnLoad(self,event):
-        wcd="Text File (*.p)|*.p|All files (*.*)|*.*"
+        wcd="Pickle File (*.p)|*.p|All files (*.*)|*.*"
         dialog = wx.FileDialog(self, message='Select files', wildcard=wcd)
         temp=[]
         if dialog.ShowModal() == wx.ID_OK:
