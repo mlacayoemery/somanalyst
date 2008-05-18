@@ -141,7 +141,7 @@ class MyFrame(wx.Frame):
         
         #shapefile elements
         ##variables
-
+        self.shapeListPaths={}
         ##labels
         self.shapeTitle = wx.StaticText(self, -1, "Shapefiles")
 
@@ -496,17 +496,17 @@ class MyFrame(wx.Frame):
     def OnProject(self,event):
         wcd="Text File (*.bmu)|*.bmu|All files (*.*)|*.*"
         dialog = wx.FileDialog(self, message='Save file as...', wildcard=wcd, style=wx.SAVE | wx.OVERWRITE_PROMPT)
-        soms=self.initList.GetSelections()
+        soms=self.trainList.GetSelections()
         data=self.preList.GetSelections()
         for s in soms:
             for d in data:
                 dialog.SetFilename(self.preList.GetString(d).replace(".","_")+"-"+
-                                   self.initList.GetString(s).replace(".","_")+".bmu")
+                                   self.trainList.GetString(s).replace(".","_")+".bmu")
                 if dialog.ShowModal() == wx.ID_OK:
                     path=dialog.GetDirectory()+"\\"+dialog.GetFilename()
                     name=path[path.rfind("\\")+1:]
-                    visual.visual(self.preListPaths[self.preList.GetString(d)],
-                                  self.initListPaths[self.initList.GetString(s)],
+                    visual.visual(self.trainListPaths[self.trainList.GetString(s)],
+                                  self.preListPaths[self.preList.GetString(d)],
                                   path)
                     if not self.proListPaths.has_key(name):
                         self.proListPaths[name]=path
@@ -534,7 +534,7 @@ class MyFrame(wx.Frame):
                 path=dialog.GetDirectory()+"\\"+dialog.GetFilename()
                 name=path[path.rfind("\\")+1:]
                 ATRtoSHP.ATRtoP(self.proListPaths[self.proList.GetString(l)],
-                                path,"1")
+                                path,"point")
                 if not self.shapeListPaths.has_key(name):
                     self.shapeListPaths[name]=path
                     self.shapeList.Insert(name,0)
@@ -600,7 +600,7 @@ class MyFrame(wx.Frame):
                 path=dialog.GetDirectory()+"\\"+dialog.GetFilename()
                 name=path[path.rfind("\\")+1:]
                 CODtoSHP.CODtoSHP(self.trainListPaths[self.trainList.GetString(l)],
-                                path,"1")
+                                path,"polygon")
                 if not self.shapeListPaths.has_key(name):
                     self.shapeListPaths[name]=path
                     self.shapeList.Insert(name,0)
