@@ -5,13 +5,13 @@ import sys, struct
 import dbftool
 import math
 
-def circle(x,y,r=1/(3**0.5),n=6,theta=math.pi/2):
+def circle(x,y,r=1/(3**0.5),n=6,theta=-1*math.pi/2):
     """
     """
     points=[]
     for i in range(n):
-        points.append((x+(r*math.cos(theta+(i*2*math.pi/n))),y+(r*math.sin(theta+(i*2*math.pi/n)))))
-    points.append((x+(r*math.cos(theta)),y+(r*math.sin(theta))))
+        points.append((x+(r*math.cos(-1*(theta+(i*2*math.pi/n)))),y+(r*math.sin(-1*(theta+(i*2*math.pi/n))))))
+    points.append((x+(r*math.cos(-1*theta)),y+(r*math.sin(-1*theta))))
     return points
 
 def rectangle(x,y,r):
@@ -205,7 +205,8 @@ class Shapefile:
                 shx.write(struct.pack('>i',contentLength))
                                
         elif self.shapeType==5:
-             for id,s in enumerate(self.shapes):
+            totalLength=50
+            for id,s in enumerate(self.shapes):
                 contentLength=24+(8*len(s))
                 #record header
                 #record numbers start at 1
@@ -239,8 +240,9 @@ class Shapefile:
 
                 #writing index records
                 #size=record header+content length
-                shx.write(struct.pack('>i',50+((contentLength+4)*id)))
+                shx.write(struct.pack('>i',totalLength))
                 shx.write(struct.pack('>i',contentLength))
+                totalLength+=contentLength+4
                 
         dbftool.dbfwriter(dbf, ["default"], [('N', 1, 6)], [[0]]*len(self.shapes))
 
@@ -248,8 +250,10 @@ class Shapefile:
 if __name__=="__main__":
     print
     s=Shapefile(shapeType=5)
-    for x in range(4):
-        s.add(circle(x,0,1/(3**0.5),6))
-    for x in range(4):
-        s.add(circle(x+0.5,.75**0.5,1/(3**0.5),6))
+    for i in range(10):
+        s.add(circle(0,0,1,i+3))
+##    for x in range(4):
+##        s.add(circle(x,0,1/(3**0.5),6))
+##    for x in range(4):
+##        s.add(circle(x+0.5,.75**0.5,1/(3**0.5),6))
     s.writeFile("E:/Data/test")
