@@ -5,6 +5,17 @@ import sys, struct
 import dbftool
 import math
 
+def buffer(x1,y1,x2,y2,r):
+    """
+    """
+    x1=float(x1)
+    offsetX=r*math.cos(math.atan((y1-y2)/(x1-x2)))
+    offsetY=r*math.sin(math.atan((y1-y2)/(x1-x2)))
+    points=[(x1-offsetX,y1+offsetY),(x2-offsetX,y2+offsetY),
+            (x2+offsetX,y2-offsetY),(x1+offsetX,y1-offsetY),
+            (x1-offsetX,y1+offsetY)]
+    return points
+
 def circle(x,y,r=1/(3**0.5),n=6,theta=-1*math.pi/2):
     """
     """
@@ -250,10 +261,11 @@ class Shapefile:
 if __name__=="__main__":
     print
     s=Shapefile(shapeType=5)
-    for i in range(10):
-        s.add(circle(0,0,1,i+3))
+##    for i in range(10):
+##        s.add(circle(0,0,1,i+3))
 ##    for x in range(4):
 ##        s.add(circle(x,0,1/(3**0.5),6))
 ##    for x in range(4):
 ##        s.add(circle(x+0.5,.75**0.5,1/(3**0.5),6))
+    s.add(buffer(0,0,10,10,1))
     s.writeFile("E:/Data/test")
