@@ -2,7 +2,7 @@
 #12/11/2008
 
 import sys, struct
-import dbftool
+import databasefile
 import math
 
 def buffer(x1,y1,x2,y2,r):
@@ -74,7 +74,9 @@ class Shapefile:
     Shapefile class supporting single point and single part polygon shapes.
     Shapes are passed in as a list of points.
     """
-    def __init__(self,shapeType=1,Xmin=0,Ymin=0,Xmax=0,Ymax=0,Zmin=0,Zmax=0,Mmin=0,Mmax=0):
+    def __init__(self,shapeType=1,Xmin=0,Ymin=0,Xmax=0,Ymax=0,Zmin=0,Zmax=0,Mmin=0,Mmax=0,shapes=[],
+                 fieldnames=[],fieldspecs=[],records=[]):
+
         self.fileCode=9994
         self.version=1000
         #number of 16-bit words
@@ -90,9 +92,14 @@ class Shapefile:
         self.Mmin=Mmin
         self.Mmax=Mmax
 
-        self.shapes=[]        
+        if len(shapes)!=len(records):
+            raise ValueError, "The number of shapes and table records must match."
+        
+        self.shapes=shapes
+        self.table=databasefile.DatabaseFile(["ID"]+fieldnames,[('N', 1, 6)]+fieldspecs,records)
+        
 
-    def add(self,shape):
+    def add(self,shape,record=None):
         for p in shape:
             if p[0]<self.Xmin:
                 self.Xmin=p[0]
@@ -109,6 +116,11 @@ class Shapefile:
         elif self.shapeType==5:
             self.size+=28+(8*len(shape))
             self.shapes.append(shape)
+
+        if record:
+            self.table.addRow(record)
+        else:
+            self.table.addRow([len(self.shapes)])
 
     def writeFile(self,outName):
         outShp=open(outName+".shp",'wb')
@@ -255,7 +267,7 @@ class Shapefile:
                 shx.write(struct.pack('>i',contentLength))
                 totalLength+=contentLength+4
                 
-        dbftool.dbfwriter(dbf, ["default"], [('N', 1, 6)], [[0]]*len(self.shapes))
+        self.table.write(dbf)
 
 
 if __name__=="__main__":
@@ -263,9 +275,9 @@ if __name__=="__main__":
     s=Shapefile(shapeType=5)
 ##    for i in range(10):
 ##        s.add(circle(0,0,1,i+3))
-##    for x in range(4):
-##        s.add(circle(x,0,1/(3**0.5),6))
-##    for x in range(4):
-##        s.add(circle(x+0.5,.75**0.5,1/(3**0.5),6))
-    s.add(buffer(0,0,10,10,1))
+    for x in range(4):
+        s.add(circle(x,0,1/(3**0.5),6))
+    for x in range(4):
+        s.add(circle(x+0.5,.75**0.5,1/(3**0.5),6))
+##    s.add(buffer(0,0,10,10,1))
     s.writeFile("E:/Data/test")
