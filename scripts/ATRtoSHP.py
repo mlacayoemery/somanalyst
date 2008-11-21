@@ -9,6 +9,7 @@ import sys, struct
 import math
 from dbftool import dbfwriter
 import random
+import decimal
 
 #helper function
 def round6(x):
@@ -19,7 +20,7 @@ def convertNums(x):
     y.extend(x[2:])
     return y
 
-def ATRtoP(bmufile,outfile,stype):
+def ATRtoP(bmufile,outfile,stype,labels):
 
     #set shape file name
     shpfile=outfile.split('.')[0]
@@ -250,6 +251,19 @@ def ATRtoP(bmufile,outfile,stype):
     records = cod
     records = [map(round6,map(float,i)) for i in cod]
 
+    if labels:
+        labelFile=open(labels,'r')
+        header=labelFile.readline().strip().split(",")
+        headerspecs=[('C', 20, 0),('C', 20, 0)]+([('N', w, 2)]*(len(header)-2))
+        fieldnames+=header
+        fieldspecs+=headerspecs
+        
+        for id,l in enumerate(labelFile.readlines()):
+            line=l.strip().split(',')
+            records[id].extend(line[:2]+map(decimal.Decimal,line[2:]))
+        labelFile.close()
+    
+    
     #write dbf
     dbfwriter(dbf, fieldnames, fieldspecs, records)
     dbf.close()
@@ -258,4 +272,8 @@ if __name__=="__main__":
     bmufile=sys.argv[1]
     outfile=sys.argv[2]
     stype=sys.argv[3]
-    ATRtoP(bmufile,outfile,stype)
+    if sys.argv[4]=="#":
+        labels=None
+    else:
+        labels=sys.argv[4]
+    ATRtoP(bmufile,outfile,stype,labels)
