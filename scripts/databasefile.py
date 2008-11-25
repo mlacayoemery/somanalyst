@@ -14,7 +14,6 @@ class DatabaseFile:
         self.fieldspecs.append(fieldspec)
 
     def addRow(self,record):
-        print record
         if len(record)==len(self.fieldnames):
             self.records.append(record)
         else:

@@ -52,7 +52,7 @@ def hexagonCentroids(startX,endX,startY,endY,r):
         for x in range(startX,endX):
             points.append((hexX,hexY))
             hexX+=deltaX
-        hexY+=deltaY
+        hexY-=deltaY
 
     return points        
 
@@ -74,8 +74,19 @@ class Shapefile:
     Shapefile class supporting single point and single part polygon shapes.
     Shapes are passed in as a list of points.
     """
-    def __init__(self,shapeType=1,Xmin=0,Ymin=0,Xmax=0,Ymax=0,Zmin=0,Zmax=0,Mmin=0,Mmax=0,shapes=[],
-                 fieldnames=[],fieldspecs=[],records=[]):
+    def __init__(self,shapeType=1):
+        Xmin=0
+        Ymin=0
+        Xmax=0
+        Ymax=0
+        Zmin=0
+        Zmax=0
+        Mmin=0
+        Mmax=0
+        shapes=[]
+        fieldnames=[]
+        fieldspecs=[]
+        records=[]
 
         self.fileCode=9994
         self.version=1000
@@ -96,10 +107,14 @@ class Shapefile:
             raise ValueError, "The number of shapes and table records must match."
         
         self.shapes=shapes
-        self.table=databasefile.DatabaseFile(["ID"]+fieldnames,[('N', 1, 6)]+fieldspecs,records)
+        self.table=databasefile.DatabaseFile(["ID"]+fieldnames,[('N', 6, 0)]+fieldspecs,records)
         
 
     def add(self,shape,record=None):
+        """
+        Adds a shape object to the shapefile. Adding records not currently supported.
+        """
+        #adjust the bound box minmums and maximums
         for p in shape:
             if p[0]<self.Xmin:
                 self.Xmin=p[0]
@@ -110,6 +125,7 @@ class Shapefile:
             elif p[1]>self.Ymax:
                 self.Ymax=p[1]
 
+        #adjust the known file size accordingly
         if self.shapeType==1:
             self.size+=10
             self.shapes.append(shape.pop())
@@ -117,8 +133,9 @@ class Shapefile:
             self.size+=28+(8*len(shape))
             self.shapes.append(shape)
 
+        #assign the passed in record, or generate an id
         if record:
-            self.table.addRow(record)
+            raise ValueError, "Passing in table records is not currently supported"
         else:
             self.table.addRow([len(self.shapes)])
 
@@ -132,6 +149,8 @@ class Shapefile:
         outDbf.close()
 
     def write(self,shp,shx,dbf):
+        self.table.write(dbf)
+        
         #shp file header
         #byte 0, File Code
         shp.write(struct.pack('>i', self.fileCode))
@@ -266,18 +285,16 @@ class Shapefile:
                 shx.write(struct.pack('>i',totalLength))
                 shx.write(struct.pack('>i',contentLength))
                 totalLength+=contentLength+4
-                
-        self.table.write(dbf)
 
 
 if __name__=="__main__":
     print
-    s=Shapefile(shapeType=5)
-##    for i in range(10):
-##        s.add(circle(0,0,1,i+3))
-    for x in range(4):
-        s.add(circle(x,0,1/(3**0.5),6))
-    for x in range(4):
-        s.add(circle(x+0.5,.75**0.5,1/(3**0.5),6))
-##    s.add(buffer(0,0,10,10,1))
-    s.writeFile("E:/Data/test")
+    s=Shapefile(1)
+    for p in hexagonCentroids(0,4,0,3,1):
+        s.add([p])
+    s.writeFile("E:/Data/grid")
+
+    t=Shapefile(5)
+    for x,y in hexagonCentroids(0,4,0,3,1):
+        t.add(hexagon(x,y,.5))
+    t.writeFile("E:/Data/mesh")

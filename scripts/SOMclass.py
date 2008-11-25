@@ -260,11 +260,16 @@ class SOM:
         outFile.close()
 
     def writeDBF(self,outFile):
-        fieldspecs=([['N',1,5]]*self.dimensions)+([['C',1,0]]*(len(self.labels[0][0])-1))+[['N',1,5]]
+        self.DBF().write(outFile)
+
+    def DBF(self):
+        fieldspecs=([['N',1,5]]*self.dimensions)+([['C',1,0]]*(len(self.labels[0][0])))
         if self.comments.has_key("#n"):
             fieldnames=self.comments["#n"]
         else:
             fieldnames=map("attr".__add__,map(str,range(1,self.dimensions+1+len(self.labels[0][0]))))
+        if fieldnames[-1]=="Qerror":
+            fieldspecs[-1]=['N',1,5]
         dbf=databasefile.DatabaseFile(fieldnames,fieldspecs,[])
         for i in range(self.ydimension):
             for j in range(self.xdimension):
@@ -275,7 +280,7 @@ class SOM:
                 for id,l in enumerate(map(len,self.labels[i][j])):
                     if l>fieldspecs[self.dimensions+id][1]:
                         fieldspecs[self.dimensions+id][1]=l
-        dbf.write(outFile)
+        return dbf
 
     def matchLabel(self,vectors,labels):
         if self.labels==[]:
