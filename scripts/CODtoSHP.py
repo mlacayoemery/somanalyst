@@ -11,7 +11,8 @@ def CODtoSHP(inName,outName,shapeType,labelData,radius):
     if labelData:
         dat=SOMclass.DAT()
         dat.readFile(labelData)
-        cod.matchLabel(dat.vectors,dat.labels)
+        cod.matchLabel(dat.vectors,dat.labels,dat.comments)
+        
         
     if shapeType=="point":
         shp=shapefile.Shapefile(1)

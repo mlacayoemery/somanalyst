@@ -4,14 +4,30 @@
 import struct, datetime, decimal, itertools
 
 class DatabaseFile:
-    def __init__(self,fieldnames=[],fieldspecs=[],records=[]):
+    def __init__(self,fieldnames,fieldspecs,records):
         self.fieldnames=fieldnames
         self.fieldspecs=fieldspecs
         self.records=records
 
-    def addColumn(self,fieldname,fieldspec):
+    def extend(self,other):
+        """
+        Plus equals
+        """
+        if len(self.records)!=len(other.records):
+            raise ValueError, "The number of rows do not match."
+
+        self.fieldnames.extend(other.fieldnames)
+        self.fieldspecs.extend(other.fieldspecs)
+        for i in range(len(self.records)):
+            self.records[i].extend(other.records[i])                
+
+    def addColumn(self,fieldname,fieldspec,record):
+        if len(record)!=len(self.records):
+            raise ValueError,"The column length does not match the current table."
         self.fieldnames.append(fieldname)
         self.fieldspecs.append(fieldspec)
+        for id,r in enumerate(record):
+            self.records[id].extend(r)
 
     def addRow(self,record):
         if len(record)==len(self.fieldnames):
@@ -137,7 +153,10 @@ class DatabaseFile:
                     value = str(value)[0].upper()
                 else:
                     value = str(value)[:size].ljust(size, ' ')
-                assert len(value) == size
+                try:
+                    assert len(value) == size
+                except AssertionError:
+                    raise AssertionError, "value "+str(value)+" is no good "+str(size)
                 f.write(value)
 
         # End of file

@@ -3,14 +3,14 @@
 
 import sys
 
-def normalize(inName,outName,start,end,direction,minEqMax):    
+def normalize(inName,outName,start,end,direction,minEqMax,denorm=None):    
     infile=open(inName,'r')
     outfile=open(outName,'w')
 
     outfile.write(infile.readline())
 
     if (direction=="column") or (direction=="global"):
-        #readd in table and convert it to numbers
+        #read in table and convert it to numbers
         table=[]
         for l in infile.readlines():
             line=l.split(",")

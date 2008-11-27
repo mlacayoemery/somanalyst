@@ -5,7 +5,7 @@
 
 import sys
 
-def normalize(inName,outName,direction):
+def normalize(inName,outName,direction,denorm):
     stdDevZero=0
     
     infile=open(inName,'r')
@@ -47,6 +47,17 @@ def normalize(inName,outName,direction):
                         row.append(str(stdDevZero))
                         
                 outfile.write(','.join(row)+"\n")
+            #if denormalization file wanted
+            if denorm:
+                o=open(denorm,'w')
+                o.write("#Martin Lacayo-Emery\n#This script was produced using SOM Analyst.\ndef denorm(table):\n"+
+                        "\taverages="+str(averages)+"\n\tstdDevs="+str(stdDevs)+"\n\tdenormTable=[]"+
+                        "\n\tfor row in table:\n\t\tdenormRow=[]\n\t\tfor id,value in enumerate(row):"+
+                        "\n\t\t\tdenormRow.append((value*stdDevs[id])+averages[id])"+
+                        "\n\t\tdenormTable.append(denormRow)"+
+                        "\n\treturn denormTable")
+                o.close()
+                
         else:
             N=float(len(table)*(len(table[0])-2))
             average=0
@@ -100,6 +111,9 @@ if __name__ == "__main__":
     inName = sys.argv[1]
     outName = sys.argv[2]
     direction = sys.argv[3]
+    denorm = sys.argv[4]
+    if denorm=='#':
+        denorm=None
 
-    normalize(inName,outName,direction)    
+    normalize(inName,outName,direction,denorm)    
     

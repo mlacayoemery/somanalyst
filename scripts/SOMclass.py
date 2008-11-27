@@ -1,6 +1,6 @@
 #Martin Lacayo-Emery
 
-import decimal,databasefile
+import decimal,databasefile, shapefile
 
 def qError(v1,v2):
     return sum(map(lambda v: (v[0]-v[1])**2,zip(v1,v2)))**0.5
@@ -8,11 +8,108 @@ def qError(v1,v2):
 def round6(x):
     return round(x,6)
 
+class BMU:
+    """
+    A class to store best matching unit data
+    """
+    def __init__(self):
+        dimensions=0
+        topology=""
+        xdimension=0
+        ydimension=0
+        neighborhoodType=""
+        vectors=[]
+        comments={}
+        labels=[]
+        self.dimensions=dimensions
+        self.topology=topology
+        self.xdimension=xdimension
+        self.ydimension=ydimension
+        self.neighborhoodType=neighborhoodType
+        self.vectors=vectors
+        self.comments=comments
+        self.labels=labels
+
+    def readFile(self,inName):
+        inFile=open(inName)
+        self.read(inFile)
+        inFile.close()
+
+    def read(self,inFile):
+        #parse and typecast the header
+        self.dimensions,self.topology,self.xdimension,self.ydimension,self.neighborhoodType=inFile.readline().strip().split()
+        self.dimensions=int(self.dimensions)-1
+        self.xdimension=int(self.xdimension)
+        self.ydimension=int(self.ydimension)
+
+        #validate header values
+        if self.dimensions<0:
+            raise ValueError, str(self.dimensions)+" is not a supported number of dimensions, only natural numbers are supported."
+        if self.topology!="hexa" and self.topology!="rect":
+            raise ValueError, str(self.topology)+" is not a supported topology, only \"hexa\" or \"rect\" is supported."
+        if self.xdimension<0:
+            raise ValueError, str(self.xdimension)+" is not a supported X dimension, only natural numbers are supported."
+        if self.ydimension<0:
+            raise ValueError, str(self.ydimension)+" is not a supported Y dimension, only natural numbers are supported."
+        if self.neighborhoodType!="gaussian" and self.neighborhoodType!="bubble":
+            raise ValueError, str(self.neighborhoodType)+" is not a supported neighborhood type, only \"gaussian\" or \"bubble\" is supported."
+
+        #read comments, read ahead and skip back if not comment
+        loc=inFile.tell()
+        line=inFile.readline().strip().split()
+        while line[0][0]=="#":
+            self.comments[line[0]]=line[1:]
+            loc=inFile.tell()
+            line=inFile.readline().strip().split()
+        inFile.seek(loc)
+
+        #read in som in row major order
+        self.vectors=[]
+        self.labels=[]
+        for line in inFile.readlines():
+            l=line.strip().split()
+            self.vectors.append(map(int,l[:2]))
+            self.labels.append(l[2:])
+        
+    def writeShapefile(self,inName):
+        shp=shapefile.Shapefile(1)
+        try:
+            for x,y in self.vectors:
+                shp.add([shapefile.hexagonCentroid(x,y)])
+        except ValueError:
+            pass
+        shp.writeFile(inName[:inName.rfind(".")])
+
+    def writeDBF(self,outName):
+        self.DBF.writeFile(outName)
+
+    def DBF(self):
+        fieldspecs=([['N',1,0]]*(self.dimensions))+([['C',1,0]]*(len(self.labels[0])))
+        if self.comments.has_key("#n"):
+            fieldnames=self.comments["#n"]
+        else:
+            fieldnames=["Xindex","Yindex","Qerror"]+map("attr".__add__,map(str,range(1,self.dimensions+len(self.labels[0])-3)))
+
+        dbf=databasefile.DatabaseFile(fieldnames,fieldspecs,[])
+        for id,v in enumerate(self.vectors):
+            dbf.addRow(v+self.labels[id])
+            for id,l in enumerate(map(len,map(str,v))):
+                if l>fieldspecs[id][1]:
+                    fieldspecs[id][1]=l
+            for id,l in enumerate(map(len,self.labels[id])):
+                if l>fieldspecs[self.dimensions+id][1]:
+                    fieldspecs[self.dimensions+id][1]=l
+        return dbf            
+
 class DAT:
     """
     A class to store vector data
     """
-    def __init__(self,dimensions=0,vectors=[],comments={},labels=[]):
+    def __init__(self):
+        dimensions=0
+        vectors=[]
+        comments={}
+        labels=[]
         self.dimensions=dimensions
         self.vectors=vectors
         self.comments=comments
@@ -110,13 +207,50 @@ class DAT:
         for v,l in zip(self.vectors,self.labels):
             outFile.write("\n"+" ".join(map(str,v)+l))
 
+    def writeShapefile(self,outName):
+        pass
+
+    def writeShape(self,outFile):
+        pass
+
+    def writeDBF(self,outFile):
+        self.DBF().writeFile(outFile)
+
+    def DBF(self):
+        fieldspecs=([['N',1,5]]*self.dimensions)+([['C',1,0]]*(len(self.labels[0])))
+        if self.comments.has_key("#n"):
+            fieldnames=self.comments["#n"]
+        else:
+            fieldnames=map("attr".__add__,map(str,range(1,self.dimensions+1+len(self.labels[0]))))
+        if fieldnames[-1]=="Qerror":
+            fieldspecs[-1]=['N',1,5]
+        dbf=databasefile.DatabaseFile(fieldnames,fieldspecs,[])
+        for id,v in enumerate(self.vectors):
+            dbf.addRow(v+self.labels[id])
+            for id,l in enumerate(map(len,map(str,v))):
+                if l>fieldspecs[id][1]:
+                    fieldspecs[id][1]=l
+            for id,l in enumerate(map(len,self.labels[id])):
+                if l>fieldspecs[self.dimensions+id-1][1]:
+                    fieldspecs[self.dimensions+id-1][1]=l
+        return dbf
+
+
 class SOM:
     """
     A class to store self-organizing maps.
     """
 
     #initializers    
-    def __init__(self,dimensions=0,topology="",xdimension=0,ydimension=0,neighborhoodType="",vectors=[],comments={},labels=[]):
+    def __init__(self):
+        dimensions=0
+        topology=""
+        xdimension=0
+        ydimension=0
+        neighborhoodType=""
+        vectors=[]
+        comments={}
+        labels=[]
         self.dimensions=dimensions
         self.topology=topology
         self.xdimension=xdimension
@@ -282,7 +416,7 @@ class SOM:
                         fieldspecs[self.dimensions+id][1]=l
         return dbf
 
-    def matchLabel(self,vectors,labels):
+    def matchLabel(self,vectors,labels,comments):
         if self.labels==[]:
             for i in range(self.ydimension):
                 row=[]
@@ -302,6 +436,8 @@ class SOM:
 
         if self.comments.has_key("#n"):
             self.comments["#n"].extend(map("attr".__add__,map(str,range(1,len(labels[0])+1)))+["Qerror"])
+        elif comments.has_key("#n"):
+            self.comments["#n"]=comments["#n"]+["Qerror"]
 
 ##if __name__=="__main__":
 ##    d = DAT()

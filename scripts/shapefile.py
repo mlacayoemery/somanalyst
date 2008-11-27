@@ -32,6 +32,13 @@ def rectangle(x,y,r):
     """
     return [(x,y),(x,y+r),(x+r,y+r),(x+r,y),(x,y)]
 
+def hexagonCentroid(x,y,originX=0,originY=0,r=1):
+    if (y+2)%2:
+        return (originX+((x+0.5)*r),originY-(y*r*(0.75**0.5)))
+    else:
+        return (originX+(x*r),originY-(y*r*(0.75**0.5)))
+    
+
 def hexagonCentroids(startX,endX,startY,endY,r):
     """
     returns a list of the centorids for a hexagonal grid with spacing r
