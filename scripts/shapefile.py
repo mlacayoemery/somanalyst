@@ -136,7 +136,7 @@ class Shapefile:
         if self.shapeType==1:
             self.size+=10
             self.shapes.append(shape.pop())
-        elif self.shapeType==5:
+        elif self.shapeType==5 or self.shapeType==3:
             self.size+=28+(8*len(shape))
             self.shapes.append(shape)
 
@@ -253,7 +253,7 @@ class Shapefile:
                 shx.write(struct.pack('>i',50+((contentLength+4)*id)))
                 shx.write(struct.pack('>i',contentLength))
                                
-        elif self.shapeType==5:
+        elif self.shapeType==5 or self.shapeType==3:
             totalLength=50
             for id,s in enumerate(self.shapes):
                 contentLength=24+(8*len(s))
@@ -301,7 +301,7 @@ if __name__=="__main__":
         s.add([p])
     s.writeFile("E:/Data/grid")
 
-    t=Shapefile(5)
+    t=Shapefile(3)
     for x,y in hexagonCentroids(0,4,0,3,1):
         t.add(hexagon(x,y,.5))
     t.writeFile("E:/Data/mesh")
