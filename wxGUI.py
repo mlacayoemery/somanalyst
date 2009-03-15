@@ -1,6 +1,6 @@
 import wx, os, shutil, pickle
-from lib import mapinit, visual, vsom
-from lib import ATRtoSHP, CODtoSHP
+from lib.som import mapinit, visual, vsom
+from lib.som import ATRtoSHP, CODtoSHP
 
 
 class MyFrame(wx.Frame):
