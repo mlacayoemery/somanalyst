@@ -87,21 +87,21 @@ class BMU:
         self.DBF.writeFile(outName)
 
     def DBF(self):
-        fieldspecs=([['N',1,0]]*(self.dimensions))+([['C',1,0]]*(len(self.labels[0])))
+        #print self.la
+        labelLen=len(self.labels[0])
+        fieldspecs=(zip(['N']*self.dimensions,[0]*self.dimensions,[0]*self.dimensions)+
+                    zip(['C']*labelLen,[0]*labelLen,[0]*labelLen))
         if self.comments.has_key("#n"):
             fieldnames=self.comments["#n"]
         else:
-            fieldnames=["Xindex","Yindex","Qerror"]+map("attr".__add__,map(str,range(1,self.dimensions+len(self.labels[0])-3)))
-
+            fieldnames=["Xindex","Yindex","Qerror"]+map("attr".__add__,map(str,range(1,self.dimensions+labelLen-3)))
+        #print fieldspecs
         dbf=databasefile.DatabaseFile(fieldnames,fieldspecs,[])
         for id,v in enumerate(self.vectors):
             dbf.addRow(v+self.labels[id])
-            for id,l in enumerate(map(len,map(str,v))):
-                if l>fieldspecs[id][1]:
-                    fieldspecs[id][1]=l
-            for id,l in enumerate(map(len,self.labels[id])):
-                if l>fieldspecs[self.dimensions+id][1]:
-                    fieldspecs[self.dimensions+id][1]=l
+        dbf.dynamicSpecs()
+        #print dbf.fieldspecs
+        #print dbf.records
         return dbf            
 
 class DAT:
@@ -228,6 +228,7 @@ class DAT:
         if fieldnames[-1]=="Qerror":
             fieldspecs[-1]=['N',1,5]
         dbf=databasefile.DatabaseFile(fieldnames,fieldspecs,[])
+        dbf.dynamicSpecs()
         for id,v in enumerate(self.vectors):
             dbf.addRow(v+self.labels[id])
             for id,l in enumerate(map(len,map(str,v))):
@@ -408,6 +409,7 @@ class SOM:
         if fieldnames[-1]=="Qerror":
             fieldspecs[-1]=['N',1,5]
         dbf=databasefile.DatabaseFile(fieldnames,fieldspecs,[])
+        dbf.dynamicSpecs()
         for i in range(self.ydimension):
             for j in range(self.xdimension):
                 dbf.addRow(self.vectors[i][j]+self.labels[i][j])

@@ -12,5 +12,6 @@ def BMUtoSHP(bmufile,outfile,labels):
         dat.readFile(labels)
         dbf1=bmu.DBF()
         dbf2=dat.DBF()
+        dbf2.dynamicSpecs()
         dbf1.extend(dbf2)
         dbf1.writeFile(outfile[:outfile.rfind('.')]+".dbf")
