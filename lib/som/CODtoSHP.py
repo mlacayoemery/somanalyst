@@ -1,7 +1,8 @@
 #Martin Lacayo-Emery
 #11/25/2008
 
-import sys, shapefile, SOMclass
+import shapefile
+import SOMclass
 
 def CODtoSHP(inName,outName,shapeType,labelData,radius):
     cod=SOMclass.SOM()
@@ -28,14 +29,3 @@ def CODtoSHP(inName,outName,shapeType,labelData,radius):
     #copy codebook table to shapefile and write out            
     shp.table=cod.DBF()
     shp.writeFile(outName[:outName.rfind(".")])
-    
-if __name__=="__main__":
-    inName=sys.argv[1]
-    outName=sys.argv[2]
-    shapeType=sys.argv[3]
-    if sys.argv[4]!="#":
-        labelData=sys.argv[4]
-    else:
-        labelData=None
-    radius=float(sys.argv[5])
-    CODtoSHP(inName,outName,shapeType,labelData,radius)

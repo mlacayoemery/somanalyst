@@ -1,7 +1,7 @@
 #Martin Lacayo-Emery
 #10/22/2008
 
-import sys, random
+import random
 
 def randomize(inName,outName):
     inFile=open(inName,'r')
@@ -17,7 +17,3 @@ def randomize(inName,outName):
     outFile.close()        
 
 
-if __name__ == "__main__":
-    inName = sys.argv[1]
-    outName = sys.argv[2]
-    randomize(inName,outName)

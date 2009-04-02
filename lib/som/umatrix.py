@@ -1,4 +1,5 @@
-import sys, SOMclass, databasefile
+import SOMclass
+from ..shp import databasefile
 
 def uMatrix(inName,outName):
     som=SOMclass.SOM()
@@ -43,8 +44,3 @@ def uMatrix(inName,outName):
         
             dbf.addRow([round(total/number,6)])
     dbf.writeFile(outName)
-
-if __name__=="__main__":
-    inName=sys.argv[1]
-    outName=sys.argv[2]
-    uMatrix(inName,outName)
