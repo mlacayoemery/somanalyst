@@ -10,4 +10,4 @@ if __name__=="__main__":
     else:
         labelData=None
     radius=float(sys.argv[5])
-    import lib.som.CODtoSHP.CODtoSHP(inName,outName,shapeType,labelData,radius)
+    lib.som.CODtoSHP.CODtoSHP(inName,outName,shapeType,labelData,radius)

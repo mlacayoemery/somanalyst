@@ -6,7 +6,7 @@ import sys, os
 def mapinit(din,cout,topol,neigh,xdim,ydim,init,rand='#',buffer='#'):
     #get local path for mapinit
     local = sys.argv[0]
-    mapinit = "\""+"\\".join(local.split("\\")[:-2])+"\\SOM_PAK\\mapinit.exe"+"\""
+    mapinit = "\""+"\\".join(local.split("\\")[:-1])+"\\bin\\SOM_PAK\\mapinit.exe"+"\""
 
     #add parametes to the system call
     mapinit+=" -din "+din

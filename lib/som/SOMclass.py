@@ -1,6 +1,9 @@
 #Martin Lacayo-Emery
 
-import decimal,databasefile, shapefile
+import decimal
+from ..shp import databasefile
+from ..shp import shapefile
+from ..shp import geometry
 
 def qError(v1,v2):
     return sum(map(lambda v: (v[0]-v[1])**2,zip(v1,v2)))**0.5
@@ -75,7 +78,7 @@ class BMU:
         shp=shapefile.Shapefile(1)
         try:
             for x,y in self.vectors:
-                shp.add([shapefile.hexagonCentroid(x,y)])
+                shp.add([geometry.hexagonCentroid(x,y)])
         except ValueError:
             pass
         shp.writeFile(inName[:inName.rfind(".")])

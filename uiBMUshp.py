@@ -1,3 +1,4 @@
+import sys
 import lib.som.ATRtoSHP
 
 if __name__=="__main__":

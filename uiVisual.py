@@ -6,7 +6,7 @@ import sys, os
 def visual(cin,din,dout,noskip="#",buffer="#"):
     #get local path for visual
     local = sys.argv[0]
-    visual = "\""+"\\".join(local.split("\\")[:-2])+"\\SOM_PAK\\visual.exe"+"\""
+    visual = "\""+"\\".join(local.split("\\")[:-1])+"\\bin\\SOM_PAK\\visual.exe"+"\""
 
     #add parametes to the system call
     visual+=" -cin "+cin
