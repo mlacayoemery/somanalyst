@@ -3,8 +3,8 @@ import lib.som.CODtoSHP
 
 if __name__=="__main__":
     inName=sys.argv[1]
-    outName=sys.argv[2]
-    shapeType=sys.argv[3]
+    outName=sys.argv[3]
+    shapeType=sys.argv[2]
     if sys.argv[4]!="#":
         labelData=sys.argv[4]
     else:

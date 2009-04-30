@@ -32,6 +32,7 @@ def vsom(cin,din,cout,rlen,alpha,radius,rand='#',fixed="#",weights="#",buffer='#
         vsom+=" -snapinterval "+snapinterval
 
     #execute command
+    print vsom
     return os.system(vsom)        
 
 if __name__=="__main__":
@@ -40,26 +41,28 @@ if __name__=="__main__":
     #teaching data
     din = sys.argv[2]
     #output codebook filename
-    cout = sys.argv[3]
+    cout = sys.argv[6]
     #running length of teaching
-    rlen = sys.argv[4]
+    rlen = sys.argv[3]
     #initial alpha value
-    alpha = sys.argv[5]
+    alpha = sys.argv[4]
     #initial radius of neighborhood
-    radius = sys.argv[6]
+    radius = sys.argv[5]
+    #metric
+    metric = sys.argv[7]
     #seed for random number generator
-    rand = sys.argv[7]
+    rand = sys.argv[8]
     #use fixed points
-    fixed = sys.argv[8]
+    fixed = sys.argv[9]
     #use weights
-    weights =sys.argv[9]
+    weights =sys.argv[10]
     #buffer reading of data
-    buffer = sys.argv[10]
+    buffer = sys.argv[11]
     #type of alpha
-    alpha_type = sys.argv[11]
+    alpha_type = sys.argv[12]
     #snapshot filename
-    snapfile = sys.argv[12]
+    snapfile = sys.argv[13]
     #snapshot interavl
-    snapinterval=sys.argv[13]
+    snapinterval=sys.argv[14]
 
     vsom(cin,din,cout,rlen,alpha,radius,rand,fixed,weights,buffer,alpha_type,snapfile,snapinterval)

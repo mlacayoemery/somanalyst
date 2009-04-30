@@ -2,15 +2,18 @@ import sys
 #add absolute path for shapefile library (relative to file import)
 sys.path.append(sys.argv[0][:sys.argv[0].rfind("\\")+1]+"\\lib\\shp")
 import databasefile
-from dbftool import dbfwriter
 
 def toXbaseFile(inName,inType,outName,detectTypes):
     """
     Conversion to Xbase file using paths
     """
     inFile=open(inName,'r')
-    outFile=open(outName,'wb')
-    toXbase(inFile,inType,outFile,detectTypes)
+    fieldnames=inFile.readline().strip().split(",")
+    records=[row.strip().split(",") for row in inFile.readlines()]
+    d=databasefile.DatabaseFile(fieldnames,None,records)
+    d.refreshSpecs()
+    d.writeFile(outName)
+    #toXbase(inFile,inType,outFile,detectTypes)
 
 def toXbase(inFile,inType,outFile,detectTypes):
     """

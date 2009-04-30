@@ -30,14 +30,14 @@ if __name__=="__main__":
     #input data
     din = sys.argv[1]
     #output codebook filename
-    cout = sys.argv[2]
+    cout = sys.argv[6]
     #topology type of map, hexa or rect
-    topol = sys.argv[3]
+    topol = sys.argv[2]
     #neighborhood type, bubble or gaussian
-    neigh = sys.argv[4]
+    neigh = sys.argv[3]
     #dimensions of map
-    xdim = sys.argv[5]
-    ydim = sys.argv[6]
+    xdim = sys.argv[4]
+    ydim = sys.argv[5]
     #initialization type, random or linear
     init = sys.argv[7]
     #seed for random number generator
