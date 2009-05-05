@@ -7,47 +7,23 @@ def toXbaseFile(inName,inType,outName,detectTypes):
     """
     Conversion to Xbase file using paths
     """
-    inFile=open(inName,'r')
-    fieldnames=inFile.readline().strip().split(",")
-    records=[row.strip().split(",") for row in inFile.readlines()]
-    d=databasefile.DatabaseFile(fieldnames,None,records)
-    d.refreshSpecs()
-    d.writeFile(outName)
-    #toXbase(inFile,inType,outFile,detectTypes)
+    try:
+        fileConversion[inType](inName,detectTypes).writeFile(outName)
+    except KeyError:
+        raise KeyError, "No file conversion key was specified for "+inType
 
-def toXbase(inFile,inType,outFile,detectTypes):
-    """
-    Conversion to Xbase file using file streams read into memory
-    """
-    ifile=sys.argv[1]
-    ofile=sys.argv[2]
+def SVtoDBF(inName,separator,detectTypes):
+    d=databasefile.DatabaseFile([],[],[])
+    d.readSV(inName,separator)
+    if detectTypes:
+        d.dynamicSpecs()
+    return d
 
-    i=open(ifile,'r')
-    o=open(ofile,'wb')
+def CSVtoDBF(inName,detectTypes):
+    return SVtoDBF(inName,",",detectTypes)
 
-    fieldnames =i.readline().strip().split(',')
-    table=[l.strip().split(',') for l in i.readlines()]
-    i.close()
-    fieldwidth=map(len,table[0])
+def TSVtoDBF(inName,detectTypes):
+    return SVtoDBF(inName,"\t",detectTypes)
 
-    for l in table:
-        for id,j in enumerate(l):
-            if len(j)>fieldwidth[id]:
-                fieldwidth[id]=len(j)
-
-    fieldspecs=[]
-    for w in fieldwidth:
-        fieldspecs.append(('C', w, 0))
-
-    #set records
-    records = table
-
-    #write dbf
-    dbfwriter(o, fieldnames, fieldspecs, records)
-    o.close()
-
-def toXbaseFileDirect(inName,inType,outName,detectTypes):
-    """
-    Conversion to Xbase file using paths and read/written line by line
-    """
-    pass
+fileConversion={"Comma Separated Values (CSV)":CSVtoDBF,
+                "Tab Separated Values(TSV)":TSVtoDBF}
