@@ -4,7 +4,7 @@ def normalize(inName,outName,start,end,direction,minEqMax,fieldNames):
     inTable=databasefile.DatabaseFile([],[],[],inName)
     fieldIndicies=[]
     if len(fieldNames)==0:
-        for id,f in enumerate(d.fieldspecs):
+        for id,f in enumerate(inTable.fieldspecs):
             if f[0]=="N":
                 fieldIndicies.append(id)
     else:
