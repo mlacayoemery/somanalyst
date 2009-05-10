@@ -1,9 +1,9 @@
 from ..shp import databasefile
 
-def normalize(inName,outName,start,end,direction,minEqMax,fieldNames,decimalPlaces):
+def normalize(inName,outName,direction,zeroDivision,decimalPlaces,fieldNames):
     inTable=databasefile.DatabaseFile([],[],[],inName)
     fieldIndicies=[]
-    minEqMax=str(minEqMax)
+    zeroDivision=str(zeroDivision)
     if len(fieldNames)==0:
         for id,f in enumerate(inTable.fieldspecs):
             if f[0]=="N":
@@ -18,43 +18,50 @@ def normalize(inName,outName,start,end,direction,minEqMax,fieldNames,decimalPlac
 
 
     if direction=="column":
-        minimums=map(float,outTable.records[0])
-        maximums=map(float,outTable.records[0])
-        for row in outTable:
-            for id,n in enumerate(row):
-                if n < minimums[id]:
-                    minimums[id]=n
-                elif n > maximums[id]:
-                    maximums[id]=n
+        temp=apply(zip,outTable.records)
+        rows=float(len(outTable))
+        averages=[s/rows for s in map(sum,temp)]
+        stddevs=[]
+        for rowID,row in enumerate(temp):
+            stddevs.append(sum([v-averages[rowID] for v in row])/rows)
+            
         for rowID,row in enumerate(outTable.records):
             for id,n in enumerate(row):
                 try:
-                    outTable.records[rowID][id]=str(round(start+((end-start)*(n-minimums[id])/float(maximums[id]-minimums[id])),decimalPlaces))
+                    outTable.records[rowID][id]=str(round((n-averages[id])/stddevs[id],decimalPlaces))
                     outTable.records[rowID][id]=outTable.records[rowID][id][:outTable.records[rowID][id].rfind(".")+1+decimalPlaces]
                 except ZeroDivisionError:
-                    outTable.records[rowID][id]=minEqMax
+                    outTable.records[rowID][id]=zeroDivision
+
     elif direction=="global":
-        minimum=min(map(min,outTable.records))
-        maximum=max(map(max,outTable.records))
+        records=float(len(outTable.records)*len(outTable.records[0]))
+        average=sum(map(sum,outTable.records))/records
+        stddev=0
+        for row in outTable:
+            for value in row:
+                stddev+=value-average
+        stddev=stddev/records
+        
         for rowID,row in enumerate(outTable.records):
             for id,n in enumerate(row):
                 try:
-                    outTable.records[rowID][id]=str(round(start+((end-start)*(n-minimum)/float(maximum-minimum)),decimalPlaces))
+                    outTable.records[rowID][id]=str(round((n-average)/stddev,decimalPlaces))
                     outTable.records[rowID][id]=outTable.records[rowID][id][:outTable.records[rowID][id].rfind(".")+1+decimalPlaces]
                 except ZeroDivisionError:
-                    outTable.records[rowID][id]=minEqMax
+                    outTable.records[rowID][id]=zeroDivision
 
     elif (direction=="row"):
-        for id,row in enumerate(outTable.records):
-            minimum=min(row)
-            maximum=max(row)
-            values=[]
-            for n in row:
+        for rowID,row in enumerate(outTable.records):
+            average=sum(row)/len(row)
+            stddev=sum([v-average for v in row])/len(row)
+            for id,n in enumerate(row):
                 try:
-                    values.append(str(round(start+((end-start)*(n-minimum)/float(maximum-minimum)),decimalPlaces)))
+                    outTable.records[rowID][id]=str(round((n-average)/stddev,decimalPlaces))
+                    outTable.records[rowID][id]=outTable.records[rowID][id][:outTable.records[rowID][id].rfind(".")+1+decimalPlaces]
                 except ZeroDivisionError:
-                    values.append(str(minEqMa))
-            outTable.records[id]=values
+                    outTable.records[rowID][id]=zeroDivision
+
+    print outTable.records
 
     for rowId,row in enumerate(outTable):
         for columnId,value in enumerate(row):
@@ -64,4 +71,4 @@ def normalize(inName,outName,start,end,direction,minEqMax,fieldNames,decimalPlac
     for id, spec in enumerate(outTable.fieldspecs):
         inTable.fieldspecs[fieldIndicies[id]]=spec
 
-    inTable.writeFile(outName)        
+    inTable.writeFile(outName)

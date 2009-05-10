@@ -1,6 +1,6 @@
 from ..shp import databasefile
 
-def normalize(inName,outName,fieldNames,normBy,zeroDivision):
+def normalize(inName,outName,fieldNames,normBy,zeroDivision,decimalPlaces):
     inTable=databasefile.DatabaseFile([],[],[],inName)
     normIndex=inTable.index(normBy)
     zeroDivision=str(zeroDivision)
@@ -24,7 +24,8 @@ def normalize(inName,outName,fieldNames,normBy,zeroDivision):
         denom=float(inTable[rowID][normIndex])
         for id,n in enumerate(row):
             try:
-                outTable.records[rowID][id]=str(round(n/denom,6))
+                outTable.records[rowID][id]=str(round(n/denom,decimalPlaces))
+                outTable.records[rowID][id]=outTable.records[rowID][id][:outTable.records[rowID][id].rfind(".")+1+decimalPlaces]
             except ZeroDivisionError:
                 outTable.records[rowID][id]=zeroDivision
 
