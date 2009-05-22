@@ -41,6 +41,6 @@ def uMatrix(inName,outName):
                number+=1
             except IndexError:
                 pass
-        
-            dbf.addRow([round(total/number,6)])
+            value=str(round(total/number,6))
+            dbf.addRow([value[:values.rfind(".")+6]])
     dbf.writeFile(outName)

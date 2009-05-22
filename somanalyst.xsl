@@ -26,7 +26,7 @@
                             <TR bgcolor="menu">
                                 <TH align="left">
   <IMG ID="{PropertyGroupName}Image" SRC="{../../CommonPath}/triangle.gif" ALT="*" ALIGN="MIDDLE" BORDER="0" WIDTH="11" HEIGHT="11"/>
-                                    <SPAN class="caption" STYLE="color:menutext;">Optional Parameters</SPAN>
+                                    <SPAN class="caption" STYLE="color:menutext;">Click to Show Optional Parameters</SPAN>
                                 </TH>
                             </TR>
                         </TABLE>
