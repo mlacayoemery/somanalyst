@@ -3,10 +3,10 @@ import sys, os
 #supports executables in long path names
 #does not support output into long path names
 
-def vsom(cin,din,cout,rlen,alpha,radius,rand='#',fixed="#",weights="#",buffer='#',alpha_type="#",snapfile="#",snapinterval="#"):
+def vsom(cin,din,cout,rlen,alpha,radius,rand='#',fixed="#",weights="#",buffer='#',alpha_type="#",snapfile="#",snapinterval="#",path="\\bin\\SOM_PAK\\"):
     #get local path for vsom
     local = sys.argv[0]
-    vsom = "\""+"\\".join(local.split("\\")[:-1])+"\\bin\\SOM_PAK\\vsom.exe"+"\""
+    vsom = "\""+"\\".join(local.split("\\")[:-1])+path+vsom.exe"+"\""
 
     #add parametes to the system call
     vsom+=" -cin "+cin
@@ -65,4 +65,9 @@ if __name__=="__main__":
     #snapshot interavl
     snapinterval=sys.argv[14]
 
-    vsom(cin,din,cout,rlen,alpha,radius,rand,fixed,weights,buffer,alpha_type,snapfile,snapinterval)
+    if metric=="Euclidean":
+        path="\\bin\\SOM_PAK\\"
+    else:
+        path="\\bin\\Cosine\\"
+        
+    vsom(cin,din,cout,rlen,alpha,radius,rand,fixed,weights,buffer,alpha_type,snapfile,snapinterval,path)

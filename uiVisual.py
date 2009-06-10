@@ -3,10 +3,10 @@ import sys, os
 #supports executables in long path names
 #does not support output into long path names
 
-def visual(cin,din,dout,noskip="#",buffer="#"):
+def visual(cin,din,dout,noskip="#",buffer="#",path="\\bin\\SOM_PAK\\"):
     #get local path for visual
     local = sys.argv[0]
-    visual = "\""+"\\".join(local.split("\\")[:-1])+"\\bin\\SOM_PAK\\visual.exe"+"\""
+    visual = "\""+"\\".join(local.split("\\")[:-1])+path+"visual.exe"+"\""
 
     #add parametes to the system call
     visual+=" -cin "+cin
@@ -28,9 +28,17 @@ if __name__=="__main__":
     din = sys.argv[2]
     #output filename
     dout = sys.argv[3]
+    #metric
+    metric = sys.argv[4]
     #do not skip masked vectors
-    noskip = sys.argv[4]
+    noskip = sys.argv[5]
     #buffer reading of data
-    buffer = sys.argv[5]
+    buffer = sys.argv[6]
 
-    visual(cin,din,dout,noskip,buffer)
+        
+    if metric=="Euclidean":
+        path="\\bin\\SOM_PAK\\"
+    else:
+        path="\\bin\\Cosine\\"    
+
+    visual(cin,din,dout,noskip,buffer,path)
