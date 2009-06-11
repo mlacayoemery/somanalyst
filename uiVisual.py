@@ -18,7 +18,6 @@ def visual(cin,din,dout,noskip="#",buffer="#",path="\\bin\\SOM_PAK\\"):
     if buffer != '#':
         visual+=" -buffer "+buffer
     #execute command
-    print visual
     return os.system(visual)        
 
 if __name__=="__main__":

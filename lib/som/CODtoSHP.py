@@ -5,7 +5,7 @@ from ..shp import shapefile
 from ..shp import geometry
 import SOMclass
 
-def CODtoSHP(inName,outName,shapeType,labelData,radius):
+def CODtoSHP(inName,outName,shapeType,labelData,labelNeurons,radius):
     cod=SOMclass.SOM()
     cod.readFile(inName)
 
@@ -13,7 +13,10 @@ def CODtoSHP(inName,outName,shapeType,labelData,radius):
     if labelData:
         dat=SOMclass.DAT()
         dat.readFile(labelData)
-        cod.matchLabel(dat.vectors,dat.labels,dat.comments)
+        if labelNeurons:
+            cod.matchLabel(dat.vectors,dat.labels,dat.comments)
+        elif dat.comments.has_key("#n") and not cod.comments.has_key("#n"):
+            cod.comments["#n"]=dat.comments["#n"][:dat.dimensions]
         
         
     if shapeType=="point":

@@ -9,5 +9,10 @@ if __name__=="__main__":
         labelData=sys.argv[4]
     else:
         labelData=None
-    radius=float(sys.argv[5])
-    lib.som.CODtoSHP.CODtoSHP(inName,outName,shapeType,labelData,radius)
+    if sys.argv[5]=="true":
+        labelNeurons=True
+    else:
+        labelNeurons=False
+    radius=float(sys.argv[7])
+    quadrant=int(sys.argv[6])
+    lib.som.CODtoSHP.CODtoSHP(inName,outName,shapeType,labelData,labelNeurons,radius)
