@@ -3,9 +3,12 @@
 import sys
 import SOMclass
 
-def BMUtoSHP(bmufile,outfile,labels):
+def BMUtoSHP(bmufile,outfile,labels,quadrant,spacing,placement,distance):
     bmu=SOMclass.BMU()
     bmu.readFile(bmufile)
+    bmu.spacing=spacing
+    if placement==2:
+        bmu.distance=distance
     bmu.writeShapefile(outfile)
     if labels:
         dat=SOMclass.DAT()

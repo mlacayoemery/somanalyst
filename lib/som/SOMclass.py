@@ -1,6 +1,7 @@
 #Martin Lacayo-Emery
 
 import decimal
+import random
 from ..shp import databasefile
 from ..shp import shapefile
 from ..shp import geometry
@@ -24,6 +25,10 @@ class BMU:
         vectors=[]
         comments={}
         labels=[]
+        spacing=1
+        distance=0
+        xOrigin=0
+        yOrigin=0
         self.dimensions=dimensions
         self.topology=topology
         self.xdimension=xdimension
@@ -32,6 +37,10 @@ class BMU:
         self.vectors=vectors
         self.comments=comments
         self.labels=labels
+        self.spacing=spacing
+        self.distance=distance
+        self.xOrigin=xOrigin
+        self.yOrigin=yOrigin
 
     def readFile(self,inName):
         inFile=open(inName)
@@ -77,8 +86,14 @@ class BMU:
     def writeShapefile(self,inName):
         shp=shapefile.Shapefile(1)
         try:
-            for x,y in self.vectors:
-                shp.add([geometry.hexagonCentroid(x,y)])
+            for i,j in self.vectors:
+                x,y=geometry.hexagonCentroid(i,j,self.xOrigin,self.yOrigin,self.spacing)
+                xShift=((random.random()*2)-1)*self.distance
+                x=x+xShift
+                yMaxShift=(self.distance**2+xShift**2)**0.5
+                yShift=((random.random()*2)-1)*yMaxShift
+                y=y+yShift
+                shp.add([(x,y)])
         except ValueError:
             pass
         shp.writeFile(inName[:inName.rfind(".")])
