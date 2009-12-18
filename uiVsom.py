@@ -6,7 +6,7 @@ import sys, os
 def vsom(cin,din,cout,rlen,alpha,radius,rand='#',fixed="#",weights="#",buffer='#',alpha_type="#",snapfile="#",snapinterval="#",path="\\bin\\SOM_PAK\\"):
     #get local path for vsom
     local = sys.argv[0]
-    vsom = "\""+"\\".join(local.split("\\")[:-1])+path+vsom.exe"+"\""
+    vsom = "\""+"\\".join(local.split("\\")[:-1])+path+"vsom.exe"+"\""
 
     #add parametes to the system call
     vsom+=" -cin "+cin
