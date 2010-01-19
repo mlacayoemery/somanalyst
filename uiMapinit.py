@@ -2,14 +2,12 @@ import sys, os
 #supports executables in long path names
 #does not support output into long path names
 
-"""
-.. index::
-   single: SOM; create
-   single: codebook; create
-"""
-
 def mapinit(din,cout,topol,neigh,xdim,ydim,init,rand='#',buffer='#'):
     """
+    .. index::
+       single: SOM; create
+       single: codebook; create
+   
     This is the mapinit docstring.
 
     .. note::
@@ -36,7 +34,7 @@ def mapinit(din,cout,topol,neigh,xdim,ydim,init,rand='#',buffer='#'):
       buffer (optional)
        The size of the read buffer.
 
-    **Usage**
+    :usage:
 
     >>>
 
