@@ -4,10 +4,6 @@ import sys, os
 
 def mapinit(din,cout,topol,neigh,xdim,ydim,init,rand='#',buffer='#'):
     """
-    .. index::
-       single: SOM; create
-       single: codebook; create
-   
     This is the mapinit docstring.
 
     .. note::

@@ -4,11 +4,10 @@ SOM Analyst 1.0
 Contents:
 
 .. toctree::
-    :maxdepth: 3
 
     source/introduction.rst
     source/usage.rst
-    source/arcgis/mapinit.rst
+    source/arcgis.rst
 
 Indices and tables
 ==================

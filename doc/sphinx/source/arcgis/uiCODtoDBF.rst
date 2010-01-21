@@ -1,6 +1,6 @@
-Create Initial SOM
+Codebook to Datbase File
 ==================================
 
-.. automodule:: uiMapinit
+.. automodule:: uiCODtoDBF
    :members:
    :undoc-members:
