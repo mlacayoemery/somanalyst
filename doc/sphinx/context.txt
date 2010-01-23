@@ -1,0 +1,6 @@
+
+[ALIAS]
+mapinit=source\arcgis\uiMapInit.html
+
+[MAP]
+#define mapinit 10000
