@@ -4,7 +4,7 @@ import sys, os
 
 def mapinit(din,cout,topol,neigh,xdim,ydim,init,rand='#',buffer='#'):
     """
-    This is the mapinit docstring.
+    Creates a SOM codebook file using the specified parameters.
 
     .. note::
 
