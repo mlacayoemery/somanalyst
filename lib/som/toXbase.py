@@ -1,7 +1,5 @@
-import sys
-#add absolute path for shapefile library (relative to file import)
-sys.path.append(sys.argv[0][:sys.argv[0].rfind("\\")+1]+"\\lib\\shp")
-import databasefile
+import sys, os
+from ..shp import databasefile
 
 def toXbaseFile(inName,inType,outName,detectTypes):
     """

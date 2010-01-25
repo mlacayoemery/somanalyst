@@ -1,6 +1,24 @@
 import sys
 import lib.som.normVar
 
+def normalize(inName,outName,fieldNames,normBy,zeroDivision,decimalPlaces):
+    """
+    Creates a DBF with values normalized by a column from within an existing DBF.
+
+    :arguments:
+      inName
+       The input DBF filename.
+      outName
+       The ouput DBF filename.
+      normBy
+       The column for normalizing values.
+      zeroDivision
+       The value to assign if their is a division by zero. 
+      decimalPlace
+       The number of decimal places to which numbers should be rounded.
+    """
+    lib.som.normVar.normalize(inName,outName,fieldNames,normBy,zeroDivision,decimalPlaces)
+    
 if __name__=="__main__":
     inName=sys.argv[1]
     normBy=sys.argv[2]
@@ -15,4 +33,4 @@ if __name__=="__main__":
     else:
         fieldNames=sys.argv[6].split(";")
     
-    lib.som.normVar.normalize(inName,outName,fieldNames,normBy,zeroDivision,decimalPlaces)
+    normalize(inName,outName,fieldNames,normBy,zeroDivision,decimalPlaces)

@@ -1,7 +1,5 @@
 import sys
-#add absolute path for shapefile library (relative to file import)
-sys.path.append(sys.argv[0][:sys.argv[0].rfind("\\")+1]+"\\lib\\shp")
-import databasefile
+from ..shp import databasefile
 
 def select(inName,selectionType,outName,columns,start,step,stop,detectTypes):
     d=databasefile.DatabaseFile([],[],[],inName)

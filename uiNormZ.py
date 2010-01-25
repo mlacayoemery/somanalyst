@@ -1,6 +1,26 @@
 import sys
 import lib.som.normZ
 
+def normalize(inName,outName,direction,zeroDivision,decimalPlaces,fieldNames):
+    """
+    Creates a DBF with Z-score normalized values from an existing DBF.
+
+    :arguments:
+      inName
+       The input DBF filename.
+      outName
+       The ouput DBF filename.
+      direction
+       The direction in which to determine minimum and maximum values in the input range.
+      zeroDivision
+       The value to assign if their is a division by zero. 
+      decimalPlace
+       The number of decimal places to which numbers should be rounded.
+      fieldNames
+       The fields on which to perform the normalization.       
+    """
+    lib.som.normZ.normalize(inName,outName,direction,zeroDivision,decimalPlaces,fieldNames)
+    
 if __name__ == "__main__":
     inName = sys.argv[1]
     direction = sys.argv[2]
@@ -17,4 +37,4 @@ if __name__ == "__main__":
         fieldNames=[]
     else:
         fieldNames = sys.argv[6].split(";")
-    lib.som.normZ.normalize(inName,outName,direction,zeroDivision,decimalPlaces,fieldNames)
+    normalize(inName,outName,direction,zeroDivision,decimalPlaces,fieldNames)

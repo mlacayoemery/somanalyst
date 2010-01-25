@@ -1,4 +1,4 @@
-Codebook to Datbase File
+Codebook to Database File
 ==================================
 
 .. automodule:: uiCODtoDBF

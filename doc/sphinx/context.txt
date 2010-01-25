@@ -1,7 +1,7 @@
 
 [ALIAS]
 toXbase=source\arcgis\uiToXbase.html
-DBFtoDAT=source\arcgis\uiDBTtoDAT.html
+DBFtoDAT=source\arcgis\uiDBFtoDAT.html
 merge=source\arcgis\uiDBFmerge.html
 select=source\arcgis\uiSelect.html
 normMinMax=source\arcgis\uiNormMinMax.html
