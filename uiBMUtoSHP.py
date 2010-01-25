@@ -1,6 +1,28 @@
 import sys
 import lib.som.ATRtoSHP
 
+def BMUtoSHP(bmufile,outfile,labels,quadrant,spacing,placement,distance):
+    """
+    Creates a shapefile from a BMU file.
+
+    :arguments:
+      bmufile
+       The input BMU filename.
+      outfile
+       The ouput shapefile name.
+      labels *optional*
+       A data file that contains the labels for the column values.
+      quadrant *optional*
+       The Cartesian quadrant to use.
+      spacing *optional*
+       The spacing between units in the SOM.
+      placement *optional*
+       The method for placement within a neuron.
+      distance *otional*
+       The maximum distance for the placement.
+    """
+    lib.som.ATRtoSHP.BMUtoSHP(bmufile,outfile,labels,quadrant,spacing,placement,distance)
+
 if __name__=="__main__":
     bmufile=sys.argv[1]
     outfile=sys.argv[3]
@@ -15,4 +37,4 @@ if __name__=="__main__":
     else:
         placement=2
     distance=float(sys.argv[8])
-    lib.som.ATRtoSHP.BMUtoSHP(bmufile,outfile,labels,quadrant,spacing,placement,distance)
+    BMUtoSHP(bmufile,outfile,labels,quadrant,spacing,placement,distance)

@@ -4,6 +4,37 @@ import sys, os
 #does not support output into long path names
 
 def vsom(cin,din,cout,rlen,alpha,radius,rand='#',fixed="#",weights="#",buffer='#',alpha_type="#",snapfile="#",snapinterval="#",path="\\bin\\SOM_PAK\\"):
+    """
+    Trains a SOM using the specified parameters.
+
+    :arguments:
+      cin
+       The input codebook file.
+      din
+       The training data.
+      cout
+       The output codebook file.
+      rlen
+       The length of training.
+      alpha
+       The initial rate of learning.
+      radius
+       The initial radius of neighborhoods.
+      rand *optional*
+       A seed for the random number generator.
+      fixed *optional*
+       Use fixed points.
+      weights *optional*
+       Use weights for variables.
+      buffer *optional*
+       The read buffer size in number of lines.
+      alpha_type
+       The type of alpha decrease either linear (default) or inverse time.
+      snapfile
+       The snapshot filename.
+      snapinterval
+       The interval between snapshots.
+    """
     #get local path for vsom
     local = sys.argv[0]
     vsom = "\""+"\\".join(local.split("\\")[:-1])+path+"vsom.exe"+"\""

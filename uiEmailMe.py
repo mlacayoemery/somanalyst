@@ -1,6 +1,27 @@
 import sys
 import lib.som.emailme
 
+def mail(email_user, to, subject, text, attach, email_pwd, smtp, port):
+    """
+    Sends an email.
+
+    :arguments:
+      email_user
+       The from field of the email.
+      to
+       The to field of the email.
+      subject
+       The subject of the email.
+      attach *optional*
+       An attachment for the email.
+      email_pwd
+       The password for the email account.
+      smtp
+       The smtp server.
+      port
+       The smtp port.
+    """
+    lib.som.emailme.mail(email_user, to, subject, text, attach, email_pwd, smtp, port)
 if __name__=="__main__":
    email_user=sys.argv[1]
    to=sys.argv[2]
@@ -16,4 +37,4 @@ if __name__=="__main__":
    smtp=sys.argv[7]
    port=int(sys.argv[8])
    
-   lib.som.emailme.mail(email_user, to, subject, text, attach, email_pwd, smtp, port)
+   mail(email_user, to, subject, text, attach, email_pwd, smtp, port)

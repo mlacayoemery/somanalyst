@@ -5,6 +5,6 @@ Contents:
 
 .. toctree::
 
-   uiCODtoDBF.rst
+   uiCODtoSHP.rst
    uiBMUtoSHP.rst
    uiGroup.rst

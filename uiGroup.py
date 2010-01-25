@@ -1,6 +1,26 @@
 import sys
 import lib.som.group
 
+def group(inName,groupBy,groupType,valueType,outName,sortBy):
+    """
+    Groups shapes in a shapefile using the specified parameters.
+
+    :arguments:
+      inName
+       The input shapefile name.
+      groupBy
+       The data column to group on.
+      groupType
+       The type of grouping to create.
+      valueType
+       The type of value to place in the final ouput.
+      outName
+       The output shapefile name.
+      sortBy (*optional*)
+       A column to sort the data by before grouping.
+    """
+    lib.som.group.group(inName,groupBy,groupType,valueType,outName,sortBy)
+
 if __name__=="__main__":
     inName=sys.argv[1]
     groupBy=sys.argv[2]
@@ -11,4 +31,4 @@ if __name__=="__main__":
         sortBy=None
     else:
         sortBy=sys.argv[6]
-    lib.som.group.group(inName,groupBy,groupType,valueType,outName,sortBy)
+    group(inName,groupBy,groupType,valueType,outName,sortBy)
