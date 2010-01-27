@@ -16,7 +16,7 @@ def toXbase(inName,inType,outName,detectTypes):
        An optional mode that detects and sets the data types for each column in the output file.
        
     """
-    #lib.som.toXbase.toXbaseFile(inName,inType,outName,detectTypes)    
+    lib.som.toXbase.toXbaseFile(inName,inType,outName,detectTypes)    
 
 if __name__=="__main__":
     inName = sys.argv[1]
