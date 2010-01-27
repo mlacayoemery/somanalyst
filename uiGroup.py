@@ -1,7 +1,7 @@
 import sys
 import lib.som.group
 
-def group(inName,groupBy,groupType,valueType,outName,sortBy):
+def group(inName,groupBy,groupType,valueType,outName,sortBy,decimalPlaces):
     """
     Groups shapes in a shapefile using the specified parameters.
 
@@ -19,7 +19,7 @@ def group(inName,groupBy,groupType,valueType,outName,sortBy):
       sortBy (*optional*)
        A column to sort the data by before grouping.
     """
-    lib.som.group.group(inName,groupBy,groupType,valueType,outName,sortBy)
+    lib.som.group.group(inName,groupBy,groupType,valueType,outName,sortBy,decimalPlaces)
 
 if __name__=="__main__":
     inName=sys.argv[1]
@@ -31,4 +31,5 @@ if __name__=="__main__":
         sortBy=None
     else:
         sortBy=sys.argv[6]
-    group(inName,groupBy,groupType,valueType,outName,sortBy)
+    decimalPlaces=int(sys.argv[7])
+    group(inName,groupBy,groupType,valueType,outName,sortBy,decimalPlaces)
