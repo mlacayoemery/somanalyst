@@ -10,7 +10,7 @@ gp.AddToolbox("C:/Program Files/ArcGIS/ArcToolbox/Toolboxes/Conversion Tools.tbx
 path = os.path.dirname(sys.argv[0])
 imagepath= path + "/"
 
-tools=["toXbase"]
+tools=["combine","select","toXbase","XbaseToDAT"]
 
 for t in tools:
 
