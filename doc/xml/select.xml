@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <metadata>
 	<Esri>
-		<CreaDate SYNC="true">20041203</CreaDate>
-		<CreaTime SYNC="true">17344200</CreaTime>
+		<CreaDate SYNC="true">20100206</CreaDate>
+		<CreaTime SYNC="true">00331200</CreaTime>
 		<SyncOnce SYNC="true">TRUE</SyncOnce>
 		<ModDate SYNC="true">20100206</ModDate>
-		<ModTime SYNC="true">002459</ModTime>
-		<MetaID>{C0C504FE-D6E1-4AC3-B846-4A5523165BBA}</MetaID></Esri>
+		<ModTime SYNC="true">212325</ModTime>
+		<MetaID>{717EFD62-416D-4E5A-8CB3-497B8E84E7CA}</MetaID></Esri>
 	<dataIdInfo>
 		<idCitation>
 			<resTitle sync="true">Select</resTitle>
@@ -112,4 +112,4 @@ except:
 <italics># If an error occurred print the message to the screen</italics>
     print gp.GetMessages()</code></scriptExample>
 		<arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath></tool>
-	<dataqual><lineage><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">C:\Program Files\ArcGIS\Help\gp\FeatureClassToGeodatabase_conversion.xml</srcused><date Sync="TRUE">20041203</date><time Sync="TRUE">17344200</time></procstep></lineage></dataqual></metadata>
+	<dataqual><lineage><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">C:\Program Files\ArcGIS\Help\gp\FeatureClassToGeodatabase_conversion.xml</srcused><date Sync="TRUE">20041203</date><time Sync="TRUE">17344200</time></procstep><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">E:\somanalyst\doc\xml\select.xml</srcused><procdate Sync="TRUE">20100206</procdate><proctime Sync="TRUE">00331200</proctime></procstep></lineage></dataqual></metadata>

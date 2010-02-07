@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <metadata>
 	<Esri>
-		<CreaDate SYNC="true">20100205</CreaDate>
-		<CreaTime SYNC="true">16574500</CreaTime>
+		<CreaDate SYNC="true">20100206</CreaDate>
+		<CreaTime SYNC="true">00330400</CreaTime>
 		<SyncOnce SYNC="true">TRUE</SyncOnce>
 		<ModDate SYNC="true">20100206</ModDate>
-		<ModTime SYNC="true">002432</ModTime>
-		<MetaID>{41361F87-8687-41A3-BB03-1FF7D82DF32B}</MetaID></Esri>
+		<ModTime SYNC="true">212251</ModTime>
+		<MetaID>{4F11A1B0-F113-47DE-8CBD-F843E0A8A16E}</MetaID></Esri>
 	<dataIdInfo>
 		<idCitation>
 			<resTitle sync="true">Combine</resTitle>
@@ -81,4 +81,4 @@
 		<commandExample></commandExample>
 		<scriptExample></scriptExample>
 		<arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath></tool>
-	<dataqual><lineage><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">C:\Program Files\ArcGIS\Help\gp\FeatureClassToGeodatabase_conversion.xml</srcused><date Sync="TRUE">20041203</date><time Sync="TRUE">17344200</time></procstep><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">E:\Users\Administrator\Desktop\Combine.xml</srcused><procdate Sync="TRUE">20100205</procdate><proctime Sync="TRUE">15535700</proctime></procstep><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">E:\Users\Administrator\Desktop\Combine2.xml</srcused><procdate Sync="TRUE">20100205</procdate><proctime Sync="TRUE">16574500</proctime></procstep></lineage></dataqual></metadata>
+	<dataqual><lineage><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">C:\Program Files\ArcGIS\Help\gp\FeatureClassToGeodatabase_conversion.xml</srcused><date Sync="TRUE">20041203</date><time Sync="TRUE">17344200</time></procstep><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">E:\Users\Administrator\Desktop\Combine.xml</srcused><procdate Sync="TRUE">20100205</procdate><proctime Sync="TRUE">15535700</proctime></procstep><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">E:\Users\Administrator\Desktop\Combine2.xml</srcused><procdate Sync="TRUE">20100205</procdate><proctime Sync="TRUE">16574500</proctime></procstep><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">E:\somanalyst\doc\xml\combine.xml</srcused><procdate Sync="TRUE">20100206</procdate><proctime Sync="TRUE">00330400</proctime></procstep></lineage></dataqual></metadata>
