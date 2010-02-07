@@ -1,3 +1,35 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
-<metadata xml:lang="en"><Esri><MetaID>{7590E056-F6FB-4E06-9824-6C5460DE40BE}</MetaID><CreaDate>20081006</CreaDate><CreaTime>12582100</CreaTime><SyncOnce>TRUE</SyncOnce><ModDate>20100206</ModDate><ModTime>212423</ModTime></Esri><tool name="zscore" displayname="Z-score Normalization" toolboxalias=""><arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath><parameters><param name="input_database_file" displayname="input database file" type="Required" direction="Input" expression="&lt;input_database_file&gt;"/><param name="normalize_by" displayname="normalize by" type="Required" direction="Input" expression="&lt;column | row | global&gt;"/><param name="output_database_file" displayname="output database file" type="Required" direction="Output" expression="&lt;output_database_file&gt;"/><param name="division_by_zero_value__std__dev___0_" displayname="division by zero value (std. dev = 0)" type="Optional" direction="Input" expression="{division_by_zero_value__std__dev___0_}"/><param name="decimal_places_to_round_to" displayname="decimal places to round to" type="Optional" direction="Input" expression="{decimal_places_to_round_to}"/><param name="columns" displayname="columns" type="Optional" direction="Input" expression="{columns;columns...}"/></parameters></tool><dataIdInfo><idCitation><resTitle>Z-score Normalization</resTitle></idCitation></dataIdInfo><distInfo><distributor><distorFormat><formatName>ArcToolbox Tool</formatName></distorFormat></distributor></distInfo></metadata>
+<metadata xml:lang="en">
+  <Esri>
+    <MetaID>{7590E056-F6FB-4E06-9824-6C5460DE40BE}</MetaID>
+    <CreaDate>20081006</CreaDate>
+    <CreaTime>12582100</CreaTime>
+    <SyncOnce>TRUE</SyncOnce>
+    <ModDate>20100206</ModDate>
+    <ModTime>212423</ModTime>
+  </Esri>
+  <tool name="zscore" displayname="Z-score Normalization" toolboxalias="">
+    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+    <parameters>
+      <param name="input_database_file" displayname="input database file" type="Required" direction="Input" expression="&lt;input_database_file&gt;"/>
+      <param name="normalize_by" displayname="normalize by" type="Required" direction="Input" expression="&lt;column | row | global&gt;"/>
+      <param name="output_database_file" displayname="output database file" type="Required" direction="Output" expression="&lt;output_database_file&gt;"/>
+      <param name="division_by_zero_value__std__dev___0_" displayname="division by zero value (std. dev = 0)" type="Optional" direction="Input" expression="{division_by_zero_value__std__dev___0_}"/>
+      <param name="decimal_places_to_round_to" displayname="decimal places to round to" type="Optional" direction="Input" expression="{decimal_places_to_round_to}"/>
+      <param name="columns" displayname="columns" type="Optional" direction="Input" expression="{columns;columns...}"/>
+    </parameters>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>Z-score Normalization</resTitle>
+    </idCitation>
+  </dataIdInfo>
+  <distInfo>
+    <distributor>
+      <distorFormat>
+        <formatName>ArcToolbox Tool</formatName>
+      </distorFormat>
+    </distributor>
+  </distInfo>
+</metadata>

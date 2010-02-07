@@ -1,99 +1,155 @@
 <?xml version="1.0"?>
 <metadata>
-	<Esri>
-		<CreaDate SYNC="true">20100206</CreaDate>
-		<CreaTime SYNC="true">00331200</CreaTime>
-		<SyncOnce SYNC="true">TRUE</SyncOnce>
-		<ModDate SYNC="true">20100206</ModDate>
-		<ModTime SYNC="true">212325</ModTime>
-		<MetaID>{717EFD62-416D-4E5A-8CB3-497B8E84E7CA}</MetaID></Esri>
-	<dataIdInfo>
-		<idCitation>
-			<resTitle sync="true">Select</resTitle>
-			<citRespParty>
-				<rpIndName/>
-				<rpOrgName>ESRI, Inc.</rpOrgName>
-				<rpPosName/>
-				<rpCntInfo>
-					<cntAddress>
-						<delPoint>380 New York Street</delPoint>
-						<city>Redlands</city>
-						<adminArea>California</adminArea>
-						<postCode>92373 - 8100</postCode>
-						<eMailAdd>info@esri.com</eMailAdd>
-						<country>United States</country>
-					</cntAddress>
-					<cntPhone>
-						<voiceNum>909-793-2853</voiceNum>
-						<faxNum>909-793-5953</faxNum>
-					</cntPhone>
-				</rpCntInfo>
-				<role>
-					<RoleCd>010</RoleCd>
-				</role>
-			</citRespParty>
-		</idCitation>
-		<idAbs>Converts one or more feature classes or feature layers to geodatabase feature classes.</idAbs>
-		<descKeys KeyTypCd="005">
-			<keyTyp>
-				<keyTyp>005</keyTyp>
-			</keyTyp>
-			<keyword>convert;conversion;feature class;shapefile;feature data</keyword>
-		</descKeys>
-	</dataIdInfo>
-	<distInfo>
-		<distributor>
-			<distorFormat>
-				<formatName sync="true">ArcToolbox Tool</formatName>
-			</distorFormat>
-			<distorTran>
-				<onLineSrc>
-					<linkage/>
-					<protocol/>
-					<onFunct>
-						<onFunctCd/>
-					</onFunct>
-				</onLineSrc>
-			</distorTran>
-		</distributor>
-	</distInfo>
-	<metainfo>
-		<metd Sync="TRUE"></metd>
-	</metainfo>
-	<mdDateSt Sync="TRUE"></mdDateSt>
-	<tool name="select" displayname="Select" toolboxalias="" softwarerestriction="none">
-		<activex_control type="rt" window="main" title="" alturl="yes" number="activeXLink_spatial_reference_and_geoprocessing_33066_1" module="Analysis_Tools.chm" filename="spatial_reference_and_geoprocessing.htm"/>
-		<summary></summary>
-		<toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/selectV.png"/>
-		<alink_name>FeatureClassToGeodatabase_conversion</alink_name>
-		<rt_list>
-			<rt>about_loading_data_into_existing_feature_classes_and_tables</rt>
-			<rt>copy_features_data_management_</rt>
-			<rt>export_to_cad_conversion_</rt>
-			<rt>feature_class_to_shapefile_multiple_</rt>
-			<rt>feature_data</rt>
-			<rt>import_from_cad_conversion_</rt>
-			<rt>loading_data_in_arccatalog</rt>
-			<rt>loading_data_in_arcmap</rt>
-		</rt_list>
-		<parameters>
-			<param name="input_database_file" displayname="input database file" type="Required" direction="Input" expression="&lt;input_database_file&gt;"/><param name="selection_type" displayname="selection type" type="Required" direction="Input" expression="&lt;columns | rows&gt;"><commandReference/><dialogReference><para>The way in which data will be selected.</para></dialogReference></param><param name="output_database_file" displayname="output database file" type="Required" direction="Output" expression="&lt;output_database_file&gt;"/><param name="columns" displayname="columns" type="Optional" direction="Input" expression="{columns;columns...}"><commandReference/><dialogReference><para>The columns to include in the data selection.</para></dialogReference></param><param name="start_index" displayname="start index" type="Optional" direction="Input" expression="{start_index}"><commandReference/><dialogReference><para>The index from which to begin the selection.</para></dialogReference></param><param name="index_step" displayname="index step" type="Optional" direction="Input" expression="{index_step}"><commandReference/><dialogReference><para>The increment from the start index for the next selection.</para></dialogReference></param><param name="stop_index" displayname="stop index" type="Optional" direction="Input" expression="{stop_index}"><commandReference/><dialogReference><para>The index at which to stop selection. Negative indicies are equivalent of indexing from the end.</para></dialogReference></param><param name="detect_data_types" displayname="detect data types" type="Optional" direction="Input" expression="{detect_data_types}"><commandReference/><dialogReference><para>An optional mode that automatically changes the data types in a column based on the values it contains. This mode is usueful if the data will be processed further using  mathmatical operations.</para></dialogReference></param></parameters>
-		<usage>
-			<bullet_item><para>The inputs can include shapefiles, coverage feature classes, VPF feature classes, or geodatabase feature classes. The inputs can also be feature layers (a layer in the ArcMap or ArcScene TOC or a feature layer created by the Make Feature Layer tool). </para></bullet_item>
-			<bullet_item><para>If the input is a layer with selected features, only those selected features will be written to the new output feature class.</para></bullet_item>
-			<bullet_item><para>The name of the output feature classes will be based on the name of the input feature class name. For example, if the input is c:\myworkspace\Gondor.shp, the output feature class will be named gondor. </para></bullet_item>
-			<bullet_item><para><link src="E:\somanalyst\feature_class_to_feature_class_conversion_.htm">Learn more about how to control the output feature class name with the Feature Class to Feature Class tool</link>
-				</para></bullet_item>
-			<bullet_item><para>If the name already exists in the output geodatabase, a number will be appended to the end to make it unique, for example, "_1". </para></bullet_item>
-			<bullet_item><para><special_link type="rt" number="activeXLink_spatial_reference_and_geoprocessing_33066_1">Learn more about spatial reference and geoprocessing</special_link>
-				</para></bullet_item>
-			<bullet_item><para>This tool does not support annotation. </para></bullet_item>
-		</usage>
-		<commandExample>
-			<code>Workspace c:\gisdata\shps
-FeatureClassToGeodatabase cities.shp;counties.shp;townships.shp C:\gisdata\Geodatabase.mdb</code></commandExample>
-		<scriptExample>
-			<code><italics># ConvertToGDBExample.py
+  <Esri>
+    <CreaDate SYNC="true">20100206</CreaDate>
+    <CreaTime SYNC="true">00331200</CreaTime>
+    <SyncOnce SYNC="true">TRUE</SyncOnce>
+    <ModDate SYNC="true">20100206</ModDate>
+    <ModTime SYNC="true">212325</ModTime>
+    <MetaID>{717EFD62-416D-4E5A-8CB3-497B8E84E7CA}</MetaID>
+  </Esri>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle sync="true">Select</resTitle>
+      <citRespParty>
+        <rpIndName/>
+        <rpOrgName>ESRI, Inc.</rpOrgName>
+        <rpPosName/>
+        <rpCntInfo>
+          <cntAddress>
+            <delPoint>380 New York Street</delPoint>
+            <city>Redlands</city>
+            <adminArea>California</adminArea>
+            <postCode>92373 - 8100</postCode>
+            <eMailAdd>info@esri.com</eMailAdd>
+            <country>United States</country>
+          </cntAddress>
+          <cntPhone>
+            <voiceNum>909-793-2853</voiceNum>
+            <faxNum>909-793-5953</faxNum>
+          </cntPhone>
+        </rpCntInfo>
+        <role>
+          <RoleCd>010</RoleCd>
+        </role>
+      </citRespParty>
+    </idCitation>
+    <idAbs>Converts one or more feature classes or feature layers to geodatabase feature classes.</idAbs>
+    <descKeys KeyTypCd="005">
+      <keyTyp>
+        <keyTyp>005</keyTyp>
+      </keyTyp>
+      <keyword>convert;conversion;feature class;shapefile;feature data</keyword>
+    </descKeys>
+  </dataIdInfo>
+  <distInfo>
+    <distributor>
+      <distorFormat>
+        <formatName sync="true">ArcToolbox Tool</formatName>
+      </distorFormat>
+      <distorTran>
+        <onLineSrc>
+          <linkage/>
+          <protocol/>
+          <onFunct>
+            <onFunctCd/>
+          </onFunct>
+        </onLineSrc>
+      </distorTran>
+    </distributor>
+  </distInfo>
+  <metainfo>
+    <metd Sync="TRUE"/>
+  </metainfo>
+  <mdDateSt Sync="TRUE"/>
+  <tool name="select" displayname="Select" toolboxalias="" softwarerestriction="none">
+    <activex_control type="rt" window="main" title="" alturl="yes" number="activeXLink_spatial_reference_and_geoprocessing_33066_1" module="Analysis_Tools.chm" filename="spatial_reference_and_geoprocessing.htm"/>
+    <summary/>
+    <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/selectV.png"/>
+    <alink_name>FeatureClassToGeodatabase_conversion</alink_name>
+    <rt_list>
+      <rt>about_loading_data_into_existing_feature_classes_and_tables</rt>
+      <rt>copy_features_data_management_</rt>
+      <rt>export_to_cad_conversion_</rt>
+      <rt>feature_class_to_shapefile_multiple_</rt>
+      <rt>feature_data</rt>
+      <rt>import_from_cad_conversion_</rt>
+      <rt>loading_data_in_arccatalog</rt>
+      <rt>loading_data_in_arcmap</rt>
+    </rt_list>
+    <parameters>
+      <param name="input_database_file" displayname="input database file" type="Required" direction="Input" expression="&lt;input_database_file&gt;"/>
+      <param name="selection_type" displayname="selection type" type="Required" direction="Input" expression="&lt;columns | rows&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The way in which data will be selected.</para>
+        </dialogReference>
+      </param>
+      <param name="output_database_file" displayname="output database file" type="Required" direction="Output" expression="&lt;output_database_file&gt;"/>
+      <param name="columns" displayname="columns" type="Optional" direction="Input" expression="{columns;columns...}">
+        <commandReference/>
+        <dialogReference>
+          <para>The columns to include in the data selection.</para>
+        </dialogReference>
+      </param>
+      <param name="start_index" displayname="start index" type="Optional" direction="Input" expression="{start_index}">
+        <commandReference/>
+        <dialogReference>
+          <para>The index from which to begin the selection.</para>
+        </dialogReference>
+      </param>
+      <param name="index_step" displayname="index step" type="Optional" direction="Input" expression="{index_step}">
+        <commandReference/>
+        <dialogReference>
+          <para>The increment from the start index for the next selection.</para>
+        </dialogReference>
+      </param>
+      <param name="stop_index" displayname="stop index" type="Optional" direction="Input" expression="{stop_index}">
+        <commandReference/>
+        <dialogReference>
+          <para>The index at which to stop selection. Negative indicies are equivalent of indexing from the end.</para>
+        </dialogReference>
+      </param>
+      <param name="detect_data_types" displayname="detect data types" type="Optional" direction="Input" expression="{detect_data_types}">
+        <commandReference/>
+        <dialogReference>
+          <para>An optional mode that automatically changes the data types in a column based on the values it contains. This mode is usueful if the data will be processed further using  mathmatical operations.</para>
+        </dialogReference>
+      </param>
+    </parameters>
+    <usage>
+      <bullet_item>
+        <para>The inputs can include shapefiles, coverage feature classes, VPF feature classes, or geodatabase feature classes. The inputs can also be feature layers (a layer in the ArcMap or ArcScene TOC or a feature layer created by the Make Feature Layer tool). </para>
+      </bullet_item>
+      <bullet_item>
+        <para>If the input is a layer with selected features, only those selected features will be written to the new output feature class.</para>
+      </bullet_item>
+      <bullet_item>
+        <para>The name of the output feature classes will be based on the name of the input feature class name. For example, if the input is c:\myworkspace\Gondor.shp, the output feature class will be named gondor. </para>
+      </bullet_item>
+      <bullet_item>
+        <para>
+          <link src="E:\somanalyst\feature_class_to_feature_class_conversion_.htm">Learn more about how to control the output feature class name with the Feature Class to Feature Class tool</link>
+        </para>
+      </bullet_item>
+      <bullet_item>
+        <para>If the name already exists in the output geodatabase, a number will be appended to the end to make it unique, for example, "_1". </para>
+      </bullet_item>
+      <bullet_item>
+        <para>
+          <special_link type="rt" number="activeXLink_spatial_reference_and_geoprocessing_33066_1">Learn more about spatial reference and geoprocessing</special_link>
+        </para>
+      </bullet_item>
+      <bullet_item>
+        <para>This tool does not support annotation. </para>
+      </bullet_item>
+    </usage>
+    <commandExample>
+      <code>Workspace c:\gisdata\shps
+FeatureClassToGeodatabase cities.shp;counties.shp;townships.shp C:\gisdata\Geodatabase.mdb</code>
+    </commandExample>
+    <scriptExample>
+      <code><italics># ConvertToGDBExample.py
 # Description: Simple example of converting a list of shp files to SDE
 # Requirements: Python and the Python win32all extension
 # Author: ESRI
@@ -110,6 +166,24 @@ try:
     gp.FeatureClassToGeodatabase("cities.shp;counties.shp;townships.shp;province.shp", "Database Connections/Connection to Doosie.sde")
 except:
 <italics># If an error occurred print the message to the screen</italics>
-    print gp.GetMessages()</code></scriptExample>
-		<arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath></tool>
-	<dataqual><lineage><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">C:\Program Files\ArcGIS\Help\gp\FeatureClassToGeodatabase_conversion.xml</srcused><date Sync="TRUE">20041203</date><time Sync="TRUE">17344200</time></procstep><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">E:\somanalyst\doc\xml\select.xml</srcused><procdate Sync="TRUE">20100206</procdate><proctime Sync="TRUE">00331200</proctime></procstep></lineage></dataqual></metadata>
+    print gp.GetMessages()</code>
+    </scriptExample>
+    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+  </tool>
+  <dataqual>
+    <lineage>
+      <procstep>
+        <procdesc Sync="TRUE">Metadata imported.</procdesc>
+        <srcused Sync="TRUE">C:\Program Files\ArcGIS\Help\gp\FeatureClassToGeodatabase_conversion.xml</srcused>
+        <date Sync="TRUE">20041203</date>
+        <time Sync="TRUE">17344200</time>
+      </procstep>
+      <procstep>
+        <procdesc Sync="TRUE">Metadata imported.</procdesc>
+        <srcused Sync="TRUE">E:\somanalyst\doc\xml\select.xml</srcused>
+        <procdate Sync="TRUE">20100206</procdate>
+        <proctime Sync="TRUE">00331200</proctime>
+      </procstep>
+    </lineage>
+  </dataqual>
+</metadata>

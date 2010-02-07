@@ -1,3 +1,78 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
-<metadata xml:lang="en"><Esri><MetaID>{B520D30E-D6A4-44B2-A3CD-B67BFA5A7DF5}</MetaID><CreaDate>20061210</CreaDate><CreaTime>23062400</CreaTime><SyncOnce>TRUE</SyncOnce><ModDate>20100206</ModDate><ModTime>212615</ModTime></Esri><tool name="bmushp" displayname="2. Projected Data to Shapefile" toolboxalias=""><arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath><parameters><param name="projected_data" displayname="projected data" type="Required" direction="Input" expression="&lt;projected_data&gt;"><commandReference/><dialogReference><para>The input projected data file.</para></dialogReference></param><param name="shape_type" displayname="shape type" type="Required" direction="Input" expression="&lt;point&gt;"><commandReference/><dialogReference><para>The type of shapes to use to represent the data.</para></dialogReference></param><param name="projected_data_shapefile" displayname="projected data shapefile" type="Required" direction="Output" expression="&lt;projected_data_shapefile&gt;"><commandReference/><dialogReference><para>The output shapefile to contain the projected data shapes.</para></dialogReference></param><param name="label_from_SOM_data" displayname="label from SOM data" type="Optional" direction="Input" expression="{label_from_SOM_data}"><commandReference/><dialogReference><para>The unprojected SOM data file that contains the values and labels to use for the projected data.</para></dialogReference></param><param name="Cartesian_quadrant" displayname="Cartesian quadrant" type="Required" direction="Input" expression="&lt;1&gt;"><commandReference/><dialogReference><para>The Cartesian quadrant in which to place the shapes.</para></dialogReference></param><param name="spacing_between_center_points" displayname="spacing between center points" type="Required" direction="Input" expression="&lt;spacing_between_center_points&gt;"><commandReference/><dialogReference><para>The spacing between the units in the SOM on which the projected data will be displayed.</para></dialogReference></param><param name="placement" displayname="placement" type="Required" direction="Input" expression="&lt;center | random around center&gt;"><commandReference/><dialogReference><para>The placement location on each SOM unit to use for the projected data shapes.</para></dialogReference></param><param name="maximum_placement_distance" displayname="maximum placement distance" type="Required" direction="Input" expression="&lt;maximum_placement_distance&gt;"><commandReference/><dialogReference><para>The maximum distance from the center of the SOM units to place the projected data shapes.</para></dialogReference></param></parameters></tool><dataIdInfo><idCitation><resTitle>2. Projected Data to Shapefile</resTitle></idCitation><idAbs>Creates a shapefile from data projected onto a SOM.</idAbs></dataIdInfo><distInfo><distributor><distorFormat><formatName>ArcToolbox Tool</formatName></distorFormat></distributor></distInfo></metadata>
+<metadata xml:lang="en">
+  <Esri>
+    <MetaID>{B520D30E-D6A4-44B2-A3CD-B67BFA5A7DF5}</MetaID>
+    <CreaDate>20061210</CreaDate>
+    <CreaTime>23062400</CreaTime>
+    <SyncOnce>TRUE</SyncOnce>
+    <ModDate>20100206</ModDate>
+    <ModTime>212615</ModTime>
+  </Esri>
+  <tool name="bmushp" displayname="2. Projected Data to Shapefile" toolboxalias="">
+    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+    <parameters>
+      <param name="projected_data" displayname="projected data" type="Required" direction="Input" expression="&lt;projected_data&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The input projected data file.</para>
+        </dialogReference>
+      </param>
+      <param name="shape_type" displayname="shape type" type="Required" direction="Input" expression="&lt;point&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The type of shapes to use to represent the data.</para>
+        </dialogReference>
+      </param>
+      <param name="projected_data_shapefile" displayname="projected data shapefile" type="Required" direction="Output" expression="&lt;projected_data_shapefile&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The output shapefile to contain the projected data shapes.</para>
+        </dialogReference>
+      </param>
+      <param name="label_from_SOM_data" displayname="label from SOM data" type="Optional" direction="Input" expression="{label_from_SOM_data}">
+        <commandReference/>
+        <dialogReference>
+          <para>The unprojected SOM data file that contains the values and labels to use for the projected data.</para>
+        </dialogReference>
+      </param>
+      <param name="Cartesian_quadrant" displayname="Cartesian quadrant" type="Required" direction="Input" expression="&lt;1&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The Cartesian quadrant in which to place the shapes.</para>
+        </dialogReference>
+      </param>
+      <param name="spacing_between_center_points" displayname="spacing between center points" type="Required" direction="Input" expression="&lt;spacing_between_center_points&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The spacing between the units in the SOM on which the projected data will be displayed.</para>
+        </dialogReference>
+      </param>
+      <param name="placement" displayname="placement" type="Required" direction="Input" expression="&lt;center | random around center&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The placement location on each SOM unit to use for the projected data shapes.</para>
+        </dialogReference>
+      </param>
+      <param name="maximum_placement_distance" displayname="maximum placement distance" type="Required" direction="Input" expression="&lt;maximum_placement_distance&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The maximum distance from the center of the SOM units to place the projected data shapes.</para>
+        </dialogReference>
+      </param>
+    </parameters>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>2. Projected Data to Shapefile</resTitle>
+    </idCitation>
+    <idAbs>Creates a shapefile from data projected onto a SOM.</idAbs>
+  </dataIdInfo>
+  <distInfo>
+    <distributor>
+      <distorFormat>
+        <formatName>ArcToolbox Tool</formatName>
+      </distorFormat>
+    </distributor>
+  </distInfo>
+</metadata>

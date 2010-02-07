@@ -1,3 +1,90 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
-<metadata xml:lang="en"><Esri><MetaID>{98667B3E-9396-4011-8500-9A6E9FE8AE4E}</MetaID><CreaDate>20070317</CreaDate><CreaTime>12052600</CreaTime><SyncOnce>TRUE</SyncOnce><ModDate>20100206</ModDate><ModTime>212447</ModTime></Esri><tool name="mapinit" displayname="1. Create Initial SOM" toolboxalias=""><arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath><parameters><param name="data_for_SOM" displayname="data for SOM" type="Required" direction="Input" expression="&lt;data_for_SOM&gt;"><commandReference/><dialogReference><para>The input data for the SOM. Need to determine the number of dimensions, and if using linear (lin) initialization the appropriate seed values.</para></dialogReference></param><param name="topology_type_of_map" displayname="topology type of map" type="Required" direction="Input" expression="&lt;hexa | rect&gt;"><commandReference/><dialogReference><para>The topology (geometry) of the self-organizing map. Hexagonal (hexa) has been preselected because the center points are all equidistant. Rectangular (rect) has a horizontal and vertical bias because diagonals are farther apart.</para></dialogReference></param><param name="neighborhood_type" displayname="neighborhood type" type="Required" direction="Input" expression="&lt;gaussian | bubble&gt;"><commandReference/><dialogReference><para>The type of neighborhood or relationship between units in the SOM. Gaussian is selected by default, because it is most typical.</para></dialogReference></param><param name="x_dimension" displayname="x dimension" type="Required" direction="Input" expression="&lt;x_dimension&gt;"><commandReference/><dialogReference><para>The number of units of the SOM along the X axis.</para></dialogReference></param><param name="y_dimension" displayname="y dimension" type="Required" direction="Input" expression="&lt;y_dimension&gt;"><commandReference/><dialogReference><para>The number of units in the SOM along the Y axis.</para></dialogReference></param><param name="initial_SOM" displayname="initial SOM" type="Required" direction="Output" expression="&lt;initial_SOM&gt;"><commandReference/><dialogReference><para>The ouput file for the intial SOM.</para></dialogReference></param><param name="initilization_type" displayname="initilization type" type="Required" direction="Input" expression="&lt;rand | lin&gt;"><commandReference/><dialogReference><para>The initialization type to use for the some. Random (rand) has been selected, because it is more consistent with the method of self-organization, however linear (lin) will produce results more quickly.</para></dialogReference></param><param name="random_generator_seed" displayname="random generator seed" type="Optional" direction="Input" expression="{random_generator_seed}"><commandReference/><dialogReference><para>The seed to use for the random number generator, by default the current time is used.</para></dialogReference></param><param name="read_buffer" displayname="read buffer" type="Optional" direction="Input" expression="{read_buffer}"><commandReference/><dialogReference><para>The number of data lines to read at a time.</para></dialogReference></param></parameters><commandExample></commandExample></tool><dataIdInfo><idCitation><resTitle>1. Create Initial SOM</resTitle></idCitation><idAbs>Creates an initial SOM using SOM_PAK.</idAbs><resConst><Consts><useLimit>Non-commercial use.</useLimit></Consts></resConst></dataIdInfo><distInfo><distributor><distorFormat><formatName>ArcToolbox Tool</formatName></distorFormat></distributor></distInfo></metadata>
+<metadata xml:lang="en">
+  <Esri>
+    <MetaID>{98667B3E-9396-4011-8500-9A6E9FE8AE4E}</MetaID>
+    <CreaDate>20070317</CreaDate>
+    <CreaTime>12052600</CreaTime>
+    <SyncOnce>TRUE</SyncOnce>
+    <ModDate>20100206</ModDate>
+    <ModTime>212447</ModTime>
+  </Esri>
+  <tool name="mapinit" displayname="1. Create Initial SOM" toolboxalias="">
+    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+    <parameters>
+      <param name="data_for_SOM" displayname="data for SOM" type="Required" direction="Input" expression="&lt;data_for_SOM&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The input data for the SOM. Need to determine the number of dimensions, and if using linear (lin) initialization the appropriate seed values.</para>
+        </dialogReference>
+      </param>
+      <param name="topology_type_of_map" displayname="topology type of map" type="Required" direction="Input" expression="&lt;hexa | rect&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The topology (geometry) of the self-organizing map. Hexagonal (hexa) has been preselected because the center points are all equidistant. Rectangular (rect) has a horizontal and vertical bias because diagonals are farther apart.</para>
+        </dialogReference>
+      </param>
+      <param name="neighborhood_type" displayname="neighborhood type" type="Required" direction="Input" expression="&lt;gaussian | bubble&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The type of neighborhood or relationship between units in the SOM. Gaussian is selected by default, because it is most typical.</para>
+        </dialogReference>
+      </param>
+      <param name="x_dimension" displayname="x dimension" type="Required" direction="Input" expression="&lt;x_dimension&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The number of units of the SOM along the X axis.</para>
+        </dialogReference>
+      </param>
+      <param name="y_dimension" displayname="y dimension" type="Required" direction="Input" expression="&lt;y_dimension&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The number of units in the SOM along the Y axis.</para>
+        </dialogReference>
+      </param>
+      <param name="initial_SOM" displayname="initial SOM" type="Required" direction="Output" expression="&lt;initial_SOM&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The ouput file for the intial SOM.</para>
+        </dialogReference>
+      </param>
+      <param name="initilization_type" displayname="initilization type" type="Required" direction="Input" expression="&lt;rand | lin&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The initialization type to use for the some. Random (rand) has been selected, because it is more consistent with the method of self-organization, however linear (lin) will produce results more quickly.</para>
+        </dialogReference>
+      </param>
+      <param name="random_generator_seed" displayname="random generator seed" type="Optional" direction="Input" expression="{random_generator_seed}">
+        <commandReference/>
+        <dialogReference>
+          <para>The seed to use for the random number generator, by default the current time is used.</para>
+        </dialogReference>
+      </param>
+      <param name="read_buffer" displayname="read buffer" type="Optional" direction="Input" expression="{read_buffer}">
+        <commandReference/>
+        <dialogReference>
+          <para>The number of data lines to read at a time.</para>
+        </dialogReference>
+      </param>
+    </parameters>
+    <commandExample/>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>1. Create Initial SOM</resTitle>
+    </idCitation>
+    <idAbs>Creates an initial SOM using SOM_PAK.</idAbs>
+    <resConst>
+      <Consts>
+        <useLimit>Non-commercial use.</useLimit>
+      </Consts>
+    </resConst>
+  </dataIdInfo>
+  <distInfo>
+    <distributor>
+      <distorFormat>
+        <formatName>ArcToolbox Tool</formatName>
+      </distorFormat>
+    </distributor>
+  </distInfo>
+</metadata>

@@ -1,3 +1,68 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
-<metadata xml:lang="en"><Esri><MetaID>{E1EF658C-D0A2-459D-9FD3-92AF57D8C4ED}</MetaID><CreaDate>20081103</CreaDate><CreaTime>14512100</CreaTime><SyncOnce>TRUE</SyncOnce><ModDate>20100206</ModDate><ModTime>212407</ModTime></Esri><tool name="divide" displayname="Normalize by Variable" toolboxalias=""><arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath><parameters><param name="input_database_file" displayname="input database file" type="Required" direction="Input" expression="&lt;input_database_file&gt;"><commandReference/><dialogReference><para>The database file to be normalized.</para></dialogReference></param><param name="normalize_by_column" displayname="normalize by column" type="Required" direction="Input" expression="&lt;normalize_by_column&gt;"><commandReference/><dialogReference><para>The columns that contain the values by which to normalize other data.</para></dialogReference></param><param name="output_database_file" displayname="output database file" type="Required" direction="Output" expression="&lt;output_database_file&gt;"><commandReference/><dialogReference><para>The ouput database file that will contain the normalized values.</para></dialogReference></param><param name="division_by_zero_value" displayname="division by zero value" type="Required" direction="Input" expression="&lt;division_by_zero_value&gt;"><commandReference/><dialogReference><para>The value to assign when the resulting normalization requires a division by zero, as is the case when the column contains zeros.</para></dialogReference></param><param name="decimal_places_to_round_to" displayname="decimal places to round to" type="Required" direction="Input" expression="&lt;decimal_places_to_round_to&gt;"><commandReference/><dialogReference><para>The number of decimal places to round the normaized values to.</para></dialogReference></param><param name="columns_to_normalize" displayname="columns to normalize" type="Optional" direction="Input" expression="{columns_to_normalize;columns_to_normalize...}"><commandReference/><dialogReference><para>The columns to normalize. If no columns are selected normalization will be performed on all columns that are numeric.</para></dialogReference></param></parameters><commandExample></commandExample><scriptExample></scriptExample></tool><dataIdInfo><idCitation><resTitle>Normalize by Variable</resTitle></idCitation><idAbs>Normalizes data by the values contained in a column.</idAbs></dataIdInfo><distInfo><distributor><distorFormat><formatName>ArcToolbox Tool</formatName></distorFormat></distributor></distInfo></metadata>
+<metadata xml:lang="en">
+  <Esri>
+    <MetaID>{E1EF658C-D0A2-459D-9FD3-92AF57D8C4ED}</MetaID>
+    <CreaDate>20081103</CreaDate>
+    <CreaTime>14512100</CreaTime>
+    <SyncOnce>TRUE</SyncOnce>
+    <ModDate>20100206</ModDate>
+    <ModTime>212407</ModTime>
+  </Esri>
+  <tool name="divide" displayname="Normalize by Variable" toolboxalias="">
+    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+    <parameters>
+      <param name="input_database_file" displayname="input database file" type="Required" direction="Input" expression="&lt;input_database_file&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The database file to be normalized.</para>
+        </dialogReference>
+      </param>
+      <param name="normalize_by_column" displayname="normalize by column" type="Required" direction="Input" expression="&lt;normalize_by_column&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The columns that contain the values by which to normalize other data.</para>
+        </dialogReference>
+      </param>
+      <param name="output_database_file" displayname="output database file" type="Required" direction="Output" expression="&lt;output_database_file&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The ouput database file that will contain the normalized values.</para>
+        </dialogReference>
+      </param>
+      <param name="division_by_zero_value" displayname="division by zero value" type="Required" direction="Input" expression="&lt;division_by_zero_value&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The value to assign when the resulting normalization requires a division by zero, as is the case when the column contains zeros.</para>
+        </dialogReference>
+      </param>
+      <param name="decimal_places_to_round_to" displayname="decimal places to round to" type="Required" direction="Input" expression="&lt;decimal_places_to_round_to&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The number of decimal places to round the normaized values to.</para>
+        </dialogReference>
+      </param>
+      <param name="columns_to_normalize" displayname="columns to normalize" type="Optional" direction="Input" expression="{columns_to_normalize;columns_to_normalize...}">
+        <commandReference/>
+        <dialogReference>
+          <para>The columns to normalize. If no columns are selected normalization will be performed on all columns that are numeric.</para>
+        </dialogReference>
+      </param>
+    </parameters>
+    <commandExample/>
+    <scriptExample/>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>Normalize by Variable</resTitle>
+    </idCitation>
+    <idAbs>Normalizes data by the values contained in a column.</idAbs>
+  </dataIdInfo>
+  <distInfo>
+    <distributor>
+      <distorFormat>
+        <formatName>ArcToolbox Tool</formatName>
+      </distorFormat>
+    </distributor>
+  </distInfo>
+</metadata>

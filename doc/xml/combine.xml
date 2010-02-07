@@ -1,84 +1,146 @@
 <?xml version="1.0"?>
 <metadata>
-	<Esri>
-		<CreaDate SYNC="true">20100206</CreaDate>
-		<CreaTime SYNC="true">00330400</CreaTime>
-		<SyncOnce SYNC="true">TRUE</SyncOnce>
-		<ModDate SYNC="true">20100206</ModDate>
-		<ModTime SYNC="true">212251</ModTime>
-		<MetaID>{4F11A1B0-F113-47DE-8CBD-F843E0A8A16E}</MetaID></Esri>
-	<dataIdInfo>
-		<idCitation>
-			<resTitle sync="true">Combine</resTitle>
-			<citRespParty>
-				<rpIndName></rpIndName>
-				<rpOrgName></rpOrgName>
-				<rpPosName></rpPosName>
-				<rpCntInfo>
-					<cntAddress>
-						<delPoint></delPoint>
-						<city></city>
-						<adminArea></adminArea>
-						<postCode></postCode>
-						<eMailAdd></eMailAdd>
-						<country></country>
-					</cntAddress>
-					<cntPhone>
-						<voiceNum></voiceNum>
-						<faxNum></faxNum>
-					</cntPhone>
-				</rpCntInfo>
-				<role>
-					<RoleCd>010</RoleCd>
-				</role>
-			</citRespParty>
-		</idCitation>
-		<idAbs>Converts one or more feature classes or feature layers to geodatabase feature classes.</idAbs>
-		<descKeys KeyTypCd="005">
-			<keyTyp><keyTyp>005</keyTyp></keyTyp></descKeys>
-		<resConst><Consts><useLimit></useLimit></Consts></resConst></dataIdInfo>
-	<distInfo>
-		<distributor>
-			<distorFormat>
-				<formatName sync="true">ArcToolbox Tool</formatName>
-			</distorFormat>
-			<distorTran>
-				<onLineSrc>
-					<linkage/>
-					<protocol/>
-					<onFunct>
-						<onFunctCd/>
-					</onFunct>
-				</onLineSrc>
-			</distorTran>
-		</distributor>
-	</distInfo>
-	<metainfo>
-		<metd Sync="TRUE">20070413</metd>
-	</metainfo>
-	<mdDateSt Sync="TRUE">20070413</mdDateSt>
-	<tool name="combine" displayname="Combine" toolboxalias="" softwarerestriction="none">
-		<activex_control type="rt" window="main" title="" alturl="yes" number="activeXLink_spatial_reference_and_geoprocessing_33066_1" module="Analysis_Tools.chm" filename="spatial_reference_and_geoprocessing.htm"/>
-		<summary>
+  <Esri>
+    <CreaDate SYNC="true">20100206</CreaDate>
+    <CreaTime SYNC="true">00330400</CreaTime>
+    <SyncOnce SYNC="true">TRUE</SyncOnce>
+    <ModDate SYNC="true">20100206</ModDate>
+    <ModTime SYNC="true">212251</ModTime>
+    <MetaID>{4F11A1B0-F113-47DE-8CBD-F843E0A8A16E}</MetaID>
+  </Esri>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle sync="true">Combine</resTitle>
+      <citRespParty>
+        <rpIndName/>
+        <rpOrgName/>
+        <rpPosName/>
+        <rpCntInfo>
+          <cntAddress>
+            <delPoint/>
+            <city/>
+            <adminArea/>
+            <postCode/>
+            <eMailAdd/>
+            <country/>
+          </cntAddress>
+          <cntPhone>
+            <voiceNum/>
+            <faxNum/>
+          </cntPhone>
+        </rpCntInfo>
+        <role>
+          <RoleCd>010</RoleCd>
+        </role>
+      </citRespParty>
+    </idCitation>
+    <idAbs>Converts one or more feature classes or feature layers to geodatabase feature classes.</idAbs>
+    <descKeys KeyTypCd="005">
+      <keyTyp>
+        <keyTyp>005</keyTyp>
+      </keyTyp>
+    </descKeys>
+    <resConst>
+      <Consts>
+        <useLimit/>
+      </Consts>
+    </resConst>
+  </dataIdInfo>
+  <distInfo>
+    <distributor>
+      <distorFormat>
+        <formatName sync="true">ArcToolbox Tool</formatName>
+      </distorFormat>
+      <distorTran>
+        <onLineSrc>
+          <linkage/>
+          <protocol/>
+          <onFunct>
+            <onFunctCd/>
+          </onFunct>
+        </onLineSrc>
+      </distorTran>
+    </distributor>
+  </distInfo>
+  <metainfo>
+    <metd Sync="TRUE">20070413</metd>
+  </metainfo>
+  <mdDateSt Sync="TRUE">20070413</mdDateSt>
+  <tool name="combine" displayname="Combine" toolboxalias="" softwarerestriction="none">
+    <activex_control type="rt" window="main" title="" alturl="yes" number="activeXLink_spatial_reference_and_geoprocessing_33066_1" module="Analysis_Tools.chm" filename="spatial_reference_and_geoprocessing.htm"/>
+    <summary>
 		</summary>
-		<toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/mergeV.png"/>
-		<alink_name>FeatureClassToGeodatabase_conversion</alink_name>
-		<rt_list>
-			<rt>about_loading_data_into_existing_feature_classes_and_tables</rt>
-			<rt>copy_features_data_management_</rt>
-			<rt>export_to_cad_conversion_</rt>
-			<rt>feature_class_to_shapefile_multiple_</rt>
-			<rt>feature_data</rt>
-			<rt>import_from_cad_conversion_</rt>
-			<rt>loading_data_in_arccatalog</rt>
-			<rt>loading_data_in_arcmap</rt>
-		</rt_list>
-		<toolIllust vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/mergeV.png" alt="" src=""></toolIllust>
-		<parameters>
-			<param name="input_database_files" displayname="input database files" type="Required" direction="Input" expression="&lt;input_database_files;input_database_files...&gt;"><commandReference/><dialogReference><para>The input database files.</para></dialogReference></param><param name="combine_type" displayname="combine type" type="Required" direction="Input" expression="&lt;vertical (append rows) | horizontal (append columns)&gt;"><commandReference/><dialogReference><para>The way in which to combine the database files.</para></dialogReference></param><param name="output__database_file" displayname="output  database file" type="Required" direction="Output" expression="&lt;output__database_file&gt;"><commandReference/><dialogReference><para>The output database file that contains all the input data.</para></dialogReference></param><param name="detect_data_types" displayname="detect data types" type="Optional" direction="Input" expression="{detect_data_types}"><commandReference/><dialogReference><para>An optional mode that automatically changes the data types in a column based on the values it contains. This mode is usueful if the data will be processed further using  mathmatical operations.</para></dialogReference></param></parameters>
-		<usage>
+    <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/mergeV.png"/>
+    <alink_name>FeatureClassToGeodatabase_conversion</alink_name>
+    <rt_list>
+      <rt>about_loading_data_into_existing_feature_classes_and_tables</rt>
+      <rt>copy_features_data_management_</rt>
+      <rt>export_to_cad_conversion_</rt>
+      <rt>feature_class_to_shapefile_multiple_</rt>
+      <rt>feature_data</rt>
+      <rt>import_from_cad_conversion_</rt>
+      <rt>loading_data_in_arccatalog</rt>
+      <rt>loading_data_in_arcmap</rt>
+    </rt_list>
+    <toolIllust vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/mergeV.png" alt="" src=""/>
+    <parameters>
+      <param name="input_database_files" displayname="input database files" type="Required" direction="Input" expression="&lt;input_database_files;input_database_files...&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The input database files.</para>
+        </dialogReference>
+      </param>
+      <param name="combine_type" displayname="combine type" type="Required" direction="Input" expression="&lt;vertical (append rows) | horizontal (append columns)&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The way in which to combine the database files.</para>
+        </dialogReference>
+      </param>
+      <param name="output__database_file" displayname="output  database file" type="Required" direction="Output" expression="&lt;output__database_file&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The output database file that contains all the input data.</para>
+        </dialogReference>
+      </param>
+      <param name="detect_data_types" displayname="detect data types" type="Optional" direction="Input" expression="{detect_data_types}">
+        <commandReference/>
+        <dialogReference>
+          <para>An optional mode that automatically changes the data types in a column based on the values it contains. This mode is usueful if the data will be processed further using  mathmatical operations.</para>
+        </dialogReference>
+      </param>
+    </parameters>
+    <usage>
 		</usage>
-		<commandExample></commandExample>
-		<scriptExample></scriptExample>
-		<arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath></tool>
-	<dataqual><lineage><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">C:\Program Files\ArcGIS\Help\gp\FeatureClassToGeodatabase_conversion.xml</srcused><date Sync="TRUE">20041203</date><time Sync="TRUE">17344200</time></procstep><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">E:\Users\Administrator\Desktop\Combine.xml</srcused><procdate Sync="TRUE">20100205</procdate><proctime Sync="TRUE">15535700</proctime></procstep><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">E:\Users\Administrator\Desktop\Combine2.xml</srcused><procdate Sync="TRUE">20100205</procdate><proctime Sync="TRUE">16574500</proctime></procstep><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">E:\somanalyst\doc\xml\combine.xml</srcused><procdate Sync="TRUE">20100206</procdate><proctime Sync="TRUE">00330400</proctime></procstep></lineage></dataqual></metadata>
+    <commandExample/>
+    <scriptExample/>
+    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+  </tool>
+  <dataqual>
+    <lineage>
+      <procstep>
+        <procdesc Sync="TRUE">Metadata imported.</procdesc>
+        <srcused Sync="TRUE">C:\Program Files\ArcGIS\Help\gp\FeatureClassToGeodatabase_conversion.xml</srcused>
+        <date Sync="TRUE">20041203</date>
+        <time Sync="TRUE">17344200</time>
+      </procstep>
+      <procstep>
+        <procdesc Sync="TRUE">Metadata imported.</procdesc>
+        <srcused Sync="TRUE">E:\Users\Administrator\Desktop\Combine.xml</srcused>
+        <procdate Sync="TRUE">20100205</procdate>
+        <proctime Sync="TRUE">15535700</proctime>
+      </procstep>
+      <procstep>
+        <procdesc Sync="TRUE">Metadata imported.</procdesc>
+        <srcused Sync="TRUE">E:\Users\Administrator\Desktop\Combine2.xml</srcused>
+        <procdate Sync="TRUE">20100205</procdate>
+        <proctime Sync="TRUE">16574500</proctime>
+      </procstep>
+      <procstep>
+        <procdesc Sync="TRUE">Metadata imported.</procdesc>
+        <srcused Sync="TRUE">E:\somanalyst\doc\xml\combine.xml</srcused>
+        <procdate Sync="TRUE">20100206</procdate>
+        <proctime Sync="TRUE">00330400</proctime>
+      </procstep>
+    </lineage>
+  </dataqual>
+</metadata>

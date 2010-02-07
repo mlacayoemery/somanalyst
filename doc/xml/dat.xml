@@ -1,3 +1,61 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
-<metadata xml:lang="en"><Esri><CreaDate>20100206</CreaDate><CreaTime>00325100</CreaTime><SyncOnce>TRUE</SyncOnce><ModDate>20100206</ModDate><ModTime>212234</ModTime><MetaID>{058EB33D-4151-4E5E-9C41-DA5A3653D571}</MetaID></Esri><tool name="dat" displayname="2. Database to SOM_PAK Data" toolboxalias=""><toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/datV.png"/><arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath><parameters><param name="input_database_file" displayname="input database file" type="Required" direction="Input" expression="&lt;input_database_file&gt;"><commandReference/><dialogReference><para>The input database data file.</para><illust src="E:\somanalyst\doc\sphinx\_images\toolbox\dbf.png" alt=""/></dialogReference></param><param name="output_SOM_data" displayname="output SOM data" type="Required" direction="Output" expression="&lt;output_SOM_data&gt;"><commandReference/><dialogReference><para>The output SOM data in the SOM_PAK format.</para><illust src="E:\somanalyst\doc\sphinx\_images\toolbox\dat.png" alt=""/></dialogReference></param><param name="label_columns" displayname="label columns" type="Optional" direction="Input" expression="{label_columns;label_columns...}"><commandReference/><dialogReference><para>An optional mode that treats selected columns as labels.</para></dialogReference></param></parameters></tool><dataIdInfo><idCitation><resTitle>2. Database to SOM_PAK Data</resTitle></idCitation><idAbs>Converts database data files into SOM data file in the SOM_PAK format.</idAbs></dataIdInfo><distInfo><distributor><distorFormat><formatName>ArcToolbox Tool</formatName></distorFormat></distributor></distInfo><dataqual><lineage><procstep><procdesc Sync="TRUE">Metadata imported.</procdesc><srcused Sync="TRUE">E:\somanalyst\doc\xml\XbaseToDAT.xml</srcused><procdate Sync="TRUE">20100206</procdate><proctime Sync="TRUE">00325100</proctime></procstep></lineage></dataqual></metadata>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20100206</CreaDate>
+    <CreaTime>00325100</CreaTime>
+    <SyncOnce>TRUE</SyncOnce>
+    <ModDate>20100206</ModDate>
+    <ModTime>212234</ModTime>
+    <MetaID>{058EB33D-4151-4E5E-9C41-DA5A3653D571}</MetaID>
+  </Esri>
+  <tool name="dat" displayname="2. Database to SOM_PAK Data" toolboxalias="">
+    <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/datV.png"/>
+    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+    <parameters>
+      <param name="input_database_file" displayname="input database file" type="Required" direction="Input" expression="&lt;input_database_file&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The input database data file.</para>
+          <illust src="E:\somanalyst\doc\sphinx\_images\toolbox\dbf.png" alt=""/>
+        </dialogReference>
+      </param>
+      <param name="output_SOM_data" displayname="output SOM data" type="Required" direction="Output" expression="&lt;output_SOM_data&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The output SOM data in the SOM_PAK format.</para>
+          <illust src="E:\somanalyst\doc\sphinx\_images\toolbox\dat.png" alt=""/>
+        </dialogReference>
+      </param>
+      <param name="label_columns" displayname="label columns" type="Optional" direction="Input" expression="{label_columns;label_columns...}">
+        <commandReference/>
+        <dialogReference>
+          <para>An optional mode that treats selected columns as labels.</para>
+        </dialogReference>
+      </param>
+    </parameters>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>2. Database to SOM_PAK Data</resTitle>
+    </idCitation>
+    <idAbs>Converts database data files into SOM data file in the SOM_PAK format.</idAbs>
+  </dataIdInfo>
+  <distInfo>
+    <distributor>
+      <distorFormat>
+        <formatName>ArcToolbox Tool</formatName>
+      </distorFormat>
+    </distributor>
+  </distInfo>
+  <dataqual>
+    <lineage>
+      <procstep>
+        <procdesc Sync="TRUE">Metadata imported.</procdesc>
+        <srcused Sync="TRUE">E:\somanalyst\doc\xml\XbaseToDAT.xml</srcused>
+        <procdate Sync="TRUE">20100206</procdate>
+        <proctime Sync="TRUE">00325100</proctime>
+      </procstep>
+    </lineage>
+  </dataqual>
+</metadata>

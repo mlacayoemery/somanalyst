@@ -1,3 +1,67 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
-<metadata xml:lang="en"><Esri><MetaID>{B520D30E-D6A4-44B2-A3CD-B67BFA5A7DF5}</MetaID><CreaDate>20061210</CreaDate><CreaTime>23062400</CreaTime><SyncOnce>TRUE</SyncOnce><ModDate>20100206</ModDate><ModTime>212628</ModTime></Esri><tool name="group" displayname="3. Group Shapes" toolboxalias=""><arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath><parameters><param name="input_shapefile" displayname="input shapefile" type="Required" direction="Input" expression="&lt;input_shapefile&gt;"><commandReference/><dialogReference><para>The input shapefile that contains the shapes to group.</para></dialogReference></param><param name="group_by_column" displayname="group by column" type="Required" direction="Input" expression="&lt;group_by_column&gt;"><commandReference/><dialogReference><para>The column in the data table contains the value on which to combine shapes.</para></dialogReference></param><param name="group_type" displayname="group type" type="Required" direction="Input" expression="&lt;polyline&gt;"><commandReference/><dialogReference><para>The new shape type to create.</para></dialogReference></param><param name="value_type" displayname="value type" type="Required" direction="Input" expression="&lt;minimum | maximum&gt;"><commandReference/><dialogReference><para>The method for selecting the value to use for each variable in the new data table.</para></dialogReference></param><param name="ouput_shapefile" displayname="ouput shapefile" type="Required" direction="Output" expression="&lt;ouput_shapefile&gt;"><commandReference/><dialogReference><para>The ouput shapefile that will contain grouped shapes.</para></dialogReference></param><param name="sort_by_column" displayname="sort by column" type="Optional" direction="Input" expression="{sort_by_column}"><commandReference/><dialogReference><para>The column from the data table that contains the values on which to sort the shapes.</para></dialogReference></param><param name="decimal_places_for_averages" displayname="decimal places for averages" type="Required" direction="Input" expression="&lt;decimal_places_for_averages&gt;"/></parameters></tool><dataIdInfo><idCitation><resTitle>3. Group Shapes</resTitle></idCitation><idAbs>Groups individual shapes into new collected or aggregated shapes.</idAbs></dataIdInfo><distInfo><distributor><distorFormat><formatName>ArcToolbox Tool</formatName></distorFormat></distributor></distInfo></metadata>
+<metadata xml:lang="en">
+  <Esri>
+    <MetaID>{B520D30E-D6A4-44B2-A3CD-B67BFA5A7DF5}</MetaID>
+    <CreaDate>20061210</CreaDate>
+    <CreaTime>23062400</CreaTime>
+    <SyncOnce>TRUE</SyncOnce>
+    <ModDate>20100206</ModDate>
+    <ModTime>212628</ModTime>
+  </Esri>
+  <tool name="group" displayname="3. Group Shapes" toolboxalias="">
+    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+    <parameters>
+      <param name="input_shapefile" displayname="input shapefile" type="Required" direction="Input" expression="&lt;input_shapefile&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The input shapefile that contains the shapes to group.</para>
+        </dialogReference>
+      </param>
+      <param name="group_by_column" displayname="group by column" type="Required" direction="Input" expression="&lt;group_by_column&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The column in the data table contains the value on which to combine shapes.</para>
+        </dialogReference>
+      </param>
+      <param name="group_type" displayname="group type" type="Required" direction="Input" expression="&lt;polyline&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The new shape type to create.</para>
+        </dialogReference>
+      </param>
+      <param name="value_type" displayname="value type" type="Required" direction="Input" expression="&lt;minimum | maximum&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The method for selecting the value to use for each variable in the new data table.</para>
+        </dialogReference>
+      </param>
+      <param name="ouput_shapefile" displayname="ouput shapefile" type="Required" direction="Output" expression="&lt;ouput_shapefile&gt;">
+        <commandReference/>
+        <dialogReference>
+          <para>The ouput shapefile that will contain grouped shapes.</para>
+        </dialogReference>
+      </param>
+      <param name="sort_by_column" displayname="sort by column" type="Optional" direction="Input" expression="{sort_by_column}">
+        <commandReference/>
+        <dialogReference>
+          <para>The column from the data table that contains the values on which to sort the shapes.</para>
+        </dialogReference>
+      </param>
+      <param name="decimal_places_for_averages" displayname="decimal places for averages" type="Required" direction="Input" expression="&lt;decimal_places_for_averages&gt;"/>
+    </parameters>
+  </tool>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>3. Group Shapes</resTitle>
+    </idCitation>
+    <idAbs>Groups individual shapes into new collected or aggregated shapes.</idAbs>
+  </dataIdInfo>
+  <distInfo>
+    <distributor>
+      <distorFormat>
+        <formatName>ArcToolbox Tool</formatName>
+      </distorFormat>
+    </distributor>
+  </distInfo>
+</metadata>
