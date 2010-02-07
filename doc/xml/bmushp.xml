@@ -2,6 +2,9 @@
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
   <tool name="bmushp" displayname="2. Projected Data to Shapefile" toolboxalias="">
+    <summary>
+      <para>Creates a shapefile from projected data.</para>
+    </summary>
     <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/bmu.png"/>
     <parameters>
       <param name="projected_data" displayname="projected data" type="Required" direction="Input" expression="&lt;projected_data&gt;">

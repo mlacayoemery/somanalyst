@@ -2,6 +2,9 @@
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
   <tool name="minmax" displayname="Min-Max Normalization" toolboxalias="">
+    <summary>
+      <para>Creates a databasefile with values normalized from a minimum value to a maximum value.</para>
+    </summary>
     <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
     <parameters>
       <param name="input_database_file" displayname="input database file" type="Required" direction="Input" expression="&lt;input_database_file&gt;">

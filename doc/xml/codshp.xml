@@ -1,21 +1,16 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
-  <Esri>
-    <MetaID>{82745D4B-8E7B-425F-9D35-1ABB2EF2CD8B}</MetaID>
-    <CreaDate>20061210</CreaDate>
-    <CreaTime>23022000</CreaTime>
-    <SyncOnce>TRUE</SyncOnce>
-    <ModDate>20100206</ModDate>
-    <ModTime>212603</ModTime>
-  </Esri>
   <tool name="codshp" displayname="1. SOM to Shapefile" toolboxalias="">
+    <summary>
+      <para>Creates a shapefile from a SOM codebook file.</para>
+    </summary>
     <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/som.png"/>
     <parameters>
       <param name="SOM" displayname="SOM" type="Required" direction="Input" expression="&lt;SOM&gt;">
         <commandReference/>
         <dialogReference>
-          <para>The input SOM from which to create a shapefile.</para>
+          <para>The input SOM codebook file from which to create a shapefile.</para>
         </dialogReference>
       </param>
       <param name="shape_type" displayname="shape type" type="Required" direction="Input" expression="&lt;polygon&gt;">
@@ -27,7 +22,7 @@
       <param name="SOM_shapefile" displayname="SOM shapefile" type="Required" direction="Output" expression="&lt;SOM_shapefile&gt;">
         <commandReference/>
         <dialogReference>
-          <para>The shapefile to store the SOM.</para>
+          <para>The output shapefile.</para>
         </dialogReference>
       </param>
       <param name="SOM_data_for_variable_names" displayname="SOM data for variable names" type="Optional" direction="Input" expression="{SOM_data_for_variable_names}"/>

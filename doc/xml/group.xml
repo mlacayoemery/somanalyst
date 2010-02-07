@@ -2,6 +2,9 @@
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
   <tool name="group" displayname="3. Group Shapes" toolboxalias="">
+    <summary>
+      <para>Groups the shapes in a shapefile.</para>
+    </summary>
     <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/group.png"/>
     <parameters>
       <param name="input_shapefile" displayname="input shapefile" type="Required" direction="Input" expression="&lt;input_shapefile&gt;">

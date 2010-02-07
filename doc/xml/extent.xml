@@ -2,6 +2,9 @@
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
   <tool name="extent" displayname="Create Extent Shapefile" toolboxalias="">
+    <summary>
+      <para>Creates a rectangular bounding box around the extent of a shapefile.</para>
+    </summary>
     <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
     <parameters>
       <param name="input_shapefile" displayname="input shapefile" type="Required" direction="Input" expression="&lt;input_shapefile&gt;">

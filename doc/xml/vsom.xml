@@ -2,6 +2,9 @@
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
   <tool name="vsom" displayname="2. Train SOM" toolboxalias="">
+    <summary>
+      <para>Trains a SOM.</para>
+    </summary>
     <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/vsom.png"/>
     <parameters>
       <param name="initial_SOM" displayname="initial SOM" type="Required" direction="Input" expression="&lt;initial_SOM&gt;">

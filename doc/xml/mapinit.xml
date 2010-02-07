@@ -2,6 +2,9 @@
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
   <tool name="mapinit" displayname="1. Create Initial SOM" toolboxalias="">
+    <summary>
+      <para>Creates an initial SOM codebook file.</para>
+    </summary>
     <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/mapinit.png"/>
     <parameters>
       <param name="data_for_SOM" displayname="data for SOM" type="Required" direction="Input" expression="&lt;data_for_SOM&gt;">

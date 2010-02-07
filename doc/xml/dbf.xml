@@ -3,7 +3,7 @@
 <metadata xml:lang="en">
   <tool name="dbf" displayname="1. Data File to Database File" toolboxalias="">
     <summary>
-      <para>Converts various data formats to the database file format required for all other data processing tools. Currently comma separated value (CSV) and tab separated value (TSV) formats are supported.</para>
+      <para>Converts various data file formats to the database file format.</para>
     </summary>
     <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/dbfV.png"/>
     <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
@@ -11,7 +11,7 @@
       <param name="input_data_file" displayname="input data file" type="Required" direction="Input" expression="&lt;input_data_file&gt;">
         <commandReference/>
         <dialogReference>
-          <para>The input data file to read.</para>
+          <para>The input data file.</para>
         </dialogReference>
       </param>
       <param name="input_file_format" displayname="input file format" type="Required" direction="Input" expression="&lt;Comma Separated Values (CSV) | Tab Separated Values(TSV)&gt;">
@@ -24,7 +24,8 @@
       </param>
       <param name="output_database_file" displayname="output database file" type="Required" direction="Output" expression="&lt;output_database_file&gt;">
         <commandReference/>
-        <dialogReference>
+	<dialogReference>
+          <para>The output database file.</para>	
           <illust src="E:\somanalyst\doc\sphinx\_images\toolbox\dbf.png" alt=""/>
         </dialogReference>
       </param>

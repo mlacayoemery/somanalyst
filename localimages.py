@@ -1,5 +1,7 @@
 import sys, string, os
 
+local = True
+
 print "Importing ArcGIS Library... (This may take a momement.)"
 import arcgisscripting
 
@@ -33,17 +35,17 @@ for t in tools:
 
     xml = path+"\\doc\\xml\\"+t+".xml"
     script = path+"\\guiArcGIS93.tbx\\"+t
-    
-    print "Creating updated metadata for tool "+t
-    infile=open(xml,'r')
-    l=infile.read()
-    infile.close()
-    i=l.find("vsrc=")
-    j=l.find("doc",i)
-    outfile=open(xml,"w")
-    outfile.write(l[:i+6]+imagepath+l[j:])
-    outfile.close()
+
+    if local:    
+        print "Creating updated metadata for tool "+t
+        infile=open(xml,'r')
+        l=infile.read()
+        infile.close()
+        i=l.find("vsrc=")
+        j=l.find("doc",i)
+        outfile=open(xml,"w")
+        outfile.write(l[:i+6]+imagepath+l[j:])
+        outfile.close()
     
     print "Writing updated metadata to tool "+t
     gp.MetadataImporter_conversion(xml, script)
-

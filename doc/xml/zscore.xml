@@ -2,13 +2,40 @@
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
   <tool name="zscore" displayname="Z-score Normalization" toolboxalias="">
+    <summary>
+      <para>Creates a database file with Z-score values.</para>
+    </summary>
     <parameters>
-      <param name="input_database_file" displayname="input database file" type="Required" direction="Input" expression="&lt;input_database_file&gt;"/>
-      <param name="normalize_by" displayname="normalize by" type="Required" direction="Input" expression="&lt;column | row | global&gt;"/>
-      <param name="output_database_file" displayname="output database file" type="Required" direction="Output" expression="&lt;output_database_file&gt;"/>
-      <param name="division_by_zero_value__std__dev___0_" displayname="division by zero value (std. dev = 0)" type="Optional" direction="Input" expression="{division_by_zero_value__std__dev___0_}"/>
-      <param name="decimal_places_to_round_to" displayname="decimal places to round to" type="Optional" direction="Input" expression="{decimal_places_to_round_to}"/>
-      <param name="columns" displayname="columns" type="Optional" direction="Input" expression="{columns;columns...}"/>
+      <param name="input_database_file" displayname="input database file" type="Required" direction="Input" expression="&lt;input_database_file&gt;">
+        <dialogReference>
+          <para>The input database file.</para>
+        </dialogReference>
+      </param>
+      <param name="normalize_by" displayname="normalize by" type="Required" direction="Input" expression="&lt;column | row | global&gt;">
+        <dialogReference>
+          <para>The column by which to normalize data.</para>
+        </dialogReference>
+      </param>
+      <param name="output_database_file" displayname="output database file" type="Required" direction="Output" expression="&lt;output_database_file&gt;">
+        <dialogReference>
+          <para>The output database file.</para>
+        </dialogReference>
+      </param>
+      <param name="division_by_zero_value__std__dev___0_" displayname="division by zero value (std. dev = 0)" type="Optional" direction="Input" expression="{division_by_zero_value__std__dev___0_}">
+        <dialogReference>
+          <para>The value to assign if there is a division by zero.</para>
+        </dialogReference>
+      </param>
+      <param name="decimal_places_to_round_to" displayname="decimal places to round to" type="Optional" direction="Input" expression="{decimal_places_to_round_to}">
+        <dialogReference>
+          <para>The number of decimal places to which to round numbers.</para>
+        </dialogReference>
+      </param>
+      <param name="columns" displayname="columns" type="Optional" direction="Input" expression="{columns;columns...}">
+        <dialogReference>
+          <para>The columns to normalize. If no columns are selected, all columns will be normalized.</para>
+        </dialogReference>
+      </param>
     </parameters>
   </tool>
   <dataIdInfo>

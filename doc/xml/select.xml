@@ -2,7 +2,9 @@
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
   <tool name="select" displayname="Select" toolboxalias="" softwarerestriction="none">
-    <summary/>
+    <summary>
+      <para>Creates a database file with the selected values.</para>
+    </summary>
     <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/selectV.png"/>
     <parameters>
       <param name="input_database_file" displayname="input database file" type="Required" direction="Input" expression="&lt;input_database_file&gt;"/>

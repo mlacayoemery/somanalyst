@@ -3,7 +3,8 @@
 <metadata xml:lang="en">
   <tool name="combine" displayname="Combine" toolboxalias="" softwarerestriction="none">
     <summary>
-		</summary>
+      <para>Combines multiple database files into a single database file.</para>
+    </summary>
     <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/mergeV.png"/>
     <parameters>
       <param name="input_database_files" displayname="input database files" type="Required" direction="Input" expression="&lt;input_database_files;input_database_files...&gt;">

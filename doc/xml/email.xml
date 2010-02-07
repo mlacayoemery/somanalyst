@@ -2,6 +2,9 @@
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
   <tool name="email" displayname="Send Email" toolboxalias="">
+    <summary>
+      <para>Sends an email.</para>
+    </summary>
     <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
     <parameters>
       <param name="from" displayname="from" type="Required" direction="Input" expression="&lt;from&gt;">
