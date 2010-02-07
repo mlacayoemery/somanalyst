@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="10" y="10" height="30" width="175" style="stroke:#000000; fill: #FFFFFF"/>
+<rect x="10" y="40" height="65" width="175" style="stroke:#000000; fill: #FFFFFF"/>
+<text x="45" y="35" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">*.dbf</text>
+<text x="15" y="65" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">01001100</text>
+<text x="15" y="95" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">ABC123</text>
+</svg>

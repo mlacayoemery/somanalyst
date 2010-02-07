@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="10" y="10" height="35" width="115" style="stroke:#000000; fill: #FFFFFF"/>
+<rect x="10" y="45" height="70" width="115" style="stroke:#000000; fill: #FFFFFF"/>
+<text x="15" y="35" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">*.tsv</text>
+<text x="15" y="70" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">A B C</text>
+<text x="15" y="105" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">1 2 3</text>
+</svg>

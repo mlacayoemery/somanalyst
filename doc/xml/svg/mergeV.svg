@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<polyline points="10,45 10,10 125,10 125,115 10,115 10,45 125,45" style="stroke:#000000; fill: #FFFFFF"/>
+<polyline points="50,10 50,115" style="stroke:#000000; fill: #FFFFFF"/>
+<polyline points="90,10 90,115" style="stroke:#000000; fill: #FFFFFF"/>
+<text x="15" y="35" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">A</text>
+<text x="55" y="35" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">B</text>
+<text x="95" y="35" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">C</text>
+<text x="15" y="70" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">1</text>
+<text x="55" y="70" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">2</text>
+<text x="95" y="70" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">3</text>
+<text x="15" y="85" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="55" y="85" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="95" y="85" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="15" y="95" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="55" y="95" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="95" y="95" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="15" y="105" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="55" y="105" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="95" y="105" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="55" y="140" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">+</text>
+<polyline points="10,185 10,150 125,150 125,255 10,255 10,185 125,185" style="stroke:#000000; fill: #FFFFFF"/>
+<polyline points="50,150 50,255" style="stroke:#000000; fill: #FFFFFF"/>
+<polyline points="90,150 90,255" style="stroke:#000000; fill: #FFFFFF"/>
+<text x="15" y="175" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">A</text>
+<text x="55" y="175" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">B</text>
+<text x="95" y="175" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">C</text>
+<text x="15" y="210" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">4</text>
+<text x="55" y="210" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">5</text>
+<text x="95" y="210" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">6</text>
+<text x="15" y="225" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="55" y="225" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="95" y="225" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="15" y="235" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="55" y="235" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="95" y="235" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="15" y="245" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="55" y="245" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="95" y="245" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<line x1="70"  y1="270" x2="70"   y2="305" style="stroke:#000000;"/>
+<line x1="70"  y1="305" x2="65.0"   y2="296.339745962" style="stroke:#000000;"/>
+<line x1="70"  y1="305" x2="75.0"   y2="296.339745962" style="stroke:#000000;"/>
+<polyline points="10,350 10,315 125,315 125,490 10,490 10,350 125,350" style="stroke:#000000; fill: #FFFFFF"/>
+<polyline points="50,315 50,490" style="stroke:#000000; fill: #FFFFFF"/>
+<polyline points="90,315 90,490" style="stroke:#000000; fill: #FFFFFF"/>
+<text x="15" y="340" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">A</text>
+<text x="55" y="340" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">B</text>
+<text x="95" y="340" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">C</text>
+<text x="15" y="375" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">1</text>
+<text x="55" y="375" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">2</text>
+<text x="95" y="375" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">3</text>
+<text x="15" y="390" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="55" y="390" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="95" y="390" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="15" y="400" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="55" y="400" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="95" y="400" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="15" y="410" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="55" y="410" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="95" y="410" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="15" y="445" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">4</text>
+<text x="55" y="445" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">5</text>
+<text x="95" y="445" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">6</text>
+<text x="15" y="460" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="55" y="460" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="95" y="460" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="15" y="470" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="55" y="470" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="95" y="470" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="15" y="480" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="55" y="480" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+<text x="95" y="480" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">.</text>
+</svg>

@@ -1,4 +1,6 @@
 import os, sys, subprocess, math
+import lib.shp.geometry
+import random
 
 def text(string="Example SVG text 1",x=20,y=40):
     return "<text x=\""+str(x)+"\" y=\""+str(y)+"\" style=\"font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;\">"+string+"</text>"
@@ -7,8 +9,8 @@ def rectangle(x=10,y=10,height=100,width=100,stroke="000000",fill="FFFFFF"):
     return "<rect x=\""+str(x)+"\" y=\""+str(y)+"\" height=\""+str(height)+"\" width=\""+str(width)+"\" style=\"stroke:#"+stroke+"; fill: #"+fill+"\"/>"
 
 
-def polyline(points):
-    return "<polyline points=\""+" ".join([str(x)+","+str(y) for x,y in points])+"\" style=\"stroke:#000000; fill: #FFFFFF\"/>"
+def polyline(points,stroke="000000",fill="FFFFFF"):
+    return "<polyline points=\""+" ".join([str(x)+","+str(y) for x,y in points])+"\" style=\"stroke:#"+stroke+"; fill: #"+fill+"\"/>"
 
 def line(points):
     (x1,y1),(x2,y2)=points
@@ -29,6 +31,24 @@ def multiline(points):
     for i in range(len(points)-1):
         xml=xml+line([points[i],points[i+1]])+"\n"
     return xml
+
+def som(outfilename):
+    outfile = open(outfilename,'w')
+    outfile.write("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n")
+    for x,y in lib.shp.geometry.hexagonGrid(0,3,0,4,30):
+        color="ffffff"
+        points=lib.shp.geometry.hexagon(x+20,y,15)
+        outfile.write(polyline(points+[points[0]],"000000",color)+"\n")
+    for x,y in lib.shp.geometry.hexagonGrid(0,3,0,4,30):
+        color="ffffff"
+        points=lib.shp.geometry.hexagon(x+10,y+10,15)
+        outfile.write(polyline(points+[points[0]],"000000",color)+"\n")
+    for x,y in lib.shp.geometry.hexagonGrid(0,3,0,4,30):
+        color="ffffff"
+        points=lib.shp.geometry.hexagon(x,y+20,15)
+        outfile.write(polyline(points+[points[0]],"000000",color)+"\n")
+    outfile.write("</svg>")
+    outfile.close()        
 
 def pngrender(infile,outfile):
     cmd = "E:/InkscapePortable/App/Inkscape/inkscape.exe --export-area-drawing --export-png="
@@ -564,8 +584,8 @@ def selectH(outfilename):
     outfile.close()
     
 if __name__=="__main__":
-    svgpath = sys.argv[0][:sys.argv[0].rfind("\\")]+"\\_images\\"
-    pngpath = sys.argv[0][:sys.argv[0].rfind("\\")]+"\\_images\\toolbox\\"
+    svgpath = sys.argv[0][:sys.argv[0].rfind("\\")]+"\\doc\\sphinx\\_images\\"
+    pngpath = sys.argv[0][:sys.argv[0].rfind("\\")]+"\\doc\\sphinx\\_images\\toolbox\\"
 
 ##    svgname=svgpath+"csv.svg"
 ##    pngname=pngpath+"csv.png"
@@ -606,9 +626,8 @@ if __name__=="__main__":
 ##    pngname=pngpath+"table4.png"
 ##    table4(svgname)
 ##    pngrender(svgname,pngname)
-##
-    svgname=svgpath+"datV.svg"
-    pngname=pngpath+"datV.png"
-    datV(svgname)
+
+    svgname=svgpath+"som.svg"
+    pngname=pngpath+"som.png"
+    som(svgname)
     pngrender(svgname,pngname)
- 

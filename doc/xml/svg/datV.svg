@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="10" y="10" height="30" width="175" style="stroke:#000000; fill: #FFFFFF"/>
+<rect x="10" y="40" height="65" width="175" style="stroke:#000000; fill: #FFFFFF"/>
+<text x="45" y="35" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">*.dbf</text>
+<text x="15" y="65" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">01001100</text>
+<text x="15" y="95" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">ABC123</text>
+<line x1="95"  y1="125" x2="95"   y2="160" style="stroke:#000000;"/>
+<line x1="95"  y1="160" x2="90.0"   y2="151.339745962" style="stroke:#000000;"/>
+<line x1="95"  y1="160" x2="100.0"   y2="151.339745962" style="stroke:#000000;"/>
+<rect x="10" y="170" height="30" width="175" style="stroke:#000000; fill: #FFFFFF"/>
+<rect x="10" y="200" height="95" width="175" style="stroke:#000000; fill: #FFFFFF"/>
+<text x="45" y="195" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">*.dat</text>
+<text x="15" y="225" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">3</text>
+<text x="15" y="255" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">#n A B C</text>
+<text x="15" y="285" style="font-family: Courier; font-size: 34; stroke: #000000; fill : #000000;">1 2 3</text>
+</svg>
