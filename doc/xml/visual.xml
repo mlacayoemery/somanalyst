@@ -58,9 +58,9 @@
     <idCitation>
       <resTitle>3. Project Data onto SOM</resTitle>
       <citRespParty>
-        <rpIndName/>
-        <rpOrgName/>
-        <rpPosName/>
+        <rpIndName>Martin Lacayo</rpIndName>
+        <rpOrgName>Department of Geography, San Diego State University</rpOrgName>
+        <rpPosName>M.S. Candidate</rpPosName>
         <role>
           <RoleCd>010</RoleCd>
         </role>
@@ -71,7 +71,7 @@
             <adminArea/>
             <postCode/>
             <country/>
-            <eMailAdd/>
+            <eMailAdd>somanalyst@gmail.com</eMailAdd>
           </cntAddress>
           <cntPhone>
             <voiceNum/>

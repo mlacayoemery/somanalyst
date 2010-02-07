@@ -170,20 +170,32 @@ except:
     </scriptExample>
     <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
   </tool>
-  <dataqual>
-    <lineage>
-      <procstep>
-        <procdesc Sync="TRUE">Metadata imported.</procdesc>
-        <srcused Sync="TRUE">C:\Program Files\ArcGIS\Help\gp\FeatureClassToGeodatabase_conversion.xml</srcused>
-        <date Sync="TRUE">20041203</date>
-        <time Sync="TRUE">17344200</time>
-      </procstep>
-      <procstep>
-        <procdesc Sync="TRUE">Metadata imported.</procdesc>
-        <srcused Sync="TRUE">E:\somanalyst\doc\xml\select.xml</srcused>
-        <procdate Sync="TRUE">20100206</procdate>
-        <proctime Sync="TRUE">00331200</proctime>
-      </procstep>
-    </lineage>
-  </dataqual>
+  <dataIdInfo>
+    <idCitation>
+      <resTitle>select</resTitle>
+      <citRespParty>
+        <rpIndName>Martin Lacayo</rpIndName>
+        <rpOrgName>Department of Geography, San Diego State University</rpOrgName>
+        <rpPosName>M.S. Candidate</rpPosName>
+        <role>
+          <RoleCd>010</RoleCd>
+        </role>
+        <rpCntInfo>
+          <cntAddress>
+            <delPoint/>
+            <city/>
+            <adminArea/>
+            <postCode/>
+            <country/>
+            <eMailAdd>somanalyst@gmail.com</eMailAdd>
+          </cntAddress>
+          <cntPhone>
+            <voiceNum/>
+            <faxNum/>
+          </cntPhone>
+        </rpCntInfo>
+      </citRespParty>
+    </idCitation>
+    <idAbs></idAbs>
+  </dataIdInfo>
 </metadata>

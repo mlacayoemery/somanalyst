@@ -102,6 +102,28 @@
   <dataIdInfo>
     <idCitation>
       <resTitle>2. Train SOM</resTitle>
+      <citRespParty>
+        <rpIndName>Martin Lacayo</rpIndName>
+        <rpOrgName>Department of Geography, San Diego State University</rpOrgName>
+        <rpPosName>M.S. Candidate</rpPosName>
+        <role>
+          <RoleCd>010</RoleCd>
+        </role>
+        <rpCntInfo>
+          <cntAddress>
+            <delPoint/>
+            <city/>
+            <adminArea/>
+            <postCode/>
+            <country/>
+            <eMailAdd>somanalyst@gmail.com</eMailAdd>
+          </cntAddress>
+          <cntPhone>
+            <voiceNum/>
+            <faxNum/>
+          </cntPhone>
+        </rpCntInfo>
+      </citRespParty>
     </idCitation>
     <idAbs>Trains a SOM using SOM_PAK.</idAbs>
     <resConst>

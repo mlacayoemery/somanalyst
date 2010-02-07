@@ -1,14 +1,6 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
-  <Esri>
-    <CreaDate>20100206</CreaDate>
-    <CreaTime>00323600</CreaTime>
-    <SyncOnce>TRUE</SyncOnce>
-    <ModDate>20100206</ModDate>
-    <ModTime>212051</ModTime>
-    <MetaID>{9CBFA60E-8BCB-4E69-9BF4-D5C6572B07C5}</MetaID>
-  </Esri>
   <tool name="dbf" displayname="1. Data File to Database File" toolboxalias="">
     <summary>
       <para>Converts various data formats to the database file format required for all other data processing tools. Currently comma separated value (CSV) and tab separated value (TSV) formats are supported.</para>
@@ -43,7 +35,6 @@
         </dialogReference>
       </param>
     </parameters>
-    <toolIllust src="" alt="No internet connection. Run localimages.py to view images."/>
     <commandExample>uiToXbase.py census.csv "Comma Separated Values (CSV)" census.dbf #</commandExample>
     <usage/>
     <scriptExample>uiToXbase.toXbase("census.csv","Comma Separated Values (CSV)","census.dbf",False)</scriptExample>
@@ -95,14 +86,4 @@
       </distorFormat>
     </distributor>
   </distInfo>
-  <dataqual>
-    <lineage>
-      <procstep>
-        <procdesc Sync="TRUE">Metadata imported.</procdesc>
-        <srcused Sync="TRUE">E:\somanalyst\doc\xml\toXbase.xml</srcused>
-        <procdate Sync="TRUE">20100206</procdate>
-        <proctime Sync="TRUE">00323600</proctime>
-      </procstep>
-    </lineage>
-  </dataqual>
 </metadata>

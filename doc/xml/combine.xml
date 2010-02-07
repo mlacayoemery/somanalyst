@@ -10,41 +10,30 @@
   </Esri>
   <dataIdInfo>
     <idCitation>
-      <resTitle sync="true">Combine</resTitle>
       <citRespParty>
-        <rpIndName/>
-        <rpOrgName/>
-        <rpPosName/>
+        <rpIndName>Martin Lacayo</rpIndName>
+        <rpOrgName>Department of Geography, San Diego State University</rpOrgName>
+        <rpPosName>M.S. Candidate</rpPosName>
+        <role>
+          <RoleCd>010</RoleCd>
+        </role>
         <rpCntInfo>
           <cntAddress>
             <delPoint/>
             <city/>
             <adminArea/>
             <postCode/>
-            <eMailAdd/>
             <country/>
+            <eMailAdd>somanalyst@gmail.com</eMailAdd>
           </cntAddress>
           <cntPhone>
             <voiceNum/>
             <faxNum/>
           </cntPhone>
         </rpCntInfo>
-        <role>
-          <RoleCd>010</RoleCd>
-        </role>
       </citRespParty>
     </idCitation>
-    <idAbs>Converts one or more feature classes or feature layers to geodatabase feature classes.</idAbs>
-    <descKeys KeyTypCd="005">
-      <keyTyp>
-        <keyTyp>005</keyTyp>
-      </keyTyp>
-    </descKeys>
-    <resConst>
-      <Consts>
-        <useLimit/>
-      </Consts>
-    </resConst>
+    <idAbs>Creates a shapefile from data projected onto a SOM.</idAbs>
   </dataIdInfo>
   <distInfo>
     <distributor>
@@ -113,34 +102,29 @@
 		</usage>
     <commandExample/>
     <scriptExample/>
-    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
   </tool>
-  <dataqual>
-    <lineage>
-      <procstep>
-        <procdesc Sync="TRUE">Metadata imported.</procdesc>
-        <srcused Sync="TRUE">C:\Program Files\ArcGIS\Help\gp\FeatureClassToGeodatabase_conversion.xml</srcused>
-        <date Sync="TRUE">20041203</date>
-        <time Sync="TRUE">17344200</time>
-      </procstep>
-      <procstep>
-        <procdesc Sync="TRUE">Metadata imported.</procdesc>
-        <srcused Sync="TRUE">E:\Users\Administrator\Desktop\Combine.xml</srcused>
-        <procdate Sync="TRUE">20100205</procdate>
-        <proctime Sync="TRUE">15535700</proctime>
-      </procstep>
-      <procstep>
-        <procdesc Sync="TRUE">Metadata imported.</procdesc>
-        <srcused Sync="TRUE">E:\Users\Administrator\Desktop\Combine2.xml</srcused>
-        <procdate Sync="TRUE">20100205</procdate>
-        <proctime Sync="TRUE">16574500</proctime>
-      </procstep>
-      <procstep>
-        <procdesc Sync="TRUE">Metadata imported.</procdesc>
-        <srcused Sync="TRUE">E:\somanalyst\doc\xml\combine.xml</srcused>
-        <procdate Sync="TRUE">20100206</procdate>
-        <proctime Sync="TRUE">00330400</proctime>
-      </procstep>
-    </lineage>
-  </dataqual>
+  <dataIdInfo>
+      <citRespParty>
+        <rpIndName>Martin Lacayo</rpIndName>
+        <rpOrgName>Department of Geography, San Diego State University</rpOrgName>
+        <rpPosName>M.S. Candidate</rpPosName>
+        <role>
+          <RoleCd>010</RoleCd>
+        </role>
+        <rpCntInfo>
+          <cntAddress>
+            <delPoint/>
+            <city/>
+            <adminArea/>
+            <postCode/>
+            <country/>
+            <eMailAdd>somanalyst@gmail.com</eMailAdd>
+          </cntAddress>
+          <cntPhone>
+            <voiceNum/>
+            <faxNum/>
+          </cntPhone>
+        </rpCntInfo>
+      </citRespParty>
+  </dataIdInfo>
 </metadata>

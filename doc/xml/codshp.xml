@@ -49,6 +49,28 @@
   <dataIdInfo>
     <idCitation>
       <resTitle>1. SOM to Shapefile</resTitle>
+      <citRespParty>
+        <rpIndName>Martin Lacayo</rpIndName>
+        <rpOrgName>Department of Geography, San Diego State University</rpOrgName>
+        <rpPosName>M.S. Candidate</rpPosName>
+        <role>
+          <RoleCd>010</RoleCd>
+        </role>
+        <rpCntInfo>
+          <cntAddress>
+            <delPoint/>
+            <city/>
+            <adminArea/>
+            <postCode/>
+            <country/>
+            <eMailAdd>somanalyst@gmail.com</eMailAdd>
+          </cntAddress>
+          <cntPhone>
+            <voiceNum/>
+            <faxNum/>
+          </cntPhone>
+        </rpCntInfo>
+      </citRespParty>
     </idCitation>
     <idAbs>Creates a shapefile from a SOM.</idAbs>
   </dataIdInfo>

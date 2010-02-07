@@ -65,6 +65,28 @@
   <dataIdInfo>
     <idCitation>
       <resTitle>Min-Max Normalization</resTitle>
+      <citRespParty>
+        <rpIndName>Martin Lacayo</rpIndName>
+        <rpOrgName>Department of Geography, San Diego State University</rpOrgName>
+        <rpPosName>M.S. Candidate</rpPosName>
+        <role>
+          <RoleCd>010</RoleCd>
+        </role>
+        <rpCntInfo>
+          <cntAddress>
+            <delPoint/>
+            <city/>
+            <adminArea/>
+            <postCode/>
+            <country/>
+            <eMailAdd>somanalyst@gmail.com</eMailAdd>
+          </cntAddress>
+          <cntPhone>
+            <voiceNum/>
+            <faxNum/>
+          </cntPhone>
+        </rpCntInfo>
+      </citRespParty>
     </idCitation>
     <idAbs>Normalizes data between the specified starting and ending values. This is eqquivallent to a histogram normalization and shifts values so they have the specified minimum and maximum.</idAbs>
   </dataIdInfo>
