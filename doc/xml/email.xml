@@ -1,14 +1,6 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
-  <Esri>
-    <MetaID>{F18B8E9A-C138-4BAA-BD6C-0619FEE481C7}</MetaID>
-    <CreaDate>20081119</CreaDate>
-    <CreaTime>16475100</CreaTime>
-    <SyncOnce>TRUE</SyncOnce>
-    <ModDate>20100206</ModDate>
-    <ModTime>212700</ModTime>
-  </Esri>
   <tool name="email" displayname="Send Email" toolboxalias="">
     <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
     <parameters>

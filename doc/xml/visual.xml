@@ -1,17 +1,9 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
-  <Esri>
-    <MetaID>{2DF7B84F-B36B-441B-9FE9-65266CD2753D}</MetaID>
-    <CreaDate>20070318</CreaDate>
-    <CreaTime>10092200</CreaTime>
-    <SyncOnce>TRUE</SyncOnce>
-    <ModDate>20100206</ModDate>
-    <ModTime>212518</ModTime>
-  </Esri>
   <tool name="visual" displayname="3. Project Data onto SOM" toolboxalias="">
     <summary/>
-    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+    <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/visual.png"/>
     <parameters>
       <param name="SOM" displayname="SOM" type="Required" direction="Input" expression="&lt;SOM&gt;">
         <commandReference/>
@@ -94,8 +86,4 @@
       </distorFormat>
     </distributor>
   </distInfo>
-  <metainfo>
-    <metd Sync="TRUE">20070328</metd>
-  </metainfo>
-  <mdDateSt Sync="TRUE">20070328</mdDateSt>
 </metadata>

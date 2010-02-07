@@ -1,16 +1,8 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
-  <Esri>
-    <MetaID>{C200CAB0-EEF0-484A-A87C-B46C8CEE37F0}</MetaID>
-    <CreaDate>20070318</CreaDate>
-    <CreaTime>09591700</CreaTime>
-    <SyncOnce>TRUE</SyncOnce>
-    <ModDate>20100206</ModDate>
-    <ModTime>212505</ModTime>
-  </Esri>
   <tool name="vsom" displayname="2. Train SOM" toolboxalias="">
-    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+    <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/vsom.png"/>
     <parameters>
       <param name="initial_SOM" displayname="initial SOM" type="Required" direction="Input" expression="&lt;initial_SOM&gt;">
         <commandReference/>

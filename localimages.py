@@ -1,6 +1,6 @@
 import sys, string, os
 
-print "Importing ArcGIS Library... (This will take a momement.)"
+print "Importing ArcGIS Library... (This may take a momement.)"
 import arcgisscripting
 
 gp = arcgisscripting.create()
@@ -26,6 +26,8 @@ tools=["bmushp",
        "visual",
        "vsom",
        "zscore"]
+
+print "Updating the first tool is slow, but after that it is pretty quick."
 
 for t in tools:
 

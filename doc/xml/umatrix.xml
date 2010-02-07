@@ -1,16 +1,8 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
-  <Esri>
-    <MetaID>{2103C732-9B90-48CF-B9BF-86B4EFAE51EB}</MetaID>
-    <CreaDate>20081129</CreaDate>
-    <CreaTime>16293400</CreaTime>
-    <SyncOnce>TRUE</SyncOnce>
-    <ModDate>20100206</ModDate>
-    <ModTime>212537</ModTime>
-  </Esri>
   <tool name="Umatrix" displayname="Calculate U-matrix" toolboxalias="">
-    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+    <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/umat.png"/>
     <parameters>
       <param name="input_SOM" displayname="input SOM" type="Required" direction="Input" expression="&lt;input_SOM&gt;">
         <commandReference/>

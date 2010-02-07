@@ -1,14 +1,6 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
-  <Esri>
-    <MetaID>{7590E056-F6FB-4E06-9824-6C5460DE40BE}</MetaID>
-    <CreaDate>20081006</CreaDate>
-    <CreaTime>12582100</CreaTime>
-    <SyncOnce>TRUE</SyncOnce>
-    <ModDate>20100206</ModDate>
-    <ModTime>212340</ModTime>
-  </Esri>
   <tool name="minmax" displayname="Min-Max Normalization" toolboxalias="">
     <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
     <parameters>

@@ -10,7 +10,7 @@
     <ModTime>212603</ModTime>
   </Esri>
   <tool name="codshp" displayname="1. SOM to Shapefile" toolboxalias="">
-    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+    <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/som.png"/>
     <parameters>
       <param name="SOM" displayname="SOM" type="Required" direction="Input" expression="&lt;SOM&gt;">
         <commandReference/>

@@ -1,16 +1,7 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
-  <Esri>
-    <MetaID>{E1EF658C-D0A2-459D-9FD3-92AF57D8C4ED}</MetaID>
-    <CreaDate>20081103</CreaDate>
-    <CreaTime>14512100</CreaTime>
-    <SyncOnce>TRUE</SyncOnce>
-    <ModDate>20100206</ModDate>
-    <ModTime>212407</ModTime>
-  </Esri>
   <tool name="divide" displayname="Normalize by Variable" toolboxalias="">
-    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
     <parameters>
       <param name="input_database_file" displayname="input database file" type="Required" direction="Input" expression="&lt;input_database_file&gt;">
         <commandReference/>

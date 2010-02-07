@@ -1,16 +1,8 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
-  <Esri>
-    <MetaID>{98667B3E-9396-4011-8500-9A6E9FE8AE4E}</MetaID>
-    <CreaDate>20070317</CreaDate>
-    <CreaTime>12052600</CreaTime>
-    <SyncOnce>TRUE</SyncOnce>
-    <ModDate>20100206</ModDate>
-    <ModTime>212447</ModTime>
-  </Esri>
   <tool name="mapinit" displayname="1. Create Initial SOM" toolboxalias="">
-    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+    <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/mapinit.png"/>
     <parameters>
       <param name="data_for_SOM" displayname="data for SOM" type="Required" direction="Input" expression="&lt;data_for_SOM&gt;">
         <commandReference/>

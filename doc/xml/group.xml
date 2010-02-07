@@ -1,16 +1,8 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
-  <Esri>
-    <MetaID>{B520D30E-D6A4-44B2-A3CD-B67BFA5A7DF5}</MetaID>
-    <CreaDate>20061210</CreaDate>
-    <CreaTime>23062400</CreaTime>
-    <SyncOnce>TRUE</SyncOnce>
-    <ModDate>20100206</ModDate>
-    <ModTime>212628</ModTime>
-  </Esri>
   <tool name="group" displayname="3. Group Shapes" toolboxalias="">
-    <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
+    <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/group.png"/>
     <parameters>
       <param name="input_shapefile" displayname="input shapefile" type="Required" direction="Input" expression="&lt;input_shapefile&gt;">
         <commandReference/>

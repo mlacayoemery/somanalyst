@@ -1,77 +1,10 @@
 <?xml version="1.0"?>
-<metadata>
-  <Esri>
-    <CreaDate SYNC="true">20100206</CreaDate>
-    <CreaTime SYNC="true">00330400</CreaTime>
-    <SyncOnce SYNC="true">TRUE</SyncOnce>
-    <ModDate SYNC="true">20100206</ModDate>
-    <ModTime SYNC="true">212251</ModTime>
-    <MetaID>{4F11A1B0-F113-47DE-8CBD-F843E0A8A16E}</MetaID>
-  </Esri>
-  <dataIdInfo>
-    <idCitation>
-      <citRespParty>
-        <rpIndName>Martin Lacayo</rpIndName>
-        <rpOrgName>Department of Geography, San Diego State University</rpOrgName>
-        <rpPosName>M.S. Candidate</rpPosName>
-        <role>
-          <RoleCd>010</RoleCd>
-        </role>
-        <rpCntInfo>
-          <cntAddress>
-            <delPoint/>
-            <city/>
-            <adminArea/>
-            <postCode/>
-            <country/>
-            <eMailAdd>somanalyst@gmail.com</eMailAdd>
-          </cntAddress>
-          <cntPhone>
-            <voiceNum/>
-            <faxNum/>
-          </cntPhone>
-        </rpCntInfo>
-      </citRespParty>
-    </idCitation>
-    <idAbs>Creates a shapefile from data projected onto a SOM.</idAbs>
-  </dataIdInfo>
-  <distInfo>
-    <distributor>
-      <distorFormat>
-        <formatName sync="true">ArcToolbox Tool</formatName>
-      </distorFormat>
-      <distorTran>
-        <onLineSrc>
-          <linkage/>
-          <protocol/>
-          <onFunct>
-            <onFunctCd/>
-          </onFunct>
-        </onLineSrc>
-      </distorTran>
-    </distributor>
-  </distInfo>
-  <metainfo>
-    <metd Sync="TRUE">20070413</metd>
-  </metainfo>
-  <mdDateSt Sync="TRUE">20070413</mdDateSt>
+<!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
+<metadata xml:lang="en">
   <tool name="combine" displayname="Combine" toolboxalias="" softwarerestriction="none">
-    <activex_control type="rt" window="main" title="" alturl="yes" number="activeXLink_spatial_reference_and_geoprocessing_33066_1" module="Analysis_Tools.chm" filename="spatial_reference_and_geoprocessing.htm"/>
     <summary>
 		</summary>
     <toolIllust src="" alt="No internet connection. Run localimages.py to view images." vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/mergeV.png"/>
-    <alink_name>FeatureClassToGeodatabase_conversion</alink_name>
-    <rt_list>
-      <rt>about_loading_data_into_existing_feature_classes_and_tables</rt>
-      <rt>copy_features_data_management_</rt>
-      <rt>export_to_cad_conversion_</rt>
-      <rt>feature_class_to_shapefile_multiple_</rt>
-      <rt>feature_data</rt>
-      <rt>import_from_cad_conversion_</rt>
-      <rt>loading_data_in_arccatalog</rt>
-      <rt>loading_data_in_arcmap</rt>
-    </rt_list>
-    <toolIllust vsrc="http://somanalyst.googlecode.com/svn/trunk/doc/sphinx/_images/toolbox/mergeV.png" alt="" src=""/>
     <parameters>
       <param name="input_database_files" displayname="input database files" type="Required" direction="Input" expression="&lt;input_database_files;input_database_files...&gt;">
         <commandReference/>

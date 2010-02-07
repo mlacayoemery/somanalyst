@@ -1,14 +1,6 @@
 <?xml version="1.0"?>
 <!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
 <metadata xml:lang="en">
-  <Esri>
-    <MetaID>{9935B13C-85E3-4F71-A482-2B3BCF2063E7}</MetaID>
-    <CreaDate>20070411</CreaDate>
-    <CreaTime>08551600</CreaTime>
-    <SyncOnce>TRUE</SyncOnce>
-    <ModDate>20100206</ModDate>
-    <ModTime>212645</ModTime>
-  </Esri>
   <tool name="extent" displayname="Create Extent Shapefile" toolboxalias="">
     <arcToolboxHelpPath>C:\Program Files\ArcGIS\help\gp</arcToolboxHelpPath>
     <parameters>
