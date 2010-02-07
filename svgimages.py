@@ -35,18 +35,84 @@ def multiline(points):
 def som(outfilename):
     outfile = open(outfilename,'w')
     outfile.write("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n")
-    for x,y in lib.shp.geometry.hexagonGrid(0,3,0,4,30):
+    colors=["ff","e6","cc","b3","99","80"]
+    for x,y in lib.shp.geometry.hexagonGrid(0,3,0,4,60):
         color="ffffff"
-        points=lib.shp.geometry.hexagon(x+20,y,15)
+        points=lib.shp.geometry.hexagon(x+20,y,30)
         outfile.write(polyline(points+[points[0]],"000000",color)+"\n")
-    for x,y in lib.shp.geometry.hexagonGrid(0,3,0,4,30):
+    for x,y in lib.shp.geometry.hexagonGrid(0,3,0,4,60):
         color="ffffff"
-        points=lib.shp.geometry.hexagon(x+10,y+10,15)
+        points=lib.shp.geometry.hexagon(x+10,y+10,30)
         outfile.write(polyline(points+[points[0]],"000000",color)+"\n")
-    for x,y in lib.shp.geometry.hexagonGrid(0,3,0,4,30):
+    for x,y in lib.shp.geometry.hexagonGrid(0,3,0,4,60):
         color="ffffff"
-        points=lib.shp.geometry.hexagon(x,y+20,15)
+        points=lib.shp.geometry.hexagon(x,y+20,30)
         outfile.write(polyline(points+[points[0]],"000000",color)+"\n")
+    outfile.write("</svg>")
+    outfile.close()        
+
+def shape(outfilename):
+    outfile = open(outfilename,'w')
+    outfile.write("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n")
+##    colors=["ff","e6","cc","b3","99","80"]
+    d=60
+    r=30
+    for x,y in lib.shp.geometry.hexagonGrid(0,3,0,4,d):
+##        i=random.randint(0,2)
+##        j=random.randint(1,9)
+##        color=colors[((i*10)+j)/5]*3
+        points=lib.shp.geometry.hexagon(x+30,y+5,r)
+        outfile.write(polyline(points+[points[0]],"000000","ffffff")+"\n")
+##        prob=random.random()
+##        if prob < 0.15:
+##            dots=3
+##        elif prob < 0.4:
+##            dots=2
+##        elif prob < 0.75:
+##            dots=1
+##        else:
+##            dots=0
+##        for i in range(dots):
+##            outfile.write(text(".",x+random.randint(0,20),y+random.randint(0,16))+"\n")
+    outfile.write("</svg>")
+    outfile.close()
+    
+def umat(outfilename):
+    outfile = open(outfilename,'w')
+    outfile.write("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n")
+    colors=["ff","e6","cc","b3","99","80"]
+    d=60
+    r=30
+    for x,y in lib.shp.geometry.hexagonGrid(0,3,0,4,d):
+        i=random.randint(0,2)
+        j=random.randint(1,9)
+        color=colors[((i*10)+j)/5]*3
+        points=lib.shp.geometry.hexagon(x+30,y+5,r)
+        outfile.write(polyline(points+[points[0]],"000000",color)+"\n")
+        outfile.write(text(str(i)+"."+str(j),x,y+15)+"\n")
+    outfile.write("</svg>")
+    outfile.close()        
+
+def visual(outfilename):
+    outfile = open(outfilename,'w')
+    outfile.write("<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n")
+    colors=["ff","e6","cc","b3","99","80"]
+    d=60
+    r=30
+
+    i=[]
+    j=[]
+    for lcv in range(12):
+        i.append(random.randint(0,2))
+        j.append(random.randint(1,9))
+    bmu=zip(i,j).index(min(zip(i,j)))
+    for id,(x,y) in enumerate(lib.shp.geometry.hexagonGrid(0,3,0,4,d)):
+        color=colors[((i[id]*10)+j[id])/5]*3
+        points=lib.shp.geometry.hexagon(x+30,y+5,r)
+        outfile.write(polyline(points+[points[0]],"888888",color)+"\n")
+        outfile.write(text(str(i[id])+"."+str(j[id]),x,y+15)+"\n")
+        if id==bmu:
+            outfile.write(multiline(points+[points[0]])+"\n")
     outfile.write("</svg>")
     outfile.close()        
 
@@ -584,50 +650,10 @@ def selectH(outfilename):
     outfile.close()
     
 if __name__=="__main__":
-    svgpath = sys.argv[0][:sys.argv[0].rfind("\\")]+"\\doc\\sphinx\\_images\\"
+    svgpath = sys.argv[0][:sys.argv[0].rfind("\\")]+"\\doc\\xml\\svg\\"
     pngpath = sys.argv[0][:sys.argv[0].rfind("\\")]+"\\doc\\sphinx\\_images\\toolbox\\"
 
-##    svgname=svgpath+"csv.svg"
-##    pngname=pngpath+"csv.png"
-##    csv(svgname)
-##    pngrender(svgname,pngname)
-##
-##    svgname=svgpath+"tsv.svg"
-##    pngname=pngpath+"tsv.png"
-##    tsv(svgname)
-##    pngrender(svgname,pngname)
-##
-##    svgname=svgpath+"dbf.svg"
-##    pngname=pngpath+"dbf.png"
-##    dbf(svgname)
-##    pngrender(svgname,pngname)
-##
-##    svgname=svgpath+"dat.svg"
-##    pngname=pngpath+"dat.png"
-##    dat(svgname)
-##    pngrender(svgname,pngname)
-##
-##    svgname=svgpath+"table1.svg"
-##    pngname=pngpath+"table1.png"
-##    table1(svgname)
-##    pngrender(svgname,pngname)
-##
-##    svgname=svgpath+"table2.svg"
-##    pngname=pngpath+"table2.png"
-##    table2(svgname)
-##    pngrender(svgname,pngname)
-##
-##    svgname=svgpath+"table3.svg"
-##    pngname=pngpath+"table3.png"
-##    table3(svgname)
-##    pngrender(svgname,pngname)
-##
-##    svgname=svgpath+"table4.svg"
-##    pngname=pngpath+"table4.png"
-##    table4(svgname)
-##    pngrender(svgname,pngname)
-
-    svgname=svgpath+"som.svg"
-    pngname=pngpath+"som.png"
+    svgname=svgpath+"vsom.svg"
+    pngname=pngpath+"vsom.png"
     som(svgname)
     pngrender(svgname,pngname)
