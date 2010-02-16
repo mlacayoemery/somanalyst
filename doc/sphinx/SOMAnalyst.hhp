@@ -1,0 +1,106 @@
+
+[ALIAS]
+toXbase=source\arcgis\uiToXbase.html
+DBFtoDAT=source\arcgis\uiDBFtoDAT.html
+merge=source\arcgis\uiDBFmerge.html
+select=source\arcgis\uiSelect.html
+normMinMax=source\arcgis\uiNormMinMax.html
+normVar=source\arcgis\uiNormVar.html
+normZ=source\arcgis\uiNormZ.html
+mapinit=source\arcgis\uiMapInit.html
+Vsom=source\arcgis\uiVsom.html
+Visual=source\arcgis\uiVisual.html
+Umatrix=source\arcgis\uiUmatrix.html
+CODtoSHP=source\arcgis\uiCODtoSHP.html
+BMUtoSHP=source\arcgis\uiBMUtoSHP.html
+group=source\arcgis\uiGroup.html
+extent=source\arcgis\uiExtent.html
+emailMe=source\arcgis\uiEmailme.html
+
+[MAP]
+#define toXbase 10111
+#define DBFtoDAT 10112
+#define merge 10121
+#define select 10122
+#define normMinMax 10131
+#define normVar 10132
+#define normZ 10133
+#define mapinit 10210
+#define Vsom 10220
+#define Visual 10230
+#define Umatrix 10240
+#define CODtoSHP 10310
+#define BMUtoSHP 10320
+#define group 10330
+#define extent 10410
+#define emailMe 10420
+[ALIAS]
+toXbase=source\arcgis\uiToXbase.html
+DBFtoDAT=source\arcgis\uiDBFtoDAT.html
+merge=source\arcgis\uiDBFmerge.html
+select=source\arcgis\uiSelect.html
+normMinMax=source\arcgis\uiNormMinMax.html
+normVar=source\arcgis\uiNormVar.html
+normZ=source\arcgis\uiNormZ.html
+mapinit=source\arcgis\uiMapInit.html
+Vsom=source\arcgis\uiVsom.html
+Visual=source\arcgis\uiVisual.html
+Umatrix=source\arcgis\uiUmatrix.html
+CODtoSHP=source\arcgis\uiCODtoSHP.html
+BMUtoSHP=source\arcgis\uiBMUtoSHP.html
+group=source\arcgis\uiGroup.html
+extent=source\arcgis\uiExtent.html
+emailMe=source\arcgis\uiEmailme.html
+
+[MAP]
+#define toXbase 10111
+#define DBFtoDAT 10112
+#define merge 10121
+#define select 10122
+#define normMinMax 10131
+#define normVar 10132
+#define normZ 10133
+#define mapinit 10210
+#define Vsom 10220
+#define Visual 10230
+#define Umatrix 10240
+#define CODtoSHP 10310
+#define BMUtoSHP 10320
+#define group 10330
+#define extent 10410
+#define emailMe 10420
+[ALIAS]
+toXbase=source\arcgis\uiToXbase.html
+DBFtoDAT=source\arcgis\uiDBFtoDAT.html
+merge=source\arcgis\uiDBFmerge.html
+select=source\arcgis\uiSelect.html
+normMinMax=source\arcgis\uiNormMinMax.html
+normVar=source\arcgis\uiNormVar.html
+normZ=source\arcgis\uiNormZ.html
+mapinit=source\arcgis\uiMapInit.html
+Vsom=source\arcgis\uiVsom.html
+Visual=source\arcgis\uiVisual.html
+Umatrix=source\arcgis\uiUmatrix.html
+CODtoSHP=source\arcgis\uiCODtoSHP.html
+BMUtoSHP=source\arcgis\uiBMUtoSHP.html
+group=source\arcgis\uiGroup.html
+extent=source\arcgis\uiExtent.html
+emailMe=source\arcgis\uiEmailme.html
+
+[MAP]
+#define toXbase 10111
+#define DBFtoDAT 10112
+#define merge 10121
+#define select 10122
+#define normMinMax 10131
+#define normVar 10132
+#define normZ 10133
+#define mapinit 10210
+#define Vsom 10220
+#define Visual 10230
+#define Umatrix 10240
+#define CODtoSHP 10310
+#define BMUtoSHP 10320
+#define group 10330
+#define extent 10410
+#define emailMe 10420

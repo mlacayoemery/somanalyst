@@ -18,28 +18,28 @@ Add the SOM Analyst Toolbox to ArcGIS.
 
 1. Open the ArcToolbox panel by clicking on the **Window** menu and select **ArcToolbox**. Alternatively, click on the toolbox icon on the meun bar.
 
-.. figure:: ../../_images/tutorial/ArcToolbox.png
+.. figure:: ../../_images/ArcToolbox.png
 
 
 2. Right click in the ArcToolbox panel and select **Add Toolbox...**.
 
-.. figure:: ../../_images/tutorial/AddToolbox.png
+.. figure:: ../../_images/AddToolbox.png
 
 
 3. Browse to the location of SOM Analyst and select **guiArcGIS93.tbx** and click **Open**.
 
-.. figure:: ../../_images/tutorial/guiArcGIS93.png
+.. figure:: ../../_images/guiArcGIS93.png
 
 
 .. note:: Double clicking on a toolbox opens it as a folder and allows you to add toolboxes it contains.
 
 The SOM Analyst toolbox is now acessible throught the ArcToolbox panel.
 
-.. figure:: ../../_images/tutorial/SOManalyst.png
+.. figure:: ../../_images/SOManalyst.png
 
 Browse through the toolbox to familarize your self with the tools.
 
-.. figure:: ../../_images/tutorial/ToolList.png
+.. figure:: ../../_images/ToolList.png
 
 Convert Data Format
 -------------------
@@ -48,7 +48,7 @@ Convert the data to a database file format.
 
 1. Run the **Data File to Database File** tool by double clicking on it in the **File Format Conversions** toolbox of the **Data Preprocessing** toolbox.
 
-.. figure:: ../../_images/tutorial/toXbase.png
+.. figure:: ../../_images/toXbase.png
 
 2. Select **census.csv** as the *input data file*.
 
@@ -60,11 +60,11 @@ Convert the data to a database file format.
 
 In the table properties the data type for each column is text.
 
-.. figure:: ../../_images/tutorial/censusfields.png
+.. figure:: ../../_images/censusfields.png
 
 The values in the table are left justified indicating that they are text.
 
-.. figure:: ../../_images/tutorial/census.png
+.. figure:: ../../_images/census.png
 
 Select Variables
 ----------------
@@ -73,7 +73,7 @@ Select the relevant variables from the database file.
 
 1. Run the **Select** tool by double clicking on it in the **Data Management** toolbox of the **Data Preprocessing** toolbox.
 
-.. figure:: ../../_images/tutorial/select.png
+.. figure:: ../../_images/select.png
 
 2. Select **census.dbf** as the *input database file*.
 
@@ -89,11 +89,11 @@ Select the relevant variables from the database file.
 
 In table properties the value types for the columns has changed where appropriate. 
 
-.. figure:: ../../_images/tutorial/demographicfields.png
+.. figure:: ../../_images/demographicfields.png
 
 The numeric values in the table are right justified indicating that they are numbers.
 
-.. figure:: ../../_images/tutorial/demographics.png
+.. figure:: ../../_images/demographics.png
 
 .. note:: Detecting data types for columns requires checking the data type of each value and can be time consuming for large datasets. This  step is only necessary if performing normalizations or other calculations before using the data with a SOM.
 
@@ -104,7 +104,7 @@ Normalize values in the database file.
 
 1. Run the **Normalize by Variable** tool by double clicking on it in the **Value Transformations** toolbox of the **Data Preprocessing** toolbox.
 
-.. figure:: ../../_images/tutorial/normalize.png
+.. figure:: ../../_images/normalize.png
 
 2. Select **demographics.dbf** as the *input database file*.
 
@@ -120,11 +120,11 @@ Normalize values in the database file.
 
 The resulting table contains population ratios.
 
-.. figure:: ../../_images/tutorial/normalizevalues.png
+.. figure:: ../../_images/normalizevalues.png
 
 8. Run the **Z-score Normalization** tool by double clicking on it in the **Value Transformations** toolbox of the **Data Preprocessing** toolbox.
 
-.. figure:: ../../_images/tutorial/Zscore.png
+.. figure:: ../../_images/Zscore.png
 
 9. Select **normalized.dbf** as the *input database file*.
 
@@ -136,7 +136,7 @@ The resulting table contains population ratios.
 
 The resulting table contains Z-scores.
 
-.. figure:: ../../_images/tutorial/Zscorevalues.png
+.. figure:: ../../_images/Zscorevalues.png
 
 Export Data
 -----------
@@ -145,7 +145,7 @@ Export the database file to the SOM data format.
 
 1. Run the **Database File to SOM_PAK Data** tool by double clicking on it in the **File Format Conversions** toolbox of the **Data Preprocessing** toolbox.
 
-.. figure:: ../../_images/tutorial/somdat.png
+.. figure:: ../../_images/somdat.png
 
 2. Select **Zscore.dbf** as the *input database file*.
 
@@ -162,7 +162,7 @@ Creating the intitial SOM.
 
 1. Run the **Create Initial SOM** tool by double clicking on it in the **SOM Computation** toolbox.
 
-.. figure:: ../../_images/tutorial/mapinit.png
+.. figure:: ../../_images/mapinit.png
 
 2. Select **Zscore.dat** as the *data for SOM*.
 
@@ -178,7 +178,7 @@ Creating the intitial SOM.
 
 A window will open that indicates the progress of the process.
 
-.. figure:: ../../_images/tutorial/training.png
+.. figure:: ../../_images/training.png
 
 Train SOM
 ---------
@@ -189,7 +189,7 @@ Training the SOM.
 
 1. Run the **Train SOM** tool by double clicking on it in the **SOM Computation** toolbox.
 
-.. figure:: ../../_images/tutorial/stage1.png
+.. figure:: ../../_images/stage1.png
 
 2. Select **init.cod** as the *inital som*.
 
@@ -209,7 +209,7 @@ A window will open that indicates the progress of the process as it did with the
 
 9. Run the **Train SOM** tool.
 
-.. figure:: ../../_images/tutorial/stage2.png
+.. figure:: ../../_images/stage2.png
 
 10. Select **stage1.cod** as the *inital som*.
 
@@ -233,7 +233,7 @@ Project the data onto the SOM.
 
 1. Run the **Project Data onto SOM** tool by double clicking on it in the **SOM Computation** toolbox.
 
-.. figure:: ../../_images/tutorial/bmu.png
+.. figure:: ../../_images/bmu.png
 
 2. Select **stage2.cod** as the *SOM*.
 
@@ -252,7 +252,7 @@ Creating the SOM shapefile.
 
 1. Run the **SOM to Shapefile** tool by double clicking on it in the **SOM Visualization** toolbox.
 
-.. figure:: ../../_images/tutorial/somshape.png
+.. figure:: ../../_images/somshape.png
 
 2. Select **stage2.cod** as the *SOM*.
 
@@ -271,7 +271,7 @@ Creating the data shapefile.
 
 1. Run the **Projected Data to Shapefile** tool by double clicking on it in the **SOM Visualization** toolbox.
 
-.. figure:: ../../_images/tutorial/bmushape.png
+.. figure:: ../../_images/bmushape.png
 
 2. Select **Zscore.bmu** as the *projected data*.
 
@@ -290,7 +290,7 @@ Grouping the shapes in the data shapefile
 
 1. Run the **Group Shapes** tool by double clicking on it in the **SOM Visualization** toolbox.
 
-.. figure:: ../../_images/tutorial/trajectory.png
+.. figure:: ../../_images/trajectory.png
 
 2. Select **bmu.shp** as the *input shapefile*.
 

@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Select Data</title>
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="top" title="SOM Analyst v1 documentation" href="../../index.html" />
+    <link rel="up" title="Data Management" href="tbDataManagement.html" />
+    <link rel="next" title="Value Transformations" href="tbValueTransformations.html" />
+    <link rel="prev" title="Database File Merge" href="uiDBFmerge.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="tbValueTransformations.html" title="Value Transformations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="uiDBFmerge.html" title="Database File Merge"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
+          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="tbDataPreprocessing.html" >Data Preprocessing</a> &raquo;</li>
+          <li><a href="tbDataManagement.html" accesskey="U">Data Management</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="module-uiSelect">
+<h1>Select Data</h1>
+<dl class="function">
+<dt id="uiSelect.select">
+<tt class="descclassname">uiSelect.</tt><tt class="descname">select</tt><big>(</big><em>inName</em>, <em>selectionType</em>, <em>outName</em>, <em>columns</em>, <em>start</em>, <em>step</em>, <em>stop</em>, <em>detectTypes</em><big>)</big></dt>
+<dd><p>Creates a DBF file with the rows from a DBF file that meet the selection criteria.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body"><dl class="first last docutils">
+<dt>inName</dt>
+<dd><p class="first last">The input DBF filename.</p>
+</dd>
+<dt>selectionType</dt>
+<dd><p class="first last">The select type (inclulsion or exclusion).</p>
+</dd>
+<dt>outName</dt>
+<dd><p class="first last">The ouput DBF filename.</p>
+</dd>
+<dt>columns</dt>
+<dd><p class="first last">The columns to keep. If no columns are specified, all columns are kept.</p>
+</dd>
+<dt>start</dt>
+<dd><p class="first last">The start index for rows.</p>
+</dd>
+<dt>step</dt>
+<dd><p class="first last">The step between idecies for rows.</p>
+</dd>
+<dt>stop</dt>
+<dd><p class="first last">The stop index for rows.</p>
+</dd>
+<dt>detectTypes</dt>
+<dd><p class="first last">An optional mode that detects and sets the data types for each column in the output file.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tbValueTransformations.html" title="Value Transformations"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="uiDBFmerge.html" title="Database File Merge"
+             >previous</a> |</li>
+        <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
+          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="tbDataPreprocessing.html" >Data Preprocessing</a> &raquo;</li>
+          <li><a href="tbDataManagement.html" >Data Management</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, Martin Lacayo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+    </div>
+  </body>
+</html>

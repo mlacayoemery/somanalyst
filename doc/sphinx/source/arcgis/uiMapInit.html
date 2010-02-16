@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Create Initial SOM</title>
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="top" title="SOM Analyst v1 documentation" href="../../index.html" />
+    <link rel="up" title="SOM Computation" href="tbSOMcomputation.html" />
+    <link rel="next" title="Train SOM" href="uiVsom.html" />
+    <link rel="prev" title="SOM Computation" href="tbSOMcomputation.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="uiVsom.html" title="Train SOM"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tbSOMcomputation.html" title="SOM Computation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
+          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="tbSOMcomputation.html" accesskey="U">SOM Computation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="module-uiMapInit">
+<span id="index-0"></span><h1>Create Initial SOM</h1>
+<dl class="function">
+<dt id="uiMapInit.mapinit">
+<tt class="descclassname">uiMapInit.</tt><tt class="descname">mapinit</tt><big>(</big><em>din</em>, <em>cout</em>, <em>topol</em>, <em>neigh</em>, <em>xdim</em>, <em>ydim</em>, <em>init</em>, <em>rand='#'</em>, <em>buffer='#'</em><big>)</big></dt>
+<dd><p>Creates a SOM codebook file using the specified parameters.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This function makes system calls to SOM_PAK. SOM_PAK is limited to <em>non-commercial</em> use.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body"><dl class="first docutils">
+<dt>din</dt>
+<dd><p class="first last">The training data.</p>
+</dd>
+<dt>cout</dt>
+<dd><p class="first last">The codebook to create.</p>
+</dd>
+<dt>topol</dt>
+<dd><p class="first last">The topology of the SOM. This can be hexagonal (hexa) or rectagular (rect).</p>
+</dd>
+<dt>neigh</dt>
+<dd><p class="first last">The neighborhood type. This can be bubble or Gaussian.</p>
+</dd>
+<dt>xdim</dt>
+<dd><p class="first last">The number of units in the X-axis of the SOM.</p>
+</dd>
+<dt>ydim</dt>
+<dd><p class="first last">The number of units in the Y-axis of the SOM.</p>
+</dd>
+<dt>init</dt>
+<dd><p class="first last">The initation type. This can be random or linear.</p>
+</dd>
+<dt>rand (optional)</dt>
+<dd><p class="first last">The random seed. This is the current time by default.</p>
+</dd>
+<dt>buffer (optional)</dt>
+<dd><p class="first last">The size of the read buffer.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Usage:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference external" href="http://www.cis.hut.fi/research/som_pak/som_doc.txt">The Self-Organizing Map Program Package</a></dt>
+<dd>Documentation for SOM_PAK.</dd>
+</dl>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="uiVsom.html" title="Train SOM"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tbSOMcomputation.html" title="SOM Computation"
+             >previous</a> |</li>
+        <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
+          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="tbSOMcomputation.html" >SOM Computation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, Martin Lacayo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+    </div>
+  </body>
+</html>

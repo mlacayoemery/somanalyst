@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Minimum-Maximum Normalization</title>
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="top" title="SOM Analyst v1 documentation" href="../../index.html" />
+    <link rel="up" title="Value Transformations" href="tbValueTransformations.html" />
+    <link rel="next" title="Normalize by Variable" href="uiNormVar.html" />
+    <link rel="prev" title="Value Transformations" href="tbValueTransformations.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="uiNormVar.html" title="Normalize by Variable"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tbValueTransformations.html" title="Value Transformations"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
+          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="tbDataPreprocessing.html" >Data Preprocessing</a> &raquo;</li>
+          <li><a href="tbValueTransformations.html" accesskey="U">Value Transformations</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="module-uiNormMinMax">
+<h1>Minimum-Maximum Normalization</h1>
+<dl class="function">
+<dt id="uiNormMinMax.normalize">
+<tt class="descclassname">uiNormMinMax.</tt><tt class="descname">normalize</tt><big>(</big><em>inName</em>, <em>outName</em>, <em>start</em>, <em>end</em>, <em>direction</em>, <em>minEqMax</em>, <em>fieldNames</em>, <em>decimalPlaces</em><big>)</big></dt>
+<dd><p>Creates a DBF with minimum-maxiumum normalized values from an existing DBF.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body"><dl class="first last docutils">
+<dt>inName</dt>
+<dd><p class="first last">The input DBF filename.</p>
+</dd>
+<dt>outName</dt>
+<dd><p class="first last">The ouput DBF filename.</p>
+</dd>
+<dt>start</dt>
+<dd><p class="first last">The minimum value to contain in the output range.</p>
+</dd>
+<dt>end</dt>
+<dd><p class="first last">The maximum value to caontain in the output range.</p>
+</dd>
+<dt>direction</dt>
+<dd><p class="first last">The direction in which to determine minimum and maximum values in the input range.</p>
+</dd>
+<dt>minEqMax</dt>
+<dd><p class="first last">The value to assign if the minimum is equal to the maxium. (division by zero)</p>
+</dd>
+<dt>fieldNames</dt>
+<dd><p class="first last">The fields on which to perform the normalization.</p>
+</dd>
+<dt>decimalPlace</dt>
+<dd><p class="first last">The number of decimal places to which numbers should be rounded.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="uiNormVar.html" title="Normalize by Variable"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tbValueTransformations.html" title="Value Transformations"
+             >previous</a> |</li>
+        <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
+          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="tbDataPreprocessing.html" >Data Preprocessing</a> &raquo;</li>
+          <li><a href="tbValueTransformations.html" >Value Transformations</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, Martin Lacayo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+    </div>
+  </body>
+</html>

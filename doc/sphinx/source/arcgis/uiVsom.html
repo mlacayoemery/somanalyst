@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Train SOM</title>
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="top" title="SOM Analyst v1 documentation" href="../../index.html" />
+    <link rel="up" title="SOM Computation" href="tbSOMcomputation.html" />
+    <link rel="next" title="Calculate Best Matching Units" href="uiVisual.html" />
+    <link rel="prev" title="Create Initial SOM" href="uiMapInit.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="uiVisual.html" title="Calculate Best Matching Units"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="uiMapInit.html" title="Create Initial SOM"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
+          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="tbSOMcomputation.html" accesskey="U">SOM Computation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="module-uiVsom">
+<h1>Train SOM</h1>
+<dl class="function">
+<dt id="uiVsom.vsom">
+<tt class="descclassname">uiVsom.</tt><tt class="descname">vsom</tt><big>(</big><em>cin</em>, <em>din</em>, <em>cout</em>, <em>rlen</em>, <em>alpha</em>, <em>radius</em>, <em>rand='#'</em>, <em>fixed='#'</em>, <em>weights='#'</em>, <em>buffer='#'</em>, <em>alpha_type='#'</em>, <em>snapfile='#'</em>, <em>snapinterval='#'</em>, <em>path='\bin\SOM_PAK\'</em><big>)</big></dt>
+<dd><p>Trains a SOM using the specified parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body"><dl class="first last docutils">
+<dt>cin</dt>
+<dd><p class="first last">The input codebook file.</p>
+</dd>
+<dt>din</dt>
+<dd><p class="first last">The training data.</p>
+</dd>
+<dt>cout</dt>
+<dd><p class="first last">The output codebook file.</p>
+</dd>
+<dt>rlen</dt>
+<dd><p class="first last">The length of training.</p>
+</dd>
+<dt>alpha</dt>
+<dd><p class="first last">The initial rate of learning.</p>
+</dd>
+<dt>radius</dt>
+<dd><p class="first last">The initial radius of neighborhoods.</p>
+</dd>
+<dt>rand <em>optional</em></dt>
+<dd><p class="first last">A seed for the random number generator.</p>
+</dd>
+<dt>fixed <em>optional</em></dt>
+<dd><p class="first last">Use fixed points.</p>
+</dd>
+<dt>weights <em>optional</em></dt>
+<dd><p class="first last">Use weights for variables.</p>
+</dd>
+<dt>buffer <em>optional</em></dt>
+<dd><p class="first last">The read buffer size in number of lines.</p>
+</dd>
+<dt>alpha_type</dt>
+<dd><p class="first last">The type of alpha decrease either linear (default) or inverse time.</p>
+</dd>
+<dt>snapfile</dt>
+<dd><p class="first last">The snapshot filename.</p>
+</dd>
+<dt>snapinterval</dt>
+<dd><p class="first last">The interval between snapshots.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="uiVisual.html" title="Calculate Best Matching Units"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="uiMapInit.html" title="Create Initial SOM"
+             >previous</a> |</li>
+        <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
+          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="tbSOMcomputation.html" >SOM Computation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, Martin Lacayo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+    </div>
+  </body>
+</html>

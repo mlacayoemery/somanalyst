@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial</title>
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="top" title="SOM Analyst v1 documentation" href="../../index.html" />
+    <link rel="prev" title="Send Email" href="uiEmailMe.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="uiEmailMe.html" title="Send Email"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial</h1>
+<p>This tutorial contains step-by-step directions of how to use the example dataset provide with SOM Analyst. The data is converted from the comma separated file format to the database file format so that normalizations can be performed. The data is then normalized by state population and then Z-scores are calculated before exporting the data for use with a SOM. A SOM is trained with the data, which is then projected onto the SOM and visualized. The resulting visualization shows the relative changes in the compostion of gender, age, and race in each state during each U.S. census in the 20th century.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The data for this tutorial is provided with SOM Analyst and is located in its sub-folder named <strong>dat</strong> .</p>
+</div>
+<div class="section" id="connecting-to-the-folder">
+<h2>Connecting to the Folder</h2>
+<p>Depending on your computer setup, it may be necessary to &#8220;connect&#8221; to the folder conatain SOM Analyst.</p>
+</div>
+<div class="section" id="adding-the-toolbox">
+<h2>Adding the Toolbox</h2>
+<p>Add the SOM Analyst Toolbox to ArcGIS.</p>
+<ol class="arabic simple">
+<li>Open the ArcToolbox panel by clicking on the <strong>Window</strong> menu and select <strong>ArcToolbox</strong>. Alternatively, click on the toolbox icon on the meun bar.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/ArcToolbox.png" src="../../_images/ArcToolbox.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>Right click in the ArcToolbox panel and select <strong>Add Toolbox...</strong>.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/AddToolbox.png" src="../../_images/AddToolbox.png" />
+</div>
+<ol class="arabic simple" start="3">
+<li>Browse to the location of SOM Analyst and select <strong>guiArcGIS93.tbx</strong> and click <strong>Open</strong>.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/guiArcGIS93.png" src="../../_images/guiArcGIS93.png" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Double clicking on a toolbox opens it as a folder and allows you to add toolboxes it contains.</p>
+</div>
+<p>The SOM Analyst toolbox is now acessible throught the ArcToolbox panel.</p>
+<div class="figure">
+<img alt="../../_images/SOManalyst.png" src="../../_images/SOManalyst.png" />
+</div>
+<p>Browse through the toolbox to familarize your self with the tools.</p>
+<div class="figure">
+<img alt="../../_images/ToolList.png" src="../../_images/ToolList.png" />
+</div>
+</div>
+<div class="section" id="convert-data-format">
+<h2>Convert Data Format</h2>
+<p>Convert the data to a database file format.</p>
+<ol class="arabic simple">
+<li>Run the <strong>Data File to Database File</strong> tool by double clicking on it in the <strong>File Format Conversions</strong> toolbox of the <strong>Data Preprocessing</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/toXbase.png" src="../../_images/toXbase.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>Select <strong>census.csv</strong> as the <em>input data file</em>.</li>
+<li>Set <strong>Comma Separated Values (CSV)</strong> as the <em>input file format</em>.</li>
+<li>Set <strong>census.dbf</strong> as the <em>output database file</em>.</li>
+<li>Click <strong>OK</strong> to run the conversion.</li>
+</ol>
+<p>In the table properties the data type for each column is text.</p>
+<div class="figure">
+<img alt="../../_images/censusfields.png" src="../../_images/censusfields.png" />
+</div>
+<p>The values in the table are left justified indicating that they are text.</p>
+<div class="figure">
+<img alt="../../_images/census.png" src="../../_images/census.png" />
+</div>
+</div>
+<div class="section" id="select-variables">
+<h2>Select Variables</h2>
+<p>Select the relevant variables from the database file.</p>
+<ol class="arabic simple">
+<li>Run the <strong>Select</strong> tool by double clicking on it in the <strong>Data Management</strong> toolbox of the <strong>Data Preprocessing</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/select.png" src="../../_images/select.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>Select <strong>census.dbf</strong> as the <em>input database file</em>.</li>
+<li>Set <strong>columns</strong> as the <em>selection type</em>.</li>
+<li>Set <strong>demographics.dbf</strong> as the <em>output database file</em>.</li>
+<li>Select all columns except <strong>Owner</strong>, <strong>Renter</strong>, and <strong>Households</strong> in the <em>columns</em> field.</li>
+<li>Enable <strong>detect data types</strong>.</li>
+<li>Click <strong>OK</strong> to run the selection.</li>
+</ol>
+<p>In table properties the value types for the columns has changed where appropriate.</p>
+<div class="figure">
+<img alt="../../_images/demographicfields.png" src="../../_images/demographicfields.png" />
+</div>
+<p>The numeric values in the table are right justified indicating that they are numbers.</p>
+<div class="figure">
+<img alt="../../_images/demographics.png" src="../../_images/demographics.png" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Detecting data types for columns requires checking the data type of each value and can be time consuming for large datasets. This  step is only necessary if performing normalizations or other calculations before using the data with a SOM.</p>
+</div>
+</div>
+<div class="section" id="normalize-data">
+<h2>Normalize Data</h2>
+<p>Normalize values in the database file.</p>
+<ol class="arabic simple">
+<li>Run the <strong>Normalize by Variable</strong> tool by double clicking on it in the <strong>Value Transformations</strong> toolbox of the <strong>Data Preprocessing</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/normalize.png" src="../../_images/normalize.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>Select <strong>demographics.dbf</strong> as the <em>input database file</em>.</li>
+<li>Select <strong>Population</strong> as the <em>normalize by column</em>.</li>
+<li>Set <strong>normalized.dbf</strong> as the <em>output database file</em>.</li>
+<li>Select all the columns except <strong>Year</strong> in the <em>columns to normalize</em> field.</li>
+<li>Click <strong>OK</strong> to run the normalization.</li>
+<li>Open the resulting table and delete the <strong>Population</strong> column.</li>
+</ol>
+<p>The resulting table contains population ratios.</p>
+<div class="figure">
+<img alt="../../_images/normalizevalues.png" src="../../_images/normalizevalues.png" />
+</div>
+<ol class="arabic simple" start="8">
+<li>Run the <strong>Z-score Normalization</strong> tool by double clicking on it in the <strong>Value Transformations</strong> toolbox of the <strong>Data Preprocessing</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/Zscore.png" src="../../_images/Zscore.png" />
+</div>
+<ol class="arabic simple" start="9">
+<li>Select <strong>normalized.dbf</strong> as the <em>input database file</em>.</li>
+<li>Select <strong>column</strong> as the <em>normalize by</em> field.</li>
+<li>Select all columns except <strong>Year</strong> in the <em>columns</em> field.</li>
+<li>Click <strong>OK</strong> to run the normalization.</li>
+</ol>
+<p>The resulting table contains Z-scores.</p>
+<div class="figure">
+<img alt="../../_images/Zscorevalues.png" src="../../_images/Zscorevalues.png" />
+</div>
+</div>
+<div class="section" id="export-data">
+<h2>Export Data</h2>
+<p>Export the database file to the SOM data format.</p>
+<ol class="arabic simple">
+<li>Run the <strong>Database File to SOM_PAK Data</strong> tool by double clicking on it in the <strong>File Format Conversions</strong> toolbox of the <strong>Data Preprocessing</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/somdat.png" src="../../_images/somdat.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>Select <strong>Zscore.dbf</strong> as the <em>input database file</em>.</li>
+<li>Set <strong>Zscore.dat</strong> as the <em>ouput SOM data file</em>.</li>
+<li>Select <strong>State</strong> and <strong>Year</strong> in the <em>label columns</em> field.</li>
+<li>Click <strong>OK</strong> to run the export.</li>
+</ol>
+</div>
+<div class="section" id="create-initial-som">
+<h2>Create Initial SOM</h2>
+<p>Creating the intitial SOM.</p>
+<ol class="arabic simple">
+<li>Run the <strong>Create Initial SOM</strong> tool by double clicking on it in the <strong>SOM Computation</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/mapinit.png" src="../../_images/mapinit.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>Select <strong>Zscore.dat</strong> as the <em>data for SOM</em>.</li>
+<li>Select <strong>hexa</strong> as the <em>topology of map</em>.</li>
+<li>Set <strong>25</strong> as the <em>x dimension</em>.</li>
+<li>Set <strong>25</strong> as the <em>y dimension</em>.</li>
+<li>Set <strong>init.cod</strong> as the <em>initial SOM</em>.</li>
+<li>Click <strong>OK</strong> to run the creation of the intial SOM.</li>
+</ol>
+<p>A window will open that indicates the progress of the process.</p>
+<div class="figure">
+<img alt="../../_images/training.png" src="../../_images/training.png" />
+</div>
+</div>
+<div class="section" id="train-som">
+<h2>Train SOM</h2>
+<p>Training the SOM.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The SOM will be trained in two steps. The first training will create the overall structure in the SOM. The second training will create the finer specialization.</p>
+</div>
+<ol class="arabic simple">
+<li>Run the <strong>Train SOM</strong> tool by double clicking on it in the <strong>SOM Computation</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/stage1.png" src="../../_images/stage1.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>Select <strong>init.cod</strong> as the <em>inital som</em>.</li>
+<li>Select <strong>Zscore.dat</strong> as the <em>training data</em>.</li>
+<li>Set <strong>9800</strong> as the <em>length of training</em>.</li>
+<li>Set <strong>0.04</strong> as the <em>inital learning rate</em>.</li>
+<li>Set <strong>25</strong> as the <em>inital neighborhood radius</em>.</li>
+<li>Set <strong>stage1.cod</strong> as the <em>trained SOM</em>.</li>
+<li>Click <strong>OK</strong> to run the training of the SOM.</li>
+</ol>
+<p>A window will open that indicates the progress of the process as it did with the creation of the inital SOM.</p>
+<ol class="arabic simple" start="9">
+<li>Run the <strong>Train SOM</strong> tool.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/stage2.png" src="../../_images/stage2.png" />
+</div>
+<ol class="arabic simple" start="10">
+<li>Select <strong>stage1.cod</strong> as the <em>inital som</em>.</li>
+<li>Select <strong>Zscore.dat</strong> as the <em>training data</em>.</li>
+<li>Set <strong>98000</strong> as the <em>length of training</em>.</li>
+<li>Set <strong>0.001</strong> as the <em>inital learning rate</em>.</li>
+<li>Set <strong>5</strong> as the <em>inital neighborhood radius</em>.</li>
+<li>Set <strong>stage2.cod</strong> as the <em>trained SOM</em>.</li>
+<li>Click <strong>OK</strong> to run the training of the SOM.</li>
+</ol>
+</div>
+<div class="section" id="project-data-onto-som">
+<h2>Project Data onto SOM</h2>
+<p>Project the data onto the SOM.</p>
+<ol class="arabic simple">
+<li>Run the <strong>Project Data onto SOM</strong> tool by double clicking on it in the <strong>SOM Computation</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/bmu.png" src="../../_images/bmu.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>Select <strong>stage2.cod</strong> as the <em>SOM</em>.</li>
+<li>Select <strong>Zscore.dat</strong> as the <em>data to project</em>.</li>
+<li>Set <strong>Zscore.bmu</strong> as the <em>projected data</em>.</li>
+<li>Click <strong>OK</strong> to project the data onto the SOM.</li>
+</ol>
+<p>A window will open that indicates the progress of the process as it did with the creation of the inital SOM.</p>
+</div>
+<div class="section" id="create-som-shapefile">
+<h2>Create SOM Shapefile</h2>
+<p>Creating the SOM shapefile.</p>
+<ol class="arabic simple">
+<li>Run the <strong>SOM to Shapefile</strong> tool by double clicking on it in the <strong>SOM Visualization</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/somshape.png" src="../../_images/somshape.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>Select <strong>stage2.cod</strong> as the <em>SOM</em>.</li>
+<li>Select <strong>polygon</strong> as the <em>shape type</em>.</li>
+<li>Set <strong>stage2.shp</strong> as the <em>SOM shapefile</em>.</li>
+<li>Set <strong>Zscore.dat</strong> as the <em>SOM data for variable names</em>.</li>
+<li>Click <strong>OK</strong> to create the SOM shapefile.</li>
+</ol>
+</div>
+<div class="section" id="create-data-shapefile">
+<h2>Create Data Shapefile</h2>
+<p>Creating the data shapefile.</p>
+<ol class="arabic simple">
+<li>Run the <strong>Projected Data to Shapefile</strong> tool by double clicking on it in the <strong>SOM Visualization</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/bmushape.png" src="../../_images/bmushape.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>Select <strong>Zscore.bmu</strong> as the <em>projected data</em>.</li>
+<li>Select <strong>point</strong> as the <em>shape type</em>.</li>
+<li>Set <strong>bmu.shp</strong> as the <em>projected data shapefile</em>.</li>
+<li>Select <strong>Zscore.dat</strong> as the <em>label from SOM data</em>.</li>
+<li>Click <strong>OK</strong> to create the data shapefile.</li>
+</ol>
+</div>
+<div class="section" id="group-data-shapefile">
+<h2>Group Data Shapefile</h2>
+<p>Grouping the shapes in the data shapefile</p>
+<ol class="arabic simple">
+<li>Run the <strong>Group Shapes</strong> tool by double clicking on it in the <strong>SOM Visualization</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/trajectory.png" src="../../_images/trajectory.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>Select <strong>bmu.shp</strong> as the <em>input shapefile</em>.</li>
+<li>Select <strong>State</strong> as the <em>group by column</em></li>
+<li>Select <strong>polyline</strong> as the <em>group type</em>.</li>
+<li>Select <strong>max</strong> as the <em>value type</em>.</li>
+<li>Set <strong>trajectory.shp</strong> as the <em>output shapefile</em>.</li>
+</ol>
+</div>
+<div class="section" id="visualization">
+<h2>Visualization</h2>
+<p>Visualizing the SOM and projected data.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="uiEmailMe.html" title="Send Email"
+             >previous</a> |</li>
+        <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, Martin Lacayo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+    </div>
+  </body>
+</html>
