@@ -101,6 +101,7 @@ def group(inName,groupBy,groupType,valueType,outName,sortBy,decimalPlaces):
             o.table.addRow(temp)
         o.table.dynamicspecs()
     else:
-        o.table.addRow(shapes[l]["values"])
+        for l in places:
+            o.table.addRow(shapes[l]["values"])
 
     o.writeFile(outName)
