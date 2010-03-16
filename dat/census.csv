@@ -1,4 +1,4 @@
-Region,Division,State,Abbreviation,Year,Female,Male,Under_15,15_64,65_Over,Am_Indian,Asian,Black,White,Population,Owner,Renter,Households
+Region,Division,State,Abbrev,Year,Female,Male,Under_15,15_64,65_Over,Am_Indian,Asian,Black,White,Population,Owner,Renter,Households
 3,6,Alabama,AL,1900,911933,916764,752679,1014995,54306,177,61,827307,1001152,1828697,122449,231180,370980
 4,8,Arizona,AZ,1900,51136,71795,40455,77859,3328,26480,1700,1848,92903,122931,15317,10545,27817
 3,7,Arkansas,AR,1900,636252,675312,543713,731333,31344,66,62,366856,944580,1311564,119827,130411,262421
