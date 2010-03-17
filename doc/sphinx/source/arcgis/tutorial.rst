@@ -1,10 +1,13 @@
 Tutorial
 ========
 
-This tutorial contains step-by-step directions of how to use the example dataset provide with SOM Analyst. The data is converted from the comma separated file format to the database file format so that normalizations can be performed. The data is then normalized by state population and then Z-scores are calculated before exporting the data for use with a SOM. A SOM is trained with the data, which is then projected onto the SOM and visualized. The resulting visualization shows the relative changes in the compostion of gender, age, and race in each state during each U.S. census in the 20th century.
+This tutorial contains step-by-step instrucitons on how to use the provided example dataset with SOM Analyst. The data is converted from the comma separated file format to the database file format so that normalizations can be performed. The data is then normalized by state population and then normalized from 0 to 1 before exporting the data for use with a SOM. A SOM is trained in two stages with this data, which is then projected onto the SOM and visualized. The resulting visualization shows the relative changes between gender, age, and race in each state during each U.S. census in the 20th century. 
 
 .. note:: The data for this tutorial is provided with SOM Analyst and is located in its sub-folder named **dat** . 
 
+.. figure:: ../../_images/tutorial.png
+
+The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames show the value for one variable for the entire SOM, known as a component plane.
 
 Connecting to the Folder
 ------------------------
