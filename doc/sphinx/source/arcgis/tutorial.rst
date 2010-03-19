@@ -5,10 +5,6 @@ This tutorial contains step-by-step instrucitons on how to use the provided exam
 
 .. note:: The data for this tutorial is provided with SOM Analyst and is located in its sub-folder named **dat** . 
 
-.. figure:: ../../_images/tutorial.png
-
-The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames show the component plane, the value for one variable across the entire SOM.
-
 Adding the Toolbox
 ------------------
 
@@ -24,9 +20,9 @@ Add the SOM Analyst Toolbox to ArcGIS.
 .. figure:: ../../_images/AddToolbox.png
 
 
-.. note:: Depending on your computer setup, it may be necessary to "connect" to the folder conatain SOM Analyst. On the menu bar click on the icon of a folder with an arrow pointing to a globe.
-
 3. Browse to the location of SOM Analyst and select **guiArcGIS93.tbx** and click **Open**.
+
+.. note:: Depending on your computer setup, it may be necessary to "connect" to the folder conatain SOM Analyst. On the menu bar click on the icon of a folder with an arrow pointing to a globe.
 
 .. figure:: ../../_images/guiArcGIS93.png
 
@@ -93,7 +89,8 @@ The resulting table contains population ratios.
 
 7. Run the **Min-Max Normalization** tool by double clicking on it in the **Value Transformations** toolbox of the **Data Preprocessing** toolbox.
 
-.. figure:: ../../_images/norm01.png
+.. figure:: ../../_images/norm01.PNG
+
 
 8. Select **normVar.dbf** as the *input database file*.
 
@@ -105,9 +102,9 @@ The resulting table contains population ratios.
 
 12. Click **OK** to run the normalization.
 
-The resulting table contains Z-scores.
+The resulting table contains normalized values.
 
-.. figure:: ../../_images/norm01values.png
+.. figure:: ../../_images/norm01values.PNG
 
 
 Select Variables
@@ -309,3 +306,12 @@ Visualization
 -------------
 
 Visualizing the SOM and projected data.
+
+1. Open **tutorial.mxd**.
+
+
+.. figure:: ../../_images/tutorial.png
+
+
+The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames show the component plane, the value for one variable across the entire SOM.
+

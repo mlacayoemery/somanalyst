@@ -39,10 +39,6 @@
 <p class="first admonition-title">Note</p>
 <p class="last">The data for this tutorial is provided with SOM Analyst and is located in its sub-folder named <strong>dat</strong> .</p>
 </div>
-<div class="figure">
-<img alt="../../_images/tutorial.png" src="../../_images/tutorial.png" />
-</div>
-<p>The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames show the component plane, the value for one variable across the entire SOM.</p>
 <div class="section" id="adding-the-toolbox">
 <h2>Adding the Toolbox</h2>
 <p>Add the SOM Analyst Toolbox to ArcGIS.</p>
@@ -58,13 +54,13 @@
 <div class="figure">
 <img alt="../../_images/AddToolbox.png" src="../../_images/AddToolbox.png" />
 </div>
+<ol class="arabic simple" start="3">
+<li>Browse to the location of SOM Analyst and select <strong>guiArcGIS93.tbx</strong> and click <strong>Open</strong>.</li>
+</ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Depending on your computer setup, it may be necessary to &#8220;connect&#8221; to the folder conatain SOM Analyst. On the menu bar click on the icon of a folder with an arrow pointing to a globe.</p>
 </div>
-<ol class="arabic simple" start="3">
-<li>Browse to the location of SOM Analyst and select <strong>guiArcGIS93.tbx</strong> and click <strong>Open</strong>.</li>
-</ol>
 <div class="figure">
 <img alt="../../_images/guiArcGIS93.png" src="../../_images/guiArcGIS93.png" />
 </div>
@@ -129,7 +125,7 @@
 <li>Run the <strong>Min-Max Normalization</strong> tool by double clicking on it in the <strong>Value Transformations</strong> toolbox of the <strong>Data Preprocessing</strong> toolbox.</li>
 </ol>
 <div class="figure">
-<img alt="../../_images/norm01.png" src="../../_images/norm01.png" />
+<img alt="../../_images/norm01.PNG" src="../../_images/norm01.PNG" />
 </div>
 <ol class="arabic simple" start="8">
 <li>Select <strong>normVar.dbf</strong> as the <em>input database file</em>.</li>
@@ -138,9 +134,9 @@
 <li>Select the columns <strong>male</strong>, <strong>female</strong>, <strong>Under_15</strong>, <strong>15_64</strong>, <strong>65_Over</strong>, <strong>Am_Indian</strong>, <strong>Asian</strong>, <strong>Black</strong>, and <strong>White</strong> in the <em>columns to normalize</em> field.</li>
 <li>Click <strong>OK</strong> to run the normalization.</li>
 </ol>
-<p>The resulting table contains Z-scores.</p>
+<p>The resulting table contains normalized values.</p>
 <div class="figure">
-<img alt="../../_images/norm01values.png" src="../../_images/norm01values.png" />
+<img alt="../../_images/norm01values.PNG" src="../../_images/norm01values.PNG" />
 </div>
 </div>
 <div class="section" id="select-variables">
@@ -321,6 +317,13 @@
 <div class="section" id="visualization">
 <h2>Visualization</h2>
 <p>Visualizing the SOM and projected data.</p>
+<ol class="arabic simple">
+<li>Open <strong>tutorial.mxd</strong>.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/tutorial.png" src="../../_images/tutorial.png" />
+</div>
+<p>The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames show the component plane, the value for one variable across the entire SOM.</p>
 </div>
 </div>
 
