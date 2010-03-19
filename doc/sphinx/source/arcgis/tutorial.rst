@@ -7,19 +7,14 @@ This tutorial contains step-by-step instrucitons on how to use the provided exam
 
 .. figure:: ../../_images/tutorial.png
 
-The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames show the value for one variable for the entire SOM, known as a component plane.
-
-Connecting to the Folder
-------------------------
-
-Depending on your computer setup, it may be necessary to "connect" to the folder conatain SOM Analyst.
+The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames show the component plane, the value for one variable across the entire SOM.
 
 Adding the Toolbox
 ------------------
 
 Add the SOM Analyst Toolbox to ArcGIS.
 
-1. Open the ArcToolbox panel by clicking on the **Window** menu and select **ArcToolbox**. Alternatively, click on the toolbox icon on the meun bar.
+1. Open the ArcToolbox panel by clicking on the **Window** menu and select **ArcToolbox**. Alternatively, click on the toolbox icon on the menu bar.
 
 .. figure:: ../../_images/ArcToolbox.png
 
@@ -28,6 +23,8 @@ Add the SOM Analyst Toolbox to ArcGIS.
 
 .. figure:: ../../_images/AddToolbox.png
 
+
+.. note:: Depending on your computer setup, it may be necessary to "connect" to the folder conatain SOM Analyst. On the menu bar click on the icon of a folder with an arrow pointing to a globe.
 
 3. Browse to the location of SOM Analyst and select **guiArcGIS93.tbx** and click **Open**.
 
@@ -69,6 +66,50 @@ The values in the table are left justified indicating that they are text.
 
 .. figure:: ../../_images/census.png
 
+
+Normalize Data
+--------------
+
+Normalize values in the database file.
+
+1. Run the **Normalize by Variable** tool by double clicking on it in the **Value Transformations** toolbox of the **Data Preprocessing** toolbox.
+
+.. figure:: ../../_images/normalize.png
+
+2. Select **census.dbf** as the *input database file*.
+
+3. Select **Population** as the *normalize by column*.
+
+4. Set **normVar.dbf** as the *output database file*.
+
+5. Select the columns **male**, **female**, **Under_15**, **15_64**, **65_Over**, **Am_Indian**, **Asian**, **Black**, and **White** in the *columns to normalize* field.
+
+6. Click **OK** to run the normalization.
+
+
+The resulting table contains population ratios.
+
+.. figure:: ../../_images/normalizevalues.png
+
+7. Run the **Min-Max Normalization** tool by double clicking on it in the **Value Transformations** toolbox of the **Data Preprocessing** toolbox.
+
+.. figure:: ../../_images/norm01.png
+
+8. Select **normVar.dbf** as the *input database file*.
+
+9. Select **column** as the *normalize by* field.
+
+10. Set **norm01.dbf** as the *output database file*.
+
+11. Select the columns **male**, **female**, **Under_15**, **15_64**, **65_Over**, **Am_Indian**, **Asian**, **Black**, and **White** in the *columns to normalize* field.
+
+12. Click **OK** to run the normalization.
+
+The resulting table contains Z-scores.
+
+.. figure:: ../../_images/norm01values.png
+
+
 Select Variables
 ----------------
 
@@ -78,7 +119,7 @@ Select the relevant variables from the database file.
 
 .. figure:: ../../_images/select.png
 
-2. Select **census.dbf** as the *input database file*.
+2. Select **norm01.dbf** as the *input database file*.
 
 3. Set **columns** as the *selection type*.
 
@@ -100,47 +141,6 @@ The numeric values in the table are right justified indicating that they are num
 
 .. note:: Detecting data types for columns requires checking the data type of each value and can be time consuming for large datasets. This  step is only necessary if performing normalizations or other calculations before using the data with a SOM.
 
-Normalize Data
---------------
-
-Normalize values in the database file.
-
-1. Run the **Normalize by Variable** tool by double clicking on it in the **Value Transformations** toolbox of the **Data Preprocessing** toolbox.
-
-.. figure:: ../../_images/normalize.png
-
-2. Select **demographics.dbf** as the *input database file*.
-
-3. Select **Population** as the *normalize by column*.
-
-4. Set **normalized.dbf** as the *output database file*.
-
-5. Select all the columns except **Year** in the *columns to normalize* field.
-
-6. Click **OK** to run the normalization.
-
-7. Open the resulting table and delete the **Population** column.
-
-The resulting table contains population ratios.
-
-.. figure:: ../../_images/normalizevalues.png
-
-8. Run the **Z-score Normalization** tool by double clicking on it in the **Value Transformations** toolbox of the **Data Preprocessing** toolbox.
-
-.. figure:: ../../_images/Zscore.png
-
-9. Select **normalized.dbf** as the *input database file*.
-
-10. Select **column** as the *normalize by* field.
-
-11. Select all columns except **Year** in the *columns* field.
-
-12. Click **OK** to run the normalization.
-
-The resulting table contains Z-scores.
-
-.. figure:: ../../_images/Zscorevalues.png
-
 Export Data
 -----------
 
@@ -154,7 +154,7 @@ Export the database file to the SOM data format.
 
 3. Set **Zscore.dat** as the *ouput SOM data file*. 
 
-4. Select **State** and **Year** in the *label columns* field.
+4. Select **Region**, **Division**, **State**, and **Year** in the *label columns* field.
 
 5. Click **OK** to run the export.
 

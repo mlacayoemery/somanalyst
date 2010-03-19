@@ -42,16 +42,12 @@
 <div class="figure">
 <img alt="../../_images/tutorial.png" src="../../_images/tutorial.png" />
 </div>
-<p>The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames show the value for one variable for the entire SOM, known as a component plane.</p>
-<div class="section" id="connecting-to-the-folder">
-<h2>Connecting to the Folder</h2>
-<p>Depending on your computer setup, it may be necessary to &#8220;connect&#8221; to the folder conatain SOM Analyst.</p>
-</div>
+<p>The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames show the component plane, the value for one variable across the entire SOM.</p>
 <div class="section" id="adding-the-toolbox">
 <h2>Adding the Toolbox</h2>
 <p>Add the SOM Analyst Toolbox to ArcGIS.</p>
 <ol class="arabic simple">
-<li>Open the ArcToolbox panel by clicking on the <strong>Window</strong> menu and select <strong>ArcToolbox</strong>. Alternatively, click on the toolbox icon on the meun bar.</li>
+<li>Open the ArcToolbox panel by clicking on the <strong>Window</strong> menu and select <strong>ArcToolbox</strong>. Alternatively, click on the toolbox icon on the menu bar.</li>
 </ol>
 <div class="figure">
 <img alt="../../_images/ArcToolbox.png" src="../../_images/ArcToolbox.png" />
@@ -61,6 +57,10 @@
 </ol>
 <div class="figure">
 <img alt="../../_images/AddToolbox.png" src="../../_images/AddToolbox.png" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Depending on your computer setup, it may be necessary to &#8220;connect&#8221; to the folder conatain SOM Analyst. On the menu bar click on the icon of a folder with an arrow pointing to a globe.</p>
 </div>
 <ol class="arabic simple" start="3">
 <li>Browse to the location of SOM Analyst and select <strong>guiArcGIS93.tbx</strong> and click <strong>Open</strong>.</li>
@@ -105,6 +105,44 @@
 <img alt="../../_images/census.png" src="../../_images/census.png" />
 </div>
 </div>
+<div class="section" id="normalize-data">
+<h2>Normalize Data</h2>
+<p>Normalize values in the database file.</p>
+<ol class="arabic simple">
+<li>Run the <strong>Normalize by Variable</strong> tool by double clicking on it in the <strong>Value Transformations</strong> toolbox of the <strong>Data Preprocessing</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/normalize.png" src="../../_images/normalize.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>Select <strong>census.dbf</strong> as the <em>input database file</em>.</li>
+<li>Select <strong>Population</strong> as the <em>normalize by column</em>.</li>
+<li>Set <strong>normVar.dbf</strong> as the <em>output database file</em>.</li>
+<li>Select the columns <strong>male</strong>, <strong>female</strong>, <strong>Under_15</strong>, <strong>15_64</strong>, <strong>65_Over</strong>, <strong>Am_Indian</strong>, <strong>Asian</strong>, <strong>Black</strong>, and <strong>White</strong> in the <em>columns to normalize</em> field.</li>
+<li>Click <strong>OK</strong> to run the normalization.</li>
+</ol>
+<p>The resulting table contains population ratios.</p>
+<div class="figure">
+<img alt="../../_images/normalizevalues.png" src="../../_images/normalizevalues.png" />
+</div>
+<ol class="arabic simple" start="7">
+<li>Run the <strong>Min-Max Normalization</strong> tool by double clicking on it in the <strong>Value Transformations</strong> toolbox of the <strong>Data Preprocessing</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/norm01.png" src="../../_images/norm01.png" />
+</div>
+<ol class="arabic simple" start="8">
+<li>Select <strong>normVar.dbf</strong> as the <em>input database file</em>.</li>
+<li>Select <strong>column</strong> as the <em>normalize by</em> field.</li>
+<li>Set <strong>norm01.dbf</strong> as the <em>output database file</em>.</li>
+<li>Select the columns <strong>male</strong>, <strong>female</strong>, <strong>Under_15</strong>, <strong>15_64</strong>, <strong>65_Over</strong>, <strong>Am_Indian</strong>, <strong>Asian</strong>, <strong>Black</strong>, and <strong>White</strong> in the <em>columns to normalize</em> field.</li>
+<li>Click <strong>OK</strong> to run the normalization.</li>
+</ol>
+<p>The resulting table contains Z-scores.</p>
+<div class="figure">
+<img alt="../../_images/norm01values.png" src="../../_images/norm01values.png" />
+</div>
+</div>
 <div class="section" id="select-variables">
 <h2>Select Variables</h2>
 <p>Select the relevant variables from the database file.</p>
@@ -115,7 +153,7 @@
 <img alt="../../_images/select.png" src="../../_images/select.png" />
 </div>
 <ol class="arabic simple" start="2">
-<li>Select <strong>census.dbf</strong> as the <em>input database file</em>.</li>
+<li>Select <strong>norm01.dbf</strong> as the <em>input database file</em>.</li>
 <li>Set <strong>columns</strong> as the <em>selection type</em>.</li>
 <li>Set <strong>demographics.dbf</strong> as the <em>output database file</em>.</li>
 <li>Select all columns except <strong>Owner</strong>, <strong>Renter</strong>, and <strong>Households</strong> in the <em>columns</em> field.</li>
@@ -135,44 +173,6 @@
 <p class="last">Detecting data types for columns requires checking the data type of each value and can be time consuming for large datasets. This  step is only necessary if performing normalizations or other calculations before using the data with a SOM.</p>
 </div>
 </div>
-<div class="section" id="normalize-data">
-<h2>Normalize Data</h2>
-<p>Normalize values in the database file.</p>
-<ol class="arabic simple">
-<li>Run the <strong>Normalize by Variable</strong> tool by double clicking on it in the <strong>Value Transformations</strong> toolbox of the <strong>Data Preprocessing</strong> toolbox.</li>
-</ol>
-<div class="figure">
-<img alt="../../_images/normalize.png" src="../../_images/normalize.png" />
-</div>
-<ol class="arabic simple" start="2">
-<li>Select <strong>demographics.dbf</strong> as the <em>input database file</em>.</li>
-<li>Select <strong>Population</strong> as the <em>normalize by column</em>.</li>
-<li>Set <strong>normalized.dbf</strong> as the <em>output database file</em>.</li>
-<li>Select all the columns except <strong>Year</strong> in the <em>columns to normalize</em> field.</li>
-<li>Click <strong>OK</strong> to run the normalization.</li>
-<li>Open the resulting table and delete the <strong>Population</strong> column.</li>
-</ol>
-<p>The resulting table contains population ratios.</p>
-<div class="figure">
-<img alt="../../_images/normalizevalues.png" src="../../_images/normalizevalues.png" />
-</div>
-<ol class="arabic simple" start="8">
-<li>Run the <strong>Z-score Normalization</strong> tool by double clicking on it in the <strong>Value Transformations</strong> toolbox of the <strong>Data Preprocessing</strong> toolbox.</li>
-</ol>
-<div class="figure">
-<img alt="../../_images/Zscore.png" src="../../_images/Zscore.png" />
-</div>
-<ol class="arabic simple" start="9">
-<li>Select <strong>normalized.dbf</strong> as the <em>input database file</em>.</li>
-<li>Select <strong>column</strong> as the <em>normalize by</em> field.</li>
-<li>Select all columns except <strong>Year</strong> in the <em>columns</em> field.</li>
-<li>Click <strong>OK</strong> to run the normalization.</li>
-</ol>
-<p>The resulting table contains Z-scores.</p>
-<div class="figure">
-<img alt="../../_images/Zscorevalues.png" src="../../_images/Zscorevalues.png" />
-</div>
-</div>
 <div class="section" id="export-data">
 <h2>Export Data</h2>
 <p>Export the database file to the SOM data format.</p>
@@ -185,7 +185,7 @@
 <ol class="arabic simple" start="2">
 <li>Select <strong>Zscore.dbf</strong> as the <em>input database file</em>.</li>
 <li>Set <strong>Zscore.dat</strong> as the <em>ouput SOM data file</em>.</li>
-<li>Select <strong>State</strong> and <strong>Year</strong> in the <em>label columns</em> field.</li>
+<li>Select <strong>Region</strong>, <strong>Division</strong>, <strong>State</strong>, and <strong>Year</strong> in the <em>label columns</em> field.</li>
 <li>Click <strong>OK</strong> to run the export.</li>
 </ol>
 </div>
