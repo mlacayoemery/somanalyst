@@ -59,7 +59,7 @@
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Depending on your computer setup, it may be necessary to &#8220;connect&#8221; to the folder conatain SOM Analyst. On the menu bar click on the icon of a folder with an arrow pointing to a globe.</p>
+<p class="last">Depending on your computer setup, it may be necessary to &#8220;connect&#8221; to the folder conatain SOM Analyst. In the dialog box click on the icon of a folder with an arrow pointing to a globe.</p>
 </div>
 <div class="figure">
 <img alt="../../_images/guiArcGIS93.png" src="../../_images/guiArcGIS93.png" />
@@ -295,6 +295,7 @@
 <li>Select <strong>polygon</strong> as the <em>shape type</em>.</li>
 <li>Set <strong>stage2.shp</strong> as the <em>SOM shapefile</em>.</li>
 <li>Set <strong>demographics.dat</strong> as the <em>SOM data for variable names</em>.</li>
+<li>Enable <em>label SOM with data labels</em></li>
 <li>Set <strong>umatrix.dbf</strong> as the <em>U-matrix</em>.</li>
 <li>Click <strong>OK</strong> to create the SOM shapefile.</li>
 </ol>
@@ -309,10 +310,11 @@
 <img alt="../../_images/bmushape.png" src="../../_images/bmushape.png" />
 </div>
 <ol class="arabic simple" start="2">
-<li>Select <strong>Zscore.bmu</strong> as the <em>projected data</em>.</li>
+<li>Select <strong>demographics.bmu</strong> as the <em>projected data</em>.</li>
 <li>Select <strong>point</strong> as the <em>shape type</em>.</li>
 <li>Set <strong>bmu.shp</strong> as the <em>projected data shapefile</em>.</li>
 <li>Select <strong>demographics.dat</strong> as the <em>label from SOM data</em>.</li>
+<li>Select <strong>random around center</strong> as the <em>placement</em>.</li>
 <li>Click <strong>OK</strong> to create the data shapefile.</li>
 </ol>
 </div>
@@ -329,8 +331,10 @@
 <li>Select <strong>bmu.shp</strong> as the <em>input shapefile</em>.</li>
 <li>Select <strong>State</strong> as the <em>group by column</em></li>
 <li>Select <strong>polyline</strong> as the <em>group type</em>.</li>
-<li>Select <strong>max</strong> as the <em>value type</em>.</li>
-<li>Set <strong>trajectory.shp</strong> as the <em>output shapefile</em>.</li>
+<li>Select <strong>maximum</strong> as the <em>value type</em>.</li>
+<li>Set <strong>trajectories.shp</strong> as the <em>output shapefile</em>.</li>
+<li>Select <strong>Year</strong> as the <em>sort by column</em>.</li>
+<li>Click <strong>OK</strong> to create the trajectories.</li>
 </ol>
 </div>
 <div class="section" id="visualization">

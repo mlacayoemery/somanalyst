@@ -22,7 +22,7 @@ Add the SOM Analyst Toolbox to ArcGIS.
 
 3. Browse to the location of SOM Analyst and select **guiArcGIS93.tbx** and click **Open**.
 
-.. note:: Depending on your computer setup, it may be necessary to "connect" to the folder conatain SOM Analyst. On the menu bar click on the icon of a folder with an arrow pointing to a globe.
+.. note:: Depending on your computer setup, it may be necessary to "connect" to the folder conatain SOM Analyst. In the dialog box click on the icon of a folder with an arrow pointing to a globe.
 
 .. figure:: ../../_images/guiArcGIS93.png
 
@@ -279,9 +279,11 @@ Creating the SOM shapefile.
 
 5. Set **demographics.dat** as the *SOM data for variable names*.
 
-6. Set **umatrix.dbf** as the *U-matrix*.
+6. Enable *label SOM with data labels*
 
-7. Click **OK** to create the SOM shapefile.
+7. Set **umatrix.dbf** as the *U-matrix*.
+
+8. Click **OK** to create the SOM shapefile.
 
 Create Data Shapefile
 ---------------------
@@ -292,7 +294,7 @@ Creating the data shapefile.
 
 .. figure:: ../../_images/bmushape.png
 
-2. Select **Zscore.bmu** as the *projected data*.
+2. Select **demographics.bmu** as the *projected data*.
 
 3. Select **point** as the *shape type*.
 
@@ -300,7 +302,9 @@ Creating the data shapefile.
 
 5. Select **demographics.dat** as the *label from SOM data*.
 
-6. Click **OK** to create the data shapefile.
+6. Select **random around center** as the *placement*.
+
+7. Click **OK** to create the data shapefile.
 
 Group Data Shapefile
 --------------------
@@ -317,9 +321,13 @@ Grouping the shapes in the data shapefile
 
 4. Select **polyline** as the *group type*.
 
-5. Select **max** as the *value type*.
+5. Select **maximum** as the *value type*.
 
-6. Set **trajectory.shp** as the *output shapefile*.
+6. Set **trajectories.shp** as the *output shapefile*.
+
+7. Select **Year** as the *sort by column*.
+
+8. Click **OK** to create the trajectories.
 
 Visualization
 -------------
