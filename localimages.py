@@ -1,51 +1,69 @@
-import sys, string, os
+import sys, string, os, base64
 
 local = True
 
-print "Importing ArcGIS Library... (This may take a momement.)"
-import arcgisscripting
+##print "Importing ArcGIS Library... (This may take a momement.)"
+##import arcgisscripting
+##
+##gp = arcgisscripting.create()
+##gp.AddToolbox("C:/Program Files/ArcGIS/ArcToolbox/Toolboxes/Conversion Tools.tbx")
 
-gp = arcgisscripting.create()
-gp.AddToolbox("C:/Program Files/ArcGIS/ArcToolbox/Toolboxes/Conversion Tools.tbx")
-
-#get this scripts directory
+#get this script's directory
 path = os.path.dirname(sys.argv[0])
-imagepath= path + "/"
 
-tools=["bmushp",
-       "codshp",
-       "combine",
-       "dat",
-       "dbf",
-       "divide",
-       "email",
-       "extent",
-       "group",
-       "mapinit",
-       "minmax",
-       "select",
-       "umatrix",
-       "visual",
-       "vsom",
-       "zscore"]
+images=["dbf",
+        "select",
+        "dat",
+        "mapinit",
+        "vsom",
+        "umatrix"]
 
-print "Updating the first tool is slow, but after that it is pretty quick."
+print "Updating the toolbox images."
 
-for t in tools:
+for image in images:
+    #read xml file
+    xml=path+"\\doc\\xml\\"+image+".xml"
+    infile=open(xml,'r')
+    l=infile.read()
+    infile.close()
 
-    xml = path+"\\doc\\xml\\"+t+".xml"
-    script = path+"\\guiArcGIS93.tbx\\"+t
+    #find begining and end of image source    
+    i=l.find("vsrc=")
+    j=l.find("/>\n",i)
 
-    if local:    
-        print "Creating updated metadata for tool "+t
-        infile=open(xml,'r')
-        l=infile.read()
-        infile.close()
-        i=l.find("vsrc=")
-        j=l.find("doc",i)
+    #open image and write to xml
+    if image=="umatrix":
+        infile=open(path+"\\doc\\sphinx\\_images\\tbxumatrix.jpg",'rb')
         outfile=open(xml,"w")
-        outfile.write(l[:i+6]+imagepath+l[j:])
-        outfile.close()
-    
-    print "Writing updated metadata to tool "+t
-    gp.MetadataImporter_conversion(xml, script)
+        outfile.write(l[:i+6]+"data:image/jpg;base64,"+base64.b64encode(infile.read())+l[j-1:])
+    else:
+        infile=open(path+"\\doc\\sphinx\\_images\\tbx"+image+".png",'rb')
+        outfile=open(xml,"w")
+        outfile.write(l[:i+6]+"data:image/png;base64,"+base64.b64encode(infile.read())+l[j-1:])
+    infile.close()
+    outfile.close()
+##
+##tools=["bmushp",
+##       "codshp",
+##       "combine",
+##       "dat",
+##       "dbf",
+##       "divide",
+##       "email",
+##       "extent",
+##       "group",
+##       "mapinit",
+##       "minmax",
+##       "select",
+##       "umatrix",
+##       "visual",
+##       "vsom",
+##       "zscore"]
+##
+##print "Updating the first tool is slow, but after that it is pretty quick."
+##
+##for t in tools:    
+##    xml = path+"\\doc\\xml\\"+t+".xml"
+##    tool = path+"\\guiArcGIS93.tbx\\"+t    
+##    print "Writing updated metadata to tool "+t
+##    gp.MetadataImporter_conversion(xml, tool)
