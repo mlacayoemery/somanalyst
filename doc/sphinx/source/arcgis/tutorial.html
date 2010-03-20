@@ -179,8 +179,8 @@
 <img alt="../../_images/somdat.png" src="../../_images/somdat.png" />
 </div>
 <ol class="arabic simple" start="2">
-<li>Select <strong>Zscore.dbf</strong> as the <em>input database file</em>.</li>
-<li>Set <strong>Zscore.dat</strong> as the <em>ouput SOM data file</em>.</li>
+<li>Select <strong>demographics.dbf</strong> as the <em>input database file</em>.</li>
+<li>Set <strong>demographics.dat</strong> as the <em>ouput SOM data file</em>.</li>
 <li>Select <strong>Region</strong>, <strong>Division</strong>, <strong>State</strong>, and <strong>Year</strong> in the <em>label columns</em> field.</li>
 <li>Click <strong>OK</strong> to run the export.</li>
 </ol>
@@ -195,7 +195,7 @@
 <img alt="../../_images/mapinit.png" src="../../_images/mapinit.png" />
 </div>
 <ol class="arabic simple" start="2">
-<li>Select <strong>Zscore.dat</strong> as the <em>data for SOM</em>.</li>
+<li>Select <strong>demographics.dat</strong> as the <em>data for SOM</em>.</li>
 <li>Select <strong>hexa</strong> as the <em>topology of map</em>.</li>
 <li>Set <strong>25</strong> as the <em>x dimension</em>.</li>
 <li>Set <strong>25</strong> as the <em>y dimension</em>.</li>
@@ -222,8 +222,8 @@
 </div>
 <ol class="arabic simple" start="2">
 <li>Select <strong>init.cod</strong> as the <em>inital som</em>.</li>
-<li>Select <strong>Zscore.dat</strong> as the <em>training data</em>.</li>
-<li>Set <strong>9800</strong> as the <em>length of training</em>.</li>
+<li>Select <strong>demographics.dat</strong> as the <em>training data</em>.</li>
+<li>Set <strong>4900</strong> as the <em>length of training</em>.</li>
 <li>Set <strong>0.04</strong> as the <em>inital learning rate</em>.</li>
 <li>Set <strong>25</strong> as the <em>inital neighborhood radius</em>.</li>
 <li>Set <strong>stage1.cod</strong> as the <em>trained SOM</em>.</li>
@@ -238,13 +238,31 @@
 </div>
 <ol class="arabic simple" start="10">
 <li>Select <strong>stage1.cod</strong> as the <em>inital som</em>.</li>
-<li>Select <strong>Zscore.dat</strong> as the <em>training data</em>.</li>
-<li>Set <strong>98000</strong> as the <em>length of training</em>.</li>
-<li>Set <strong>0.001</strong> as the <em>inital learning rate</em>.</li>
+<li>Select <strong>demographics.dat</strong> as the <em>training data</em>.</li>
+<li>Set <strong>49000</strong> as the <em>length of training</em>.</li>
+<li>Set <strong>0.03</strong> as the <em>inital learning rate</em>.</li>
 <li>Set <strong>5</strong> as the <em>inital neighborhood radius</em>.</li>
 <li>Set <strong>stage2.cod</strong> as the <em>trained SOM</em>.</li>
 <li>Click <strong>OK</strong> to run the training of the SOM.</li>
 </ol>
+</div>
+<div class="section" id="calculate-u-matrix">
+<h2>Calculate U-Matrix</h2>
+<p>Calculate the U-matrix of a SOM.</p>
+<ol class="arabic simple">
+<li>Run the <strong>Calculate U-matrix</strong> tool by double clicking on it in the <strong>SOM Computation</strong> toolbox.</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/umatrix.png" src="../../_images/umatrix.png" />
+</div>
+<ol class="arabic simple" start="2">
+<li>Select <strong>stage2.cod</strong> as the <em>input SOM</em>.</li>
+<li>Set <strong>Umatrix.dbf</strong> as the <em>ouput U-matrix database file</em>.</li>
+<li>Click <strong>OK</strong> to calculate the U-matrix</li>
+</ol>
+<div class="figure">
+<img alt="../../_images/umatrix.png" src="../../_images/umatrix.png" />
+</div>
 </div>
 <div class="section" id="project-data-onto-som">
 <h2>Project Data onto SOM</h2>
@@ -257,8 +275,8 @@
 </div>
 <ol class="arabic simple" start="2">
 <li>Select <strong>stage2.cod</strong> as the <em>SOM</em>.</li>
-<li>Select <strong>Zscore.dat</strong> as the <em>data to project</em>.</li>
-<li>Set <strong>Zscore.bmu</strong> as the <em>projected data</em>.</li>
+<li>Select <strong>demographics.dat</strong> as the <em>data to project</em>.</li>
+<li>Set <strong>demographics.bmu</strong> as the <em>projected data</em>.</li>
 <li>Click <strong>OK</strong> to project the data onto the SOM.</li>
 </ol>
 <p>A window will open that indicates the progress of the process as it did with the creation of the inital SOM.</p>
@@ -276,7 +294,8 @@
 <li>Select <strong>stage2.cod</strong> as the <em>SOM</em>.</li>
 <li>Select <strong>polygon</strong> as the <em>shape type</em>.</li>
 <li>Set <strong>stage2.shp</strong> as the <em>SOM shapefile</em>.</li>
-<li>Set <strong>Zscore.dat</strong> as the <em>SOM data for variable names</em>.</li>
+<li>Set <strong>demographics.dat</strong> as the <em>SOM data for variable names</em>.</li>
+<li>Set <strong>umatrix.dbf</strong> as the <em>U-matrix</em>.</li>
 <li>Click <strong>OK</strong> to create the SOM shapefile.</li>
 </ol>
 </div>
@@ -293,7 +312,7 @@
 <li>Select <strong>Zscore.bmu</strong> as the <em>projected data</em>.</li>
 <li>Select <strong>point</strong> as the <em>shape type</em>.</li>
 <li>Set <strong>bmu.shp</strong> as the <em>projected data shapefile</em>.</li>
-<li>Select <strong>Zscore.dat</strong> as the <em>label from SOM data</em>.</li>
+<li>Select <strong>demographics.dat</strong> as the <em>label from SOM data</em>.</li>
 <li>Click <strong>OK</strong> to create the data shapefile.</li>
 </ol>
 </div>
@@ -324,6 +343,10 @@
 <img alt="../../_images/tutorial.png" src="../../_images/tutorial.png" />
 </div>
 <p>The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames show the component plane, the value for one variable across the entire SOM.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Your map will not be identical, but should be very similar. The frames may appear rotated due to the inital random number used.</p>
+</div>
 </div>
 </div>
 

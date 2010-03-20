@@ -147,9 +147,9 @@ Export the database file to the SOM data format.
 
 .. figure:: ../../_images/somdat.png
 
-2. Select **Zscore.dbf** as the *input database file*.
+2. Select **demographics.dbf** as the *input database file*.
 
-3. Set **Zscore.dat** as the *ouput SOM data file*. 
+3. Set **demographics.dat** as the *ouput SOM data file*. 
 
 4. Select **Region**, **Division**, **State**, and **Year** in the *label columns* field.
 
@@ -164,7 +164,7 @@ Creating the intitial SOM.
 
 .. figure:: ../../_images/mapinit.png
 
-2. Select **Zscore.dat** as the *data for SOM*.
+2. Select **demographics.dat** as the *data for SOM*.
 
 3. Select **hexa** as the *topology of map*.
 
@@ -193,9 +193,9 @@ Training the SOM.
 
 2. Select **init.cod** as the *inital som*.
 
-3. Select **Zscore.dat** as the *training data*.
+3. Select **demographics.dat** as the *training data*.
 
-4. Set **9800** as the *length of training*.
+4. Set **4900** as the *length of training*.
 
 5. Set **0.04** as the *inital learning rate*.
 
@@ -213,17 +213,34 @@ A window will open that indicates the progress of the process as it did with the
 
 10. Select **stage1.cod** as the *inital som*.
 
-11. Select **Zscore.dat** as the *training data*.
+11. Select **demographics.dat** as the *training data*.
 
-12. Set **98000** as the *length of training*.
+12. Set **49000** as the *length of training*.
 
-13. Set **0.001** as the *inital learning rate*.
+13. Set **0.03** as the *inital learning rate*.
 
 14. Set **5** as the *inital neighborhood radius*.
 
 15. Set **stage2.cod** as the *trained SOM*.
 
 16. Click **OK** to run the training of the SOM.
+
+Calculate U-Matrix
+------------------
+
+Calculate the U-matrix of a SOM.
+
+1. Run the **Calculate U-matrix** tool by double clicking on it in the **SOM Computation** toolbox.
+
+.. figure:: ../../_images/umatrix.png
+
+2. Select **stage2.cod** as the *input SOM*.
+
+3. Set **Umatrix.dbf** as the *ouput U-matrix database file*.
+
+4. Click **OK** to calculate the U-matrix
+
+.. figure:: ../../_images/umatrix.png
 
 
 Project Data onto SOM
@@ -237,9 +254,9 @@ Project the data onto the SOM.
 
 2. Select **stage2.cod** as the *SOM*.
 
-3. Select **Zscore.dat** as the *data to project*.
+3. Select **demographics.dat** as the *data to project*.
 
-4. Set **Zscore.bmu** as the *projected data*.
+4. Set **demographics.bmu** as the *projected data*.
 
 5. Click **OK** to project the data onto the SOM.
 
@@ -260,9 +277,11 @@ Creating the SOM shapefile.
 
 4. Set **stage2.shp** as the *SOM shapefile*.
 
-5. Set **Zscore.dat** as the *SOM data for variable names*.
+5. Set **demographics.dat** as the *SOM data for variable names*.
 
-6. Click **OK** to create the SOM shapefile.
+6. Set **umatrix.dbf** as the *U-matrix*.
+
+7. Click **OK** to create the SOM shapefile.
 
 Create Data Shapefile
 ---------------------
@@ -279,7 +298,7 @@ Creating the data shapefile.
 
 4. Set **bmu.shp** as the *projected data shapefile*.
 
-5. Select **Zscore.dat** as the *label from SOM data*.
+5. Select **demographics.dat** as the *label from SOM data*.
 
 6. Click **OK** to create the data shapefile.
 
@@ -315,3 +334,4 @@ Visualizing the SOM and projected data.
 
 The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames show the component plane, the value for one variable across the entire SOM.
 
+.. note:: Your map will not be identical, but should be very similar. The frames may appear rotated due to the inital random number used.
