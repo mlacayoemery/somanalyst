@@ -236,11 +236,11 @@ Calculate the U-matrix of a SOM.
 
 2. Select **stage2.cod** as the *input SOM*.
 
-3. Set **Umatrix.dbf** as the *ouput U-matrix database file*.
+3. Set **Umatrix.dbf** as the *output U-matrix database file*.
 
 4. Click **OK** to calculate the U-matrix
 
-.. figure:: ../../_images/umatrix.png
+.. figure:: ../../_images/umatrixvalues.png
 
 
 Project Data onto SOM
