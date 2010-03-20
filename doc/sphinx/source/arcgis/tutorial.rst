@@ -232,7 +232,7 @@ Calculate the U-matrix of a SOM.
 
 1. Run the **Calculate U-matrix** tool by double clicking on it in the **SOM Computation** toolbox.
 
-.. figure:: ../../_images/umatrix.png
+.. figure:: ../../_images/umatrix.PNG
 
 2. Select **stage2.cod** as the *input SOM*.
 
@@ -240,7 +240,7 @@ Calculate the U-matrix of a SOM.
 
 4. Click **OK** to calculate the U-matrix
 
-.. figure:: ../../_images/umatrixvalues.png
+.. figure:: ../../_images/umatrixvalues.PNG
 
 
 Project Data onto SOM
