@@ -336,10 +336,9 @@ Visualizing the SOM and projected data.
 
 1. Open **tutorial.mxd**.
 
+.. note:: Your map will not be identical, but should be very similar. The frames may appear rotated due to the inital random numbers used.
 
 .. figure:: ../../_images/tutorial.png
 
 
 The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames show the component plane, the value for one variable across the entire SOM.
-
-.. note:: Your map will not be identical, but should be very similar. The frames may appear rotated due to the inital random number used.
