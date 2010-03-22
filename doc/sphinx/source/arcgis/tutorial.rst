@@ -336,7 +336,7 @@ Creating the extent shapefile.
 
 1. Run the **Create Extent Shapefile** tool by double clicking on it in the **Utilities** toolbox.
 
-.. figure:: ../../_images/
+.. figure:: ../../_images/extent.PNG
 
 2. Select **stage2.shp** as the *input shapefile*.
 
