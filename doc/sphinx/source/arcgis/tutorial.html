@@ -34,7 +34,7 @@
             
   <div class="section" id="tutorial">
 <h1>Tutorial</h1>
-<p>This tutorial contains step-by-step instrucitons on how to use the provided example dataset with SOM Analyst. The data is converted from the comma separated file format to the database file format so that normalizations can be performed. The data is then normalized by state population and then normalized from 0 to 1 before exporting the data for use with a SOM. A SOM is trained in two stages with this data, which is then projected onto the SOM and visualized. The resulting visualization shows the relative changes between gender, age, and race in each state during each U.S. census in the 20th century.</p>
+<p>This tutorial contains step-by-step instructions on how to use the provided example dataset with SOM Analyst. The data is converted from the comma separated file format to the database file format so that normalizations can be performed. The data is then normalized by state population and then normalized from 0 to 1 before exporting the data for use with a SOM. A SOM is trained in two stages with this data, which is then projected onto the SOM and visualized. The resulting visualization shows the relative changes between gender, age, and race in each state during each U.S. census in the 20th century.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The data for this tutorial is provided with SOM Analyst and is located in its sub-folder named <strong>dat</strong> .</p>
@@ -59,7 +59,7 @@
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Depending on your computer setup, it may be necessary to &#8220;connect&#8221; to the folder conatain SOM Analyst. In the dialog box click on the icon of a folder with an arrow pointing to a globe.</p>
+<p class="last">Depending on your computer setup, it may be necessary to &#8220;connect&#8221; to the folder that contains SOM Analyst. In the dialog box click on the icon of a folder with an arrow pointing to a globe.</p>
 </div>
 <div class="figure">
 <img alt="../../_images/guiArcGIS93.png" src="../../_images/guiArcGIS93.png" />
@@ -68,11 +68,11 @@
 <p class="first admonition-title">Note</p>
 <p class="last">Double clicking on a toolbox opens it as a folder and allows you to add toolboxes it contains.</p>
 </div>
-<p>The SOM Analyst toolbox is now acessible throught the ArcToolbox panel.</p>
+<p>The SOM Analyst toolbox is now accessible through the ArcToolbox panel.</p>
 <div class="figure">
 <img alt="../../_images/SOManalyst.png" src="../../_images/SOManalyst.png" />
 </div>
-<p>Browse through the toolbox to familarize your self with the tools.</p>
+<p>Browse through the toolbox to familiarize your self with the tools.</p>
 <div class="figure">
 <img alt="../../_images/ToolList.png" src="../../_images/ToolList.png" />
 </div>
@@ -180,14 +180,14 @@
 </div>
 <ol class="arabic simple" start="2">
 <li>Select <strong>demographics.dbf</strong> as the <em>input database file</em>.</li>
-<li>Set <strong>demographics.dat</strong> as the <em>ouput SOM data file</em>.</li>
+<li>Set <strong>demographics.dat</strong> as the <em>output SOM data file</em>.</li>
 <li>Select <strong>Region</strong>, <strong>Division</strong>, <strong>State</strong>, and <strong>Year</strong> in the <em>label columns</em> field.</li>
 <li>Click <strong>OK</strong> to run the export.</li>
 </ol>
 </div>
 <div class="section" id="create-initial-som">
 <h2>Create Initial SOM</h2>
-<p>Creating the intitial SOM.</p>
+<p>Creating the initial SOM.</p>
 <ol class="arabic simple">
 <li>Run the <strong>Create Initial SOM</strong> tool by double clicking on it in the <strong>SOM Computation</strong> toolbox.</li>
 </ol>
@@ -200,7 +200,7 @@
 <li>Set <strong>25</strong> as the <em>x dimension</em>.</li>
 <li>Set <strong>25</strong> as the <em>y dimension</em>.</li>
 <li>Set <strong>init.cod</strong> as the <em>initial SOM</em>.</li>
-<li>Click <strong>OK</strong> to run the creation of the intial SOM.</li>
+<li>Click <strong>OK</strong> to run the creation of the initial SOM.</li>
 </ol>
 <p>A window will open that indicates the progress of the process.</p>
 <div class="figure">
@@ -221,15 +221,15 @@
 <img alt="../../_images/stage1.png" src="../../_images/stage1.png" />
 </div>
 <ol class="arabic simple" start="2">
-<li>Select <strong>init.cod</strong> as the <em>inital som</em>.</li>
+<li>Select <strong>init.cod</strong> as the <em>initial som</em>.</li>
 <li>Select <strong>demographics.dat</strong> as the <em>training data</em>.</li>
 <li>Set <strong>4900</strong> as the <em>length of training</em>.</li>
-<li>Set <strong>0.04</strong> as the <em>inital learning rate</em>.</li>
-<li>Set <strong>25</strong> as the <em>inital neighborhood radius</em>.</li>
+<li>Set <strong>0.04</strong> as the <em>initial learning rate</em>.</li>
+<li>Set <strong>25</strong> as the <em>initial neighborhood radius</em>.</li>
 <li>Set <strong>stage1.cod</strong> as the <em>trained SOM</em>.</li>
 <li>Click <strong>OK</strong> to run the training of the SOM.</li>
 </ol>
-<p>A window will open that indicates the progress of the process as it did with the creation of the inital SOM.</p>
+<p>A window will open that indicates the progress of the process as it did with the creation of the initial SOM.</p>
 <ol class="arabic simple" start="9">
 <li>Run the <strong>Train SOM</strong> tool.</li>
 </ol>
@@ -237,11 +237,11 @@
 <img alt="../../_images/stage2.png" src="../../_images/stage2.png" />
 </div>
 <ol class="arabic simple" start="10">
-<li>Select <strong>stage1.cod</strong> as the <em>inital som</em>.</li>
+<li>Select <strong>stage1.cod</strong> as the <em>initial som</em>.</li>
 <li>Select <strong>demographics.dat</strong> as the <em>training data</em>.</li>
 <li>Set <strong>49000</strong> as the <em>length of training</em>.</li>
-<li>Set <strong>0.03</strong> as the <em>inital learning rate</em>.</li>
-<li>Set <strong>5</strong> as the <em>inital neighborhood radius</em>.</li>
+<li>Set <strong>0.03</strong> as the <em>initial learning rate</em>.</li>
+<li>Set <strong>5</strong> as the <em>initial neighborhood radius</em>.</li>
 <li>Set <strong>stage2.cod</strong> as the <em>trained SOM</em>.</li>
 <li>Click <strong>OK</strong> to run the training of the SOM.</li>
 </ol>
@@ -279,7 +279,7 @@
 <li>Set <strong>demographics.bmu</strong> as the <em>projected data</em>.</li>
 <li>Click <strong>OK</strong> to project the data onto the SOM.</li>
 </ol>
-<p>A window will open that indicates the progress of the process as it did with the creation of the inital SOM.</p>
+<p>A window will open that indicates the progress of the process as it did with the creation of the initial SOM.</p>
 </div>
 <div class="section" id="create-som-shapefile">
 <h2>Create SOM Shapefile</h2>
@@ -296,7 +296,7 @@
 <li>Set <strong>stage2.shp</strong> as the <em>SOM shapefile</em>.</li>
 <li>Set <strong>demographics.dat</strong> as the <em>SOM data for variable names</em>.</li>
 <li>Enable <em>label SOM with data labels</em></li>
-<li>Set <strong>umatrix.dbf</strong> as the <em>U-matrix</em>.</li>
+<li>Set <strong>Umatrix.dbf</strong> as the <em>U-matrix</em>.</li>
 <li>Click <strong>OK</strong> to create the SOM shapefile.</li>
 </ol>
 </div>
@@ -360,7 +360,7 @@
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Your map will not be identical, but should be very similar. The frames may appear rotated due to the inital random numbers used.</p>
+<p class="last">Your map will not be identical, but should be very similar. The frames may appear rotated due to the initial random numbers used.</p>
 </div>
 <div class="figure">
 <img alt="../../_images/tutorial.png" src="../../_images/tutorial.png" />

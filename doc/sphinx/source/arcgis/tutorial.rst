@@ -1,7 +1,7 @@
 Tutorial
 ========
 
-This tutorial contains step-by-step instrucitons on how to use the provided example dataset with SOM Analyst. The data is converted from the comma separated file format to the database file format so that normalizations can be performed. The data is then normalized by state population and then normalized from 0 to 1 before exporting the data for use with a SOM. A SOM is trained in two stages with this data, which is then projected onto the SOM and visualized. The resulting visualization shows the relative changes between gender, age, and race in each state during each U.S. census in the 20th century. 
+This tutorial contains step-by-step instructions on how to use the provided example dataset with SOM Analyst. The data is converted from the comma separated file format to the database file format so that normalizations can be performed. The data is then normalized by state population and then normalized from 0 to 1 before exporting the data for use with a SOM. A SOM is trained in two stages with this data, which is then projected onto the SOM and visualized. The resulting visualization shows the relative changes between gender, age, and race in each state during each U.S. census in the 20th century. 
 
 .. note:: The data for this tutorial is provided with SOM Analyst and is located in its sub-folder named **dat** . 
 
@@ -22,18 +22,18 @@ Add the SOM Analyst Toolbox to ArcGIS.
 
 3. Browse to the location of SOM Analyst and select **guiArcGIS93.tbx** and click **Open**.
 
-.. note:: Depending on your computer setup, it may be necessary to "connect" to the folder conatain SOM Analyst. In the dialog box click on the icon of a folder with an arrow pointing to a globe.
+.. note:: Depending on your computer setup, it may be necessary to "connect" to the folder that contains SOM Analyst. In the dialog box click on the icon of a folder with an arrow pointing to a globe.
 
 .. figure:: ../../_images/guiArcGIS93.png
 
 
 .. note:: Double clicking on a toolbox opens it as a folder and allows you to add toolboxes it contains.
 
-The SOM Analyst toolbox is now acessible throught the ArcToolbox panel.
+The SOM Analyst toolbox is now accessible through the ArcToolbox panel.
 
 .. figure:: ../../_images/SOManalyst.png
 
-Browse through the toolbox to familarize your self with the tools.
+Browse through the toolbox to familiarize your self with the tools.
 
 .. figure:: ../../_images/ToolList.png
 
@@ -149,7 +149,7 @@ Export the database file to the SOM data format.
 
 2. Select **demographics.dbf** as the *input database file*.
 
-3. Set **demographics.dat** as the *ouput SOM data file*. 
+3. Set **demographics.dat** as the *output SOM data file*. 
 
 4. Select **Region**, **Division**, **State**, and **Year** in the *label columns* field.
 
@@ -158,7 +158,7 @@ Export the database file to the SOM data format.
 Create Initial SOM
 ------------------
 
-Creating the intitial SOM.
+Creating the initial SOM.
 
 1. Run the **Create Initial SOM** tool by double clicking on it in the **SOM Computation** toolbox.
 
@@ -174,7 +174,7 @@ Creating the intitial SOM.
 
 6. Set **init.cod** as the *initial SOM*.
 
-7. Click **OK** to run the creation of the intial SOM.
+7. Click **OK** to run the creation of the initial SOM.
 
 A window will open that indicates the progress of the process.
 
@@ -191,35 +191,35 @@ Training the SOM.
 
 .. figure:: ../../_images/stage1.png
 
-2. Select **init.cod** as the *inital som*.
+2. Select **init.cod** as the *initial som*.
 
 3. Select **demographics.dat** as the *training data*.
 
 4. Set **4900** as the *length of training*.
 
-5. Set **0.04** as the *inital learning rate*.
+5. Set **0.04** as the *initial learning rate*.
 
-6. Set **25** as the *inital neighborhood radius*.
+6. Set **25** as the *initial neighborhood radius*.
 
 7. Set **stage1.cod** as the *trained SOM*.
 
 8. Click **OK** to run the training of the SOM.
 
-A window will open that indicates the progress of the process as it did with the creation of the inital SOM.
+A window will open that indicates the progress of the process as it did with the creation of the initial SOM.
 
 9. Run the **Train SOM** tool.
 
 .. figure:: ../../_images/stage2.png
 
-10. Select **stage1.cod** as the *inital som*.
+10. Select **stage1.cod** as the *initial som*.
 
 11. Select **demographics.dat** as the *training data*.
 
 12. Set **49000** as the *length of training*.
 
-13. Set **0.03** as the *inital learning rate*.
+13. Set **0.03** as the *initial learning rate*.
 
-14. Set **5** as the *inital neighborhood radius*.
+14. Set **5** as the *initial neighborhood radius*.
 
 15. Set **stage2.cod** as the *trained SOM*.
 
@@ -260,7 +260,7 @@ Project the data onto the SOM.
 
 5. Click **OK** to project the data onto the SOM.
 
-A window will open that indicates the progress of the process as it did with the creation of the inital SOM.
+A window will open that indicates the progress of the process as it did with the creation of the initial SOM.
 
 Create SOM Shapefile
 --------------------
@@ -281,7 +281,7 @@ Creating the SOM shapefile.
 
 6. Enable *label SOM with data labels*
 
-7. Set **umatrix.dbf** as the *U-matrix*.
+7. Set **Umatrix.dbf** as the *U-matrix*.
 
 8. Click **OK** to create the SOM shapefile.
 
@@ -352,7 +352,7 @@ Visualizing the SOM and projected data.
 
 1. Open **tutorial.mxd**.
 
-.. note:: Your map will not be identical, but should be very similar. The frames may appear rotated due to the inital random numbers used.
+.. note:: Your map will not be identical, but should be very similar. The frames may appear rotated due to the initial random numbers used.
 
 .. figure:: ../../_images/tutorial.png
 
