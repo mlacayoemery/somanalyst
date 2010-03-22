@@ -30,7 +30,7 @@
           <a href="uiMapInit.html" title="Create Initial SOM"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbSOMcomputation.html" accesskey="U">SOM Computation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -39,8 +39,48 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <div class="section" id="module-uiVsom">
+  <div class="section" id="train-som">
 <h1>Train SOM</h1>
+<p>Trains a SOM.</p>
+<div class="section" id="arcgis-reference">
+<h2>ArcGIS Reference</h2>
+<div class="figure">
+<img alt="../../_images/stage1.png" src="../../_images/stage1.png" />
+</div>
+<p><strong>Parameters</strong></p>
+<dl class="docutils">
+<dt>initial SOM</dt>
+<dd>The initial SOM to train.</dd>
+<dt>training data</dt>
+<dd>The data with which to train the SOM.</dd>
+<dt>length of training</dt>
+<dd>The length of training as measured by the total number of individual data row exposures.</dd>
+<dt>initial learning rate</dt>
+<dd>The initial learing rate for the SOM.</dd>
+<dt>initial neighborhood radius</dt>
+<dd>The initial distance over which a neighborhood is defined.</dd>
+<dt>trained SOM</dt>
+<dd>The ouput trained SOM.</dd>
+<dt>distance metric</dt>
+<dd>The distance metric to use when training the SOM. The Euclidean distance metric uses SOM_PAK as released from the Helsinki University of Technology. The Cosine distance metric uses SOM_PAK as modified by Fareed Qaddoura.</dd>
+<dt>random generator seed</dt>
+<dd>The seed for the random number generator, by default the current time is used.</dd>
+<dt>fixed points</dt>
+<dd>Use fixed point qualifiers in the training.</dd>
+<dt>use weights</dt>
+<dd>Use weighting qualifiers in the training.</dd>
+<dt>read buffer</dt>
+<dd>The number of lines to read at a time.</dd>
+<dt>alpha type</dt>
+<dd>The learning rate function type. Linear (linear) is defined as initial alpha * [1 - (current training step/run length)]. Inverse-time (inverse_t) is defined as initial alpha * [(run length/100)/((run length/100)+current training step)].</dd>
+<dt>snapshot file</dt>
+<dd>A series of files to contain the intermediate SOMs. If the name contains %d the current step number will used in the file name.</dd>
+<dt>shapshot interval</dt>
+<dd>The interval at which to take the snapshots.</dd>
+</dl>
+</div>
+<div class="section" id="module-uiVsom">
+<h2>Code Reference</h2>
 <dl class="function">
 <dt id="uiVsom.vsom">
 <tt class="descclassname">uiVsom.</tt><tt class="descname">vsom</tt><big>(</big><em>cin</em>, <em>din</em>, <em>cout</em>, <em>rlen</em>, <em>alpha</em>, <em>radius</em>, <em>rand='#'</em>, <em>fixed='#'</em>, <em>weights='#'</em>, <em>buffer='#'</em>, <em>alpha_type='#'</em>, <em>snapfile='#'</em>, <em>snapinterval='#'</em>, <em>path='\bin\SOM_PAK\'</em><big>)</big></dt>
@@ -97,6 +137,7 @@
 </dd></dl>
 
 </div>
+</div>
 
 
           </div>
@@ -119,7 +160,7 @@
           <a href="uiMapInit.html" title="Create Initial SOM"
              >previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbSOMcomputation.html" >SOM Computation</a> &raquo;</li> 
       </ul>
     </div>

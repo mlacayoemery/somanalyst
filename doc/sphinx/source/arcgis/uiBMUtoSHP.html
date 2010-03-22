@@ -30,7 +30,7 @@
           <a href="uiCODtoSHP.html" title="SOM to Shapefile"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbSOMvisualization.html" accesskey="U">SOM Visualization</a> &raquo;</li> 
       </ul>
     </div>  
@@ -39,8 +39,36 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <div class="section" id="module-uiBMUtoSHP">
+  <div class="section" id="best-matching-unit-to-shapefile">
 <h1>Best Matching Unit to Shapefile</h1>
+<p>Creates a shapefile from projected data.</p>
+<div class="section" id="arcgis-reference">
+<h2>ArcGIS Reference</h2>
+<div class="figure">
+<img alt="../../_images/bmushape.png" src="../../_images/bmushape.png" />
+</div>
+<p><strong>Parameters</strong></p>
+<dl class="docutils">
+<dt>projected data</dt>
+<dd>The input projected data file.</dd>
+<dt>shape type</dt>
+<dd>The type of shapes to use to represent the data.</dd>
+<dt>projected data shapefile</dt>
+<dd>The output shapefile to contain the projected data shapes.</dd>
+<dt>label from SOM data</dt>
+<dd>The unprojected SOM data file that contains the values and labels to use for the projected data.</dd>
+<dt>Cartesian quadrant</dt>
+<dd>The Cartesian quadrant in which to place the shapes.</dd>
+<dt>spacing between center points</dt>
+<dd>The spacing between the units in the SOM on which the projected data will be displayed.</dd>
+<dt>placement</dt>
+<dd>The placement location on each SOM unit to use for the projected data shapes.</dd>
+<dt>maximum placement distance</dt>
+<dd>The maximum distance from the center of the SOM units to place the projected data shapes.</dd>
+</dl>
+</div>
+<div class="section" id="module-uiBMUtoSHP">
+<h2>Code Reference</h2>
 <dl class="function">
 <dt id="uiBMUtoSHP.BMUtoSHP">
 <tt class="descclassname">uiBMUtoSHP.</tt><tt class="descname">BMUtoSHP</tt><big>(</big><em>bmufile</em>, <em>outfile</em>, <em>labels</em>, <em>quadrant</em>, <em>spacing</em>, <em>placement</em>, <em>distance</em><big>)</big></dt>
@@ -79,6 +107,7 @@
 </dd></dl>
 
 </div>
+</div>
 
 
           </div>
@@ -101,7 +130,7 @@
           <a href="uiCODtoSHP.html" title="SOM to Shapefile"
              >previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbSOMvisualization.html" >SOM Visualization</a> &raquo;</li> 
       </ul>
     </div>

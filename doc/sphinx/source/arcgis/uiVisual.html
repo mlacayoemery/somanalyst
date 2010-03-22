@@ -30,7 +30,7 @@
           <a href="uiVsom.html" title="Train SOM"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbSOMcomputation.html" accesskey="U">SOM Computation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -39,8 +39,32 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <div class="section" id="module-uiVisual">
+  <div class="section" id="calculate-best-matching-units">
 <h1>Calculate Best Matching Units</h1>
+<p>Creates a best matching unit file by projecting data onto a SOM.</p>
+<div class="section" id="arcgis-reference">
+<h2>ArcGIS Reference</h2>
+<div class="figure">
+<img alt="../../_images/bmu.png" src="../../_images/bmu.png" />
+</div>
+<p><strong>Parameters</strong></p>
+<dl class="docutils">
+<dt>SOM</dt>
+<dd>The SOM on which to project data.</dd>
+<dt>data to project</dt>
+<dd>The data to project onto the SOM.</dd>
+<dt>projected data</dt>
+<dd>The ouput file to contain the projected data.</dd>
+<dt>distance metric</dt>
+<dd>The distance metric to use in projecting the data.</dd>
+<dt>skip masked data vectors</dt>
+<dd>Skip vectors that have been masked. Masking is done by begining vectors with a &#8220;x&#8221;, but this is not reccomended since SOM Analyst in several instances does matching based on line number.</dd>
+<dt>read buffer</dt>
+<dd>The number of lines to read at a time.</dd>
+</dl>
+</div>
+<div class="section" id="module-uiVisual">
+<h2>Code Reference</h2>
 <dl class="function">
 <dt id="uiVisual.visual">
 <tt class="descclassname">uiVisual.</tt><tt class="descname">visual</tt><big>(</big><em>cin</em>, <em>din</em>, <em>dout</em>, <em>noskip='#'</em>, <em>buffer='#'</em>, <em>path='\bin\SOM_PAK\'</em><big>)</big></dt>
@@ -73,6 +97,7 @@
 </dd></dl>
 
 </div>
+</div>
 
 
           </div>
@@ -95,7 +120,7 @@
           <a href="uiVsom.html" title="Train SOM"
              >previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbSOMcomputation.html" >SOM Computation</a> &raquo;</li> 
       </ul>
     </div>

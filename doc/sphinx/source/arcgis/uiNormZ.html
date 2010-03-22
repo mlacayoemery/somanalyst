@@ -30,7 +30,7 @@
           <a href="uiNormVar.html" title="Normalize by Variable"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbDataPreprocessing.html" >Data Preprocessing</a> &raquo;</li>
           <li><a href="tbValueTransformations.html" accesskey="U">Value Transformations</a> &raquo;</li> 
       </ul>
@@ -40,8 +40,32 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <div class="section" id="module-uiNormZ">
+  <div class="section" id="z-score-normalization">
 <h1>Z-Score Normalization</h1>
+<p>Creates a database file with Z-score values.</p>
+<div class="section" id="arcgis-reference">
+<h2>ArcGIS Reference</h2>
+<div class="figure">
+<img alt="../../_images/Zscore.png" src="../../_images/Zscore.png" />
+</div>
+<p><strong>Parameters</strong></p>
+<dl class="docutils">
+<dt>input database file</dt>
+<dd>The input database file.</dd>
+<dt>normalize by</dt>
+<dd>The column by which to normalize data.</dd>
+<dt>output database file</dt>
+<dd>The output database file.</dd>
+<dt>division by zero value (std. dev = 0)</dt>
+<dd>The value to assign if there is a division by zero.</dd>
+<dt>decimal places to round to</dt>
+<dd>The number of decimal places to which to round numbers.</dd>
+<dt>columns</dt>
+<dd>The columns to normalize. If no columns are selected, all columns will be normalized.</dd>
+</dl>
+</div>
+<div class="section" id="module-uiNormZ">
+<h2>Code Reference</h2>
 <dl class="function">
 <dt id="uiNormZ.normalize">
 <tt class="descclassname">uiNormZ.</tt><tt class="descname">normalize</tt><big>(</big><em>inName</em>, <em>outName</em>, <em>direction</em>, <em>zeroDivision</em>, <em>decimalPlaces</em>, <em>fieldNames</em><big>)</big></dt>
@@ -77,6 +101,7 @@
 </dd></dl>
 
 </div>
+</div>
 
 
           </div>
@@ -99,7 +124,7 @@
           <a href="uiNormVar.html" title="Normalize by Variable"
              >previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbDataPreprocessing.html" >Data Preprocessing</a> &raquo;</li>
           <li><a href="tbValueTransformations.html" >Value Transformations</a> &raquo;</li> 
       </ul>

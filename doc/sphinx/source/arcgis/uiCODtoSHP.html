@@ -30,7 +30,7 @@
           <a href="tbSOMvisualization.html" title="SOM Visualization"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbSOMvisualization.html" accesskey="U">SOM Visualization</a> &raquo;</li> 
       </ul>
     </div>  
@@ -39,8 +39,34 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <div class="section" id="module-uiCODtoSHP">
+  <div class="section" id="som-to-shapefile">
 <h1>SOM to Shapefile</h1>
+<p>Creates a shapefile from a SOM codebook file.</p>
+<div class="section" id="arcgis-reference">
+<h2>ArcGIS Reference</h2>
+<div class="figure">
+<img alt="../../_images/somshape.png" src="../../_images/somshape.png" />
+</div>
+<p><strong>Parameters</strong></p>
+<dl class="docutils">
+<dt>SOM</dt>
+<dd>The input SOM codebook file from which to create a shapefile.</dd>
+<dt>shape type</dt>
+<dd>The type of shapes to use for the SOM.</dd>
+<dt>SOM shapefile</dt>
+<dd>The output shapefile.</dd>
+<dt>SOM data for variable names</dt>
+<dd>The data that contains the variable names.</dd>
+<dt>label SOM with data labels</dt>
+<dd>Label the SOM with the values from data that is the best match.</dd>
+<dt>Cartesian quadrant</dt>
+<dd>The Cartesian coordinatein which  to place the SOM.</dd>
+<dt>spacing between center points</dt>
+<dd>The distance between the ceneter points of units in the SOM.</dd>
+</dl>
+</div>
+<div class="section" id="module-uiCODtoSHP">
+<h2>Code Reference</h2>
 <dl class="function">
 <dt id="uiCODtoSHP.CODtoSHP">
 <tt class="descclassname">uiCODtoSHP.</tt><tt class="descname">CODtoSHP</tt><big>(</big><em>inName</em>, <em>outName</em>, <em>shapeType</em>, <em>labelData</em>, <em>labelNeurons</em>, <em>radius</em>, <em>umatrix=False</em><big>)</big></dt>
@@ -76,6 +102,7 @@
 </dd></dl>
 
 </div>
+</div>
 
 
           </div>
@@ -98,7 +125,7 @@
           <a href="tbSOMvisualization.html" title="SOM Visualization"
              >previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbSOMvisualization.html" >SOM Visualization</a> &raquo;</li> 
       </ul>
     </div>

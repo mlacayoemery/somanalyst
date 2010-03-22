@@ -30,7 +30,7 @@
           <a href="uiDBFmerge.html" title="Database File Merge"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbDataPreprocessing.html" >Data Preprocessing</a> &raquo;</li>
           <li><a href="tbDataManagement.html" accesskey="U">Data Management</a> &raquo;</li> 
       </ul>
@@ -40,8 +40,38 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <div class="section" id="module-uiSelect">
+  <div class="section" id="select-data">
 <h1>Select Data</h1>
+<p>Creates a database file with the selected values.</p>
+<div class="figure">
+<img alt="../../_images/tbxselectH.png" src="../../_images/tbxselectH.png" />
+</div>
+<div class="section" id="arcgis-reference">
+<h2>ArcGIS Reference</h2>
+<div class="figure">
+<img alt="../../_images/select.png" src="../../_images/select.png" />
+</div>
+<p><strong>Parameters</strong></p>
+<p>input database file</p>
+<dl class="docutils">
+<dt>selection type</dt>
+<dd>The way in which data will be selected.</dd>
+<dt>output database file</dt>
+<dd>The output databse file.</dd>
+<dt>columns</dt>
+<dd>The columns to include in the data selection.</dd>
+<dt>start index</dt>
+<dd>The index from which to begin the selection.</dd>
+<dt>index step</dt>
+<dd>The increment from the start index for the next selection.</dd>
+<dt>stop index</dt>
+<dd>The index at which to stop selection. Negative indicies are equivalent of indexing from the end.</dd>
+<dt>detect data types</dt>
+<dd>An optional mode that automatically changes the data types in a column based on the values it contains. This mode is usueful if the data will be processed further using  mathmatical operations.</dd>
+</dl>
+</div>
+<div class="section" id="module-uiSelect">
+<h2>Code Reference</h2>
 <dl class="function">
 <dt id="uiSelect.select">
 <tt class="descclassname">uiSelect.</tt><tt class="descname">select</tt><big>(</big><em>inName</em>, <em>selectionType</em>, <em>outName</em>, <em>columns</em>, <em>start</em>, <em>step</em>, <em>stop</em>, <em>detectTypes</em><big>)</big></dt>
@@ -83,6 +113,7 @@
 </dd></dl>
 
 </div>
+</div>
 
 
           </div>
@@ -105,7 +136,7 @@
           <a href="uiDBFmerge.html" title="Database File Merge"
              >previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbDataPreprocessing.html" >Data Preprocessing</a> &raquo;</li>
           <li><a href="tbDataManagement.html" >Data Management</a> &raquo;</li> 
       </ul>

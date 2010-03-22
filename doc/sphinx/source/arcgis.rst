@@ -1,7 +1,5 @@
-Using ArcGIS
-======================================
-
-A short explanation of using SOM Analyst in ArcGIS.
+SOM Analyst
+===========
 
 Contents:
 

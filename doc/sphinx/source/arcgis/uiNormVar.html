@@ -30,7 +30,7 @@
           <a href="uiNormMinMax.html" title="Minimum-Maximum Normalization"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbDataPreprocessing.html" >Data Preprocessing</a> &raquo;</li>
           <li><a href="tbValueTransformations.html" accesskey="U">Value Transformations</a> &raquo;</li> 
       </ul>
@@ -40,8 +40,32 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <div class="section" id="module-uiNormVar">
+  <div class="section" id="normalize-by-variable">
 <h1>Normalize by Variable</h1>
+<p>Creates a database file with values normalized by a column.</p>
+<div class="section" id="arcgis-reference">
+<h2>ArcGIS Reference</h2>
+<div class="figure">
+<img alt="../../_images/normalize.png" src="../../_images/normalize.png" />
+</div>
+<p><strong>Parameters</strong></p>
+<dl class="docutils">
+<dt>input database file</dt>
+<dd>The database file to be normalized.</dd>
+<dt>normalize by column</dt>
+<dd>The columns that contain the values by which to normalize other data.</dd>
+<dt>output database file</dt>
+<dd>The ouput database file that will contain the normalized values.</dd>
+<dt>division by zero value</dt>
+<dd>The value to assign when the resulting normalization requires a division by zero, as is the case when the column contains zeros.</dd>
+<dt>decimal places to round to</dt>
+<dd>The number of decimal places to round the normaized values to.</dd>
+<dt>columns to normalize</dt>
+<dd>The columns to normalize. If no columns are selected normalization will be performed on all columns that are numeric.</dd>
+</dl>
+</div>
+<div class="section" id="module-uiNormVar">
+<h2>Code Reference</h2>
 <dl class="function">
 <dt id="uiNormVar.normalize">
 <tt class="descclassname">uiNormVar.</tt><tt class="descname">normalize</tt><big>(</big><em>inName</em>, <em>outName</em>, <em>fieldNames</em>, <em>normBy</em>, <em>zeroDivision</em>, <em>decimalPlaces</em><big>)</big></dt>
@@ -74,6 +98,7 @@
 </dd></dl>
 
 </div>
+</div>
 
 
           </div>
@@ -96,7 +121,7 @@
           <a href="uiNormMinMax.html" title="Minimum-Maximum Normalization"
              >previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbDataPreprocessing.html" >Data Preprocessing</a> &raquo;</li>
           <li><a href="tbValueTransformations.html" >Value Transformations</a> &raquo;</li> 
       </ul>

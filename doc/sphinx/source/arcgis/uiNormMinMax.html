@@ -30,7 +30,7 @@
           <a href="tbValueTransformations.html" title="Value Transformations"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbDataPreprocessing.html" >Data Preprocessing</a> &raquo;</li>
           <li><a href="tbValueTransformations.html" accesskey="U">Value Transformations</a> &raquo;</li> 
       </ul>
@@ -40,8 +40,36 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <div class="section" id="module-uiNormMinMax">
+  <div class="section" id="minimum-maximum-normalization">
 <h1>Minimum-Maximum Normalization</h1>
+<p>Creates a databasefile with values normalized from a minimum value to a maximum value.</p>
+<div class="section" id="arcgis-reference">
+<h2>ArcGIS Reference</h2>
+<div class="figure">
+<img alt="../../_images/norm01.PNG" src="../../_images/norm01.PNG" />
+</div>
+<p><strong>Parameters</strong></p>
+<dl class="docutils">
+<dt>input database file</dt>
+<dd>The input database file with the data to normalize.</dd>
+<dt>normalize by</dt>
+<dd>The direction in the table to perform the normailzation.</dd>
+<dt>output database file</dt>
+<dd>The output database file that will contain the normalized data.</dd>
+<dt>division by zero value (max=min)</dt>
+<dd>The value to assign when the resulting normalization requires a division by zero, as is the case when the minimum is also the maximum.</dd>
+<dt>scale minimum to</dt>
+<dd>The minimum value for the normalized data.</dd>
+<dt>scale maximum to</dt>
+<dd>The maximum value for the normalized data.</dd>
+<dt>decimal places to round to</dt>
+<dd>The number of places to round the normalized data to.</dd>
+<dt>columns to normalize</dt>
+<dd>The columns to normalize. If no columns are selected normalization will be performed on all columns that are numeric.</dd>
+</dl>
+</div>
+<div class="section" id="module-uiNormMinMax">
+<h2>Code Reference</h2>
 <dl class="function">
 <dt id="uiNormMinMax.normalize">
 <tt class="descclassname">uiNormMinMax.</tt><tt class="descname">normalize</tt><big>(</big><em>inName</em>, <em>outName</em>, <em>start</em>, <em>end</em>, <em>direction</em>, <em>minEqMax</em>, <em>fieldNames</em>, <em>decimalPlaces</em><big>)</big></dt>
@@ -83,6 +111,7 @@
 </dd></dl>
 
 </div>
+</div>
 
 
           </div>
@@ -105,7 +134,7 @@
           <a href="tbValueTransformations.html" title="Value Transformations"
              >previous</a> |</li>
         <li><a href="../../index.html">SOM Analyst v1 documentation</a> &raquo;</li>
-          <li><a href="../arcgis.html" >Using ArcGIS</a> &raquo;</li>
+          <li><a href="../arcgis.html" >SOM Analyst</a> &raquo;</li>
           <li><a href="tbDataPreprocessing.html" >Data Preprocessing</a> &raquo;</li>
           <li><a href="tbValueTransformations.html" >Value Transformations</a> &raquo;</li> 
       </ul>

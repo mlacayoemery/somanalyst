@@ -5,8 +5,6 @@ Contents:
 
 .. toctree::
 
-    source/introduction.rst
-    source/usage.rst
     source/arcgis.rst
     source/arcgis/tutorial.rst
 
