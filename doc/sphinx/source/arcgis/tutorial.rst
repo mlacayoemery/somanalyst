@@ -309,7 +309,7 @@ Creating the data shapefile.
 Group Data Shapefile
 --------------------
 
-Grouping the shapes in the data shapefile
+Grouping the shapes in the data shapefile.
 
 1. Run the **Group Shapes** tool by double clicking on it in the **SOM Visualization** toolbox.
 
@@ -328,6 +328,22 @@ Grouping the shapes in the data shapefile
 7. Select **Year** as the *sort by column*.
 
 8. Click **OK** to create the trajectories.
+
+Create Extent Shapefile
+-----------------------
+
+Creating the extent shapefile.
+
+1. Run the **Create Extent Shapefile** tool by double clicking on it in the **Utilities** toolbox.
+
+.. figure:: ../../_images/
+
+2. Select **stage2.shp** as the *input shapefile*.
+
+3. Set **extent.shp** as the *output shapefile*.
+
+4. Click **OK** to create the extent shapefile.
+
 
 Visualization
 -------------
