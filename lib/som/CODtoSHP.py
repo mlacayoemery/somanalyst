@@ -26,7 +26,7 @@ def CODtoSHP(inName,outName,shapeType,labelData,labelNeurons,radius):
     elif shapeType=="polygon":
         shp=shapefile.Shapefile(5)
         for x,y in geometry.hexagonGrid(0,cod.xdimension,0,cod.ydimension,radius):
-            shp.add(geometry.hexagon(x,y,radius/2))
+            shp.add(geometry.closedSet(geometry.hexagon(x,y,radius/2)))
     else:
         raise ValueError, "Shape type"+str(shapeType)+"is not supported."
 
