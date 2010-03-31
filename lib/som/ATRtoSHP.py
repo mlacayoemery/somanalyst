@@ -7,6 +7,7 @@ def BMUtoSHP(bmufile,outfile,labels,quadrant,spacing,placement,distance):
     bmu=SOMclass.BMU()
     bmu.readFile(bmufile)
     bmu.spacing=spacing
+    bmu.quadrant=quadrant
     if placement==2:
         bmu.distance=distance
     bmu.writeShapefile(outfile)

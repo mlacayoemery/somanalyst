@@ -2,7 +2,7 @@ import sys
 import lib.som.CODtoSHP
 import lib.shp.databasefile
 
-def CODtoSHP(inName,outName,shapeType,labelData,labelNeurons,radius,umatrix=False):
+def CODtoSHP(inName,outName,shapeType,labelData,labelNeurons,radius,quadrant,umatrix=False):
     """
     Creates a shapfile from a codebook file.
 
@@ -20,7 +20,7 @@ def CODtoSHP(inName,outName,shapeType,labelData,labelNeurons,radius,umatrix=Fals
       radius *optional*
        The radius of the polygons to create.
     """
-    lib.som.CODtoSHP.CODtoSHP(inName,outName,shapeType,labelData,labelNeurons,radius)
+    lib.som.CODtoSHP.CODtoSHP(inName,outName,shapeType,labelData,labelNeurons,radius,quadrant)
     if umatrix!=False:
         outName=outName[:outName.rfind(".")]+".dbf"
         d=lib.shp.databasefile.DatabaseFile(None,None,None,outName)
@@ -46,4 +46,4 @@ if __name__=="__main__":
         umatrix=False        
     radius=float(sys.argv[8])
     quadrant=int(sys.argv[7])
-    CODtoSHP(inName,outName,shapeType,labelData,labelNeurons,radius,umatrix)
+    CODtoSHP(inName,outName,shapeType,labelData,labelNeurons,radius,quadrant,umatrix)

@@ -29,6 +29,7 @@ class BMU:
         distance=0
         xOrigin=0
         yOrigin=0
+        quadrant=1
         self.dimensions=dimensions
         self.topology=topology
         self.xdimension=xdimension
@@ -41,6 +42,7 @@ class BMU:
         self.distance=distance
         self.xOrigin=xOrigin
         self.yOrigin=yOrigin
+        self.quadrant=quadrant
 
     def readFile(self,inName):
         inFile=open(inName)
@@ -85,17 +87,30 @@ class BMU:
         
     def writeShapefile(self,inName):
         shp=shapefile.Shapefile(1)
-        try:
-            for i,j in self.vectors:
-                x,y=geometry.hexagonCentroid(i,j,self.xOrigin,self.yOrigin,self.spacing)
-                xShift=((random.random()*2)-1)*self.distance
-                x=x+xShift
-                yMaxShift=(self.distance**2+xShift**2)**0.5
-                yShift=((random.random()*2)-1)*yMaxShift
-                y=y+yShift
-                shp.add([(x,y)])
-        except ValueError:
-            pass
+        if self.quadrant==4:
+            xscale=1
+            yscale=1
+        elif self.quadrant==1:
+            xscale=1
+            yscale=-1
+        elif self.quadrant==3:
+            xscale=-1
+            yscale=1
+        elif self.quadrant==2:
+            xscale=-1
+            yscale=-1
+        else:
+            raise ValueError, str(quadrant)+" invalid quadarant. Must be 1, 2, 3, or 4."        
+
+        for i,j in self.vectors:
+            x,y=geometry.hexagonCentroid(i,j,self.xOrigin,self.yOrigin,self.spacing)
+            xShift=((random.random()*2)-1)*self.distance
+            x=x+xShift
+            yMaxShift=(self.distance**2+xShift**2)**0.5
+            yShift=((random.random()*2)-1)*yMaxShift
+            y=y+yShift
+            shp.add([(x*xscale,y*yscale)])
+            
         shp.writeFile(inName[:inName.rfind(".")])
 
     def writeDBF(self,outName):
