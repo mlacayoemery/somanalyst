@@ -2,57 +2,98 @@ import SOMclass
 from ..shp import databasefile
 
 def uMatrix(inName,outName):
+    decimalPlaces=6
     som=SOMclass.SOM()
     som.readFile(inName)
-    dbf=databasefile.DatabaseFile(["U"],[['N',9,6]],[])
+
+    if som.topology=="rect":
+        raise TypeError, "U-matricies for rectangular topology is not supported."
+    
+    dbf=databasefile.DatabaseFile(["U"],[['N',9,decimalPlaces]],[])
     for i in range(som.xdimension):
         for j in range(som.ydimension):
-            centroid=som.vectors[j][i]
             total=0
             number=0
-            #starting at noon, going clockwise
+
             try:
                 if i == som.xdimension - 1:
                     raise IndexError
-                total+=SOMclass.qError(centroid,som.vectors[j][i+1])
-                number+=1
+                number=number+1
+                total=total+SOMclass.qError(som.vectors[j][i],som.vectors[j][i+1])
             except IndexError:
                 pass
+
             try:
+                #last row
                 if j == som.ydimension - 1:
                     raise IndexError
-                total+=SOMclass.qError(centroid,som.vectors[j+1][i])
-                number+=1
+                #odd row
+                if (j+1)%2==1:
+                    number=number+1
+                    total=total+SOMclass.qError(som.vectors[j][i],som.vectors[j+1][i])
+                #last row    
+                elif i == som.xdimension-1:
+                    raise IndexError
+                #even 
+                else:
+                    number=number+1
+                    total=total+SOMclass.qError(som.vectors[j][i],som.vectors[j+1][i+1])
             except IndexError:
                 pass
+
+            try:
+                if (j+1)%2==1:
+                    if i==0:
+                        raise IndexError
+                    else:
+                        number=number+1
+                        total=total+SOMclass.qError(som.vectors[j][i],som.vectors[j+1][i-1])
+                else:
+                    number=number+1
+                    total=total+SOMclass.qError(som.vectors[j][i],som.vectors[j+1][i])
+            except IndexError:
+                pass
+            
             try:
                 if i == 0:
                     raise IndexError
-                total+=SOMclass.qError(centroid,som.vectors[j][i-1])
-                number+=1
+                number=number+1
+                total=total+SOMclass.qError(som.vectors[j][i],som.vectors[j][i-1])
             except IndexError:
                 pass
-            try:
-                if i == 0 or j == 0:
-                    raise IndexError
-                total+=SOMclass.qError(centroid,som.vectors[j-1][i-1])
-                number+=1
-            except IndexError:
-                pass
+            
             try:
                 if j == 0:
                     raise IndexError
-                total+=SOMclass.qError(centroid,som.vectors[j-1][i])
-                number+=1
+                if (j+1)%2==1:
+                    if i == 0:
+                        raise IndexError
+                    else:
+                        number=number+1
+                        total=total+SOMclass.qError(som.vectors[j][i],som.vectors[j-1][i])
+                else:
+                    number=number+1
+                    total=total+SOMclass.qError(som.vectors[j][i],som.vectors[j-1][i])
             except IndexError:
                 pass
+
             try:
-                if i == som.xdimension - 1 or j == 0:
+                if j == 0:
                     raise IndexError
-                total+=SOMclass.qError(centroid,som.vectors[j-1][i+1])
-                number+=1
+                if (j+1)%2==1:
+                    number=number+1
+                    total=total+SOMclass.qError(som.vectors[j][i],som.vectors[j-1][i])
+                elif i == som.xdimension-1:
+                    raise IndexError
+                else:
+                    number=number+1
+                    total=total+SOMclass.qError(som.vectors[j][i],som.vectors[j-1][i+1])
             except IndexError:
                 pass
-            value=str(round(total/number,6))
-            dbf.addRow([value[:value.rfind(".")+6]])
+
+            total=str(round(total/number,decimalPlaces))
+            total=total[:total.rfind(".")+decimalPlaces+1]                
+                
+            dbf.addRow([total])
+    dbf.refreshSpecs()
     dbf.writeFile(outName)
