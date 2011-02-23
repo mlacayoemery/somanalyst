@@ -8,7 +8,9 @@ def BMUtoSHP(bmufile,outfile,labels,quadrant,spacing,placement,distance):
     bmu.readFile(bmufile)
     bmu.spacing=spacing
     bmu.quadrant=quadrant
-    if placement==2:
+    if placement==1:
+        bmu.distance=0
+    else:
         bmu.distance=distance
     bmu.writeShapefile(outfile)
     if labels:

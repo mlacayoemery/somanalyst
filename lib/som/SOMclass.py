@@ -87,29 +87,34 @@ class BMU:
         
     def writeShapefile(self,inName):
         shp=shapefile.Shapefile(1)
-        if self.quadrant==4:
+        if self.quadrant==1:
             xscale=1
-            yscale=1
-        elif self.quadrant==1:
-            xscale=1
-            yscale=-1
-        elif self.quadrant==3:
-            xscale=-1
             yscale=1
         elif self.quadrant==2:
             xscale=-1
+            yscale=1
+        elif self.quadrant==3:
+            xscale=-1
+            yscale=-1
+        elif self.quadrant==4:
+            xscale=1
             yscale=-1
         else:
             raise ValueError, str(quadrant)+" invalid quadarant. Must be 1, 2, 3, or 4."        
 
-        for i,j in self.vectors:
-            x,y=geometry.hexagonCentroid(i,j,self.xOrigin,self.yOrigin,self.spacing)
-            xShift=((random.random()*2)-1)*self.distance
-            x=x+xShift
-            yMaxShift=(self.distance**2+xShift**2)**0.5
-            yShift=((random.random()*2)-1)*yMaxShift
-            y=y+yShift
-            shp.add([(x*xscale,y*yscale)])
+        if self.distance==0:
+            for i,j in self.vectors:
+                x,y=geometry.hexagonCentroid(i,j,self.xOrigin,self.yOrigin,self.spacing)
+                shp.add([(x*xscale,y*yscale)])
+        else:        
+            for i,j in self.vectors:
+                x,y=geometry.hexagonCentroid(i,j,self.xOrigin,self.yOrigin,self.spacing)
+                xShift=((random.random()*2)-1)*self.distance
+                x=x+xShift
+                yMaxShift=(self.distance**2+xShift**2)**0.5
+                yShift=((random.random()*2)-1)*yMaxShift
+                y=y+yShift
+                shp.add([(x*xscale,y*yscale)])
             
         shp.writeFile(inName[:inName.rfind(".")])
 

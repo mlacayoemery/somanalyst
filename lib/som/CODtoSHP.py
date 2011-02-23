@@ -9,17 +9,17 @@ def CODtoSHP(inName,outName,shapeType,labelData,labelNeurons,radius,quadrant):
     cod=SOMclass.SOM()
     cod.readFile(inName)
 
-    if quadrant==4:
+    if quadrant==1:
         xscale=1
-        yscale=1
-    elif quadrant==1:
-        xscale=1
-        yscale=-1
-    elif quadrant==3:
-        xscale=-1
         yscale=1
     elif quadrant==2:
         xscale=-1
+        yscale=1
+    elif quadrant==3:
+        xscale=-1
+        yscale=-1
+    elif quadrant==4:
+        xscale=1
         yscale=-1
     else:
         raise ValueError, str(quadrant)+" invalid quadarant. Must be 1, 2, 3, or 4."

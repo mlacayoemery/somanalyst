@@ -18,7 +18,7 @@ def BMUtoSHP(bmufile,outfile,labels,quadrant,spacing,placement,distance):
        The spacing between units in the SOM.
       placement *optional*
        The method for placement within a neuron.
-      distance *otional*
+      distance *optional*
        The maximum distance for the placement.
     """
     lib.som.ATRtoSHP.BMUtoSHP(bmufile,outfile,labels,quadrant,spacing,placement,distance)
