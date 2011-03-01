@@ -1,9 +1,10 @@
 Tutorial
 ========
 
-This tutorial contains step-by-step instructions on how to use the provided example dataset with SOM Analyst. The data is converted from the comma separated file format to the database file format so that normalizations can be performed. The data is then normalized by state population and then normalized from 0 to 1 before exporting the data for use with a SOM. A SOM is trained in two stages with this data, which is then projected onto the SOM and visualized. The resulting visualization shows the relative changes between gender, age, and race in each state during each U.S. census in the 20th century. 
+This tutorial contains step-by-step instructions on how to use the provided example dataset with SOM Analyst. The source data set for this tutorial is provided with SOM Analyst and is located in its sub-folder named **dat**. The file named **census.csv** contains gender, age, race, and housing data for each U.S. population census between the years 1900 and 1990.
 
-.. note:: The data for this tutorial is provided with SOM Analyst and is located in its sub-folder named **dat** . 
+First, the data is converted from the comma separated file format (.csv) to the database file format (.dbf) so that normalizations can be performed. Second, the raw count data are normalized by state population counts. Third, every variable is normalized into a 0 to 1 range and the preprocessed data are then exported to the SOM input format. Using those input data, a SOM is trained in two stages. The input data are then projected onto the finished SOM. Finally, a number of visualizations are produced.
+ 
 
 Adding the Toolbox
 ------------------
@@ -22,12 +23,11 @@ Add the SOM Analyst Toolbox to ArcGIS.
 
 3. Browse to the location of SOM Analyst and select **guiArcGIS93.tbx** and click **Open**.
 
-.. note:: Depending on your computer setup, it may be necessary to "connect" to the folder that contains SOM Analyst. In the dialog box click on the icon of a folder with an arrow pointing to a globe.
+.. note:: Depending on your computer setup, it may be necessary to first "connect" to the folder that contains SOM Analyst. In that case, click in the dialog box on the icon of a folder with an arrow pointing to a globe.
 
 .. figure:: ../../_images/guiArcGIS93.png
 
 
-.. note:: Double clicking on a toolbox opens it as a folder and allows you to add toolboxes it contains.
 
 The SOM Analyst toolbox is now accessible through the ArcToolbox panel.
 
@@ -357,4 +357,4 @@ Visualizing the SOM and projected data.
 .. figure:: ../../_images/tutorial.png
 
 
-The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames show the component plane, the value for one variable across the entire SOM.
+The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames contain several component planes, each showing the neuron weights for one variable across the entire SOM. 
