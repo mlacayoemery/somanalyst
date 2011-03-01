@@ -111,7 +111,7 @@ class BMU:
                 x,y=geometry.hexagonCentroid(i,j,self.xOrigin,self.yOrigin,self.spacing)
                 xShift=((random.random()*2)-1)*self.distance
                 x=x+xShift
-                yMaxShift=(self.distance**2+xShift**2)**0.5
+                yMaxShift=(self.distance**2-xShift**2)**0.5
                 yShift=((random.random()*2)-1)*yMaxShift
                 y=y+yShift
                 shp.add([(x*xscale,y*yscale)])
