@@ -2,9 +2,9 @@ import sys
 import lib.som.UmatrixShp
 import lib.shp.databasefile
 
-def UmatrixShp(inName,outName,shapeType,decimalPlaces,radius,doubleLinks,edges,value):
+def UmatrixShp(inName,outName,shapeType,decimalPlaces,quadrant,radius,doubleLinks,edges,value):
     """
-    Creates a shapfile from a codebook file.
+    Creates a shapfile from a codebook file with between node Q-errors .
 
     :arguments:
       inName
@@ -20,7 +20,7 @@ def UmatrixShp(inName,outName,shapeType,decimalPlaces,radius,doubleLinks,edges,v
       radius *optional*
        The radius of the polygons to create.
     """
-    lib.som.UmatrixShp.UmatrixShp(inName,outName,shapeType,decimalPlaces,radius,doubleLinks,edges,value)
+    lib.som.UmatrixShp.UmatrixShp(inName,outName,shapeType,decimalPlaces,quadrant,radius,doubleLinks,edges,value)
 ##    if umatrix!=False:
 ##        outName=outName[:outName.rfind(".")]+".dbf"
 ##        d=lib.shp.databasefile.DatabaseFile(None,None,None,outName)
@@ -33,19 +33,20 @@ if __name__=="__main__":
     shapeType=sys.argv[2]
     decimalPlaces=int(sys.argv[3])
     outName=sys.argv[4]
-    radius=float(sys.argv[5])
+    quadrant=int(sys.argv[5])
+    radius=float(sys.argv[6])
 
-    if sys.argv[6]=="#" or sys.argv[6]=="false":
+    if sys.argv[7]=="#" or sys.argv[7]=="false":
         doubleLinks=False
     else:
         doubleLinks=True        
-    if sys.argv[7]=="#" or sys.argv[7]=="false":
+    if sys.argv[8]=="#" or sys.argv[8]=="false":
         edges=False
     else:
         edges=True
-    if sys.argv[8]!="#":
-        value=float(sys.argv[8])
+    if sys.argv[9]!="#":
+        value=float(sys.argv[9])
     else:
         edges=False
         value=None
-    UmatrixShp(inName,outName,shapeType,decimalPlaces,radius,doubleLinks,edges,value)
+    UmatrixShp(inName,outName,shapeType,decimalPlaces,quadrant,radius,doubleLinks,edges,value)
