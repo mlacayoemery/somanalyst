@@ -6,6 +6,8 @@ from ..shp import databasefile
 from ..shp import shapefile
 from ..shp import geometry
 
+idRow=True
+
 def qError(v1,v2):
     return sum(map(lambda v: (v[0]-v[1])**2,zip(v1,v2)))**0.5
 
@@ -131,9 +133,14 @@ class BMU:
         else:
             fieldnames=["Xindex","Yindex","Qerror"]+map("attr".__add__,map(str,range(1,self.dimensions+labelLen-3)))
         #print fieldspecs
-        dbf=databasefile.DatabaseFile(fieldnames,fieldspecs,[])
-        for id,v in enumerate(self.vectors):
-            dbf.addRow(v+self.labels[id])
+        if idRow:
+            dbf=databasefile.DatabaseFile(["ID"]+fieldnames,[('N', 6, 0)]+fieldspecs,[])
+            for id,v in enumerate(self.vectors):
+                dbf.addRow([id+1]+v+self.labels[id])
+        else:
+            dbf=databasefile.DatabaseFile(fieldnames,fieldspecs,[])
+            for id,v in enumerate(self.vectors):
+                dbf.addRow(v+self.labels[id])
         dbf.dynamicSpecs()
         #print dbf.fieldspecs
         #print dbf.records

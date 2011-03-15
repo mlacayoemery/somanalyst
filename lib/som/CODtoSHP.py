@@ -45,6 +45,7 @@ def CODtoSHP(inName,outName,shapeType,labelData,labelNeurons,radius,quadrant):
     else:
         raise ValueError, "Shape type"+str(shapeType)+"is not supported."
 
-    #copy codebook table to shapefile and write out            
-    shp.table=cod.DBF()
+    #copy codebook table to shapefile and write out
+    shp.table.refreshSpecs()
+    shp.table.extend(cod.DBF())
     shp.writeFile(outName[:outName.rfind(".")])
