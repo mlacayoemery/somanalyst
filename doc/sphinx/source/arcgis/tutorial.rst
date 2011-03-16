@@ -50,7 +50,7 @@ Convert the data to a database file format.
 
 3. Set **Comma Separated Values (CSV)** as the *input file format*. 
 
-4. Set **census.dbf** as the *output database file*.
+4. Change the *output database file* to **census.dbf**.
 
 5. Click **OK** to run the conversion.
 
@@ -76,7 +76,7 @@ Normalize values in the database file.
 
 3. Select **Population** as the *normalize by column*.
 
-4. Set **normVar.dbf** as the *output database file*.
+4. Change the *output database file* to **census.dbf**.
 
 5. Select the columns **male**, **female**, **Under_15**, **15_64**, **65_Over**, **Am_Indian**, **Asian**, **Black**, and **White** in the *columns to normalize* field.
 
@@ -96,7 +96,7 @@ The resulting table contains population ratios.
 
 9. Select **column** as the *normalize by* field.
 
-10. Set **norm01.dbf** as the *output database file*.
+10. Change the *output database file* to **norm01.dbf**.
 
 11. Select the columns **male**, **female**, **Under_15**, **15_64**, **65_Over**, **Am_Indian**, **Asian**, **Black**, and **White** in the *columns to normalize* field.
 
@@ -120,7 +120,7 @@ Select the relevant variables from the database file.
 
 3. Set **columns** as the *selection type*.
 
-4. Set **demographics.dbf** as the *output database file*.
+4. Change the *output database file* to **demographics.dbf**.
 
 5. Select all columns except **Owner**, **Renter**, and **Households** in the *columns* field.
 
@@ -149,7 +149,7 @@ Export the database file to the SOM data format.
 
 2. Select **demographics.dbf** as the *input database file*.
 
-3. Set **demographics.dat** as the *output SOM data file*. 
+3. Change the *output SOM data file* to **demographics.dat**. 
 
 4. Select **Region**, **Division**, **State**, and **Year** in the *label columns* field.
 
@@ -201,7 +201,7 @@ Training the SOM.
 
 6. Set **25** as the *initial neighborhood radius*.
 
-7. Set **stage1.cod** as the *trained SOM*.
+7. Change the *trained SOM* to **stage1.cod**.
 
 8. Click **OK** to run the training of the SOM.
 
@@ -221,7 +221,7 @@ A window will open that indicates the progress of the process as it did with the
 
 14. Set **5** as the *initial neighborhood radius*.
 
-15. Set **stage2.cod** as the *trained SOM*.
+15. Change the *trained SOM* to **stage2.cod**.
 
 16. Click **OK** to run the training of the SOM.
 
@@ -236,7 +236,7 @@ Calculate the U-matrix of a SOM.
 
 2. Select **stage2.cod** as the *input SOM*.
 
-3. Set **Umatrix.dbf** as the *output U-matrix database file*.
+3. Change the *output U-matrix database file* to **Umatrix.dbf**.
 
 4. Click **OK** to calculate the U-matrix
 
@@ -256,7 +256,7 @@ Project the data onto the SOM.
 
 3. Select **demographics.dat** as the *data to project*.
 
-4. Set **demographics.bmu** as the *projected data*.
+4. Change the *projected data* to **demographics.bmu**.
 
 5. Click **OK** to project the data onto the SOM.
 
@@ -275,7 +275,7 @@ Creating the SOM shapefile.
 
 3. Select **polygon** as the *shape type*.
 
-4. Set **stage2.shp** as the *SOM shapefile*.
+4. Change the *SOM shapefile* to **stage2.shp**.
 
 5. Set **demographics.dat** as the *SOM data for variable names*.
 
@@ -298,7 +298,7 @@ Creating the data shapefile.
 
 3. Select **point** as the *shape type*.
 
-4. Set **bmu.shp** as the *projected data shapefile*.
+4. Change the *projected data shapefile* to **bmu.shp**.
 
 5. Select **demographics.dat** as the *label from SOM data*.
 
@@ -323,7 +323,7 @@ Grouping the shapes in the data shapefile.
 
 5. Select **maximum** as the *value type*.
 
-6. Set **trajectories.shp** as the *output shapefile*.
+6. Change the *output shapefile* to **trajectories.shp**.
 
 7. Select **Year** as the *sort by column*.
 
@@ -340,7 +340,7 @@ Creating the extent shapefile.
 
 2. Select **stage2.shp** as the *input shapefile*.
 
-3. Set **extent.shp** as the *output shapefile*.
+3. Change the *output shapefile* to **extent.shp**.
 
 4. Click **OK** to create the extent shapefile.
 

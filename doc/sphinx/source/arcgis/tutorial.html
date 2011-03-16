@@ -84,7 +84,7 @@
 <ol class="arabic simple" start="2">
 <li>Select <strong>census.csv</strong> as the <em>input data file</em>.</li>
 <li>Set <strong>Comma Separated Values (CSV)</strong> as the <em>input file format</em>.</li>
-<li>Set <strong>census.dbf</strong> as the <em>output database file</em>.</li>
+<li>Change the <em>output database file</em> to <strong>census.dbf</strong>.</li>
 <li>Click <strong>OK</strong> to run the conversion.</li>
 </ol>
 <p>In the table properties the data type for each column is text.</p>
@@ -108,7 +108,7 @@
 <ol class="arabic simple" start="2">
 <li>Select <strong>census.dbf</strong> as the <em>input database file</em>.</li>
 <li>Select <strong>Population</strong> as the <em>normalize by column</em>.</li>
-<li>Set <strong>normVar.dbf</strong> as the <em>output database file</em>.</li>
+<li>Change the <em>output database file</em> to <strong>census.dbf</strong>.</li>
 <li>Select the columns <strong>male</strong>, <strong>female</strong>, <strong>Under_15</strong>, <strong>15_64</strong>, <strong>65_Over</strong>, <strong>Am_Indian</strong>, <strong>Asian</strong>, <strong>Black</strong>, and <strong>White</strong> in the <em>columns to normalize</em> field.</li>
 <li>Click <strong>OK</strong> to run the normalization.</li>
 </ol>
@@ -125,7 +125,7 @@
 <ol class="arabic simple" start="8">
 <li>Select <strong>normVar.dbf</strong> as the <em>input database file</em>.</li>
 <li>Select <strong>column</strong> as the <em>normalize by</em> field.</li>
-<li>Set <strong>norm01.dbf</strong> as the <em>output database file</em>.</li>
+<li>Change the <em>output database file</em> to <strong>norm01.dbf</strong>.</li>
 <li>Select the columns <strong>male</strong>, <strong>female</strong>, <strong>Under_15</strong>, <strong>15_64</strong>, <strong>65_Over</strong>, <strong>Am_Indian</strong>, <strong>Asian</strong>, <strong>Black</strong>, and <strong>White</strong> in the <em>columns to normalize</em> field.</li>
 <li>Click <strong>OK</strong> to run the normalization.</li>
 </ol>
@@ -146,7 +146,7 @@
 <ol class="arabic simple" start="2">
 <li>Select <strong>norm01.dbf</strong> as the <em>input database file</em>.</li>
 <li>Set <strong>columns</strong> as the <em>selection type</em>.</li>
-<li>Set <strong>demographics.dbf</strong> as the <em>output database file</em>.</li>
+<li>Change the <em>output database file</em> to <strong>demographics.dbf</strong>.</li>
 <li>Select all columns except <strong>Owner</strong>, <strong>Renter</strong>, and <strong>Households</strong> in the <em>columns</em> field.</li>
 <li>Enable <strong>detect data types</strong>.</li>
 <li>Click <strong>OK</strong> to run the selection.</li>
@@ -175,7 +175,7 @@
 </div>
 <ol class="arabic simple" start="2">
 <li>Select <strong>demographics.dbf</strong> as the <em>input database file</em>.</li>
-<li>Set <strong>demographics.dat</strong> as the <em>output SOM data file</em>.</li>
+<li>Change the <em>output SOM data file</em> to <strong>demographics.dat</strong>.</li>
 <li>Select <strong>Region</strong>, <strong>Division</strong>, <strong>State</strong>, and <strong>Year</strong> in the <em>label columns</em> field.</li>
 <li>Click <strong>OK</strong> to run the export.</li>
 </ol>
@@ -221,7 +221,7 @@
 <li>Set <strong>4900</strong> as the <em>length of training</em>.</li>
 <li>Set <strong>0.04</strong> as the <em>initial learning rate</em>.</li>
 <li>Set <strong>25</strong> as the <em>initial neighborhood radius</em>.</li>
-<li>Set <strong>stage1.cod</strong> as the <em>trained SOM</em>.</li>
+<li>Change the <em>trained SOM</em> to <strong>stage1.cod</strong>.</li>
 <li>Click <strong>OK</strong> to run the training of the SOM.</li>
 </ol>
 <p>A window will open that indicates the progress of the process as it did with the creation of the initial SOM.</p>
@@ -237,7 +237,7 @@
 <li>Set <strong>49000</strong> as the <em>length of training</em>.</li>
 <li>Set <strong>0.03</strong> as the <em>initial learning rate</em>.</li>
 <li>Set <strong>5</strong> as the <em>initial neighborhood radius</em>.</li>
-<li>Set <strong>stage2.cod</strong> as the <em>trained SOM</em>.</li>
+<li>Change the <em>trained SOM</em> to <strong>stage2.cod</strong>.</li>
 <li>Click <strong>OK</strong> to run the training of the SOM.</li>
 </ol>
 </div>
@@ -252,7 +252,7 @@
 </div>
 <ol class="arabic simple" start="2">
 <li>Select <strong>stage2.cod</strong> as the <em>input SOM</em>.</li>
-<li>Set <strong>Umatrix.dbf</strong> as the <em>output U-matrix database file</em>.</li>
+<li>Change the <em>output U-matrix database file</em> to <strong>Umatrix.dbf</strong>.</li>
 <li>Click <strong>OK</strong> to calculate the U-matrix</li>
 </ol>
 <div class="figure">
@@ -271,7 +271,7 @@
 <ol class="arabic simple" start="2">
 <li>Select <strong>stage2.cod</strong> as the <em>SOM</em>.</li>
 <li>Select <strong>demographics.dat</strong> as the <em>data to project</em>.</li>
-<li>Set <strong>demographics.bmu</strong> as the <em>projected data</em>.</li>
+<li>Change the <em>projected data</em> to <strong>demographics.bmu</strong>.</li>
 <li>Click <strong>OK</strong> to project the data onto the SOM.</li>
 </ol>
 <p>A window will open that indicates the progress of the process as it did with the creation of the initial SOM.</p>
@@ -288,7 +288,7 @@
 <ol class="arabic simple" start="2">
 <li>Select <strong>stage2.cod</strong> as the <em>SOM</em>.</li>
 <li>Select <strong>polygon</strong> as the <em>shape type</em>.</li>
-<li>Set <strong>stage2.shp</strong> as the <em>SOM shapefile</em>.</li>
+<li>Change the <em>SOM shapefile</em> to <strong>stage2.shp</strong>.</li>
 <li>Set <strong>demographics.dat</strong> as the <em>SOM data for variable names</em>.</li>
 <li>Enable <em>label SOM with data labels</em></li>
 <li>Set <strong>Umatrix.dbf</strong> as the <em>U-matrix</em>.</li>
@@ -307,7 +307,7 @@
 <ol class="arabic simple" start="2">
 <li>Select <strong>demographics.bmu</strong> as the <em>projected data</em>.</li>
 <li>Select <strong>point</strong> as the <em>shape type</em>.</li>
-<li>Set <strong>bmu.shp</strong> as the <em>projected data shapefile</em>.</li>
+<li>Change the <em>projected data shapefile</em> to <strong>bmu.shp</strong>.</li>
 <li>Select <strong>demographics.dat</strong> as the <em>label from SOM data</em>.</li>
 <li>Select <strong>random around center</strong> as the <em>placement</em>.</li>
 <li>Click <strong>OK</strong> to create the data shapefile.</li>
@@ -327,7 +327,7 @@
 <li>Select <strong>State</strong> as the <em>group by column</em></li>
 <li>Select <strong>polyline</strong> as the <em>group type</em>.</li>
 <li>Select <strong>maximum</strong> as the <em>value type</em>.</li>
-<li>Set <strong>trajectories.shp</strong> as the <em>output shapefile</em>.</li>
+<li>Change the <em>output shapefile</em> to <strong>trajectories.shp</strong>.</li>
 <li>Select <strong>Year</strong> as the <em>sort by column</em>.</li>
 <li>Click <strong>OK</strong> to create the trajectories.</li>
 </ol>
@@ -343,7 +343,7 @@
 </div>
 <ol class="arabic simple" start="2">
 <li>Select <strong>stage2.shp</strong> as the <em>input shapefile</em>.</li>
-<li>Set <strong>extent.shp</strong> as the <em>output shapefile</em>.</li>
+<li>Change the <em>output shapefile</em> to <strong>extent.shp</strong>.</li>
 <li>Click <strong>OK</strong> to create the extent shapefile.</li>
 </ol>
 </div>
