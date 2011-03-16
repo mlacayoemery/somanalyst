@@ -1,4 +1,4 @@
-Database File Merge
+Combine
 ==================================
 Combines multiple database files into a single database file.
 

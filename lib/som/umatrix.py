@@ -1,7 +1,7 @@
 import SOMclass
 from ..shp import databasefile
 
-def uMatrix(inName,outName,decimalPlaces):
+def uMatrix(inName,outName,decimalPlaces,metric):
     som=SOMclass.SOM()
     som.readFile(inName)
 
