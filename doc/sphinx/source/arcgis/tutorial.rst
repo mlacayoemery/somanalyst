@@ -33,7 +33,7 @@ The SOM Analyst toolbox is now accessible through the ArcToolbox panel.
 
 .. figure:: ../../_images/SOManalyst.png
 
-Browse through the toolbox to familiarize your self with the tools.
+Browse through the toolbox to familiarize yourself with the tools.
 
 .. figure:: ../../_images/ToolList.png
 
@@ -357,4 +357,9 @@ Visualizing the SOM and projected data.
 .. figure:: ../../_images/tutorial.png
 
 
-The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames contain several component planes, each showing the neuron weights for one variable across the entire SOM. 
+The large map shows the trajectory of each state across the SOM over time with a base of the U-matrix, a measure of distortion. The trajectories are color coded by census division, which are shown in the lower right. The other frames contain the component planes, each showing the neuron weights for one variable across the entire SOM.
+
+When examining the demographic trajectories of each state note that each shift in the trajectory corresponds to a census year and that at the end of the trajectory is an arrow that represents the year 1990. Parallel trajectories indicate a similar change in demographics over time. Parallel trajectories are particularly evident within the South Division (West South Central Region, East South Central Region, and South Atlantic Region) and Northeast Division (Middle Atlantic Region and New England Region). This demonstrates spatial autocorrelation and is consistent with the demographic changes over the last century. In the Northeast Division, the parallel trajectories split 40 years ago mainly into coastal and land locked areas with New York and New Jersey similar to each other, but dissimilar to the other coastal states.
+
+When examining component planes you are seeing how the SOM allocates location based on that variable. In this map, darker color means high values and lighter color means low values. You can see that the female component plane is very dark in one corner and light in the opposite corner with a gradual change between the two. Conversely the male component plane is very dark in the opposite corner and has a similar pattern of gradual change. When comparing component planes to each other you can see how the SOM weights the variables in the same location and thus derive a relationship between them. You can see that that female and male have an inversely proportional relationship in the SOM that corresponds with reality, that is that a high number of females inherently means a low number of males and vice versa.
+
