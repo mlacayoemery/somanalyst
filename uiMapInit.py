@@ -1,6 +1,5 @@
 import sys, os
-#supports executables in long path names
-#does not support output into long path names
+import win32api
 
 def mapinit(din,cout,topol,neigh,xdim,ydim,init,rand='#',buffer='#'):
     """
@@ -55,7 +54,6 @@ def mapinit(din,cout,topol,neigh,xdim,ydim,init,rand='#',buffer='#'):
         mapinit+=" -rand "+rand
     if buffer != '#':
         mapint+=" -buffer "+buffer
-    print mapinit
 
     #execute command
     return os.system(mapinit)        
@@ -64,8 +62,12 @@ def mapinit(din,cout,topol,neigh,xdim,ydim,init,rand='#',buffer='#'):
 if __name__=="__main__":
     #input data
     din = sys.argv[1]
+    din = win32api.GetShortPathName(din)
     #output codebook filename
     cout = sys.argv[6]
+    outfile=open(cout,'w')
+    outfile.close()
+    cout = win32api.GetShortPathName(cout)
     #topology type of map, hexa or rect
     topol = sys.argv[2]
     #neighborhood type, bubble or gaussian

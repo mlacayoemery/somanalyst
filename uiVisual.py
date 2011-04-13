@@ -1,4 +1,5 @@
 import sys, os
+import win32api
 
 #supports executables in long path names
 #does not support output into long path names
@@ -38,10 +39,15 @@ def visual(cin,din,dout,noskip="#",buffer="#",path="\\bin\\SOM_PAK\\"):
 if __name__=="__main__":
     #codebook file
     cin = sys.argv[1]
+    cin = win32api.GetShortPathName(cin)
     #input data
     din = sys.argv[2]
+    din = win32api.GetShortPathName(din)
     #output filename
     dout = sys.argv[3]
+    outfile=open(dout,'w')
+    outfile.close()
+    dout = win32api.GetShortPathName(dout)    
     #metric
     metric = sys.argv[4]
     #do not skip masked vectors

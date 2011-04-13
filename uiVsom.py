@@ -1,7 +1,5 @@
 import sys, os
-
-#supports executables in long path names
-#does not support output into long path names
+import win32api
 
 def vsom(cin,din,cout,rlen,alpha,radius,rand='#',fixed="#",weights="#",buffer='#',alpha_type="#",snapfile="#",snapinterval="#",path="\\bin\\SOM_PAK\\"):
     """
@@ -69,10 +67,15 @@ def vsom(cin,din,cout,rlen,alpha,radius,rand='#',fixed="#",weights="#",buffer='#
 if __name__=="__main__":
     #initial codebook file
     cin = sys.argv[1]
+    cin = win32api.GetShortPathName(cin)
     #teaching data
     din = sys.argv[2]
+    din = win32api.GetShortPathName(din)
     #output codebook filename
     cout = sys.argv[6]
+    outfile=open(cout,'w')
+    outfile.close()
+    cout = win32api.GetShortPathName(cout)    
     #running length of teaching
     rlen = sys.argv[3]
     #initial alpha value
