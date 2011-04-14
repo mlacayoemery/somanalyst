@@ -1,0 +1,125 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso8859_1" />
+    
+    <title>Quick Start Guide</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="top" title="SOM Analyst v1 documentation" href="../index.html" />
+    <link rel="next" title="Self-Organizing Maps" href="soms.html" />
+    <link rel="prev" title="SOM Analyst 1.0" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="soms.html" title="Self-Organizing Maps"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="SOM Analyst 1.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">SOM Analyst v1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="quick-start-guide">
+<h1>Quick Start Guide</h1>
+<div class="section" id="install-and-update">
+<h2>Install and Update</h2>
+<p>There are two options for installing and updating SOM Analyst. The preferred method is to download the latest release from <a class="reference external" href="http://somanalyst.googlecode.com">http://somanalyst.googlecode.com</a>. The download is available on the download page, which can be reached by click on the download tab. The available downloads are compressed into ZIP format and must be unzipped before using, but require no additional setup. Updating SOM Analyst only requires downloading the latest release and unzipping it to the same folder as the older release, overwriting the old files.</p>
+<p>The other option for downloading SOM Analyst is to use a SVN client to retrieve the repository from <a class="reference external" href="http://somanalyst.googlecode.com/svn/trunk/">http://somanalyst.googlecode.com/svn/trunk/</a>. (For more information on SVN see the appendix.) Unlike the ZIP of SOM Analyst, the SOM Analyst SVN repository no longer includes the shapefile classes needed, which must also be downloaded and is available from <a class="reference external" href="http://shapefile.googlecode.com">http://shapefile.googlecode.com</a>. Updating SOM Analyst can be preformed by either calling the SVN update command or downloading a patch if available from the download page. Note the SVN repository is where revisions to SOM Analyst are immediately available, and as such maybe unstable.</p>
+<p>Python must be installed on the computer in order for SOM Analyst to work. If you do have Python download it from <a class="reference external" href="http://www.python.org">http://www.python.org</a> and follow the instructions for installation.</p>
+<div class="section" id="direct-download">
+<h3>Direct Download</h3>
+<p>This is the preferred method of installation.</p>
+<ol class="arabic simple">
+<li>Go to <a class="reference external" href="http://somanalyst.googlecode.com">http://somanalyst.googlecode.com</a></li>
+<li>Click on the Downloads tab</li>
+<li>Select the desired release and download</li>
+<li>Unzip the download to the desired location. (Usually short names without spaces works best for folders).</li>
+<li>Updates can be performed by repeating this process.</li>
+</ol>
+</div>
+<div class="section" id="svn-client">
+<h3>SVN Client</h3>
+<p>This method should only be chosen by developers and testers.</p>
+<ol class="arabic simple">
+<li>Create or choose a folder to use to checkout SOM Analyst. (Usually short names without spaces works best for folders).</li>
+<li>Checkout the repository at <a class="reference external" href="http://somanalyst.googlecode.com/svn/trunk/">http://somanalyst.googlecode.com/svn/trunk/</a> to the desired folder.</li>
+<li>The folder now contains SOM Analyst, but requires an additional library.</li>
+<li>The SOM Analyst folder contains a folder named lib, inside the lib folder create a folder called shp.</li>
+<li>Checkout the repository at <a class="reference external" href="http://shapefile.googlecode.com/svn/trunk/">http://shapefile.googlecode.com/svn/trunk/</a> to the folder called shp.</li>
+<li>Updates can be performed by calling the SVN update function on both the SOM Analyst folder and the shp folder.</li>
+</ol>
+</div>
+<div class="section" id="standalone-gui">
+<h3>Standalone GUI</h3>
+<p>The standalone GUI for SOM Analyst requires an additional library called WxPython, if you do not plan on using the standalone GUI you do not need it.</p>
+<ol class="arabic simple">
+<li>Go to <a class="reference external" href="http://www.wxpython.org/">http://www.wxpython.org/</a></li>
+<li>Select the download link and choose the appropriate version for your system.</li>
+<li>Follow the installation instructions for your system.</li>
+</ol>
+</div>
+<div class="section" id="arcgis-gui">
+<h3>ArcGIS GUI</h3>
+<p>The ArcGIS GUI was created with ArcGIS 9.3 and exported into additional formats for ArcGIS versions 9.0-9.2.</p>
+<ol class="arabic simple">
+<li>In ArcMap, from the Window menu select toolbox.</li>
+<li>Right click the toolbox area and click on Add Toolbox.</li>
+<li>Browse to the SOM Analyst folder and select the appropriate toolbox file (.tbx), then click open.</li>
+<li>SOM Analyst Toolbox should now appear in the toolbox area. If desired right click the toolbox area and save the current setup.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="updates">
+<h2>Updates</h2>
+<p>If you used the direct download installation method, repeat the installation process. If are using a SVN client see the instruction manual for your SVN client on how to perform a update. Remember when using SVN you must update both the SOM Analyst folder and the shp folder contained in its lib folder.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="soms.html" title="Self-Organizing Maps"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="SOM Analyst 1.0"
+             >previous</a> |</li>
+        <li><a href="../index.html">SOM Analyst v1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Martin Lacayo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
