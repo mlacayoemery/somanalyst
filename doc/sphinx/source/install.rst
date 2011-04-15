@@ -6,7 +6,7 @@ Install and Update
 
 There are two options for installing and updating SOM Analyst. The preferred method is to download the latest release from http://somanalyst.googlecode.com. The download is available on the download page, which can be reached by click on the download tab. The available downloads are compressed into ZIP format and must be unzipped before using, but require no additional setup. Updating SOM Analyst only requires downloading the latest release and unzipping it to the same folder as the older release, overwriting the old files.
 
-The other option for downloading SOM Analyst is to use a SVN client to retrieve the repository from http://somanalyst.googlecode.com/svn/trunk/. (For more information on SVN see the appendix.) Unlike the ZIP of SOM Analyst, the SOM Analyst SVN repository no longer includes the shapefile classes needed, which must also be downloaded and is available from http://shapefile.googlecode.com. Updating SOM Analyst can be preformed by either calling the SVN update command or downloading a patch if available from the download page. Note the SVN repository is where revisions to SOM Analyst are immediately available, and as such maybe unstable.
+The other option for downloading SOM Analyst is to use a SVN client to retrieve the repository from http://somanalyst.googlecode.com/svn/trunk/. Unlike the ZIP of SOM Analyst, the SOM Analyst SVN repository no longer includes the shapefile classes needed, which must also be downloaded and is available from http://shapefile.googlecode.com. Updating SOM Analyst can be preformed by using the SVN update command. Note the SVN repository is where revisions to SOM Analyst are immediately available, and as such might be unstable. If necessary revert to an earlier revision.
 
 Python must be installed on the computer in order for SOM Analyst to work. If you do have Python download it from http://www.python.org and follow the instructions for installation.
 
@@ -36,7 +36,7 @@ This method should only be chosen by developers and testers.
 Standalone GUI
 ~~~~~~~~~~~~~~
 
-The standalone GUI for SOM Analyst requires an additional library called WxPython, if you do not plan on using the standalone GUI you do not need it.
+The standalone GUI for SOM Analyst does not support all the features of the ArcGIS GUI and requires an additional library called WxPython, if you do not plan on using the standalone GUI you do not need it.
 
 #. Go to http://www.wxpython.org/
 #. Select the download link and choose the appropriate version for your system.

@@ -43,7 +43,7 @@
 <div class="section" id="install-and-update">
 <h2>Install and Update</h2>
 <p>There are two options for installing and updating SOM Analyst. The preferred method is to download the latest release from <a class="reference external" href="http://somanalyst.googlecode.com">http://somanalyst.googlecode.com</a>. The download is available on the download page, which can be reached by click on the download tab. The available downloads are compressed into ZIP format and must be unzipped before using, but require no additional setup. Updating SOM Analyst only requires downloading the latest release and unzipping it to the same folder as the older release, overwriting the old files.</p>
-<p>The other option for downloading SOM Analyst is to use a SVN client to retrieve the repository from <a class="reference external" href="http://somanalyst.googlecode.com/svn/trunk/">http://somanalyst.googlecode.com/svn/trunk/</a>. (For more information on SVN see the appendix.) Unlike the ZIP of SOM Analyst, the SOM Analyst SVN repository no longer includes the shapefile classes needed, which must also be downloaded and is available from <a class="reference external" href="http://shapefile.googlecode.com">http://shapefile.googlecode.com</a>. Updating SOM Analyst can be preformed by either calling the SVN update command or downloading a patch if available from the download page. Note the SVN repository is where revisions to SOM Analyst are immediately available, and as such maybe unstable.</p>
+<p>The other option for downloading SOM Analyst is to use a SVN client to retrieve the repository from <a class="reference external" href="http://somanalyst.googlecode.com/svn/trunk/">http://somanalyst.googlecode.com/svn/trunk/</a>. Unlike the ZIP of SOM Analyst, the SOM Analyst SVN repository no longer includes the shapefile classes needed, which must also be downloaded and is available from <a class="reference external" href="http://shapefile.googlecode.com">http://shapefile.googlecode.com</a>. Updating SOM Analyst can be preformed by using the SVN update command. Note the SVN repository is where revisions to SOM Analyst are immediately available, and as such might be unstable. If necessary revert to an earlier revision.</p>
 <p>Python must be installed on the computer in order for SOM Analyst to work. If you do have Python download it from <a class="reference external" href="http://www.python.org">http://www.python.org</a> and follow the instructions for installation.</p>
 <div class="section" id="direct-download">
 <h3>Direct Download</h3>
@@ -70,7 +70,7 @@
 </div>
 <div class="section" id="standalone-gui">
 <h3>Standalone GUI</h3>
-<p>The standalone GUI for SOM Analyst requires an additional library called WxPython, if you do not plan on using the standalone GUI you do not need it.</p>
+<p>The standalone GUI for SOM Analyst does not support all the features of the ArcGIS GUI and requires an additional library called WxPython, if you do not plan on using the standalone GUI you do not need it.</p>
 <ol class="arabic simple">
 <li>Go to <a class="reference external" href="http://www.wxpython.org/">http://www.wxpython.org/</a></li>
 <li>Select the download link and choose the appropriate version for your system.</li>

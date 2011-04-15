@@ -1,10 +1,19 @@
 Tutorial
 ========
 
-This tutorial contains step-by-step instructions on how to use the provided example dataset with SOM Analyst. The source data set for this tutorial is provided with SOM Analyst and is located in its sub-folder named **dat**. The file named **census.csv** contains gender, age, race, and housing data for each U.S. population census between the years 1900 and 1990.
+This tutorial contains step-by-step instructions on how to use the provided example dataset with SOM Analyst in ArcMap. The source data set for this tutorial is provided with SOM Analyst and is located in its sub-folder named **dat**. The file named **census.csv** contains gender, age, race, and housing data for each U.S. population census between the years 1900 and 1990.
 
 First, the data is converted from the comma separated file format (.csv) to the database file format (.dbf) so that normalizations can be performed. Second, the raw count data are normalized by state population counts. Third, every variable is normalized into a 0 to 1 range and the preprocessed data are then exported to the SOM input format. Using those input data, a SOM is trained in two stages. The input data are then projected onto the finished SOM. Finally, a number of visualizations are produced.
  
+System Requirements
+-------------------
+#. Windows (any version)
+#. ArcGIS 9.3 (legacy toolboxes for ArcGIS 9.0-9.2 are provided, but untested)
+#. Python 2.5 (included in the default ArcGIS 9.3 installation)
+
+Download
+--------
+SOM Analyst is available for download from http://somanalyst.googlecode.com
 
 Adding the Toolbox
 ------------------
@@ -122,7 +131,7 @@ Select the relevant variables from the database file.
 
 4. Change the *output database file* to **demographics.dbf**.
 
-5. Select all columns except **Owner**, **Renter**, and **Households** in the *columns* field.
+5. Select all columns except **Population**, **Owner**, **Renter**, and **Households** in the *columns* field.
 
 6. Enable **detect data types**.
 

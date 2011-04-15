@@ -36,8 +36,20 @@
             
   <div class="section" id="tutorial">
 <h1>Tutorial</h1>
-<p>This tutorial contains step-by-step instructions on how to use the provided example dataset with SOM Analyst. The source data set for this tutorial is provided with SOM Analyst and is located in its sub-folder named <strong>dat</strong>. The file named <strong>census.csv</strong> contains gender, age, race, and housing data for each U.S. population census between the years 1900 and 1990.</p>
+<p>This tutorial contains step-by-step instructions on how to use the provided example dataset with SOM Analyst in ArcMap. The source data set for this tutorial is provided with SOM Analyst and is located in its sub-folder named <strong>dat</strong>. The file named <strong>census.csv</strong> contains gender, age, race, and housing data for each U.S. population census between the years 1900 and 1990.</p>
 <p>First, the data is converted from the comma separated file format (.csv) to the database file format (.dbf) so that normalizations can be performed. Second, the raw count data are normalized by state population counts. Third, every variable is normalized into a 0 to 1 range and the preprocessed data are then exported to the SOM input format. Using those input data, a SOM is trained in two stages. The input data are then projected onto the finished SOM. Finally, a number of visualizations are produced.</p>
+<div class="section" id="system-requirements">
+<h2>System Requirements</h2>
+<ol class="arabic simple">
+<li>Windows (any version)</li>
+<li>ArcGIS 9.3 (legacy toolboxes for ArcGIS 9.0-9.2 are provided, but untested)</li>
+<li>Python 2.5 (included in the default ArcGIS 9.3 installation)</li>
+</ol>
+</div>
+<div class="section" id="download">
+<h2>Download</h2>
+<p>SOM Analyst is available for download from <a class="reference external" href="http://somanalyst.googlecode.com">http://somanalyst.googlecode.com</a></p>
+</div>
 <div class="section" id="adding-the-toolbox">
 <h2>Adding the Toolbox</h2>
 <p>Add the SOM Analyst Toolbox to ArcGIS.</p>
@@ -147,7 +159,7 @@
 <li>Select <strong>norm01.dbf</strong> as the <em>input database file</em>.</li>
 <li>Set <strong>columns</strong> as the <em>selection type</em>.</li>
 <li>Change the <em>output database file</em> to <strong>demographics.dbf</strong>.</li>
-<li>Select all columns except <strong>Owner</strong>, <strong>Renter</strong>, and <strong>Households</strong> in the <em>columns</em> field.</li>
+<li>Select all columns except <strong>Population</strong>, <strong>Owner</strong>, <strong>Renter</strong>, and <strong>Households</strong> in the <em>columns</em> field.</li>
 <li>Enable <strong>detect data types</strong>.</li>
 <li>Click <strong>OK</strong> to run the selection.</li>
 </ol>
