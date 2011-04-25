@@ -62,12 +62,14 @@ def mapinit(din,cout,topol,neigh,xdim,ydim,init,rand='#',buffer='#'):
 if __name__=="__main__":
     #input data
     din = sys.argv[1]
-    din = win32api.GetShortPathName(din)
+    if win32api_loaded:
+        din = win32api.GetShortPathName(din)
     #output codebook filename
     cout = sys.argv[6]
-    outfile=open(cout,'w')
-    outfile.close()
-    cout = win32api.GetShortPathName(cout)
+    if win32api_loaded:
+        outfile=open(cout,'w')
+        outfile.close()
+        cout = win32api.GetShortPathName(cout)
     #topology type of map, hexa or rect
     topol = sys.argv[2]
     #neighborhood type, bubble or gaussian
