@@ -5,7 +5,7 @@ try:
     win32api_loaded=True
 except ImportError:
     win32api_loaded=False
-
+    print "For long file name support install the win32api library from http://sourceforge.net/projects/pywin32/"
 
 def vsom(cin,din,cout,rlen,alpha,radius,rand='#',fixed="#",weights="#",buffer='#',alpha_type="#",snapfile="#",snapinterval="#",path="\\bin\\SOM_PAK\\"):
     """
@@ -67,7 +67,6 @@ def vsom(cin,din,cout,rlen,alpha,radius,rand='#',fixed="#",weights="#",buffer='#
         vsom+=" -snapinterval "+snapinterval
 
     #execute command
-    print vsom
     return os.system(vsom)        
 
 if __name__=="__main__":

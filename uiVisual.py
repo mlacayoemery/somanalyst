@@ -5,6 +5,7 @@ try:
     win32api_loaded=True
 except ImportError:
     win32api_loaded=False
+    print "For long file name support install the win32api library from http://sourceforge.net/projects/pywin32/"
 
 #supports executables in long path names
 #does not support output into long path names

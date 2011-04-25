@@ -1,5 +1,11 @@
 import sys, os
-import win32api
+
+try:
+    import win32api
+    win32api_loaded=True
+except ImportError:
+    win32api_loaded=False
+    print "For long file name support install the win32api library from http://sourceforge.net/projects/pywin32/"
 
 def mapinit(din,cout,topol,neigh,xdim,ydim,init,rand='#',buffer='#'):
     """
