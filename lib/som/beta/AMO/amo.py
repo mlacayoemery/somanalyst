@@ -1,6 +1,6 @@
 
 #Martin Lacayo-Emery
-import cols, pickle
+import cols, pickle, json
 
 class AMO:
     def __init__(self):
@@ -137,26 +137,35 @@ class AMO:
         print "Viewer"
 
     def Save(self,fileName):
-        ofile=open(fileName,'w')
-        #store collection database
-        pickle.dump(self.collection.collections,ofile)
-        #store stemming data
-        pickle.dump(self.collection.porter.stems,ofile)
-        pickle.dump(self.collection.porter.indexStems,ofile)
-        pickle.dump(self.collection.porter.stemCount,ofile)
-        pickle.dump(self.collection.porter.stemFrequency,ofile)                          
-        ofile.close()
+        state = { "collections" : self.collection.collections,
+                  "stems" : self.collection.porter.stems,
+                  "indexStems" : self.collection.porter.indexStems,
+                  "stemCount" : self.collection.porter.stemCount,
+                  "stemFrequency" : self.collection.porter.stemFrequency}
+
+        outfile = open(fileName, 'wb')
+        json.dump(state,
+                   outfile,
+                   sort_keys=True,
+                   indent=4,
+                   separators=(',', ': '))
+        outfile.close()
 
     def Load(self,fileName):
-        ifile=open(fileName)
-        #store collection database
-        self.collection.collections=pickle.load(ifile)
-        #store stemming data
-        self.collection.porter.stems=pickle.load(ifile)
-        self.collection.porter.indexStems=pickle.load(ifile)
-        self.collection.porter.stemCount=pickle.load(ifile)
-        self.collection.porter.stemFrequency=pickle.load(ifile)  
+        ifile=open(fileName, 'rb')
+
+        state = json.load(ifile)
+
         ifile.close()
+        
+        #store collection database
+        self.collection.collections=state["collections"]
+        #store stemming data
+        self.collection.porter.stems=state["stems"]
+        self.collection.porter.indexStems=state["indexStems"]
+        self.collection.porter.stemCount=state["stemCount"]
+        self.collection.porter.stemFrequency=state["stemFrequency"]
+
 
     def InsertCollection(self,fileName):
         iFile=open(fileName)
