@@ -34,7 +34,7 @@ if __name__=="__main__":
 
                 #insert a collection
                 elif collectionChoice ==collectionChoices[1]:
-                    iName=easygui.fileopenbox(argInitialFile="d:/users/gregg/file1.txt")
+                    iName=easygui.fileopenbox(argInitialFile="collection.txt")
                     if iName!=None:
                         app.InsertCollection(iName)
 
